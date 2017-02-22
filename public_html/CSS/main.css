@@ -1,0 +1,156 @@
+.login_mini {
+  width: 30%; }
+  @media screen and (max-width: 480px) and (orientation: portrait) {
+    .login_mini {
+      width: 90%; } }
+  @media screen and (max-width: 1000px) and (orientation: landscape) {
+    .login_mini {
+      width: 70%; } }
+
+.logo {
+  margin-bottom: 20px;
+  margin-top: 5%;
+  max-width: 15%;
+  max-height: 15%; }
+  @media screen and (max-width: 480px) and (orientation: portrait) {
+    .logo {
+      max-width: 45%;
+      max-height: 45%;
+      margin-top: 15%; } }
+  @media screen and (max-width: 1000px) and (orientation: landscape) {
+    .logo {
+      max-width: 20%;
+      max-height: 20%;
+      margin-top: 1%; } }
+
+.form-short {
+  max-width: 110px; }
+
+.unused {
+  color: #cccccc; }
+
+.used {
+  color: #333333; }
+
+.sortBttMain {
+  display: inline-table;
+  cursor: pointer; }
+
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: #d7d7d7; }
+
+.arr {
+  font-size: small; }
+
+.col1 {
+  text-align: center;
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%; }
+
+.col2 {
+  text-align: center;
+  width: 30%;
+  max-width: 30%;
+  min-width: 30%; }
+
+.col3 {
+  text-align: center;
+  width: 15%;
+  max-width: 15%;
+  min-width: 15%; }
+
+.col4 {
+  text-align: center;
+  width: 6%;
+  max-width: 6%;
+  min-width: 6%; }
+
+.col5 {
+  text-align: center;
+  width: 6%;
+  max-width: 6%;
+  min-width: 6%; }
+
+.col6 {
+  text-align: center;
+  width: 3%;
+  max-width: 3%;
+  min-width: 3%; }
+
+.col7 {
+  text-align: center;
+  width: 20%;
+  max-width: 20%;
+  min-width: 20%; }
+
+.col8 {
+  text-align: center;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.col9 {
+  text-align: center;
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%; }
+
+.col1b {
+  text-align: center;
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%; }
+
+.col2b {
+  text-align: left;
+  width: 30%;
+  max-width: 30%;
+  min-width: 30%; }
+
+.col3b {
+  text-align: left;
+  width: 15%;
+  max-width: 15%;
+  min-width: 15%; }
+
+.col4b {
+  text-align: right;
+  width: 6%;
+  max-width: 6%;
+  min-width: 6%; }
+
+.col5b {
+  text-align: right;
+  width: 6%;
+  max-width: 6%;
+  min-width: 6%; }
+
+.col6b {
+  text-align: right;
+  width: 3%;
+  max-width: 3%;
+  min-width: 3%; }
+
+.col7b {
+  text-align: center;
+  width: 20%;
+  max-width: 20%;
+  min-width: 20%; }
+
+.col8b {
+  text-align: center;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.col9b {
+  text-align: center;
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%; }
+
+.tab {
+  background-color: #f9f9f9;
+  margin-top: 0px; }
