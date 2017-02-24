@@ -1,13 +1,11 @@
 <?php
-    $pageNo = $_POST['page'];
-    $ord = $_POST['ord'];
-    $id = $_POST['id'];
+    $id = $_POST['docId'];
     $contractorId = $_POST['conId'];
-    $conName = $_POST['condName'];
+    $conName = $_POST['conName'];
+    $no = $_POST['docNo'];
     $docType = $_POST['docType'];
 
-    //CHECK IS USER EXIST AND RETURN TOKEN
-    $query = "select getDocuments('".$pageNo."','".$ord."','".$id."','".$contractorId."','".$conName."') as count";
+    $query = "select getDocumentsCount('".$docType."','".$no."','".$id."','".$contractorId."','".$conName."') as count";
     function select($query){
         include('connect.php');
         $returnArray = array();

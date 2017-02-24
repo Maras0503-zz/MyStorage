@@ -1,21 +1,21 @@
 /* global pageFunctions */
-var page = 0;
-var order = 0;
-var count = 0;
+var productTablePage = 0;
+var productTableOrder = 1;
+var productCount = 0;
 
 pageFunctions.productsTabFunc = (function(){
     var listeners = (function(){
         $('#next').on('click', function(){
-            page++;
+            productTablePage++;
             getProducts();
-            if(page>0){
+            if(productTablePage>0){
                 $('#previous').removeClass('hidden');
             }
         });
         $('#previous').on('click', function(){
-            page--;
+            productTablePage--;
             getProducts();
-            if(page==0){
+            if(productTablePage==0){
                 $('#previous').addClass('hidden');
             }
         });
@@ -32,8 +32,9 @@ pageFunctions.productsTabFunc = (function(){
             $('#productContainer').addClass('hidden');
         });
         $('#reset').on('click', function(){
-            order=0;
-            page=0;
+            //validateSession();
+            productTableOrder=1;
+            productTablePage=0;
             $('.arr').addClass('unused');
             $('.arr').removeClass('used');
             $('#idBox').val('');
@@ -42,91 +43,92 @@ pageFunctions.productsTabFunc = (function(){
             $('#priceMinBox').val('');
             $('#noMaxBox').val('');
             $('#noMinBox').val('');
+            $('#previous').addClass('hidden');
             getProducts();
         });
         $('#search').on('click', function(){
-            page=0;
+            productTablePage=0;
             getProducts();
         });
 
         $('#arrUpId').on('click', function(){
-            page = 0;
+            productTablePage = 0;
             $('.arr').addClass('unused');
             $('.arr').removeClass('used');
             $('#arrUpId').addClass('used');
             $('#arrUpId').removeClass('unused');
             $('#previous').addClass('hidden');
-            order = 0;
+            productTableOrder = 0;
             getProducts();
         });
         $('#arrUpName').on('click', function(){
-            page = 0;
+            productTablePage = 0;
             $('.arr').addClass('unused');
             $('.arr').removeClass('used');
             $('#arrUpName').addClass('used');
             $('#arrUpName').removeClass('unused');
             $('#previous').addClass('hidden');
-            order = 2;
+            productTableOrder = 2;
             getProducts();
         });
         $('#arrUpNo').on('click', function(){
-            page = 0;
+            productTablePage = 0;
             $('.arr').addClass('unused');
             $('.arr').removeClass('used');
             $('#arrUpNo').addClass('used');
             $('#arrUpNo').removeClass('unused');
             $('#previous').addClass('hidden');
-            order = 6;
+            productTableOrder = 6;
             getProducts();
         });
         $('#arrUpPrice').on('click', function(){
-            page = 0;
+            productTablePage = 0;
             $('.arr').addClass('unused');
             $('.arr').removeClass('used');
             $('#arrUpPrice').addClass('used');
             $('#arrUpPrice').removeClass('unused');
             $('#previous').addClass('hidden');
-            order = 4;
+            productTableOrder = 4;
             getProducts();
         });
         $('#arrDownId').on('click', function(){
-            page = 0;
+            productTablePage = 0;
             $('.arr').addClass('unused');
             $('.arr').removeClass('used');
             $('#arrDownId').addClass('used');
             $('#arrDownId').removeClass('unused');
             $('#previous').addClass('hidden');
-            order = 1;
+            productTableOrder = 1;
             getProducts();
         });
         $('#arrDownName').on('click', function(){
-            page = 0;
+            productTablePage = 0;
             $('.arr').addClass('unused');
             $('.arr').removeClass('used');
             $('#arrDownName').addClass('used');
             $('#arrDownName').removeClass('unused');
             $('#previous').addClass('hidden');
-            order = 3;
+            productTableOrder = 3;
             getProducts();
         });
         $('#arrDownNo').on('click', function(){
-            page = 0;
+            productTablePage = 0;
             $('.arr').addClass('unused');
             $('.arr').removeClass('used');
             $('#arrDownNo').addClass('used');
             $('#arrDownNo').removeClass('unused');
             $('#previous').addClass('hidden');
-            order = 7;
+            productTableOrder = 7;
             getProducts();
         });
         $('#arrDownPrice').on('click', function(){
-            page = 0;
+            productTablePage = 0;
             $('.arr').addClass('unused');
             $('.arr').removeClass('used');
             $('#arrDownPrice').addClass('used');
             $('#arrDownPrice').removeClass('unused');
             $('#previous').addClass('hidden');
-            order = 5;
+            productTableOrder = 5;
             getProducts();
         });
     });
@@ -170,14 +172,14 @@ pageFunctions.productsTabFunc = (function(){
           dataType: 'json',
           url: 'PHP/getProductsCount.php',            
           success: function(data){
-            count = data[0].count;
+            productCount = data[0].count;
           }
         });
     });
     var getProducts = (function(){
         param = {};
-        param['page'] = page;
-        param['ord'] = order;
+        param['page'] = productTablePage;
+        param['ord'] = productTableOrder;
         //NUMBER MIN
         if($('#noMinBox').val() == ''){
             param['noMin'] = 0;
@@ -216,14 +218,14 @@ pageFunctions.productsTabFunc = (function(){
           dataType: 'json',
           url: 'PHP/getProducts.php',            
           success: function(data){
-              $('#productTabContent').html(createTableContent(data));
               getProductsCount();
-              if(count<=10){
+              $('#productTabContent').html(createProductTableContent(data));
+              if(productCount<=10){
                   $('#next').addClass('hidden');
               } else {
                   $('#next').removeClass('hidden');
               }
-              if(count<(page*10+10)){
+              if(productCount<(productTablePage*10+10)){
                   $('#next').addClass('hidden');
               } else {
                   $('#next').removeClass('hidden');
@@ -231,10 +233,10 @@ pageFunctions.productsTabFunc = (function(){
           }
         });
     });
-    var createTableContent = (function(data){
+    var createProductTableContent = (function(data){
         ans = '';
         $.each(data,function(index, value){
-            ans += "<tr><td class='col9b'>"+value['product_id']+"</td><td class='col2b'>"+value['product_name']+"</td><td class='col3b'>"+value['contractor_name']+"</td><td class='col4b'>"+value['product_number']+"</td><td class='col5b'>"+value['product_price']+"</td><td class='col6b'>"+value['vat_value']+"</td><td class='col7b'>"+value['product_group_name']+"</td><td class='col8b'>"+value['product_status_name']+"</td><td class='col9b'>"+value['product_unit_short']+"</td></tr>";
+            ans += "<tr><td class='col1b'>"+value['product_id']+"</td><td class='col2b'>"+value['product_name']+"</td><td class='col3b'>"+value['contractor_name']+"</td><td class='col4b'>"+value['product_number']+"</td><td class='col5b'>"+value['product_price']+"</td><td class='col6b'>"+value['vat_value']+"</td><td class='col7b'>"+value['product_group_name']+"</td><td class='col8b'>"+value['product_status_name']+"</td><td class='col9b'>"+value['product_unit_short']+"</td></tr>";
         });    
         return ans;
     });

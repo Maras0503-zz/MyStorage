@@ -1,12 +1,13 @@
 <?php
 $pageNo = $_POST['page'];
 $ord = $_POST['ord'];
-$id = $_POST['id'];
+$docType = $_POST['docType'];
+$id = $_POST['docId'];
+$no = $_POST['docNo'];
 $contractorId = $_POST['conId'];
-$conName = $_POST['condName'];
+$conName = $_POST['conName'];
 
-    //SELECT INFORMATION ABOUT PRODUCTS
-    $query = "call getDocuments('".$pageNo."','".$ord."','".$id."','".$contractorId."','".$conName."')";        
+    $query = "call getDocuments('".$docType."','".$no."','".$ord."','".$docType."','".$id."','".$contractorId."','".$conName."')";        
     
     function select($query){
         include('connect.php');
@@ -21,7 +22,6 @@ $conName = $_POST['condName'];
                 $rowArray['document_accept_date'] = $row['document_accept_date'];
                 $rowArray['document_contractor_id'] = $row['document_contractor_id'];
                 $rowArray['contractor_name'] = $row['contractor_name'];
-                $rowArray['product_unit_short'] = $row['product_unit_short'];
                 array_push($returnArray,$rowArray);
             }
             $mysqli->close();

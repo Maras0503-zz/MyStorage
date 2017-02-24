@@ -2,15 +2,17 @@
 
 pageFunctions.sessionControl = (function(){
     var init = (function(){
+        validateSession();
+        listeners();
+    });
+    
+    var validateSession = (function(){
         if(checkSession() != true){
             alert("Sesia wygasła, zaloguj się ponownie.");
             window.location.replace('index.html');
-            console.log(location.href);
             window.sessionStorage.setItem('id', null);
             window.sessionStorage.setItem('token', null);
-            window.sessionStorage.setItem('time', null);
         } 
-        listeners();
     });
     
     var logout = (function(){
@@ -18,7 +20,6 @@ pageFunctions.sessionControl = (function(){
         window.location.replace('index.html');
         window.sessionStorage.setItem('id', null);
         window.sessionStorage.setItem('token', null);
-        window.sessionStorage.setItem('time', null);
     });
     
     var listeners = (function(){

@@ -22,6 +22,7 @@ and open the template in the editor.
         <script src="JS/sessionControl.js" type="text/javascript"></script>
         <script src="JS/productsTabFunc.js" type="text/javascript"></script>
         <script src="JS/wzTabFunc.js" type="text/javascript"></script>
+        <script src="JS/mainPageUtil.js" type="text/javascript"></script>
     </head>
     <body>
        <nav class="navbar navbar-default">
@@ -34,7 +35,7 @@ and open the template in the editor.
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">MyStorage</a>
+                <a id='brand' class="navbar-brand" href="#">MyStorage</a>
               </div>
 
               <!-- Collect the nav links, forms, and other content for toggling -->
@@ -77,62 +78,120 @@ and open the template in the editor.
               </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        <div id="productContainer" class="container-fluid hidden tab">
-            <div class="form-inline">
-                <div class="form-group">
-                    <label for="idBox">Id:</label>
-                    <input type="number" step="1" class="form-control" id="idBox" placeholder="id produktu">
+        <div class="main_div">
+            <div id="productContainer" class="container-fluid hidden tab">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="idBox">Id:</label>
+                        <input type="number" step="1" class="form-control" id="idBox" placeholder="id produktu">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameBox">Nazwa:</label>
+                        <input type="text" class="form-control" id="nameBox" placeholder="nazwa produktu">
+                    </div>
+                    <div class="form-group">
+                        <label for="priceMinBox">Cena min:</label>
+                        <input type="number" step="0.01" class="form-control form-short" id="priceMinBox" placeholder="cena min">
+                    </div>
+                    <div class="form-group">
+                        <label for="priceMaxBox">Cena max:</label>
+                        <input type="number" step="0.01" class="form-control form-short" id="priceMaxBox" placeholder="cena max">
+                    </div>
+                    <div class="form-group">
+                        <label for="noMinBox">Ilość min:</label>
+                        <input type="number" step="0.01" class="form-control form-short" id="noMinBox" placeholder="cena min">
+                    </div>
+                    <div class="form-group">
+                        <label for="noMaxBox">Ilość max:</label>
+                        <input type="number" step="0.01" class="form-control form-short" id="noMaxBox" placeholder="cena max">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="nameBox">Nazwa:</label>
-                    <input type="text" class="form-control" id="nameBox" placeholder="nazwa produktu">
+                <input id="search" class="btn btn-default" type="button" value="Szukaj">
+                <input id="reset" class="btn btn-default" type="button" value="Reset">
+                <input id="closeCatalog" class="btn btn-default pull-right" type="button" value="Zamknij">
+
+                <div class="table-responsive">
+                <table id="prodTable" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <td class="col1">ID<div id="arrUpId" class="unused sortBttMain arr">&#9650;</div><div id="arrDownId" class="unused sortBttMain arr">&#9660;</div></td>
+                            <td class="col2">Nazwa<div id="arrUpName" class="unused sortBttMain arr">&#9650;</div><div id="arrDownName" class="unused sortBttMain arr">&#9660;</div></td>
+                            <td class="col3">Producent</td>
+                            <td class="col4">Ilość<div id="arrUpNo" class="unused sortBttMain arr">&#9650;</div><div id="arrDownNo" class="unused sortBttMain arr">&#9660;</div></td>
+                            <td class="col5">Cena<div id="arrUpPrice" class="unused sortBttMain arr">&#9650;</div><div id="arrDownPrice" class="unused sortBttMain arr">&#9660;</div></td>
+                            <td class="col6">Vat</td>
+                            <td class="col7">Grupa</td>
+                            <td class="col8">Status</td>
+                            <td class="col9">Jedn.</td>
+                        </tr>
+                    </thead>
+                    <tbody id="productTabContent">
+                    </tbody>
+                </table>
                 </div>
-                <div class="form-group">
-                    <label for="priceMinBox">Cena min:</label>
-                    <input type="number" step="0.01" class="form-control form-short" id="priceMinBox" placeholder="cena min">
+                <input id="previous" class="btn btn-default hidden" type="button" value="Poprzednia">
+                <input id="next" class="btn btn-default pull-right" type="button" value="Następna">
+            </div>
+            <div id="WZContainer" class="container-fluid hidden tab">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="WZidBox">Id dokumentu:</label>
+                        <input type="number" step="1" class="form-control" id="WZidBox" placeholder="id dokumentu">
+                    </div>
+                    <div class="form-group">
+                        <label for="WZnoBox">Nr dokumentu:</label>
+                        <input type="number" step="1" class="form-control" id="WZnoBox" placeholder="nr dokumentu">
+                    </div>
+                    <div class="form-group">
+                        <label for="WZconIdBox">Id kontrahenta:</label>
+                        <input type="number" step="1" class="form-control" id="WZconIdBox" placeholder="id klienta">
+                    </div>
+                    <div class="form-group">
+                        <label for="WZconNameBox">Nazwa kontrahenta:</label>
+                        <input type="text" class="form-control" id="WZconNameBox" placeholder="nazwa klienta">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="priceMaxBox">Cena max:</label>
-                    <input type="number" step="0.01" class="form-control form-short" id="priceMaxBox" placeholder="cena max">
+                <input id="newWZ" class="btn btn-default" type="button" value="Nowy dokument WZ">
+                <input id="WZsearch" class="btn btn-default" type="button" value="Szukaj">
+                <input id="WZreset" class="btn btn-default" type="button" value="Reset">
+                <input id="closeWZContainer" class="btn btn-default pull-right" type="button" value="Zamknij">
+                <div class="table-responsive">
+                <table id="WZTable" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <td class="WZcol1">ID<div id="WZarrUpId" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownId" class="unused sortBttMain WZarr">&#9660;</div></td>
+                            <td class="WZcol2">Nr<div id="WZarrUpNo" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownNo" class="unused sortBttMain WZarr">&#9660;</div></td>
+                            <td class="WZcol3">Rok</td>
+                            <td class="WZcol4">Id Kontr.<div id="WZarrUpConId" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownConId" class="unused sortBttMain WZarr">&#9660;</div></td>
+                            <td class="WZcol5">Kontrahent<div id="WZarrUpConName" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownConName" class="unused sortBttMain WZarr">&#9660;</div></td>
+                            <td class="WZcol6">Typ</td>
+                            <td class="WZcol7">Data<div id="WZarrUpDate" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownDate" class="unused sortBttMain WZarr">&#9660;</div></td>
+                            <td class="WZcol8">Zatwierdzono<div id="WZarrUpAccDate" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownAccDate" class="unused sortBttMain WZarr">&#9660;</div></td>
+                        </tr>
+                    </thead>
+                    <tbody id="WZTabContent">
+                    </tbody>
+                </table>
                 </div>
-                <div class="form-group">
-                    <label for="noMinBox">Ilość min:</label>
-                    <input type="number" step="0.01" class="form-control form-short" id="noMinBox" placeholder="cena min">
-                </div>
-                <div class="form-group">
-                    <label for="noMaxBox">Ilość max:</label>
-                    <input type="number" step="0.01" class="form-control form-short" id="noMaxBox" placeholder="cena max">
+                <input id="WZprevious" class="btn btn-default hidden" type="button" value="Poprzednia">
+                <input id="WZnext" class="btn btn-default pull-right" type="button" value="Następna">
+            </div>
+            <div id="newWZpopup" class="popup hidden">
+                <div class="newWZform">
+                        <div class="form-group">
+                            <label>Wybór kontrahenta</label>
+                        </div>
+                        <div>
+                          <label>ID: </label><input type="number" class="form-control" id="selectContractorId" placeholder="id">
+                        </div>
+                        <div>
+                          <label>Nazwa: </label><input type="text" class="form-control" id="selectContractorName" placeholder="nazwa">
+                        </div>
+                        <hr/>
+                        <button id='cancelNewWZ' class="btn btn-default">Anuluj</button>
+                        <button class="btn btn-default pull-right">Utwórz</button>
                 </div>
             </div>
-            <input id="search" class="btn btn-default" type="button" value="Szukaj">
-            <input id="reset" class="btn btn-default" type="button" value="Reset">
-            <input id="closeCatalog" class="btn btn-default pull-right" type="button" value="Zamknij">
-            
-            <div class="table-responsive">
-            <table id="prodTable" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <td class="col1">ID<div id="arrUpId" class="unused sortBttMain arr">&#9650;</div><div id="arrDownId" class="unused sortBttMain arr">&#9660;</div></td>
-                        <td class="col2">Nazwa<div id="arrUpName" class="unused sortBttMain arr">&#9650;</div><div id="arrDownName" class="unused sortBttMain arr">&#9660;</div></td>
-                        <td class="col3">Producent</td>
-                        <td class="col4">Ilość<div id="arrUpNo" class="unused sortBttMain arr">&#9650;</div><div id="arrDownNo" class="unused sortBttMain arr">&#9660;</div></td>
-                        <td class="col5">Cena<div id="arrUpPrice" class="unused sortBttMain arr">&#9650;</div><div id="arrDownPrice" class="unused sortBttMain arr">&#9660;</div></td>
-                        <td class="col6">Vat</td>
-                        <td class="col7">Grupa</td>
-                        <td class="col8">Status</td>
-                        <td class="col9">Jedn.</td>
-                    </tr>
-                </thead>
-                <tbody id="productTabContent">
-                </tbody>
-            </table>
-            </div>
-            <input id="previous" class="btn btn-default hidden" type="button" value="Poprzednia">
-            <input id="next" class="btn btn-default pull-right" type="button" value="Następna">
-        </div>
-        <div id="WZContainer" class="container-fluid hidden tab">
-            <input id="newWZ" class="btn btn-default" type="button" value="Nowy dokument WZ">
-            <input id="closeWZContainer" class="btn btn-default pull-right" type="button" value="Zamknij">
         </div>
     </body>
 </html>
