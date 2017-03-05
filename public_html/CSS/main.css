@@ -66,6 +66,7 @@
   filter: blur(5px); }
 
 .newWZform {
+  z-index: 5;
   position: absolute;
   border: solid 1px gray;
   padding: 10px;
@@ -79,6 +80,10 @@
     .newWZform {
       left: 5%;
       width: 90%; } }
+
+.rowSelected {
+  color: cornflowerblue;
+  font-weight: bold; }
 
 .col1 {
   text-align: center;

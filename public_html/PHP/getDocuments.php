@@ -7,7 +7,7 @@ $no = $_POST['docNo'];
 $contractorId = $_POST['conId'];
 $conName = $_POST['conName'];
 
-    $query = "call getDocuments('".$docType."','".$no."','".$ord."','".$docType."','".$id."','".$contractorId."','".$conName."')";        
+    $query = "call getDocuments('".$pageNo."','".$no."','".$ord."','".$docType."','".$id."','".$contractorId."','".$conName."')";        
     
     function select($query){
         include('connect.php');

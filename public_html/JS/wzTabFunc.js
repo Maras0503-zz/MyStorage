@@ -10,6 +10,23 @@ pageFunctions.wzTabFunc = (function(){
     });
     
     var listeners = (function(){
+        $(document).on('click', function(e){
+            var id = $(e.target).parent().attr('id');
+            if(id!=undefined && id!='WZContainer'){
+                if(id.substring(0,2) == 'WZ'){
+                    $('.WZrow').removeClass('rowSelected');
+                    $('#WZ'+id.substring(2,id.lenght)).addClass('rowSelected');
+                }
+            }
+        });
+        $(document).on('dblclick', function(e){
+            var id = $(e.target).parent().attr('id');
+            if(id!=undefined && id!='WZContainer'){
+                if(id.substring(0,2) == 'WZ'){
+                    alert("WZ o id" + id.substring(2,id.lenght));
+                }
+            }
+        });
         $('#newWZ').on('click', function(){
             $('#WZContainer').addClass('blur');
             $('#newWZpopup').removeClass('hidden');
@@ -19,13 +36,21 @@ pageFunctions.wzTabFunc = (function(){
             $('#newWZpopup').addClass('hidden');
         });
         $('#WZnext').on('click', function(){
+            $('.WZrow').removeClass('rowSelected');
             WZTablePage++;
             getWZDocuments();
             if(WZTablePage>0){
                 $('#WZprevious').removeClass('hidden');
             }
         });
+        $(document).on('click', function(e){
+            if(e.target.id =='newWZpopup'){
+                $('#WZContainer').removeClass('blur');
+                $('#newWZpopup').addClass('hidden');
+            }
+        });
         $('#WZprevious').on('click', function(){
+            $('.WZrow').removeClass('rowSelected');
             WZTablePage--;
             getWZDocuments();
             if(WZTablePage==0){
@@ -246,12 +271,12 @@ pageFunctions.wzTabFunc = (function(){
           success: function(data){
               getWZCount();
               $('#WZTabContent').html(createWZTableContent(data));
-              if(WZCount<=10){
+              if(WZCount<=15){
                   $('#WZnext').addClass('hidden');
               } else {
                   $('#WZnext').removeClass('hidden');
               }
-              if(WZCount<(WZTablePage*10+10)){
+              if(WZCount<(WZTablePage*15+15)){
                   $('#WZnext').addClass('hidden');
               } else {
                   $('#WZnext').removeClass('hidden');
@@ -296,9 +321,9 @@ pageFunctions.wzTabFunc = (function(){
                 tmpAccDate = new Date(parseInt(value['document_accept_date']));
                 tmpAccDate = dateToFormat(tmpAccDate);
             } else {
-                tmpAccDate = "";
+                tmpAccDate = "nie zatwierdzony";
             }
-            ans += "<tr><td class='WZcol1b'>"+value['document_id']+"</td><td class='WZcol2b'>"+value['document_number']+"</td><td class='WZcol3b'>"+value['document_year']+"</td><td class='WZcol4b'>"+value['document_contractor_id']+"</td><td class='WZcol5b'>"+value['contractor_name']+"</td><td class='WZcol6b'>"+value['document_type_short']+"</td><td class='WZcol7b'>"+tmpDate+"</td><td class='WZcol8b'>"+tmpAccDate+"</td></tr>";
+            ans += "<tr class='WZrow' id=WZ"+value['document_id']+"><td class='WZcol1b'>"+value['document_id']+"</td><td class='WZcol2b'>"+value['document_number']+"</td><td class='WZcol3b'>"+value['document_year']+"</td><td class='WZcol4b'>"+value['document_contractor_id']+"</td><td class='WZcol5b'>"+value['contractor_name']+"</td><td class='WZcol6b'>"+value['document_type_short']+"</td><td class='WZcol7b'>"+tmpDate+"</td><td class='WZcol8b'>"+tmpAccDate+"</td></tr>";
         });    
         return ans;
     });

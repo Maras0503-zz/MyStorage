@@ -5,7 +5,25 @@ var productCount = 0;
 
 pageFunctions.productsTabFunc = (function(){
     var listeners = (function(){
+        $(document).on('click', function(e){
+            var id = $(e.target).parent().attr('id');
+            if(id!=undefined){
+                if(id.substring(0,2) == 'PR'){
+                    $('.PRrow').removeClass('rowSelected');
+                    $('#PR'+id.substring(2,id.lenght)).addClass('rowSelected');
+                }
+            }
+        });
+        $(document).on('dblclick', function(e){
+            var id = $(e.target).parent().attr('id');
+            if(id!=undefined && id!='WZContainer'){
+                if(id.substring(0,2) == 'PR'){
+                    alert("PRODUCT O ID" + id.substring(2,id.lenght));
+                }
+            }
+        });
         $('#next').on('click', function(){
+            $('.PRrow').removeClass('rowSelected');
             productTablePage++;
             getProducts();
             if(productTablePage>0){
@@ -13,6 +31,7 @@ pageFunctions.productsTabFunc = (function(){
             }
         });
         $('#previous').on('click', function(){
+            $('.PRrow').removeClass('rowSelected');
             productTablePage--;
             getProducts();
             if(productTablePage==0){
@@ -220,12 +239,12 @@ pageFunctions.productsTabFunc = (function(){
           success: function(data){
               getProductsCount();
               $('#productTabContent').html(createProductTableContent(data));
-              if(productCount<=10){
+              if(productCount<=15){
                   $('#next').addClass('hidden');
               } else {
                   $('#next').removeClass('hidden');
               }
-              if(productCount<(productTablePage*10+10)){
+              if(productCount<(productTablePage*15+15)){
                   $('#next').addClass('hidden');
               } else {
                   $('#next').removeClass('hidden');
@@ -236,7 +255,7 @@ pageFunctions.productsTabFunc = (function(){
     var createProductTableContent = (function(data){
         ans = '';
         $.each(data,function(index, value){
-            ans += "<tr><td class='col1b'>"+value['product_id']+"</td><td class='col2b'>"+value['product_name']+"</td><td class='col3b'>"+value['contractor_name']+"</td><td class='col4b'>"+value['product_number']+"</td><td class='col5b'>"+value['product_price']+"</td><td class='col6b'>"+value['vat_value']+"</td><td class='col7b'>"+value['product_group_name']+"</td><td class='col8b'>"+value['product_status_name']+"</td><td class='col9b'>"+value['product_unit_short']+"</td></tr>";
+            ans += "<tr class='PRrow' id=PR"+value['product_id']+"><td class='col1b'>"+value['product_id']+"</td><td class='col2b'>"+value['product_name']+"</td><td class='col3b'>"+value['contractor_name']+"</td><td class='col4b'>"+value['product_number']+"</td><td class='col5b'>"+value['product_price']+"</td><td class='col6b'>"+value['vat_value']+"</td><td class='col7b'>"+value['product_group_name']+"</td><td class='col8b'>"+value['product_status_name']+"</td><td class='col9b'>"+value['product_unit_short']+"</td></tr>";
         });    
         return ans;
     });
