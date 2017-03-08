@@ -25,11 +25,14 @@ and open the template in the editor.
         <script src="JS/mainPageUtil.js" type="text/javascript"></script>
     </head>
     <body>
+       <div class='backDiv'>
+           <img id="back" class="img-responsive center-block" alt="" src='IMG/logo.png'>
+       </div>
        <nav class="navbar navbar-default">
             <div class="container-fluid">
               <!-- Brand and toggle get grouped for better mobile display -->
               <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                   <span class="sr-only">Toggle navigation</span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
@@ -62,6 +65,20 @@ and open the template in the editor.
                       <li><a href="#">Wycofaj</a></li>
                       <li class="divider"></li>
                       <li><a href="#">Zmiana ceny</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Kontrahenci<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Lista</a></li>
+                      <li><a href="#">Dodaj</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Raporty<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Sprzedaży produktu</a></li>
+                      <li><a href="#">Sprzedaży w grupie</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -178,18 +195,54 @@ and open the template in the editor.
             </div>
             <div id="newWZpopup" class="popup hidden">
                 <div class="newWZform">
-                        <div class="form-group">
+                        <div class="form-group big-center">
                             <label>Wybór kontrahenta</label>
                         </div>
-                        <div>
-                          <label>ID: </label><input type="number" class="form-control" id="selectContractorId" placeholder="id">
+                        <hr/>
+                        <div class="form-inline">
+                            <div class="form-group">
+                              <label>ID: </label><input type="number" class="form-control" id="selectContractorId" placeholder="id">
+                            </div>
+                            <div class="form-group">
+                              <label>Nazwa: </label><input type="text" class="form-control" id="selectContractorName" placeholder="nazwa">
+                            </div>
+                            <div class="form-group">
+                              <label>Miasto: </label><input type="text" class="form-control" id="selectContractorCity" placeholder="miasto">
+                            </div>
+                            <div class="form-group">
+                              <label>NIP: </label><input type="text" class="form-control" id="selectContractorNIP" placeholder="NIP">
+                            </div>
                         </div>
-                        <div>
-                          <label>Nazwa: </label><input type="text" class="form-control" id="selectContractorName" placeholder="nazwa">
+                        <input id="WZConSearch" class="btn btn-default" type="button" value="Szukaj">
+                        <input id="WZConReset" class="btn btn-default" type="button" value="Reset">
+                        <hr/>
+                        <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <td class="WZConCol1">ID<div id="WZConArrUpId" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownId" class="unused sortBttMain WZConArr">&#9660;</div></td>
+                                    <td class="WZConCol2">Kontrahent<div id="WZConArrUpConName" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownConName" class="unused sortBttMain WZConArr">&#9660;</div></td>
+                                    <td class="WZConCol3">NIP</td>
+                                    <td class="WZConCol4">Kod</td>
+                                    <td class="WZConCol5">Miasto<div id="WZConArrUpCity" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownCity" class="unused sortBttMain WZConArr">&#9660;</div></td>
+                                    <td class="WZConCol6">Ulica</td>
+                                    <td class="WZConCol7">Telefon</td>
+                                    <td class="WZConCol8">E-mail</td>
+                                </tr>
+                            </thead>
+                            <tbody id="WZConTabContent">
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="conPageControls">
+                            <input id="WZConPrevious" class="btn btn-default hidden" type="button" value="Poprzednia">
+                            <input id="WZConNext" class="btn btn-default pull-right" type="button" value="Następna">
                         </div>
                         <hr/>
-                        <button id='cancelNewWZ' class="btn btn-default">Anuluj</button>
-                        <button class="btn btn-default pull-right">Utwórz</button>
+                        <div class="form-inline">
+                            <button id='cancelNewWZ' class="btn btn-default">Anuluj</button>
+                            <button id='confirmNewWZ' class="btn btn-default pull-right">Utwórz</button>
+                        </div>
                 </div>
             </div>
         </div>

@@ -2,6 +2,10 @@
 var WZTablePage = 0;
 var WZTableOrder = 1;
 var WZCount = 0;
+var WZConPage = 0;
+var WZConOrder = 1;
+var WZConCount = 0;
+var selectedContractorID = 0;
 
 pageFunctions.wzTabFunc = (function(){
     var init = (function(){
@@ -19,6 +23,17 @@ pageFunctions.wzTabFunc = (function(){
                 }
             }
         });
+        $(document).on('click', function(e){
+        var id = $(e.target).parent().attr('id');
+            if(id!=undefined && id!='WZContainer'){
+                if(id.substring(0,2) == 'CO'){
+                    $('.WZConRow').removeClass('rowSelected');
+                    $('#CO'+id.substring(2,id.lenght)).addClass('rowSelected');
+                    selectedContractorID = id.substring(2,id.lenght);
+                    console.log(selectedContractorID);
+                }
+            }
+        });
         $(document).on('dblclick', function(e){
             var id = $(e.target).parent().attr('id');
             if(id!=undefined && id!='WZContainer'){
@@ -27,13 +42,18 @@ pageFunctions.wzTabFunc = (function(){
                 }
             }
         });
-        $('#newWZ').on('click', function(){
-            $('#WZContainer').addClass('blur');
-            $('#newWZpopup').removeClass('hidden');
-        });
         $('#cancelNewWZ').on('click', function(){
             $('#WZContainer').removeClass('blur');
             $('#newWZpopup').addClass('hidden');
+            $('#selectContractorId').val('');
+            $('#selectContractorName').val('');
+            $('#selectContractorCity').val('');
+            $('#selectContractorNIP').val('');
+        });
+        $('#newWZ').on('click', function(){
+            $('#WZContainer').addClass('blur');
+            $('#newWZpopup').removeClass('hidden');
+            getContractors();
         });
         $('#WZnext').on('click', function(){
             $('.WZrow').removeClass('rowSelected');
@@ -41,12 +61,6 @@ pageFunctions.wzTabFunc = (function(){
             getWZDocuments();
             if(WZTablePage>0){
                 $('#WZprevious').removeClass('hidden');
-            }
-        });
-        $(document).on('click', function(e){
-            if(e.target.id =='newWZpopup'){
-                $('#WZContainer').removeClass('blur');
-                $('#newWZpopup').addClass('hidden');
             }
         });
         $('#WZprevious').on('click', function(){
@@ -57,6 +71,37 @@ pageFunctions.wzTabFunc = (function(){
                 $('#WZprevious').addClass('hidden');
             }
         });
+        
+        $('#WZConNext').on('click', function(){
+            $('.WZConRow').removeClass('rowSelected');
+            WZConPage++;
+            getContractors();
+            if(WZConPage>0){
+                $('#WZConPrevious').removeClass('hidden');
+            }
+            selectedContractorID = 0;
+        });
+        $('#WZConPrevious').on('click', function(){
+            $('.WZConRow').removeClass('rowSelected');
+            WZConPage--;
+            getContractors();
+            if(WZConPage==0){
+                $('#WZConPrevious').addClass('hidden');
+            }
+            selectedContractorID = 0;
+        });
+        
+        $(document).on('click', function(e){
+            if(e.target.id =='newWZpopup'){
+                $('#WZContainer').removeClass('blur');
+                $('#newWZpopup').addClass('hidden');
+                $('#selectContractorId').val('');
+                $('#selectContractorName').val('');
+                $('#selectContractorCity').val('');
+                $('#selectContractorNIP').val('');
+            }
+        });
+        
         //OPEN AND CLOSE WZtab
         $('#WZTabOpen').on('click', function(){
             $('.tab').addClass('hidden');
@@ -72,18 +117,17 @@ pageFunctions.wzTabFunc = (function(){
             WZTablePage=0;
             getWZDocuments();
         });
-        $('#WZreset').on('click', function(){
-            WZTableOrder=1;
-            WZTablePage=0;
-            $('.WZarr').addClass('unused');
-            $('.WZarr').removeClass('used');
-            $('#WZidBox').val('');
-            $('#WZnoBox').val('');
-            $('#WZconIdBox').val('');
-            $('#WZconNameBox').val('');
-            $('#previous').addClass('hidden');
-            getWZDocuments();
+        $('#WZConSearch').on('click', function(){
+            WZConPage=0;
+            getContractors();
         });
+        $('#WZConReset').on('click', function(){
+            conReset();
+        });
+        $('#WZreset').on('click', function(){
+            reset();
+        });
+        //ORDER ARROWS CONTROL WZ TAB
         $('#WZarrUpId').on('click', function(){
             WZTablePage = 0;
             $('.WZarr').addClass('unused');
@@ -204,6 +248,94 @@ pageFunctions.wzTabFunc = (function(){
             WZTableOrder = 11;
             getWZDocuments();
         });
+        //ORDER ARROWS CONTROL CONTRACTORS TAB
+        $('#WZConArrUpId').on('click', function(){
+            WZTablePage = 0;
+            $('.WZConArr').addClass('unused');
+            $('.WZConArr').removeClass('used');
+            $('#WZConArrUpId').addClass('used');
+            $('#WZConArrUpId').removeClass('unused');
+            $('#previous').addClass('hidden');
+            WZConOrder = 0;
+            getContractors();
+        });
+        $('#WZConArrDownId').on('click', function(){
+            WZTablePage = 0;
+            $('.WZConArr').addClass('unused');
+            $('.WZConArr').removeClass('used');
+            $('#WZConArrDownId').addClass('used');
+            $('#WZConArrDownId').removeClass('unused');
+            $('#previous').addClass('hidden');
+            WZConOrder = 1;
+            getContractors();
+        });
+        $('#WZConArrUpConName').on('click', function(){
+            WZTablePage = 0;
+            $('.WZConArr').addClass('unused');
+            $('.WZConArr').removeClass('used');
+            $('#WZConArrUpConName').addClass('used');
+            $('#WZConArrUpConName').removeClass('unused');
+            $('#previous').addClass('hidden');
+            WZConOrder = 2;
+            getContractors();
+        });
+        $('#WZConArrDownConName').on('click', function(){
+            WZTablePage = 0;
+            $('.WZConArr').addClass('unused');
+            $('.WZConArr').removeClass('used');
+            $('#WZConArrDownConName').addClass('used');
+            $('#WZConArrDownConName').removeClass('unused');
+            $('#previous').addClass('hidden');
+            WZConOrder = 3;
+            getContractors();
+        });
+        $('#WZConArrUpCity').on('click', function(){
+            WZTablePage = 0;
+            $('.WZConArr').addClass('unused');
+            $('.WZConArr').removeClass('used');
+            $('#WZConArrUpCity').addClass('used');
+            $('#WZConArrUpCity').removeClass('unused');
+            $('#previous').addClass('hidden');
+            WZConOrder = 4;
+            getContractors();
+        });
+        $('#WZConArrDownCity').on('click', function(){
+            WZTablePage = 0;
+            $('.WZConArr').addClass('unused');
+            $('.WZConArr').removeClass('used');
+            $('#WZConArrDownCity').addClass('used');
+            $('#WZConArrDownCity').removeClass('unused');
+            $('#previous').addClass('hidden');
+            WZConOrder = 5;
+            getContractors();
+        });
+        $('confirmNewWZ').on('click', function(){
+            
+        });
+    });
+    var reset = (function(){
+            WZTableOrder=1;
+            WZTablePage=0;
+            $('.WZarr').addClass('unused');
+            $('.WZarr').removeClass('used');
+            $('#WZidBox').val('');
+            $('#WZnoBox').val('');
+            $('#WZconIdBox').val('');
+            $('#WZconNameBox').val('');
+            $('#previous').addClass('hidden');
+            getWZDocuments();
+    });
+    var conReset = (function(){
+            WZConOrder=1;
+            WZConPage=0;
+            $('.WZConArr').addClass('unused');
+            $('.WZConArr').removeClass('used');
+            $('#selectContractorId').val('');
+            $('#selectContractorName').val('');
+            $('#selectContractorCity').val('');
+            $('#selectContractorNIP').val('');
+            $('#WZConPrevious').addClass('hidden');
+            getContractors();
     });
     var getWZCount = (function(){
         param = {};
@@ -326,6 +458,71 @@ pageFunctions.wzTabFunc = (function(){
             ans += "<tr class='WZrow' id=WZ"+value['document_id']+"><td class='WZcol1b'>"+value['document_id']+"</td><td class='WZcol2b'>"+value['document_number']+"</td><td class='WZcol3b'>"+value['document_year']+"</td><td class='WZcol4b'>"+value['document_contractor_id']+"</td><td class='WZcol5b'>"+value['contractor_name']+"</td><td class='WZcol6b'>"+value['document_type_short']+"</td><td class='WZcol7b'>"+tmpDate+"</td><td class='WZcol8b'>"+tmpAccDate+"</td></tr>";
         });    
         return ans;
+    });
+    var createWZConTableContent = (function(data){
+        ans = '';
+        $.each(data,function(index, value){
+            ans += "<tr class='WZConRow' id=CO"+value['contractor_id']+"><td class='WZConCol1c'>"+value['contractor_id']+"</td><td class='WZConCol2c'>"+value['contractor_name']+"</td><td class='WZConCol3c'>"+value['contractor_nip']+"</td><td class='WZConCol4c'>"+value['contractor_postal']+"</td><td class='WZConCol5c'>"+value['contractor_city']+"</td><td class='WZConCol6c'>"+value['contractor_street']+"</td><td class='WZConCol7c'>"+value['contractor_tel']+"</td><td class='WZConCol8c'>"+value['contractor_email']+"</td></tr>";
+        });    
+        return ans;
+    });
+    var getContractorsCount = (function(){
+        param = {};
+        //Contractor ID
+        if($('#selectContractorId').val() == ''){
+            param['id'] = 0;
+        }else{
+            param['id'] = $('#selectContractorId').val();
+        }
+        param['conName'] = $("#selectContractorName").val();
+        param['conCity'] = $("#selectContractorCity").val();
+        param['conNIP'] = $("#selectContractorNIP").val();
+        $.ajax({
+          type: 'POST',
+          async: false,
+          data: param,
+          dataType: 'json',
+          url: 'PHP/getContractorsCount.php',            
+          success: function(data){
+            WZConCount = data[0].count;
+          }
+        });
+    });
+    var getContractors = (function(){
+        param = {};       
+        //Contractor ID
+        if($('#selectContractorId').val() == ''){
+            param['id'] = 0;
+        }else{
+            param['id'] = $('#selectContractorId').val();
+        }
+        param['conName'] = $("#selectContractorName").val();
+        param['conCity'] = $("#selectContractorCity").val();
+        param['conNIP'] = $("#selectContractorNIP").val();
+        
+        param['ord'] = WZConOrder;
+        param['pageNo'] = WZConPage;
+        $.ajax({
+          type: 'POST',
+          async: false,
+          data: param,
+          dataType: 'json',
+          url: 'PHP/getContractors.php',            
+          success: function(data){
+              getContractorsCount();
+              $('#WZConTabContent').html(createWZConTableContent(data));
+              if(WZConCount<=5){
+                  $('#WZConNext').addClass('hidden');
+              } else {
+                  $('#WZConNext').removeClass('hidden');
+              }
+              if(WZConCount<(WZConPage*5+5)){
+                  $('#WZConNext').addClass('hidden');
+              } else {
+                  $('#WZConNext').removeClass('hidden');
+              }
+          }
+        });
     });
     $(document).ready(function(){
         init(); 

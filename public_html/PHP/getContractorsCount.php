@@ -1,11 +1,10 @@
 <?php
-    $id = $_POST['docId'];
-    $contractorId = $_POST['conId'];
+    $id = $_POST['id'];
     $conName = $_POST['conName'];
-    $no = $_POST['docNo'];
-    $docType = $_POST['docType'];
+    $conCity = $_POST['conCity'];
+    $conNIP = $_POST['conNIP'];
 
-    $query = "select getDocumentsCount('".$docType."','".$no."','".$id."','".$contractorId."','".$conName."') as count";
+    $query = "select getContractorsCount('".$id."','".$conName."','".$conCity."','".$conNIP."') as count";
     function select($query){
         include('connect.php');
         $returnArray = array();

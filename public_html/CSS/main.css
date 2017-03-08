@@ -1,3 +1,14 @@
+#back {
+  z-index: -1;
+  opacity: 0.1; }
+
+.backDiv {
+  padding-top: 80px;
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%; }
+
 .login_mini {
   width: 30%; }
   @media screen and (max-width: 480px) and (orientation: portrait) {
@@ -46,6 +57,9 @@
 .WZarr {
   font-size: small; }
 
+.WZConArr {
+  font-size: small; }
+
 .tab {
   background-color: #f9f9f9;
   margin-top: 0px; }
@@ -73,9 +87,9 @@
   box-shadow: 10px 10px 15px #666666;
   border-radius: 5px;
   background-color: white;
-  margin-top: 7%;
-  width: 40%;
-  left: 30%; }
+  margin-top: 4%;
+  width: 90%;
+  left: 5%; }
   @media (max-width: 768px) {
     .newWZform {
       left: 5%;
@@ -84,6 +98,22 @@
 .rowSelected {
   color: cornflowerblue;
   font-weight: bold; }
+
+.form-inline {
+  margin-top: 5px;
+  margin-bottom: 5px; }
+
+.table-responsive {
+  margin-top: 5px; }
+
+.conPageControls {
+  position: relative;
+  height: 30px;
+  width: 100%; }
+
+.big-center {
+  text-align: center;
+  font-size: x-large; }
 
 .col1 {
   text-align: center;
@@ -284,6 +314,102 @@
   min-width: 15%; }
 
 .WZcol8b {
+  text-align: center;
+  width: 15%;
+  max-width: 15%;
+  min-width: 15%; }
+
+.WZConCol1 {
+  text-align: center;
+  width: 8%;
+  max-width: 8%;
+  min-width: 8%; }
+
+.WZConCol2 {
+  text-align: center;
+  width: 20%;
+  max-width: 20%;
+  min-width: 20%; }
+
+.WZConCol3 {
+  text-align: center;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.WZConCol4 {
+  text-align: center;
+  width: 7%;
+  max-width: 7%;
+  min-width: 7%; }
+
+.WZConCol5 {
+  text-align: center;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.WZConCol6 {
+  text-align: center;
+  width: 15%;
+  max-width: 15%;
+  min-width: 15%; }
+
+.WZConCol7 {
+  text-align: center;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.WZConCol8 {
+  text-align: center;
+  width: 15%;
+  max-width: 15%;
+  min-width: 15%; }
+
+.WZConCol1c {
+  text-align: center;
+  width: 8%;
+  max-width: 8%;
+  min-width: 8%; }
+
+.WZConCol2c {
+  text-align: left;
+  width: 20%;
+  max-width: 20%;
+  min-width: 20%; }
+
+.WZConCol3c {
+  text-align: center;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.WZConCol4c {
+  text-align: center;
+  width: 7%;
+  max-width: 7%;
+  min-width: 7%; }
+
+.WZConCol5c {
+  text-align: left;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.WZConCol6c {
+  text-align: left;
+  width: 15%;
+  max-width: 15%;
+  min-width: 15%; }
+
+.WZConCol7c {
+  text-align: center;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.WZConCol8c {
   text-align: center;
   width: 15%;
   max-width: 15%;

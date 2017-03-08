@@ -1,3 +1,14 @@
+#back{
+    z-index: -1;
+    opacity: 0.1;
+}
+.backDiv{
+    padding-top: 80px;
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
 .login_mini{
     width: 30%;
     @media screen and (max-width: 480px) and (orientation: portrait) {
@@ -46,6 +57,9 @@
  .WZarr{
      font-size: small;
  }
+ .WZConArr{
+     font-size: small;
+ }
  .tab{
      background-color: #f9f9f9;
      margin-top: 0px;
@@ -72,9 +86,9 @@
      box-shadow: 10px 10px 15px #666666;
      border-radius: 5px;
      background-color: white;
-     margin-top: 7%;
-     width: 40%;
-     left: 30%;
+     margin-top: 4%;
+     width: 90%;
+     left: 5%;
      @media (max-width: 768px){
          left: 5%;
          width: 90%;
@@ -83,4 +97,20 @@
  .rowSelected{
     color: cornflowerblue;
     font-weight: bold;
+ }
+ .form-inline{
+     margin-top: 5px;
+     margin-bottom: 5px;
+ }
+ .table-responsive{
+     margin-top: 5px;
+ }
+ .conPageControls{
+    position: relative;
+    height: 30px;
+    width: 100%; 
+ }
+ .big-center{
+    text-align: center;
+    font-size: x-large; 
  }
