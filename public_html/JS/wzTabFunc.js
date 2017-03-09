@@ -14,31 +14,33 @@ pageFunctions.wzTabFunc = (function(){
     });
     
     var listeners = (function(){
+        $('#confirmNewWZ').on('click', function(){
+            addDocument();
+        });
         $(document).on('click', function(e){
             var id = $(e.target).parent().attr('id');
-            if(id!=undefined && id!='WZContainer'){
-                if(id.substring(0,2) == 'WZ'){
+            if(id!=undefined){
+                if(id.substring(0,4) == 'WZID'){
                     $('.WZrow').removeClass('rowSelected');
-                    $('#WZ'+id.substring(2,id.lenght)).addClass('rowSelected');
+                    $('#WZID'+id.substring(4,id.lenght)).addClass('rowSelected');
                 }
             }
         });
         $(document).on('click', function(e){
         var id = $(e.target).parent().attr('id');
-            if(id!=undefined && id!='WZContainer'){
-                if(id.substring(0,2) == 'CO'){
+            if(id!=undefined){
+                if(id.substring(0,5) == 'ConID'){
                     $('.WZConRow').removeClass('rowSelected');
-                    $('#CO'+id.substring(2,id.lenght)).addClass('rowSelected');
-                    selectedContractorID = id.substring(2,id.lenght);
-                    console.log(selectedContractorID);
+                    $('#ConID'+id.substring(5,id.lenght)).addClass('rowSelected');
+                    selectedContractorID = id.substring(5,id.lenght);
                 }
             }
         });
         $(document).on('dblclick', function(e){
             var id = $(e.target).parent().attr('id');
             if(id!=undefined && id!='WZContainer'){
-                if(id.substring(0,2) == 'WZ'){
-                    alert("WZ o id" + id.substring(2,id.lenght));
+                if(id.substring(0,4) == 'WZID'){
+                    alert("WZ o id" + id.substring(4,id.lenght));
                 }
             }
         });
@@ -441,6 +443,39 @@ pageFunctions.wzTabFunc = (function(){
         formDate = year+'.'+month+'.'+day+' '+hours+':'+minutes+':'+seconds;
         return formDate;
     });
+    
+    var addDocument = (function(){
+        param = {};       
+        //DOCUMENT ID
+        if(selectedContractorID == 0){
+            alert('Nie wybrano kontrahenta');
+        }else{
+            param['docType'] = 1;
+            var dateNow = new Date();
+            var stamp = dateNow.getTime();
+            param['docDate'] = stamp;
+            param['docCon'] = selectedContractorID;
+            param['docYear'] = dateNow.getYear()+1900;
+            param['docCreator'] = window.sessionStorage.getItem('id');
+            $.ajax({
+              type: 'POST',
+              async: false,
+              data: param,
+              dataType: 'json',
+              url: 'PHP/addDocument.php',            
+              success: function(){
+                reset();
+              }
+            });
+            $('#WZContainer').removeClass('blur');
+            $('#newWZpopup').addClass('hidden');
+            $('#selectContractorId').val('');
+            $('#selectContractorName').val('');
+            $('#selectContractorCity').val('');
+            $('#selectContractorNIP').val('');
+        }
+    });
+    
     var createWZTableContent = (function(data){
         ans = '';
         var tmpDate;
@@ -455,14 +490,14 @@ pageFunctions.wzTabFunc = (function(){
             } else {
                 tmpAccDate = "nie zatwierdzony";
             }
-            ans += "<tr class='WZrow' id=WZ"+value['document_id']+"><td class='WZcol1b'>"+value['document_id']+"</td><td class='WZcol2b'>"+value['document_number']+"</td><td class='WZcol3b'>"+value['document_year']+"</td><td class='WZcol4b'>"+value['document_contractor_id']+"</td><td class='WZcol5b'>"+value['contractor_name']+"</td><td class='WZcol6b'>"+value['document_type_short']+"</td><td class='WZcol7b'>"+tmpDate+"</td><td class='WZcol8b'>"+tmpAccDate+"</td></tr>";
+            ans += "<tr class='WZrow' id=WZID"+value['document_id']+"><td class='WZcol1b'>"+value['document_id']+"</td><td class='WZcol2b'>"+value['document_number']+"</td><td class='WZcol3b'>"+value['document_year']+"</td><td class='WZcol4b'>"+value['document_contractor_id']+"</td><td class='WZcol5b'>"+value['contractor_name']+"</td><td class='WZcol6b'>"+value['document_type_short']+"</td><td class='WZcol7b'>"+tmpDate+"</td><td class='WZcol8b'>"+tmpAccDate+"</td><td class='WZcol9b'>"+value['user_fname']+' '+value['user_lname']+"</td></tr>";
         });    
         return ans;
     });
     var createWZConTableContent = (function(data){
         ans = '';
         $.each(data,function(index, value){
-            ans += "<tr class='WZConRow' id=CO"+value['contractor_id']+"><td class='WZConCol1c'>"+value['contractor_id']+"</td><td class='WZConCol2c'>"+value['contractor_name']+"</td><td class='WZConCol3c'>"+value['contractor_nip']+"</td><td class='WZConCol4c'>"+value['contractor_postal']+"</td><td class='WZConCol5c'>"+value['contractor_city']+"</td><td class='WZConCol6c'>"+value['contractor_street']+"</td><td class='WZConCol7c'>"+value['contractor_tel']+"</td><td class='WZConCol8c'>"+value['contractor_email']+"</td></tr>";
+            ans += "<tr class='WZConRow' id=ConID"+value['contractor_id']+"><td class='WZConCol1c'>"+value['contractor_id']+"</td><td class='WZConCol2c'>"+value['contractor_name']+"</td><td class='WZConCol3c'>"+value['contractor_nip']+"</td><td class='WZConCol4c'>"+value['contractor_postal']+"</td><td class='WZConCol5c'>"+value['contractor_city']+"</td><td class='WZConCol6c'>"+value['contractor_street']+"</td><td class='WZConCol7c'>"+value['contractor_tel']+"</td><td class='WZConCol8c'>"+value['contractor_email']+"</td></tr>";
         });    
         return ans;
     });
@@ -490,6 +525,7 @@ pageFunctions.wzTabFunc = (function(){
     });
     var getContractors = (function(){
         param = {};       
+        selectedContractorID = 0;
         //Contractor ID
         if($('#selectContractorId').val() == ''){
             param['id'] = 0;

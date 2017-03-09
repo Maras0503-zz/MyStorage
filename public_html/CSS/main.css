@@ -237,21 +237,21 @@
 
 .WZcol3 {
   text-align: center;
-  width: 10%;
-  max-width: 10%;
-  min-width: 10%; }
+  width: 3%;
+  max-width: 3%;
+  min-width: 3%; }
 
 .WZcol4 {
   text-align: center;
-  width: 10%;
-  max-width: 10%;
-  min-width: 10%; }
+  width: 8%;
+  max-width: 8%;
+  min-width: 8%; }
 
 .WZcol5 {
   text-align: center;
-  width: 35%;
-  max-width: 35%;
-  min-width: 35%; }
+  width: 30%;
+  max-width: 30%;
+  min-width: 30%; }
 
 .WZcol6 {
   text-align: center;
@@ -271,6 +271,12 @@
   max-width: 15%;
   min-width: 15%; }
 
+.WZcol9 {
+  text-align: center;
+  width: 14%;
+  max-width: 14%;
+  min-width: 14%; }
+
 .WZcol1b {
   text-align: center;
   width: 5%;
@@ -279,27 +285,27 @@
 
 .WZcol2b {
   text-align: center;
-  width: 5%;
-  max-width: 5%;
-  min-width: 5%; }
+  width: 4%;
+  max-width: 4%;
+  min-width: 4%; }
 
 .WZcol3b {
   text-align: center;
-  width: 10%;
-  max-width: 10%;
-  min-width: 10%; }
+  width: 3%;
+  max-width: 3%;
+  min-width: 3%; }
 
 .WZcol4b {
   text-align: center;
-  width: 10%;
-  max-width: 10%;
-  min-width: 10%; }
+  width: 8%;
+  max-width: 8%;
+  min-width: 8%; }
 
 .WZcol5b {
   text-align: left;
-  width: 35%;
-  max-width: 35%;
-  min-width: 35%; }
+  width: 30%;
+  max-width: 30%;
+  min-width: 30%; }
 
 .WZcol6b {
   text-align: center;
@@ -318,6 +324,12 @@
   width: 15%;
   max-width: 15%;
   min-width: 15%; }
+
+.WZcol9b {
+  text-align: center;
+  width: 14%;
+  max-width: 14%;
+  min-width: 14%; }
 
 .WZConCol1 {
   text-align: center;
