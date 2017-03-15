@@ -168,9 +168,11 @@ and open the template in the editor.
                         <input type="text" class="form-control" id="WZconNameBox" placeholder="nazwa klienta">
                     </div>
                 </div>
-                <input id="newWZ" class="btn btn-default" type="button" value="Nowy dokument WZ">
                 <input id="WZsearch" class="btn btn-default" type="button" value="Szukaj">
                 <input id="WZreset" class="btn btn-default" type="button" value="Reset">
+                
+                <input id="newWZ" class="btn btn-default" type="button" value="Nowy dokument WZ">
+                <input id="delWZ" class="btn btn-default" type="button" value="Usuń zaznaczony dokument">
                 <input id="closeWZContainer" class="btn btn-default pull-right" type="button" value="Zamknij">
                 <div class="table-responsive">
                 <table class="table table-bordered table-striped">
@@ -244,6 +246,92 @@ and open the template in the editor.
                             <button id='cancelNewWZ' class="btn btn-default">Anuluj</button>
                             <button id='confirmNewWZ' class="btn btn-default pull-right">Utwórz</button>
                         </div>
+                </div>
+            </div>
+            
+            <div id="WZPopup" class="popup hidden">
+                <div class="newWZform">
+                        <div class="form-group big-center">
+                            <label>Dokument WZ</label>
+                        </div>
+                        <div class='buttonsContainer'>
+                            <input id="closeWZPopup" class="btn btn-default pull-right" type="button" value="Zamknij">
+                        </div>
+                        <hr/>
+                            <div class="form-group">
+                                <div class="pull-right dateField">
+                                    <label id="dateField"></label>
+                                </div>
+                                <div class="half">
+                                    <label>NABYWCA:</label>
+                                </div>
+                                <div class="half">
+                                    <label class="WZInfo" id='WZPopupConId'></label>
+                                </div>
+                                <div class="half">
+                                    <label class="WZInfo" id='WZPopupConName'></label>
+                                </div>
+                                <div class="half">
+                                    <label class="WZInfo" id='WZPopupConCity'></label>
+                                </div>
+                                <div class="half">
+                                    <label class="WZInfo" id='WZPopupConStreet'></label>
+                                </div>
+                                <div class="half">
+                                    <label class="WZInfo" id='WZPopupConPhone'></label>
+                                </div>
+                                <div class="half">
+                                    <label class="WZInfo" id='WZPopupConEmail'></label>
+                                </div>
+                                
+                            </div>
+                        <hr/>
+                        <div class="pull-right WZSumField">
+                            <label>SUMA NETTO: </label><label id="WZNettoField"></label>
+                            <label>SUMA BRUTTO: </label><label id="WZBruttoField"></label>
+                        </div>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <td class="WZProdCol1">ID</td>
+                                        <td class="WZProdCol2">Nazwa</td>
+                                        <td class="WZProdCol3">Ilość</td>
+                                        <td class="WZProdCol4">Jedn.</td>
+                                        <td class="WZProdCol5">Vat[%]</td>
+                                        <td class="WZProdCol6">Rabat[%]</td>
+                                        <td class="WZProdCol7">Cena Netto</td>
+                                        <td class="WZProdCol8">Cena Brutto</td>
+                                        <td class="WZProdCol9">Wartość Netto</td>
+                                        <td class="WZProdCol10">Wartość Brutto</td>
+                                        <td class="WZProdCol11">Z rabatem</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="WZProdTabContent">
+                                </tbody>
+                            </table>
+                        </div>
+                        <table class="VATTab pull-right">
+                            <tr>
+                                <td class="VATTabCol"></td><td class="VATTabCol">Brutto</td><td class="VATTabCol">VAT</td>
+                            </tr>
+                            <tr>
+                                <td class="VATTabCol">Vat 0%</td><td id="WZBruttoV0" class="VATTabCol"></td><td id="WZV0" class="VATTabCol"></td>
+                            </tr>
+                            <tr>
+                                <td class="VATTabCol">Vat 5%</td><td id="WZBruttoV5" class="VATTabCol"></td><td id="WZV5" class="VATTabCol"></td>
+                            </tr>
+                            <tr>
+                                <td class="VATTabCol">Vat 8%</td><td id="WZBruttoV8" class="VATTabCol"></td><td id="WZV8" class="VATTabCol"></td>
+                            </tr>
+                            <tr>
+                                <td class="VATTabCol">Vat 23%</td><td id="WZBruttoV23" class="VATTabCol"></td><td id="WZV23" class="VATTabCol"></td>
+                            </tr>
+                            <tr>
+                                <td class="VATTabCol">Suma</td><td id="WZBruttoTotal" class="VATTabCol"></td><td id="WZVTotal" class="VATTabCol"></td>
+                            </tr>
+                        </table>
                 </div>
             </div>
         </div>

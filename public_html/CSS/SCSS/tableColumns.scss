@@ -1,318 +1,492 @@
-//Product table header
+//Product table=================================================================
+$prodTabCol1: 5%;
+$prodTabCol2: 30%;
+$prodTabCol3: 15%;
+$prodTabCol4: 6%;
+$prodTabCol5: 6%;
+$prodTabCol6: 3%;
+$prodTabCol7: 20%;
+$prodTabCol8: 10%;
+$prodTabCol9: 5%;
+
+
 .col1{
     text-align: center;
-    width: 5%;
-    max-width: 5%;
-    min-width: 5%;
+    width: $prodTabCol1;
+    max-width: $prodTabCol1;
+    min-width: $prodTabCol1;
 }
 .col2{
     text-align: center;
-    width: 30%;
-    max-width: 30%;
-    min-width: 30%;
+    width: $prodTabCol2;
+    max-width: $prodTabCol2;
+    min-width: $prodTabCol2;
 }
 .col3{
     text-align: center;
-    width: 15%;
-    max-width: 15%;
-    min-width: 15%;
+    width: $prodTabCol3;
+    max-width: $prodTabCol3;
+    min-width: $prodTabCol3;
 }
 .col4{
     text-align: center;
-    width: 6%;
-    max-width: 6%;
-    min-width: 6%;
+    width: $prodTabCol4;
+    max-width: $prodTabCol4;
+    min-width: $prodTabCol4;
 }
  .col5{
     text-align: center;
-    width: 6%;
-    max-width: 6%;
-    min-width: 6%;
+    width: $prodTabCol5;
+    max-width: $prodTabCol5;
+    min-width: $prodTabCol5;
 }
 .col6{
     text-align: center;
-    width: 3%;
-    max-width: 3%;
-    min-width: 3%;
+    width: $prodTabCol6;
+    max-width: $prodTabCol6;
+    min-width: $prodTabCol6;
 }
 .col7{
     text-align: center;
-    width: 20%;
-    max-width: 20%;
-    min-width: 20%;
+    width: $prodTabCol7;
+    max-width: $prodTabCol7;
+    min-width: $prodTabCol7;
 }
 .col8{
     text-align: center;
-    width: 10%;
-    max-width: 10%;
-    min-width: 10%;
+    width: $prodTabCol8;
+    max-width: $prodTabCol8;
+    min-width: $prodTabCol8;
 }
 .col9{
     text-align: center;
-    width: 5%;
-    max-width: 5%;
-    min-width: 5%;
+    width: $prodTabCol9;
+    max-width: $prodTabCol9;
+    min-width: $prodTabCol9;
 }
 //Product table body
 .col1b{
     text-align: center;
-    width: 5%;
-    max-width: 5%;
-    min-width: 5%;
+    width: $prodTabCol1;
+    max-width: $prodTabCol1;
+    min-width: $prodTabCol1;
 }
 .col2b{
     text-align: left;
-    width: 30%;
-    max-width: 30%;
-    min-width: 30%;
+    width: $prodTabCol2;
+    max-width: $prodTabCol2;
+    min-width: $prodTabCol2;
 }
 .col3b{
     text-align: left;
-    width: 15%;
-    max-width: 15%;
-    min-width: 15%;
+    width: $prodTabCol3;
+    max-width: $prodTabCol3;
+    min-width: $prodTabCol3;
 }
 .col4b{
     text-align: right;
-    width: 6%;
-    max-width: 6%;
-    min-width: 6%;
+    width: $prodTabCol4;
+    max-width: $prodTabCol4;
+    min-width: $prodTabCol4;
 }
  .col5b{
     text-align: right;
-    width: 6%;
-    max-width: 6%;
-    min-width: 6%;
+    width: $prodTabCol5;
+    max-width: $prodTabCol5;
+    min-width: $prodTabCol5;
 }
 .col6b{
-    text-align: right;
-    width: 3%;
-    max-width: 3%;
-    min-width: 3%;
+    text-align: center;
+    width: $prodTabCol6;
+    max-width: $prodTabCol6;
+    min-width: $prodTabCol6;
 }
 .col7b{
     text-align: center;
-    width: 20%;
-    max-width: 20%;
-    min-width: 20%;
+    width: $prodTabCol7;
+    max-width: $prodTabCol7;
+    min-width: $prodTabCol7;
 }
 .col8b{
     text-align: center;
-    width: 10%;
-    max-width: 10%;
-    min-width: 10%;
+    width: $prodTabCol8;
+    max-width: $prodTabCol8;
+    min-width: $prodTabCol8;
 }
 .col9b{
     text-align: center;
-    width: 5%;
-    max-width: 5%;
-    min-width: 5%;
+    width: $prodTabCol9;
+    max-width: $prodTabCol9;
+    min-width: $prodTabCol9;
 }
-//WZ table header
+//Product table end=============================================================
+//WZ table======================================================================
+$WZCol1: 5%;
+$WZCol2: 5%;
+$WZCol3: 3%;
+$WZCol4: 8%;
+$WZCol5: 30%;
+$WZCol6: 5%;
+$WZCol7: 15%;
+$WZCol8: 15%;
+$WZCol9: 14%;
+
 .WZcol1{
     text-align: center;
-    width: 5%;
-    max-width: 5%;
-    min-width: 5%;
+    width: $WZCol1;
+    max-width: $WZCol1;
+    min-width: $WZCol1;
 }
 .WZcol2{
     text-align: center;
-    width: 5%;
-    max-width: 5%;
-    min-width: 5%;
+    width: $WZCol2;
+    max-width: $WZCol2;
+    min-width: $WZCol2;
 }
 .WZcol3{
     text-align: center;
-    width: 3%;
-    max-width: 3%;
-    min-width: 3%;
+    width: $WZCol3;
+    max-width: $WZCol3;
+    min-width: $WZCol3;
 }
 .WZcol4{
     text-align: center;
-    width: 8%;
-    max-width: 8%;
-    min-width: 8%;
+    width: $WZCol4;
+    max-width: $WZCol4;
+    min-width: $WZCol4;
 }
  .WZcol5{
     text-align: center;
-    width: 30%;
-    max-width: 30%;
-    min-width: 30%;
+    width: $WZCol5;
+    max-width: $WZCol5;
+    min-width: $WZCol5;
 }
 .WZcol6{
     text-align: center;
-    width: 5%;
-    max-width: 5%;
-    min-width: 5%;
+    width: $WZCol6;
+    max-width: $WZCol6;
+    min-width: $WZCol6;
 }
 .WZcol7{
     text-align: center;
-    width: 15%;
-    max-width: 15%;
-    min-width: 15%;
+    width: $WZCol7;
+    max-width: $WZCol7;
+    min-width: $WZCol7;
 }
 .WZcol8{
     text-align: center;
-    width: 15%;
-    max-width: 15%;
-    min-width: 15%;
+    width: $WZCol8;
+    max-width: $WZCol8;
+    min-width: $WZCol8;
 }
 .WZcol9{
     text-align: center;
-    width: 14%;
-    max-width: 14%;
-    min-width: 14%;
+    width: $WZCol9;
+    max-width: $WZCol9;
+    min-width: $WZCol9;
 }
 //WZ table body
 .WZcol1b{
     text-align: center;
-    width: 5%;
-    max-width: 5%;
-    min-width: 5%;
+    width: $WZCol1;
+    max-width: $WZCol1;
+    min-width: $WZCol1;
 }
 .WZcol2b{
     text-align: center;
-    width: 4%;
-    max-width: 4%;
-    min-width: 4%;
+    width: $WZCol2;
+    max-width: $WZCol2;
+    min-width: $WZCol2;
 }
 .WZcol3b{
     text-align: center;
-    width: 3%;
-    max-width: 3%;
-    min-width: 3%;
+    width: $WZCol3;
+    max-width: $WZCol3;
+    min-width: $WZCol3;
 }
 .WZcol4b{
     text-align: center;
-    width: 8%;
-    max-width: 8%;
-    min-width: 8%;
+    width: $WZCol4;
+    max-width: $WZCol4;
+    min-width: $WZCol4;
 }
  .WZcol5b{
     text-align: left;
-    width: 30%;
-    max-width: 30%;
-    min-width: 30%;
+    width: $WZCol5;
+    max-width: $WZCol5;
+    min-width: $WZCol5;
 }
 .WZcol6b{
     text-align: center;
-    width: 5%;
-    max-width: 5%;
-    min-width: 5%;
+    width: $WZCol6;
+    max-width: $WZCol6;
+    min-width: $WZCol6;
 }
 .WZcol7b{
     text-align: center;
-    width: 15%;
-    max-width: 15%;
-    min-width: 15%;
+    width: $WZCol7;
+    max-width: $WZCol7;
+    min-width: $WZCol7;
 }
 .WZcol8b{
     text-align: center;
-    width: 15%;
-    max-width: 15%;
-    min-width: 15%;
+    width: $WZCol8;
+    max-width: $WZCol8;
+    min-width: $WZCol8;
 }
 .WZcol9b{
     text-align: center;
-    width: 14%;
-    max-width: 14%;
-    min-width: 14%;
+    width: $WZCol9;
+    max-width: $WZCol9;
+    min-width: $WZCol9;
 }
- //WZ Contractor Table
+//WZ table end==================================================================
+//WZ Contractors Table==========================================================
+ $WZConCol1: 8%;
+ $WZConCol2: 20%;
+ $WZConCol3: 10%;
+ $WZConCol4: 7%;
+ $WZConCol5: 10%;
+ $WZConCol6: 15%;
+ $WZConCol7: 10%;
+ $WZConCol8: 15%;
+ 
  .WZConCol1{
     text-align: center;
-    width:8%;
-    max-width: 8%;
-    min-width: 8%;
+    width: $WZConCol1;
+    max-width: $WZConCol1;
+    min-width: $WZConCol1;
  }
  .WZConCol2{
     text-align: center;
-    width: 20%;
-    max-width: 20%;
-    min-width: 20%;
+    width: $WZConCol2;
+    max-width: $WZConCol2;
+    min-width: $WZConCol2;
  }
  .WZConCol3{
     text-align: center;
-    width: 10%;
-    max-width: 10%;
-    min-width: 10%;
+    width: $WZConCol3;
+    max-width: $WZConCol3;
+    min-width: $WZConCol3;
  }
  .WZConCol4{
     text-align: center;
-    width: 7%;
-    max-width: 7%;
-    min-width: 7%;    
+    width: $WZConCol4;
+    max-width: $WZConCol4;
+    min-width: $WZConCol4;    
  }
  .WZConCol5{
     text-align: center;
-    width: 10%;
-    max-width: 10%;
-    min-width: 10%;
+    width: $WZConCol5;
+    max-width: $WZConCol5;
+    min-width: $WZConCol5;
  }
  .WZConCol6{
     text-align: center;
-    width: 15%;
-    max-width: 15%;
-    min-width: 15%;
+    width: $WZConCol6;
+    max-width: $WZConCol6;
+    min-width: $WZConCol6;
  }
  .WZConCol7{
     text-align: center;
-    width: 10%;
-    max-width: 10%;
-    min-width: 10%;
+    width: $WZConCol7;
+    max-width: $WZConCol7;
+    min-width: $WZConCol7;
  }
  .WZConCol8{
     text-align: center;
-    width: 15%;
-    max-width: 15%;
-    min-width: 15%;
+    width: $WZConCol8;
+    max-width: $WZConCol8;
+    min-width: $WZConCol8;
  }
  //Content
  .WZConCol1c{
     text-align: center;
-    width: 8%;
-    max-width: 8%;
-    min-width: 8%;
+    width: $WZConCol1;
+    max-width: $WZConCol1;
+    min-width: $WZConCol1;
  }
  .WZConCol2c{
     text-align: left;
-    width: 20%;
-    max-width: 20%;
-    min-width: 20%;
+    width: $WZConCol2;
+    max-width: $WZConCol2;
+    min-width: $WZConCol2;
  }
  .WZConCol3c{
     text-align: center;
-    width: 10%;
-    max-width: 10%;
-    min-width: 10%;
+    width: $WZConCol3;
+    max-width: $WZConCol3;
+    min-width: $WZConCol3;
  }
  .WZConCol4c{
     text-align: center;
-    width: 7%;
-    max-width: 7%;
-    min-width: 7%;    
+    width: $WZConCol4;
+    max-width: $WZConCol4;
+    min-width: $WZConCol4; 
  }
  .WZConCol5c{
     text-align: left;
-    width: 10%;
-    max-width: 10%;
-    min-width: 10%;
+    width: $WZConCol5;
+    max-width: $WZConCol5;
+    min-width: $WZConCol5;
  }
  .WZConCol6c{
     text-align: left;
-    width: 15%;
-    max-width: 15%;
-    min-width: 15%;
+    width: $WZConCol6;
+    max-width: $WZConCol6;
+    min-width: $WZConCol6;
  }
  .WZConCol7c{
     text-align: center;
-    width: 10%;
-    max-width: 10%;
-    min-width: 10%;
+    width: $WZConCol7;
+    max-width: $WZConCol7;
+    min-width: $WZConCol7;
  }
  .WZConCol8c{
     text-align: center;
-    width: 15%;
-    max-width: 15%;
-    min-width: 15%;
+    width: $WZConCol8;
+    max-width: $WZConCol8;
+    min-width: $WZConCol8;
  }
+//WZ Contractors Table end======================================================
+//WZ Products Table=============================================================
+$WZProdCol1: 5%;
+$WZProdCol2: 20%;
+$WZProdCol3: 5%;
+$WZProdCol4: 5%;
+$WZProdCol5: 5%;
+$WZProdCol6: 5%;
+$WZProdCol7: 10%;
+$WZProdCol8: 10%;
+$WZProdCol9: 10%;
+$WZProdCol10: 10%;
+$WZProdCol11: 10%;
+
+.WZProdCol1{
+    text-align: center;
+    width: $WZProdCol1;
+    max-width: $WZProdCol1;
+    min-width: $WZProdCol1;
+}
+.WZProdCol2{
+    text-align: center;
+    width: $WZProdCol2;
+    max-width: $WZProdCol2;
+    min-width: $WZProdCol2;
+}
+.WZProdCol3{
+    text-align: center;
+    width: $WZProdCol3;
+    max-width: $WZProdCol3;
+    min-width: $WZProdCol3;
+}
+.WZProdCol4{
+    text-align: center;
+    width: $WZProdCol4;
+    max-width: $WZProdCol4;
+    min-width: $WZProdCol4;
+}
+.WZProdCol5{
+    text-align: center;
+    width: $WZProdCol5;
+    max-width: $WZProdCol5;
+    min-width: $WZProdCol5;
+}
+.WZProdCol6{
+    text-align: center;
+    width: $WZProdCol6;
+    max-width: $WZProdCol6;
+    min-width: $WZProdCol6;
+}.WZProdCol7{
+    text-align: center;
+    width: $WZProdCol7;
+    max-width: $WZProdCol7;
+    min-width: $WZProdCol7;
+}.WZProdCol8{
+    text-align: center;
+    width: $WZProdCol8;
+    max-width: $WZProdCol8;
+    min-width: $WZProdCol8;
+}
+.WZProdCol9{
+    text-align: center;
+    width: $WZProdCol9;
+    max-width: $WZProdCol9;
+    min-width: $WZProdCol9;
+}
+.WZProdCol10{
+    text-align: center;
+    width: $WZProdCol10;
+    max-width: $WZProdCol10;
+    min-width: $WZProdCol10;
+}
+.WZProdCol11{
+    text-align: center;
+    width: $WZProdCol11;
+    max-width: $WZProdCol11;
+    min-width: $WZProdCol11;
+}
+.WZProdCol1c{
+    text-align: center;
+    width: $WZProdCol1;
+    max-width: $WZProdCol1;
+    min-width: $WZProdCol1;
+}
+.WZProdCol2c{
+    text-align: left;
+    width: $WZProdCol2;
+    max-width: $WZProdCol2;
+    min-width: $WZProdCol2;
+}
+.WZProdCol3c{
+    text-align: right;
+    width: $WZProdCol3;
+    max-width: $WZProdCol3;
+    min-width: $WZProdCol3;
+}
+.WZProdCol4c{
+    text-align: center;
+    width: $WZProdCol4;
+    max-width: $WZProdCol4;
+    min-width: $WZProdCol4;
+}
+.WZProdCol5c{
+    text-align: center;
+    width: $WZProdCol5;
+    max-width: $WZProdCol5;
+    min-width: $WZProdCol5;
+}
+.WZProdCol6c{
+    text-align: center;
+    width: $WZProdCol6;
+    max-width: $WZProdCol6;
+    min-width: $WZProdCol6;
+}.WZProdCol7c{
+    text-align: right;
+    width: $WZProdCol7;
+    max-width: $WZProdCol7;
+    min-width: $WZProdCol7;
+}.WZProdCol8c{
+    text-align: right;
+    width: $WZProdCol8;
+    max-width: $WZProdCol8;
+    min-width: $WZProdCol8;
+}
+.WZProdCol9c{
+    text-align: right;
+    width: $WZProdCol9;
+    max-width: $WZProdCol9;
+    min-width: $WZProdCol9;
+}
+.WZProdCol10c{
+    text-align: right;
+    width: $WZProdCol10;
+    max-width: $WZProdCol10;
+    min-width: $WZProdCol10;
+}
+.WZProdCol11c{
+    text-align: right;
+    width: $WZProdCol11;
+    max-width: $WZProdCol11;
+    min-width: $WZProdCol11;
+}

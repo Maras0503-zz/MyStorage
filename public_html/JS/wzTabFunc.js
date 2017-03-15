@@ -6,6 +6,7 @@ var WZConPage = 0;
 var WZConOrder = 1;
 var WZConCount = 0;
 var selectedContractorID = 0;
+var selectedWZID = 0;
 
 pageFunctions.wzTabFunc = (function(){
     var init = (function(){
@@ -38,9 +39,13 @@ pageFunctions.wzTabFunc = (function(){
         });
         $(document).on('dblclick', function(e){
             var id = $(e.target).parent().attr('id');
-            if(id!=undefined && id!='WZContainer'){
+            if(id!=undefined){
                 if(id.substring(0,4) == 'WZID'){
-                    alert("WZ o id" + id.substring(4,id.lenght));
+                    $('#WZPopup').removeClass('hidden');
+                    $('#WZContainer').addClass('blur');
+                    selectedWZID = id.substring(4,id.lenght);
+                    getDocumentInfo();
+                    getWZRecords();
                 }
             }
         });
@@ -94,26 +99,26 @@ pageFunctions.wzTabFunc = (function(){
         });
         
         $(document).on('click', function(e){
-            if(e.target.id =='newWZpopup'){
+            if(e.target.id =='newWZpopup' || e.target.id =='WZPopup'){
                 $('#WZContainer').removeClass('blur');
-                $('#newWZpopup').addClass('hidden');
+                $('.popup').addClass('hidden');
                 $('#selectContractorId').val('');
                 $('#selectContractorName').val('');
                 $('#selectContractorCity').val('');
                 $('#selectContractorNIP').val('');
             }
         });
-        
-        //OPEN AND CLOSE WZtab
+       
         $('#WZTabOpen').on('click', function(){
             $('.tab').addClass('hidden');
-            $('.tab').removeClass('show');
             $('#WZContainer').removeClass('hidden');
-            $('#WZContainer').addClass('show');
         });
         $('#closeWZContainer').on('click', function(){
             $('#WZContainer').addClass('hidden');
-            $('#WZContainer').removeClass('show');
+        });
+        $('#closeWZPopup').on('click', function(){
+            $('#WZPopup').addClass('hidden');
+            $('#WZContainer').removeClass('blur');
         });
         $('#WZsearch').on('click', function(){
             WZTablePage=0;
@@ -490,17 +495,166 @@ pageFunctions.wzTabFunc = (function(){
             } else {
                 tmpAccDate = "nie zatwierdzony";
             }
-            ans += "<tr class='WZrow' id=WZID"+value['document_id']+"><td class='WZcol1b'>"+value['document_id']+"</td><td class='WZcol2b'>"+value['document_number']+"</td><td class='WZcol3b'>"+value['document_year']+"</td><td class='WZcol4b'>"+value['document_contractor_id']+"</td><td class='WZcol5b'>"+value['contractor_name']+"</td><td class='WZcol6b'>"+value['document_type_short']+"</td><td class='WZcol7b'>"+tmpDate+"</td><td class='WZcol8b'>"+tmpAccDate+"</td><td class='WZcol9b'>"+value['user_fname']+' '+value['user_lname']+"</td></tr>";
+            ans += "<tr class='WZrow' id=WZID"+value['document_id']+">\n\
+                        <td class='WZcol1b'>"+value['document_id']+"</td>\n\
+                        <td class='WZcol2b'>"+value['document_number']+"</td>\n\
+                        <td class='WZcol3b'>"+value['document_year']+"</td>\n\
+                        <td class='WZcol4b'>"+value['document_contractor_id']+"</td>\n\
+                        <td class='WZcol5b'>"+value['contractor_name']+"</td>\n\
+                        <td class='WZcol6b'>"+value['document_type_short']+"</td>\n\
+                        <td class='WZcol7b'>"+tmpDate+"</td><td class='WZcol8b'>"+tmpAccDate+"</td>\n\
+                        <td class='WZcol9b'>"+value['user_fname']+' '+value['user_lname']+"</td>\n\
+                    </tr>";
         });    
         return ans;
     });
     var createWZConTableContent = (function(data){
         ans = '';
         $.each(data,function(index, value){
-            ans += "<tr class='WZConRow' id=ConID"+value['contractor_id']+"><td class='WZConCol1c'>"+value['contractor_id']+"</td><td class='WZConCol2c'>"+value['contractor_name']+"</td><td class='WZConCol3c'>"+value['contractor_nip']+"</td><td class='WZConCol4c'>"+value['contractor_postal']+"</td><td class='WZConCol5c'>"+value['contractor_city']+"</td><td class='WZConCol6c'>"+value['contractor_street']+"</td><td class='WZConCol7c'>"+value['contractor_tel']+"</td><td class='WZConCol8c'>"+value['contractor_email']+"</td></tr>";
+            ans += "<tr class='WZConRow' id=ConID"+value['contractor_id']+">\n\
+                        <td class='WZConCol1c'>"+value['contractor_id']+"</td>\n\
+                        <td class='WZConCol2c'>"+value['contractor_name']+"</td>\n\
+                        <td class='WZConCol3c'>"+value['contractor_nip']+"</td>\n\
+                        <td class='WZConCol4c'>"+value['contractor_postal']+"</td>\n\
+                        <td class='WZConCol5c'>"+value['contractor_city']+"</td>\n\
+                        <td class='WZConCol6c'>"+value['contractor_street']+"</td>\n\
+                        <td class='WZConCol7c'>"+value['contractor_tel']+"</td>\n\
+                        <td class='WZConCol8c'>"+value['contractor_email']+"</td>\n\
+                    </tr>";
         });    
         return ans;
     });
+    
+    var getWZRecords = (function(){
+        param = {};       
+        param['docId'] = selectedWZID;
+        $.ajax({
+          type: 'POST',
+          async: false,
+          data: param,
+          dataType: 'json',
+          url: 'PHP/getDocumentRecords.php',            
+          success: function(data){
+              $('#WZProdTabContent').html(createWZProductTableContent(data));
+          }
+        });
+    });
+    
+    var getDocumentInfo = (function(){
+        param = {};       
+        param['docId'] = selectedWZID;
+        $.ajax({
+          type: 'POST',
+          async: false,
+          data: param,
+          dataType: 'json',
+          url: 'PHP/getDocumentInfo.php',            
+          success: function(data){
+                setValuesWZInfo(data);
+          }
+        });
+    });
+    var setValuesWZInfo = (function(data){
+        $.each(data,function(index, value){
+            $('#WZPopupConId').html('ID: '+value['contractor_id']);
+            $('#WZPopupConName').html(value['contractor_name']);
+            $('#WZPopupConCity').html(''+value['contractor_postal_code']+' '+value['contractor_city']);
+            $('#WZPopupConStreet').html('ul. '+value['contractor_street']);
+            $('#WZPopupConPhone').html('tel. '+value['contractor_phone']);
+            $('#WZPopupConEmail').html('@: '+value['contractor_email']);
+        });
+    });
+    
+    var createWZProductTableContent = (function(data){
+        ans = '';
+        $('#WZBruttoV0').html(0);
+        $('#WZV0').html(0);
+        $('#WZBruttoV5').html(0);
+        $('#WZV5').html(0);
+        $('#WZBruttoV8').html(0);
+        $('#WZV8').html(0);
+        $('#WZBruttoV23').html(0);
+        $('#WZV23').html(0);
+        $('#WZBruttoTotal').html(0);
+        $('#WZVTotal').html(0);
+        var sum0 = 0;
+        var sumV0 = 0;
+        var sum5 = 0;
+        var sumV5 = 0;
+        var sum8 = 0;
+        var sumV8 = 0;
+        var sum23 = 0;
+        var sumV23 = 0;
+        var sumTotal = 0;
+        var sumVTotal = 0;
+        var price = 0;
+        var number = 0;
+        var discount = 0;
+        var vat = 0;
+        var priceBrutto = 0;
+        var valueNetto = 0;
+        var valueBrutto = 0;
+        var valueBruttoWithDiscount = 0;
+        var totalNetto = 0;
+        var totalBrutto = 0;
+        $.each(data,function(index, value){
+            
+            price = parseInt(value['document_records_price']);
+            number = value['document_records_product_number']/100;
+            discount = value['document_records_discount']/100;
+            vat = value['vat_value']/100;
+            priceBrutto = price+(price*vat);
+            valueNetto = price*number;
+            valueBrutto = priceBrutto * number;
+            valueBruttoWithDiscount = valueBrutto-(valueBrutto*discount);
+            valueNettoWithDiscount = valueNetto-(valueNetto*discount);
+            vatValue = valueBruttoWithDiscount - valueNettoWithDiscount;
+            totalNetto += valueNettoWithDiscount;
+            totalBrutto += valueBruttoWithDiscount;
+            if(vat == 0.00){
+                sum0 += valueBruttoWithDiscount;
+                sumV0 += vatValue;
+            } else if (vat == 0.05){
+                sum5 += valueBruttoWithDiscount;
+                sumV5 += vatValue;
+            } else if (vat == 0.08){
+                sum8 += valueBruttoWithDiscount;
+                sumV8 += vatValue;
+            } else if (vat == 0.23){
+                sum23 += valueBruttoWithDiscount;
+                sumV23 += vatValue;
+            }
+            sumTotal = sum0 + sum5 + sum8 + sum23;
+            sumVTotal = sumV0 + sumV5 + sumV8 + sumV23;
+            $('#WZBruttoV0').html(Math.round((sum0/100)*100)/100);
+            $('#WZV0').html(Math.round((sumV0/100)*100)/100);
+            $('#WZBruttoV5').html(Math.round((sum5/100)*100)/100);
+            $('#WZV5').html(Math.round((sumV5/100)*100)/100);
+            $('#WZBruttoV8').html(Math.round((sum8/100)*100)/100);
+            $('#WZV8').html(Math.round((sumV8/100)*100)/100);
+            $('#WZBruttoV23').html(Math.round((sum23/100)*100)/100);
+            $('#WZV23').html(Math.round((sumV23/100)*100)/100);
+            $('#WZBruttoTotal').html(Math.round((sumTotal/100)*100)/100);
+            $('#WZVTotal').html(Math.round((sumVTotal/100)*100)/100);
+            $('#WZNettoField').html(Math.round((totalNetto/100)*100)/100);
+            $('#WZBruttoField').html(Math.round((totalBrutto/100)*100)/100);
+            ans += "<tr class='WZProdRow' id=RecID"+value['document_records_id']+">\n\
+                    <td class='WZProdCol1c'>"+value['document_records_product_id']+"</td>\n\
+                    <td class='WZProdCol2c'>"+value['product_name']+"</td>\n\
+                    <td class='WZProdCol3c'>"+number+"</td>\n\
+                    <td class='WZProdCol4c'>"+value['product_unit_short']+"</td>\n\
+                    <td class='WZProdCol5c'>"+(vat*100)+"</td>\n\
+                    <td class='WZProdCol6c'>"+(discount*100)+"</td>\n\
+                    <td class='WZProdCol7c'>"+(Math.round((price/100)*100)/100)+"</td>\n\
+                    <td class='WZProdCol8c'>"+(Math.round((priceBrutto/100)*100)/100)+"</td>\n\
+                    <td class='WZProdCol9c'>"+(Math.round((valueNetto/100)*100)/100)+"</td>\n\
+                    <td class='WZProdCol10c'>"+(Math.round((valueBrutto/100)*100)/100)+"</td>\n\
+                    <td class='WZProdCol11c'>"+(Math.round((valueBruttoWithDiscount/100)*100)/100)+"</td>\n\
+            </tr>";
+        });    
+        return ans;
+    });
+    
     var getContractorsCount = (function(){
         param = {};
         //Contractor ID

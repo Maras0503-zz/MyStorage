@@ -115,6 +115,52 @@
   text-align: center;
   font-size: x-large; }
 
+.buttonsContainer {
+  position: relative;
+  height: 30px;
+  width: 100%; }
+
+.half {
+  position: relative;
+  width: 50%; }
+  @media screen and (max-width: 790px) and (orientation: portrait) {
+    .half {
+      width: 100%; } }
+
+.WZInfoLab {
+  position: relative;
+  padding-left: 10px;
+  width: 20%;
+  font-weight: bold;
+  text-align: left; }
+
+.WZInfo {
+  position: relative;
+  width: 100%;
+  font-weight: normal;
+  text-align: left; }
+
+.VATTab {
+  position: relative;
+  width: 30%; }
+
+.VATTabCol {
+  position: relative;
+  border: solid 1px black;
+  text-align: right;
+  padding-right: 5px;
+  border-collapse: collapse;
+  width: 33%; }
+
+.dateField {
+  position: relative;
+  width: 20%; }
+
+.WZSumField {
+  position: relative;
+  right: 0px;
+  height: 20px; }
+
 .col1 {
   text-align: center;
   width: 5%;
@@ -200,7 +246,7 @@
   min-width: 6%; }
 
 .col6b {
-  text-align: right;
+  text-align: center;
   width: 3%;
   max-width: 3%;
   min-width: 3%; }
@@ -285,9 +331,9 @@
 
 .WZcol2b {
   text-align: center;
-  width: 4%;
-  max-width: 4%;
-  min-width: 4%; }
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%; }
 
 .WZcol3b {
   text-align: center;
@@ -426,3 +472,135 @@
   width: 15%;
   max-width: 15%;
   min-width: 15%; }
+
+.WZProdCol1 {
+  text-align: center;
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%; }
+
+.WZProdCol2 {
+  text-align: center;
+  width: 20%;
+  max-width: 20%;
+  min-width: 20%; }
+
+.WZProdCol3 {
+  text-align: center;
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%; }
+
+.WZProdCol4 {
+  text-align: center;
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%; }
+
+.WZProdCol5 {
+  text-align: center;
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%; }
+
+.WZProdCol6 {
+  text-align: center;
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%; }
+
+.WZProdCol7 {
+  text-align: center;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.WZProdCol8 {
+  text-align: center;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.WZProdCol9 {
+  text-align: center;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.WZProdCol10 {
+  text-align: center;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.WZProdCol11 {
+  text-align: center;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.WZProdCol1c {
+  text-align: center;
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%; }
+
+.WZProdCol2c {
+  text-align: left;
+  width: 20%;
+  max-width: 20%;
+  min-width: 20%; }
+
+.WZProdCol3c {
+  text-align: right;
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%; }
+
+.WZProdCol4c {
+  text-align: center;
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%; }
+
+.WZProdCol5c {
+  text-align: center;
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%; }
+
+.WZProdCol6c {
+  text-align: center;
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%; }
+
+.WZProdCol7c {
+  text-align: right;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.WZProdCol8c {
+  text-align: right;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.WZProdCol9c {
+  text-align: right;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.WZProdCol10c {
+  text-align: right;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }
+
+.WZProdCol11c {
+  text-align: right;
+  width: 10%;
+  max-width: 10%;
+  min-width: 10%; }

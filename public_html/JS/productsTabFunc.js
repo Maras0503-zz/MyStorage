@@ -43,9 +43,12 @@ pageFunctions.productsTabFunc = (function(){
         //OPEN AND CLOSE productCatalog
         $('#catalog').on('click', function(){
             $('.tab').addClass('hidden');
+            $('.tab').removeClass('blur');
+            $('.popup').addClass('hidden');
             $('.tab').removeClass('show');
             $('#productContainer').removeClass('hidden');
             $('#productContainer').addClass('show');
+            $('.tab').removeClass('blur');
         });
         $('#closeCatalog').on('click',function(){
             $('#productContainer').removeClass('show');
