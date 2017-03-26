@@ -7,7 +7,8 @@ var WZConOrder = 1;
 var WZConCount = 0;
 var selectedContractorID = 0;
 var selectedWZID = 0;
-
+var selectedWZRecord = 0;
+var isDocumentAccepted = 0;
 pageFunctions.wzTabFunc = (function(){
     var init = (function(){
         listeners();
@@ -18,12 +19,49 @@ pageFunctions.wzTabFunc = (function(){
         $('#confirmNewWZ').on('click', function(){
             addDocument();
         });
+        $("#delWZ").on('click', function(){
+            var docAccept = checkDocumentAccept(selectedWZID);
+            if(selectedWZID != 0 && docAccept != 1){
+                var r = confirm("Czy napewno chcesz usunąć dokument?");
+                if (r == true) {
+                    delDocument(selectedWZID);
+                    selectedWZID = 0;
+                    reset();
+                } else {
+                    
+                }
+            } else {
+                if(docAccept == 1){
+                    alert('Dokument zatwierdzony, nie można usunąć!');
+                } else {
+                    alert('Nie wybrano dokumentu!');
+                }
+            }
+        });
         $(document).on('click', function(e){
             var id = $(e.target).parent().attr('id');
             if(id!=undefined){
                 if(id.substring(0,4) == 'WZID'){
                     $('.WZrow').removeClass('rowSelected');
                     $('#WZID'+id.substring(4,id.lenght)).addClass('rowSelected');
+                    selectedWZID = id.substring(4,id.lenght);
+                }
+            }
+        });
+        $('#acceptWZ').on('click', function(){
+            var accept = 0;
+            var count = 0;
+            if(selectedWZID!=0){
+                accept = checkDocumentAccept(selectedWZID);
+                count = getDocumentRecordsCount(selectedWZID);
+                if(accept == 1){
+                    alert("Dokument już zatwierdzony!");
+                } else if (count == 0){
+                    alert("Dokument jest pusty!");
+                } else {
+                    acceptDocument(selectedWZID);
+                    reset();
+                    selectedWZID = 0;
                 }
             }
         });
@@ -37,6 +75,16 @@ pageFunctions.wzTabFunc = (function(){
                 }
             }
         });
+        $(document).on('click', function(e){
+        var id = $(e.target).parent().attr('id');
+            if(id!=undefined){
+                if(id.substring(0,7) == 'WZRecID'){
+                    $('.WZProdRow').removeClass('rowSelected');
+                    $('#WZRecID'+id.substring(7,id.lenght)).addClass('rowSelected');
+                    selectedWZRecord = id.substring(7,id.lenght);
+                }
+            }
+        });
         $(document).on('dblclick', function(e){
             var id = $(e.target).parent().attr('id');
             if(id!=undefined){
@@ -44,6 +92,16 @@ pageFunctions.wzTabFunc = (function(){
                     $('#WZPopup').removeClass('hidden');
                     $('#WZContainer').addClass('blur');
                     selectedWZID = id.substring(4,id.lenght);
+                    isDocumentAccepted = checkDocumentAccept(selectedWZID);
+                    if(isDocumentAccepted == 0){
+                        $('#newWZRecord').removeClass('hidden');
+                        $('#editWZRecord').removeClass('hidden');
+                        $('#deleteWZRecord').removeClass('hidden');
+                    } else {
+                        $('#newWZRecord').addClass('hidden');
+                        $('#editWZRecord').addClass('hidden');
+                        $('#deleteWZRecord').addClass('hidden');
+                    }
                     getDocumentInfo();
                     getWZRecords();
                 }
@@ -329,7 +387,7 @@ pageFunctions.wzTabFunc = (function(){
             $('#WZnoBox').val('');
             $('#WZconIdBox').val('');
             $('#WZconNameBox').val('');
-            $('#previous').addClass('hidden');
+            $('#WZprevious').addClass('hidden');
             getWZDocuments();
     });
     var conReset = (function(){
@@ -422,31 +480,6 @@ pageFunctions.wzTabFunc = (function(){
               }
           }
         });
-    });
-    var dateToFormat = (function(date){
-        var formDate;
-        var year;
-        var month;
-        var day;
-        var hours;
-        var minutes;
-        var seconds;
-        
-        year = date.getYear()+1900;
-        month = date.getMonth()+1;
-        if(month<=9){month = '0'+month;}
-        day = date.getDate();
-        if(day<=9){day = '0'+day;}
-        hours = date.getHours();
-        if(hours<=9){hours = '0'+hours;}
-        minutes = date.getMinutes();
-        if(minutes<=9){minutes = '0'+minutes;}
-        seconds = date.getSeconds();
-        if(seconds<=9){seconds = '0'+seconds;}
-        
-        
-        formDate = year+'.'+month+'.'+day+' '+hours+':'+minutes+':'+seconds;
-        return formDate;
     });
     
     var addDocument = (function(){
@@ -555,6 +588,7 @@ pageFunctions.wzTabFunc = (function(){
         });
     });
     var setValuesWZInfo = (function(data){
+        var tempDate;
         $.each(data,function(index, value){
             $('#WZPopupConId').html('ID: '+value['contractor_id']);
             $('#WZPopupConName').html(value['contractor_name']);
@@ -562,6 +596,14 @@ pageFunctions.wzTabFunc = (function(){
             $('#WZPopupConStreet').html('ul. '+value['contractor_street']);
             $('#WZPopupConPhone').html('tel. '+value['contractor_phone']);
             $('#WZPopupConEmail').html('@: '+value['contractor_email']);
+            tempDate = parseInt(value['document_accept_date']);
+            if(value['document_accept_date'] != 0){
+                tempDate = new Date(tempDate);
+                tempDate = dateToFormat(tempDate);
+            } else {
+                tempDate = "00-00-00 00:00:00";
+            }
+            $('#dateField').html(tempDate);
         });
     });
     
@@ -577,6 +619,8 @@ pageFunctions.wzTabFunc = (function(){
         $('#WZV23').html(0);
         $('#WZBruttoTotal').html(0);
         $('#WZVTotal').html(0);
+        $('#WZNettoField').html(0);
+        $('#WZBruttoField').html(0);
         var sum0 = 0;
         var sumV0 = 0;
         var sum5 = 0;
@@ -638,19 +682,36 @@ pageFunctions.wzTabFunc = (function(){
             $('#WZVTotal').html(Math.round((sumVTotal/100)*100)/100);
             $('#WZNettoField').html(Math.round((totalNetto/100)*100)/100);
             $('#WZBruttoField').html(Math.round((totalBrutto/100)*100)/100);
-            ans += "<tr class='WZProdRow' id=RecID"+value['document_records_id']+">\n\
-                    <td class='WZProdCol1c'>"+value['document_records_product_id']+"</td>\n\
-                    <td class='WZProdCol2c'>"+value['product_name']+"</td>\n\
-                    <td class='WZProdCol3c'>"+number+"</td>\n\
-                    <td class='WZProdCol4c'>"+value['product_unit_short']+"</td>\n\
-                    <td class='WZProdCol5c'>"+(vat*100)+"</td>\n\
-                    <td class='WZProdCol6c'>"+(discount*100)+"</td>\n\
-                    <td class='WZProdCol7c'>"+(Math.round((price/100)*100)/100)+"</td>\n\
-                    <td class='WZProdCol8c'>"+(Math.round((priceBrutto/100)*100)/100)+"</td>\n\
-                    <td class='WZProdCol9c'>"+(Math.round((valueNetto/100)*100)/100)+"</td>\n\
-                    <td class='WZProdCol10c'>"+(Math.round((valueBrutto/100)*100)/100)+"</td>\n\
-                    <td class='WZProdCol11c'>"+(Math.round((valueBruttoWithDiscount/100)*100)/100)+"</td>\n\
-            </tr>";
+            
+            if(isDocumentAccepted == 0){
+                ans += "<tr class='WZProdRow' id=WZRecID"+value['document_records_id']+">\n\
+                            <td class='WZProdCol1c'>"+value['document_records_product_id']+"</td>\n\
+                            <td class='WZProdCol2c'>"+value['product_name']+"</td>\n\
+                            <td class='WZProdCol3c'>"+number+"</td>\n\
+                            <td class='WZProdCol4c'>"+value['product_unit_short']+"</td>\n\
+                            <td class='WZProdCol5c'>"+(vat*100)+"</td>\n\
+                            <td class='WZProdCol6c'>"+(discount*100)+"</td>\n\
+                            <td class='WZProdCol7c'>"+(Math.round((price/100)*100)/100)+"</td>\n\
+                            <td class='WZProdCol8c'>"+(Math.round((priceBrutto/100)*100)/100)+"</td>\n\
+                            <td class='WZProdCol9c'>"+(Math.round((valueNetto/100)*100)/100)+"</td>\n\
+                            <td class='WZProdCol10c'>"+(Math.round((valueBrutto/100)*100)/100)+"</td>\n\
+                            <td class='WZProdCol11c'>"+(Math.round((valueBruttoWithDiscount/100)*100)/100)+"</td>\n\
+                        </tr>";
+            } else {
+                ans += "<tr class='WZProdRow'>\n\
+                            <td class='WZProdCol1c'>"+value['document_records_product_id']+"</td>\n\
+                            <td class='WZProdCol2c'>"+value['product_name']+"</td>\n\
+                            <td class='WZProdCol3c'>"+number+"</td>\n\
+                            <td class='WZProdCol4c'>"+value['product_unit_short']+"</td>\n\
+                            <td class='WZProdCol5c'>"+(vat*100)+"</td>\n\
+                            <td class='WZProdCol6c'>"+(discount*100)+"</td>\n\
+                            <td class='WZProdCol7c'>"+(Math.round((price/100)*100)/100)+"</td>\n\
+                            <td class='WZProdCol8c'>"+(Math.round((priceBrutto/100)*100)/100)+"</td>\n\
+                            <td class='WZProdCol9c'>"+(Math.round((valueNetto/100)*100)/100)+"</td>\n\
+                            <td class='WZProdCol10c'>"+(Math.round((valueBrutto/100)*100)/100)+"</td>\n\
+                            <td class='WZProdCol11c'>"+(Math.round((valueBruttoWithDiscount/100)*100)/100)+"</td>\n\
+                        </tr>";
+            }
         });    
         return ans;
     });
@@ -677,6 +738,7 @@ pageFunctions.wzTabFunc = (function(){
           }
         });
     });
+
     var getContractors = (function(){
         param = {};       
         selectedContractorID = 0;

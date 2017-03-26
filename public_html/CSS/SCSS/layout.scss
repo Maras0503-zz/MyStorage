@@ -57,6 +57,9 @@
  .WZarr{
      font-size: small;
  }
+ .FVarr{
+     font-size: small;
+ }
  .WZConArr{
      font-size: small;
  }
@@ -79,6 +82,22 @@
     filter:blur(5px);
  }
  .newWZform{
+     z-index: 5;
+     position: absolute;
+     border: solid 1px gray;
+     padding: 10px;
+     box-shadow: 10px 10px 15px #666666;
+     border-radius: 5px;
+     background-color: white;
+     margin-top: 4%;
+     width: 90%;
+     left: 5%;
+     @media (max-width: 768px){
+         left: 5%;
+         width: 90%;
+     }
+ }
+ .newFVform{
      z-index: 5;
      position: absolute;
      border: solid 1px gray;
@@ -153,10 +172,13 @@
  }
  .dateField{
     position: relative;
-    width: 20%;
+    right: 0px;
  }
  .WZSumField{
      position: relative;
      right: 0px;
      height: 20px;
  }
+ .conLab{
+    position: relative;
+}
