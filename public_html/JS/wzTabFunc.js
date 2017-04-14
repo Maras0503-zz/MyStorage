@@ -65,6 +65,11 @@ pageFunctions.wzTabFunc = (function(){
                 }
             }
         });
+        
+        $('#newWZRecord').on('click', function(){
+            
+        });
+        
         $(document).on('click', function(e){
         var id = $(e.target).parent().attr('id');
             if(id!=undefined){
@@ -97,10 +102,12 @@ pageFunctions.wzTabFunc = (function(){
                         $('#newWZRecord').removeClass('hidden');
                         $('#editWZRecord').removeClass('hidden');
                         $('#deleteWZRecord').removeClass('hidden');
+                        $('#productSearch').removeClass('hidden');
                     } else {
                         $('#newWZRecord').addClass('hidden');
                         $('#editWZRecord').addClass('hidden');
                         $('#deleteWZRecord').addClass('hidden');
+                        $('#productSearch').addClass('hidden');
                     }
                     getDocumentInfo();
                     getWZRecords();

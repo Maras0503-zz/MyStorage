@@ -2,7 +2,7 @@
 var productTablePage = 0;
 var productTableOrder = 1;
 var productCount = 0;
-
+var selectedProduct = 0;
 pageFunctions.productsTabFunc = (function(){
     var listeners = (function(){
         $(document).on('click', function(e){
@@ -16,11 +16,19 @@ pageFunctions.productsTabFunc = (function(){
         });
         $(document).on('dblclick', function(e){
             var id = $(e.target).parent().attr('id');
+            selectedProduct = id.substring(6,id.lenght);
             if(id!=undefined){
                 if(id.substring(0,6) == 'ProdID'){
-                    alert("PRODUCT O ID" + id.substring(6,id.lenght));
+                    selectedProduct = id.substring(6,id.lenght);
+                    $('#productPopup').removeClass('hidden');
                 }
             }
+        });
+        $('#changeImageProductPopup').on('click', function(e){
+            window.open("uploadImages.php?prodId="+selectedProduct);
+        });
+        $('#closeProductPopup').on('click', function(){
+            $('#productPopup').addClass('hidden');
         });
         $('#PRnext').on('click', function(){
             $('.PRrow').removeClass('rowSelected');
@@ -258,7 +266,7 @@ pageFunctions.productsTabFunc = (function(){
     var createProductTableContent = (function(data){
         ans = '';
         $.each(data,function(index, value){
-            ans += "<tr class='PRrow' id=ProdID"+value['product_id']+"><td class='col1b'>"+value['product_id']+"</td><td class='col2b'>"+value['product_name']+"</td><td class='col3b'>"+value['contractor_name']+"</td><td class='col4b'>"+value['product_number']+"</td><td class='col5b'>"+value['product_price']+"</td><td class='col6b'>"+value['vat_value']+"</td><td class='col7b'>"+value['product_group_name']+"</td><td class='col8b'>"+value['product_status_name']+"</td><td class='col9b'>"+value['product_unit_short']+"</td></tr>";
+            ans += "<tr class='PRrow' id=ProdID"+value['product_id']+"><td class='col1b'>"+value['product_id']+"</td><td class='col2b'>"+value['product_name']+"</td><td class='col3b'>"+value['contractor_name']+"</td><td class='col4b'>"+value['product_number']+"</td><td class='col5b'>"+(Math.round((value['product_price']/100)*100)/100)+"</td><td class='col6b'>"+value['vat_value']+"</td><td class='col7b'>"+value['product_group_name']+"</td><td class='col8b'>"+value['product_status_name']+"</td><td class='col9b'>"+value['product_unit_short']+"</td></tr>";
         });    
         return ans;
     });

@@ -147,6 +147,13 @@ and open the template in the editor.
                 </div>
                 <input id="PRprevious" class="btn btn-default hidden" type="button" value="Poprzednia">
                 <input id="PRnext" class="btn btn-default pull-right" type="button" value="Następna">
+                <div id="productPopup" class='popup hidden'>
+                    <label>ID Produktu</label><label id='productPopupID'></label>
+                    <label>Nazwa Produktu</label><label id='productPopupName'></label>
+                    <div id='productPhoto'></div>
+                    <button id='closeProductPopup'>Zamknij</button><button id='changeImageProductPopup'>Dodaj/Zmień obraz</button>
+                </div>
+
             </div>
             <div id="WZContainer" class="container-fluid hidden tab">
                 <div class="form-inline">
@@ -324,11 +331,11 @@ and open the template in the editor.
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <td class="WZConCol1">ID<div id="FVConArrUpId" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownId" class="unused sortBttMain WZConArr">&#9660;</div></td>
-                                    <td class="WZConCol2">Kontrahent<div id="FVConArrUpConName" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownConName" class="unused sortBttMain WZConArr">&#9660;</div></td>
+                                    <td class="WZConCol1">ID<div id="FVConArrUpId" class="unused sortBttMain FVConArr">&#9650;</div><div id="FVConArrDownId" class="unused sortBttMain FVConArr">&#9660;</div></td>
+                                    <td class="WZConCol2">Kontrahent<div id="FVConArrUpConName" class="unused sortBttMain FVConArr">&#9650;</div><div id="FVConArrDownConName" class="unused sortBttMain FVConArr">&#9660;</div></td>
                                     <td class="WZConCol3">NIP</td>
                                     <td class="WZConCol4">Kod</td>
-                                    <td class="WZConCol5">Miasto<div id="FVConArrUpCity" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownCity" class="unused sortBttMain WZConArr">&#9660;</div></td>
+                                    <td class="WZConCol5">Miasto<div id="FVConArrUpCity" class="unused sortBttMain FVConArr">&#9650;</div><div id="FVConArrDownCity" class="unused sortBttMain FVConArr">&#9660;</div></td>
                                     <td class="WZConCol6">Ulica</td>
                                     <td class="WZConCol7">Telefon</td>
                                     <td class="WZConCol8">E-mail</td>
@@ -394,7 +401,8 @@ and open the template in the editor.
                             <label>BRUTTO: </label><label id="WZBruttoField"></label>
                         </div>
                         <br>
-                        <div class="functionButtons">
+                        <div class="form-inline">
+                            <input id="productSearch" class="form-control searchBox" type="text" placeholder="KOD TOWARU/NAZWA/KOD KRESKOWY">
                             <input id="newWZRecord" class="btn btn-default" type="button" value="Dodaj pozycję">
                             <input id="deleteWZRecord" class="btn btn-default" type="button" value="Usuń zaznaczoną pozycję">
                             <input id="editWZRecord" class="btn btn-default" type="button" value="Edytuj zaznaczoną pozycję">
@@ -441,6 +449,75 @@ and open the template in the editor.
                             </tr>
                         </table>
                 </div>
+                <div id="WZChosingProduct"  class="popup hidden">
+                    <div class="newFVform">
+                            <div class="form-group big-center">
+                                <label>Wybierz produkt</label>
+                            </div>
+                            <hr/>
+                            <div class="form-inline">
+                                <div class="form-group">
+                                  <label>TOW KOD/NAZWA/KOD KRESKOWY: </label><input type="text" class="form-control" id="WZProdSearchDetails">
+                                </div>
+                            </div>
+                            <input id="WZProdSearch" class="btn btn-default" type="button" value="Szukaj">
+                            <input id="WZProdReset" class="btn btn-default" type="button" value="Reset">
+                            <hr/>
+                            <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <td class="WZProdChoseCol1">ID<div id="WZProdChoseArrUpId" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZPWZProdChoseCol1rodChoseArrDownId" class="unused sortBttMain WZProdArr">&#9660;</div></td>
+                                        <td class="WZProdChoseCol2">Nazwa<div id="WZProdChoseArrUpName" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZProdChoseArrDownName" class="unused sortBttMain WZProdArr">&#9660;</div></td>
+                                        <td class="WZProdChoseCol3">Producent<div id="WZProdChoseArrUpProducer" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZProdChoseArrDownProducer" class="unused sortBttMain WZProdArr">&#9660;</div></td>
+                                        <td class="WZProdChoseCol3">Cena<div id="WZProdChoseArrUpPrice" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZProdChoseArrDownPrice" class="unused sortBttMain WZProdArr">&#9660;</div></td>
+                                        <td class="WZProdChoseCol4">Ilość<div id="WZProdChoseArrUpNumber" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZProdChoseArrDownNumber" class="unused sortBttMain WZProdArr">&#9660;</div></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="WZProdChoseTabContent">
+                                </tbody>
+                            </table>
+                            </div>
+                            <div class="conPageControls">
+                                <input id="WZProdChosePrevious" class="btn btn-default hidden" type="button" value="Poprzednia">
+                                <input id="WZProdChoseNext" class="btn btn-default pull-right" type="button" value="Następna">
+                            </div>
+                            <hr/>
+                            <div class="form-inline">
+                                <button id='cancelWZProdChose' class="btn btn-default">Anuluj</button>
+                                <button id='confirmWZProdChose' class="btn btn-default pull-right">Utwórz</button>
+                            </div>
+                    </div>
+                </div>
+                <div id="WZAddingProduct" > <!-- class="popup hidden"-->
+                    <div class="addProd">
+                        <div class="form-group big-center">
+                            <label>Dodawanie pozycji</label>
+                        </div>
+                        <hr/>
+                        <div class="form-inline">
+                            <div>
+                              <label class="detailLabel">ID: </label>
+                            </div>
+                            <div>
+                              <label class="detailLabel">Nazwa: </label>
+                            </div>
+                            <div>
+                              <label class="detailLabel">Producent: </label>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="WZProdNumberForm">
+                            <div id="WZProdFloatingPoint" class="WZProdNumberBox hidden"><label>Ilość: </label><input type="text" onkeypress="return f(event)"></div>
+                            <div id="WZProdWithoutComma" class="WZProdNumberBox hidden"><label>Ilość: </label><input type="number" step="1"></div>                            
+                        </div>
+                        <hr/>
+                        <div class="form-inline">
+                            <button id='cancelWZAddProduct' class="btn btn-default">Anuluj</button>
+                            <button id='confirmWZAddProduct' class="btn btn-default pull-right">Utwórz</button>
+                        </div>
+                </div>
+            </div>
             </div>
 
             <div id="FVPopup" class="popup hidden">

@@ -1,3 +1,8 @@
+function f(e){
+    e=e.which||event.keyCode;
+    return(e>44&&e<58||e==8);
+}
+
 var acceptDocument = (function(docId){
     param = {};
     param['docId'] = docId;
