@@ -80,6 +80,11 @@
   height: 100%;
   top: 0px; }
 
+.popupSmall {
+  z-index: 3;
+  position: absolute;
+  top: 0px; }
+
 .blur {
   z-index: 1;
   -webkit-filter: blur(5px);
@@ -127,9 +132,28 @@
   background-color: white;
   margin-top: 10%;
   width: 50%;
-  left: 25%; }
+  left: 25%;
+  max-height: 70%; }
   @media (max-width: 768px) {
     .addProd {
+      left: 5%;
+      max-height: 70%;
+      margin-top: 20%;
+      width: 90%; } }
+
+.addPhoto {
+  z-index: 5;
+  position: fixed;
+  border: solid 1px gray;
+  padding: 10px;
+  box-shadow: 10px 10px 15px #666666;
+  border-radius: 5px;
+  background-color: white;
+  margin-top: 10%;
+  width: 50%;
+  left: 25%; }
+  @media (max-width: 768px) {
+    .addPhoto {
       left: 5%;
       margin-top: 20%;
       width: 90%; } }
@@ -212,6 +236,73 @@
   @media (max-width: 768px) {
     .detailLabel {
       min-width: 30%; } }
+
+#productPhoto {
+  width: 100%;
+  text-align: center; }
+
+.photo {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-width: 95%; }
+
+.productPhotoButtons {
+  position: fixed;
+  margin-top: 10px;
+  right: 26%;
+  margin-top: 10%;
+  top: 5px;
+  width: 50%; }
+  @media (max-width: 768px) {
+    .productPhotoButtons {
+      margin-top: 20%;
+      right: 6%; } }
+
+#polish {
+  position: relative;
+  margin: 1px;
+  width: 40px;
+  height: 20px; }
+
+#polish img {
+  width: 100%; }
+
+#english {
+  position: relative;
+  margin: 1px;
+  width: 40px;
+  height: 20px; }
+
+#english img {
+  width: 100%; }
+
+#settingsTrigger {
+  position: absolute;
+  left: 45px;
+  bottom: 2px;
+  height: 42px;
+  border-right: solid 1px gray;
+  border-top: solid 1px gray;
+  border-bottom: solid 1px gray;
+  background-color: #b4b4b4; }
+
+#settings {
+  position: fixed;
+  bottom: 15px;
+  width: 47px;
+  border-right: solid 1px gray;
+  border-top: solid 1px gray;
+  border-bottom: solid 1px gray;
+  background-color: #b4b4b4;
+  transition-duration: 1.5s; }
+
+.settHide {
+  left: -45px;
+  transition-duration: 1.5s; }
+
+.word {
+  display: inline; }
 
 .col1 {
   cursor: pointer;
@@ -339,238 +430,238 @@
   max-width: 5%;
   min-width: 5%; }
 
-.WZcol1 {
+.DocCol1 {
   cursor: pointer;
   text-align: center;
   width: 5%;
   max-width: 5%;
   min-width: 5%; }
 
-.WZcol2 {
+.DocCol2 {
   cursor: pointer;
   text-align: center;
   width: 5%;
   max-width: 5%;
   min-width: 5%; }
 
-.WZcol3 {
+.DocCol3 {
   cursor: pointer;
   text-align: center;
   width: 3%;
   max-width: 3%;
   min-width: 3%; }
 
-.WZcol4 {
+.DocCol4 {
   cursor: pointer;
   text-align: center;
   width: 8%;
   max-width: 8%;
   min-width: 8%; }
 
-.WZcol5 {
+.DocCol5 {
   cursor: pointer;
   text-align: center;
   width: 30%;
   max-width: 30%;
   min-width: 30%; }
 
-.WZcol6 {
+.DocCol6 {
   cursor: pointer;
   text-align: center;
   width: 5%;
   max-width: 5%;
   min-width: 5%; }
 
-.WZcol7 {
+.DocCol7 {
   cursor: pointer;
   text-align: center;
   width: 15%;
   max-width: 15%;
   min-width: 15%; }
 
-.WZcol8 {
+.DocCol8 {
   cursor: pointer;
   text-align: center;
   width: 15%;
   max-width: 15%;
   min-width: 15%; }
 
-.WZcol9 {
+.DocCol9 {
   cursor: pointer;
   text-align: center;
   width: 14%;
   max-width: 14%;
   min-width: 14%; }
 
-.WZcol1b {
+.DocCol1b {
   cursor: pointer;
   text-align: center;
   width: 5%;
   max-width: 5%;
   min-width: 5%; }
 
-.WZcol2b {
+.DocCol2b {
   cursor: pointer;
   text-align: center;
   width: 5%;
   max-width: 5%;
   min-width: 5%; }
 
-.WZcol3b {
+.DocCol3b {
   cursor: pointer;
   text-align: center;
   width: 3%;
   max-width: 3%;
   min-width: 3%; }
 
-.WZcol4b {
+.DocCol4b {
   cursor: pointer;
   text-align: center;
   width: 8%;
   max-width: 8%;
   min-width: 8%; }
 
-.WZcol5b {
+.DocCol5b {
   cursor: pointer;
   text-align: left;
   width: 30%;
   max-width: 30%;
   min-width: 30%; }
 
-.WZcol6b {
+.DocCol6b {
   cursor: pointer;
   text-align: center;
   width: 5%;
   max-width: 5%;
   min-width: 5%; }
 
-.WZcol7b {
+.DocCol7b {
   cursor: pointer;
   text-align: center;
   width: 15%;
   max-width: 15%;
   min-width: 15%; }
 
-.WZcol8b {
+.DocCol8b {
   cursor: pointer;
   text-align: center;
   width: 15%;
   max-width: 15%;
   min-width: 15%; }
 
-.WZcol9b {
+.DocCol9b {
   cursor: pointer;
   text-align: center;
   width: 14%;
   max-width: 14%;
   min-width: 14%; }
 
-.WZConCol1 {
+.DocConCol1 {
   cursor: pointer;
   text-align: center;
   width: 8%;
   max-width: 8%;
   min-width: 8%; }
 
-.WZConCol2 {
+.DocConCol2 {
   cursor: pointer;
   text-align: center;
   width: 20%;
   max-width: 20%;
   min-width: 20%; }
 
-.WZConCol3 {
+.DocConCol3 {
   cursor: pointer;
   text-align: center;
   width: 10%;
   max-width: 10%;
   min-width: 10%; }
 
-.WZConCol4 {
+.DocConCol4 {
   cursor: pointer;
   text-align: center;
   width: 7%;
   max-width: 7%;
   min-width: 7%; }
 
-.WZConCol5 {
+.DocConCol5 {
   cursor: pointer;
   text-align: center;
   width: 10%;
   max-width: 10%;
   min-width: 10%; }
 
-.WZConCol6 {
+.DocConCol6 {
   cursor: pointer;
   text-align: center;
   width: 15%;
   max-width: 15%;
   min-width: 15%; }
 
-.WZConCol7 {
+.DocConCol7 {
   cursor: pointer;
   text-align: center;
   width: 10%;
   max-width: 10%;
   min-width: 10%; }
 
-.WZConCol8 {
+.DocConCol8 {
   cursor: pointer;
   text-align: center;
   width: 15%;
   max-width: 15%;
   min-width: 15%; }
 
-.WZConCol1c {
+.DocConCol1c {
   cursor: pointer;
   text-align: center;
   width: 8%;
   max-width: 8%;
   min-width: 8%; }
 
-.WZConCol2c {
+.DocConCol2c {
   cursor: pointer;
   text-align: left;
   width: 20%;
   max-width: 20%;
   min-width: 20%; }
 
-.WZConCol3c {
+.DocConCol3c {
   cursor: pointer;
   text-align: center;
   width: 10%;
   max-width: 10%;
   min-width: 10%; }
 
-.WZConCol4c {
+.DocConCol4c {
   cursor: pointer;
   text-align: center;
   width: 7%;
   max-width: 7%;
   min-width: 7%; }
 
-.WZConCol5c {
+.DocConCol5c {
   cursor: pointer;
   text-align: left;
   width: 10%;
   max-width: 10%;
   min-width: 10%; }
 
-.WZConCol6c {
+.DocConCol6c {
   cursor: pointer;
   text-align: left;
   width: 15%;
   max-width: 15%;
   min-width: 15%; }
 
-.WZConCol7c {
+.DocConCol7c {
   cursor: pointer;
   text-align: center;
   width: 10%;
   max-width: 10%;
   min-width: 10%; }
 
-.WZConCol8c {
+.DocConCol8c {
   cursor: pointer;
   text-align: center;
   width: 15%;

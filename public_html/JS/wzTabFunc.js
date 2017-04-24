@@ -22,7 +22,15 @@ pageFunctions.wzTabFunc = (function(){
         $("#delWZ").on('click', function(){
             var docAccept = checkDocumentAccept(selectedWZID);
             if(selectedWZID != 0 && docAccept != 1){
-                var r = confirm("Czy napewno chcesz usunąć dokument?");
+                var txt = '';
+                if(window.sessionStorage.getItem('lang')=='pl'){
+                    txt = 'Czy napewno chcesz usunąć dokument?';
+                } else if (window.sessionStorage.getItem('lang')=='en'){
+                    txt = 'Are you sure you want to delete the document?';
+                } else {
+                    txt = 'Czy napewno chcesz usunąć dokument?';
+                }
+                var r = confirm(txt);
                 if (r == true) {
                     delDocument(selectedWZID);
                     selectedWZID = 0;
@@ -32,9 +40,25 @@ pageFunctions.wzTabFunc = (function(){
                 }
             } else {
                 if(docAccept == 1){
-                    alert('Dokument zatwierdzony, nie można usunąć!');
+                    var txt = '';
+                    if(window.sessionStorage.getItem('lang')=='pl'){
+                        txt = 'Dokument zatwierdzony, nie można usunąć!';
+                    } else if (window.sessionStorage.getItem('lang')=='en'){
+                        txt = 'Document is accepted, you can not delete it!';
+                    } else {
+                        txt = 'Dokument zatwierdzony, nie można usunąć!';
+                    }
+                    alert(txt);
                 } else {
-                    alert('Nie wybrano dokumentu!');
+                    var txt = '';
+                    if(window.sessionStorage.getItem('lang')=='pl'){
+                        txt = 'Nie wybrano dokumentu!';
+                    } else if (window.sessionStorage.getItem('lang')=='en'){
+                        txt = 'Document is not selected!';
+                    } else {
+                        txt = 'Nie wybrano dokumentu!';
+                    }
+                    alert(txt);
                 }
             }
         });
@@ -55,9 +79,25 @@ pageFunctions.wzTabFunc = (function(){
                 accept = checkDocumentAccept(selectedWZID);
                 count = getDocumentRecordsCount(selectedWZID);
                 if(accept == 1){
-                    alert("Dokument już zatwierdzony!");
+                    var txt = '';
+                    if(window.sessionStorage.getItem('lang')=='pl'){
+                        txt = 'Dokument już zatwierdzony!';
+                    } else if (window.sessionStorage.getItem('lang')=='en'){
+                        txt = 'Document is alredy accepted!';
+                    } else {
+                        txt = 'Dokument już zatwierdzony!';
+                    }
+                    alert(txt);
                 } else if (count == 0){
-                    alert("Dokument jest pusty!");
+                    var txt = '';
+                    if(window.sessionStorage.getItem('lang')=='pl'){
+                        txt = 'Dokument jest pusty!';
+                    } else if (window.sessionStorage.getItem('lang')=='en'){
+                        txt = 'Document is empty!';
+                    } else {
+                        txt = 'Dokument jest pusty!';
+                    }
+                    alert(txt);
                 } else {
                     acceptDocument(selectedWZID);
                     reset();
@@ -536,14 +576,15 @@ pageFunctions.wzTabFunc = (function(){
                 tmpAccDate = "nie zatwierdzony";
             }
             ans += "<tr class='WZrow' id=WZID"+value['document_id']+">\n\
-                        <td class='WZcol1b'>"+value['document_id']+"</td>\n\
-                        <td class='WZcol2b'>"+value['document_number']+"</td>\n\
-                        <td class='WZcol3b'>"+value['document_year']+"</td>\n\
-                        <td class='WZcol4b'>"+value['document_contractor_id']+"</td>\n\
-                        <td class='WZcol5b'>"+value['contractor_name']+"</td>\n\
-                        <td class='WZcol6b'>"+value['document_type_short']+"</td>\n\
-                        <td class='WZcol7b'>"+tmpDate+"</td><td class='WZcol8b'>"+tmpAccDate+"</td>\n\
-                        <td class='WZcol9b'>"+value['user_fname']+' '+value['user_lname']+"</td>\n\
+                        <td class='DocCol1b'>"+value['document_id']+"</td>\n\
+                        <td class='DocCol2b'>"+value['document_number']+"</td>\n\
+                        <td class='DocCol3b'>"+value['document_year']+"</td>\n\
+                        <td class='DocCol4b'>"+value['document_contractor_id']+"</td>\n\
+                        <td class='DocCol5b'>"+value['contractor_name']+"</td>\n\
+                        <td class='DocCol6b'>"+value['document_type_short']+"</td>\n\
+                        <td class='DocCol7b'>"+tmpDate+"</td>\n\
+                        <td class='DocCol8b'>"+tmpAccDate+"</td>\n\
+                        <td class='DocCol9b'>"+value['user_fname']+' '+value['user_lname']+"</td>\n\
                     </tr>";
         });    
         return ans;

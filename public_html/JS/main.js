@@ -5,3 +5,4 @@ pageFunctions.productsTabFunc = {};
 pageFunctions.wzTabFunc = {};
 pageFunctions.mainPageUtil = {};
 pageFunctions.functions = {};
+pageFunctions.languages = {};

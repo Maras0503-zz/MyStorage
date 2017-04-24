@@ -16,16 +16,43 @@ pageFunctions.productsTabFunc = (function(){
         });
         $(document).on('dblclick', function(e){
             var id = $(e.target).parent().attr('id');
-            selectedProduct = id.substring(6,id.lenght);
+            $('#productPhoto').html("");
             if(id!=undefined){
+                selectedProduct = id.substring(6,id.lenght);
                 if(id.substring(0,6) == 'ProdID'){
                     selectedProduct = id.substring(6,id.lenght);
+                    $('#productPopupID').html(selectedProduct);
                     $('#productPopup').removeClass('hidden');
+                        $.get("productPhotos/"+selectedProduct+".jpg")
+                            .done(function() { 
+                                $('#productPhoto').html('<img class="photo" src="productPhotos/'+selectedProduct+'.jpg" alt="Brak zdjęcia">');
+                            }).fail(function() { 
+                                $('#productPhoto').html('<img class="photo" src="productPhotos/brak.jpg" alt="Brak zdjęcia">');
+                            });
                 }
             }
         });
+        $(document).on('tap', function(e){
+            var id = $(e.target).parent().attr('id');
+            $('#productPhoto').html("");
+            if(id!=undefined){
+                selectedProduct = id.substring(6,id.lenght);
+                if(id.substring(0,6) == 'ProdID'){
+                    selectedProduct = id.substring(6,id.lenght);
+                    $('#productPopupID').html(selectedProduct);
+                    $('#productPopup').removeClass('hidden');
+                        $.get("productPhotos/"+selectedProduct+".jpg")
+                            .done(function() { 
+                                $('#productPhoto').html('<img class="photo" src="productPhotos/'+selectedProduct+'.jpg" alt="Brak zdjęcia">');
+                            }).fail(function() { 
+                                $('#productPhoto').html('<img class="photo" src="productPhotos/brak.jpg" alt="Brak zdjęcia">');
+                            });
+                }
+            }
+        });
+        
         $('#changeImageProductPopup').on('click', function(e){
-            window.open("uploadImages.php?prodId="+selectedProduct);
+            window.open("choseImage.php?prodId="+selectedProduct);
         });
         $('#closeProductPopup').on('click', function(){
             $('#productPopup').addClass('hidden');

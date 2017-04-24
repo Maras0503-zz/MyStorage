@@ -10,13 +10,13 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="IMG/favicon.ico">
-        
+
 
         <link href="CSS/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="CSS/main.css" rel="stylesheet" type="text/css"/>
         <script src="JS/jquery-3.1.1.js" type="text/javascript"></script>
         <script src="JS/bootstrap.min.js" type="text/javascript"></script>
-        
+
         <script src="JS/md5.js" type="text/javascript"></script>
         <script src="JS/main.js" type="text/javascript"></script>
         <script src="JS/functions.js" type="text/javascript"></script>
@@ -25,6 +25,7 @@ and open the template in the editor.
         <script src="JS/wzTabFunc.js" type="text/javascript"></script>
         <script src="JS/fvTabFunc.js" type="text/javascript"></script>
         <script src="JS/mainPageUtil.js" type="text/javascript"></script>
+        <script src="JS/languages.js"></script>
     </head>
     <body>
        <div class='backDiv'>
@@ -47,98 +48,107 @@ and open the template in the editor.
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Dokumenty<span class="caret"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"><p id="documentsLang" class="word"></p><span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a id="WZTabOpen" href="#">WZ</a></li>
-                      <li><a id="FVTabOpen" href="#">Faktury</a></li>
-                      <li><a href="#">PZWZ</a></li>
+                      <li><a id="WZTabOpen" href="#"><p id="shippingNotesLang" class="word"></p></a></li>
+                      <li><a id="FVTabOpen" href="#"><p id="invoicesLang" class="word"></p></a></li>
+                      <li><a href="#"><p id="deliveryNotesLang" class="word"></p></a></li>
                     </ul>
                   </li>
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Produkty<span class="caret"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"><p id="productsLang" class="word"></p><span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Dodaj</a></li>
-                      <li><a href="#">Modyfikuj</a></li>
-                      <li><a id="catalog" href="#">Katalog</a></li>
+                      <li><a href="#"><p id="addProductLang" class="word"></p></a></li>
+                      <li><a href="#"><p id="editProductLang" class="word"></p></a></li>
+                      <li><a id="catalog" href="#"><p id="productCatalogLang" class="word"></p></a></li>
                       <li class="divider"></li>
-                      <li><a href="#">Wycofaj</a></li>
+                      <li><a href="#"><p id="withdrawLang" class="word"></p></a></li>
                       <li class="divider"></li>
-                      <li><a href="#">Zmiana ceny</a></li>
+                      <li><a href="#"><p id="changePriceLang" class="word"></p></a></li>
                     </ul>
                   </li>
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Kontrahenci<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"><p id="contractorsLang" class="word"></p><span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Lista</a></li>
-                      <li><a href="#">Dodaj</a></li>
+                      <li><a href="#"><p id="contractorListLang" class="word"></p></a></li>
+                      <li><a href="#"><p id="contractorAddLang" class="word"></p></a></li>
                     </ul>
                   </li>
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Raporty<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"><p id="reportsLang" class="word"></p><span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Sprzedaży produktu</a></li>
-                      <li><a href="#">Sprzedaży w grupie</a></li>
+                      <li><a href="#"><p id="productSalesLang" class="word"></p></a></li>
+                      <li><a href="#"><p id="groupSalesLang" class="word"></p></a></li>
                     </ul>
                   </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Użytkownik<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"><p id="userLang" class="word"></p><span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Zmień hasło</a></li>
+                      <li><a href="#"><p id="changePasswordLang" class="word"></p></a></li>
                       <li class="divider"></li>
-                      <li><a href="#" id="logout">Wyloguj</a></li>
+                      <li><a href="#" id="logout"><p id="userLogoutLang" class="word"></p></a></li>
                     </ul>
                   </li>
                 </ul>
-              </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+              </div>
+            </div>
         </nav>
+        <div id="settings" class="settHide">
+            <div id="languages">
+                <div id="polish"><img src="IMG/pl.png"/></div>
+                <div id="english"><img src="IMG/gb.png"/></div>
+            </div>
+            <div id="settingsTrigger">
+                <img src="IMG/settbiw.png"/>
+            </div>
+        </div>
         <div class="main_div">
             <div id="productContainer" class="container-fluid hidden tab">
                 <div class="form-inline">
                     <div class="form-group">
-                        <label for="idBox">Id:</label>
-                        <input type="number" step="1" class="form-control" id="idBox" placeholder="id produktu">
+                        <label for="idBox"><p id="prodIdLang" class="word"></p></label>
+                        <input type="number" step="1" class="form-control form-short" id="idBox">
                     </div>
                     <div class="form-group">
-                        <label for="nameBox">Nazwa:</label>
-                        <input type="text" class="form-control" id="nameBox" placeholder="nazwa produktu">
+                        <label for="nameBox"><p id="prodNameLang" class="word"></p></label>
+                        <input type="text" class="form-control" id="nameBox">
                     </div>
                     <div class="form-group">
-                        <label for="priceMinBox">Cena min:</label>
-                        <input type="number" step="0.01" class="form-control form-short" id="priceMinBox" placeholder="cena min">
+                        <label for="priceMinBox"><p id="priceMinLang" class="word"></p></label>
+                        <input type="number" step="0.01" class="form-control form-short" id="priceMinBox">
                     </div>
                     <div class="form-group">
-                        <label for="priceMaxBox">Cena max:</label>
-                        <input type="number" step="0.01" class="form-control form-short" id="priceMaxBox" placeholder="cena max">
+                        <label for="priceMaxBox"><p id="priceMaxLang" class="word"></p></label>
+                        <input type="number" step="0.01" class="form-control form-short" id="priceMaxBox">
                     </div>
                     <div class="form-group">
-                        <label for="noMinBox">Ilość min:</label>
-                        <input type="number" step="0.01" class="form-control form-short" id="noMinBox" placeholder="cena min">
+                        <label for="noMinBox"><p id="qtyMinLang" class="word"></p></label>
+                        <input type="number" step="0.01" class="form-control form-short" id="noMinBox">
                     </div>
                     <div class="form-group">
-                        <label for="noMaxBox">Ilość max:</label>
-                        <input type="number" step="0.01" class="form-control form-short" id="noMaxBox" placeholder="cena max">
+                        <label for="noMaxBox"><p id="qtyMaxLang" class="word"></p></label>
+                        <input type="number" step="0.01" class="form-control form-short" id="noMaxBox">
                     </div>
                 </div>
-                <input id="search" class="btn btn-default" type="button" value="Szukaj">
+                <input id="search" class="btn btn-default search" type="button" value="Szukaj">
                 <input id="reset" class="btn btn-default" type="button" value="Reset">
-                <input id="closeCatalog" class="btn btn-default pull-right" type="button" value="Zamknij">
+                <input id="closeCatalog" class="btn btn-default pull-right closeBtt" type="button" value="Zamknij">
 
                 <div class="table-responsive">
                 <table id="prodTable" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <td class="col1">ID<div id="arrUpId" class="unused sortBttMain arr">&#9650;</div><div id="arrDownId" class="unused sortBttMain arr">&#9660;</div></td>
-                            <td class="col2">Nazwa<div id="arrUpName" class="unused sortBttMain arr">&#9650;</div><div id="arrDownName" class="unused sortBttMain arr">&#9660;</div></td>
-                            <td class="col3">Producent</td>
-                            <td class="col4">Ilość<div id="arrUpNo" class="unused sortBttMain arr">&#9650;</div><div id="arrDownNo" class="unused sortBttMain arr">&#9660;</div></td>
-                            <td class="col5">Cena<div id="arrUpPrice" class="unused sortBttMain arr">&#9650;</div><div id="arrDownPrice" class="unused sortBttMain arr">&#9660;</div></td>
-                            <td class="col6">Vat</td>
-                            <td class="col7">Grupa</td>
+                            <td class="col2"><p class="word prodNameHeaderLang"></p><div id="arrUpName" class="unused sortBttMain arr">&#9650;</div><div id="arrDownName" class="unused sortBttMain arr">&#9660;</div></td>
+                            <td class="col3"><p class="word prodProducerHeaderLang"></p></td>
+                            <td class="col4"><p class="word prodQtyHeaderLang"></p><div id="arrUpNo" class="unused sortBttMain arr">&#9650;</div><div id="arrDownNo" class="unused sortBttMain arr">&#9660;</div></td>
+                            <td class="col5"><p class="word prodPriceHeaderLang"></p><div id="arrUpPrice" class="unused sortBttMain arr">&#9650;</div><div id="arrDownPrice" class="unused sortBttMain arr">&#9660;</div></td>
+                            <td class="col6"><p class="word prodTaxHeaderLang"></p></td>
+                            <td class="col7"><p class="word prodGroupHeaderLang"></p></td>
                             <td class="col8">Status</td>
-                            <td class="col9">Jedn.</td>
+                            <td class="col9"><p class="word prodUnitHeaderLang"></p></td>
                         </tr>
                     </thead>
                     <tbody id="productTabContent">
@@ -147,53 +157,55 @@ and open the template in the editor.
                 </div>
                 <input id="PRprevious" class="btn btn-default hidden" type="button" value="Poprzednia">
                 <input id="PRnext" class="btn btn-default pull-right" type="button" value="Następna">
-                <div id="productPopup" class='popup hidden'>
-                    <label>ID Produktu</label><label id='productPopupID'></label>
-                    <label>Nazwa Produktu</label><label id='productPopupName'></label>
+                <div id="productPopup" class='popupSmall addPhoto hidden'>
+                    <label>ID Produktu:</label><label id='productPopupID'></label>
                     <div id='productPhoto'></div>
-                    <button id='closeProductPopup'>Zamknij</button><button id='changeImageProductPopup'>Dodaj/Zmień obraz</button>
+                    <div class='productPhotoButtons'>
+                        <input type="button" id='closeProductPopup' class='btn pull-right btn-default closeBtt' value="Zmień obraz"/>
+                        <input type="button" id='changeImageProductPopup' class='pull-right btn btn-default'value="Zamknij"/>
+                    </div>
                 </div>
 
             </div>
             <div id="WZContainer" class="container-fluid hidden tab">
                 <div class="form-inline">
                     <div class="form-group">
-                        <label for="WZidBox">Id dokumentu:</label>
-                        <input type="number" step="1" class="form-control" id="WZidBox" placeholder="id dokumentu">
+                        <label for="WZidBox"><p class="word documentIdLang"></p></label>
+                        <input type="number" step="1" class="form-control form-short" id="WZidBox">
                     </div>
                     <div class="form-group">
-                        <label for="WZnoBox">Nr dokumentu:</label>
-                        <input type="number" step="1" class="form-control" id="WZnoBox" placeholder="nr dokumentu">
+                        <label for="WZnoBox"><p class="word documentNoLang"></p></label>
+                        <input type="number" step="1" class="form-control form-short" id="WZnoBox">
                     </div>
                     <div class="form-group">
-                        <label for="WZconIdBox">Id kontrahenta:</label>
-                        <input type="number" step="1" class="form-control" id="WZconIdBox" placeholder="id klienta">
+                        <label for="WZconIdBox"><p class="word contrIdLang"></p></label>
+                        <input type="number" step="1" class="form-control form-short" id="WZconIdBox">
                     </div>
                     <div class="form-group">
-                        <label for="WZconNameBox">Nazwa kontrahenta:</label>
-                        <input type="text" class="form-control" id="WZconNameBox" placeholder="nazwa klienta">
+                        <label for="WZconNameBox"><p class="word contrNameLang"></p></label>
+                        <input type="text" class="form-control" id="WZconNameBox">
                     </div>
                 </div>
-                <input id="WZsearch" class="btn btn-default" type="button" value="Szukaj">
+                <input id="WZsearch" class="btn btn-default search" type="button" value="Szukaj">
                 <input id="WZreset" class="btn btn-default" type="button" value="Reset">
-                
+
                 <input id="newWZ" class="btn btn-default" type="button" value="Nowy dokument WZ">
-                <input id="acceptWZ" class="btn btn-default" type="button" value="Potwierdź zaznaczony dokument">
-                <input id="delWZ" class="btn btn-default" type="button" value="Usuń zaznaczony dokument">
-                <input id="closeWZContainer" class="btn btn-default pull-right" type="button" value="Zamknij">
+                <input id="acceptWZ" class="btn btn-default acceptDoc" type="button" value="Potwierdź zaznaczony dokument">
+                <input id="delWZ" class="btn btn-default delDoc" type="button" value="Usuń zaznaczony dokument">
+                <input id="closeWZContainer" class="btn btn-default pull-right closeBtt" type="button" value="Zamknij">
                 <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <td class="WZcol1">ID<div id="WZarrUpId" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownId" class="unused sortBttMain WZarr">&#9660;</div></td>
-                            <td class="WZcol2">Nr<div id="WZarrUpNo" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownNo" class="unused sortBttMain WZarr">&#9660;</div></td>
-                            <td class="WZcol3">Rok</td>
-                            <td class="WZcol4">Id Kontr.<div id="WZarrUpConId" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownConId" class="unused sortBttMain WZarr">&#9660;</div></td>
-                            <td class="WZcol5">Kontrahent<div id="WZarrUpConName" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownConName" class="unused sortBttMain WZarr">&#9660;</div></td>
-                            <td class="WZcol6">Typ</td>
-                            <td class="WZcol7">Data<div id="WZarrUpDate" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownDate" class="unused sortBttMain WZarr">&#9660;</div></td>
-                            <td class="WZcol8">Zatwierdzono<div id="WZarrUpAccDate" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownAccDate" class="unused sortBttMain WZarr">&#9660;</div></td>
-                            <td class="WZcol9">Utworzył</td>
+                            <td class="DocCol1">ID<div id="WZarrUpId" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownId" class="unused sortBttMain WZarr">&#9660;</div></td>
+                            <td class="DocCol2"><p class="word docNoHeaderLang"></p><div id="WZarrUpNo" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownNo" class="unused sortBttMain WZarr">&#9660;</div></td>
+                            <td class="DocCol3"><p class="word docYearHeaderLang"></p></td>
+                            <td class="DocCol4"><p class="word docConIdHeaderLang"></p><div id="WZarrUpConId" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownConId" class="unused sortBttMain WZarr">&#9660;</div></td>
+                            <td class="DocCol5"><p class="word docConNameHeaderLang"></p><div id="WZarrUpConName" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownConName" class="unused sortBttMain WZarr">&#9660;</div></td>
+                            <td class="DocCol6"><p class="word docTypeHeaderLang"></p></td>
+                            <td class="DocCol7"><p class="word docDateHeaderLang"></p><div id="WZarrUpDate" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownDate" class="unused sortBttMain WZarr">&#9660;</div></td>
+                            <td class="DocCol8"><p class="word docAcceptedHeaderLang"></p><div id="WZarrUpAccDate" class="unused sortBttMain WZarr">&#9650;</div><div id="WZarrDownAccDate" class="unused sortBttMain WZarr">&#9660;</div></td>
+                            <td class="DocCol9"><p class="word docCreatorHeaderLang"></p></td>
                         </tr>
                     </thead>
                     <tbody id="WZTabContent">
@@ -206,38 +218,38 @@ and open the template in the editor.
             <div id="newWZpopup" class="popup hidden">
                 <div class="newWZform">
                         <div class="form-group big-center">
-                            <label>Wybór kontrahenta</label>
+                            <label><p class="word contractorChoseLang"></p></label>
                         </div>
                         <hr/>
                         <div class="form-inline">
                             <div class="form-group">
-                              <label>ID: </label><input type="number" class="form-control" id="selectContractorId" placeholder="id">
+                              <label>ID: </label><input type="number" class="form-control" id="selectContractorId">
                             </div>
                             <div class="form-group">
-                              <label>Nazwa: </label><input type="text" class="form-control" id="selectContractorName" placeholder="nazwa">
+                              <label><p class="word contractorNameLang"></p></label><input type="text" class="form-control" id="selectContractorName">
                             </div>
                             <div class="form-group">
-                              <label>Miasto: </label><input type="text" class="form-control" id="selectContractorCity" placeholder="miasto">
+                              <label><p class="word contractorCityLang"></p></label><input type="text" class="form-control" id="selectContractorCity">
                             </div>
                             <div class="form-group">
-                              <label>NIP: </label><input type="text" class="form-control" id="selectContractorNIP" placeholder="NIP">
+                              <label><p class="word contractorTaxNoLang"></p></label><input type="text" class="form-control" id="selectContractorNIP">
                             </div>
                         </div>
-                        <input id="WZConSearch" class="btn btn-default" type="button" value="Szukaj">
+                        <input id="WZConSearch" class="btn btn-default search" type="button" value="Szukaj">
                         <input id="WZConReset" class="btn btn-default" type="button" value="Reset">
                         <hr/>
                         <div class="table-responsive">
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <td class="WZConCol1">ID<div id="WZConArrUpId" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownId" class="unused sortBttMain WZConArr">&#9660;</div></td>
-                                    <td class="WZConCol2">Kontrahent<div id="WZConArrUpConName" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownConName" class="unused sortBttMain WZConArr">&#9660;</div></td>
-                                    <td class="WZConCol3">NIP</td>
-                                    <td class="WZConCol4">Kod</td>
-                                    <td class="WZConCol5">Miasto<div id="WZConArrUpCity" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownCity" class="unused sortBttMain WZConArr">&#9660;</div></td>
-                                    <td class="WZConCol6">Ulica</td>
-                                    <td class="WZConCol7">Telefon</td>
-                                    <td class="WZConCol8">E-mail</td>
+                                    <td class="DocConCol1">ID<div id="WZConArrUpId" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownId" class="unused sortBttMain WZConArr">&#9660;</div></td>
+                                    <td class="DocConCol2">Kontrahent<div id="WZConArrUpConName" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownConName" class="unused sortBttMain WZConArr">&#9660;</div></td>
+                                    <td class="DocConCol3">NIP</td>
+                                    <td class="DocConCol4">Kod</td>
+                                    <td class="DocConCol5">Miasto<div id="WZConArrUpCity" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownCity" class="unused sortBttMain WZConArr">&#9660;</div></td>
+                                    <td class="DocConCol6">Ulica</td>
+                                    <td class="DocConCol7">Telefon</td>
+                                    <td class="DocConCol8">E-mail</td>
                                 </tr>
                             </thead>
                             <tbody id="WZConTabContent">
@@ -259,42 +271,42 @@ and open the template in the editor.
             <div id="FVContainer" class="container-fluid hidden tab">
                 <div class="form-inline">
                     <div class="form-group">
-                        <label for="FVidBox">Id dokumentu:</label>
-                        <input type="number" step="1" class="form-control" id="FVidBox" placeholder="id dokumentu">
+                        <label for="FVidBox"><p class="word documentIdLang form-short"></p></label>
+                        <input type="number" step="1" class="form-control" id="FVidBox">
                     </div>
                     <div class="form-group">
-                        <label for="FVnoBox">Nr dokumentu:</label>
-                        <input type="number" step="1" class="form-control" id="FVnoBox" placeholder="nr dokumentu">
+                        <label for="FVnoBox"><p class="word documentNoLang form-short"></p></label>
+                        <input type="number" step="1" class="form-control" id="FVnoBox">
                     </div>
                     <div class="form-group">
-                        <label for="FVconIdBox">Id kontrahenta:</label>
-                        <input type="number" step="1" class="form-control" id="FVconIdBox" placeholder="id klienta">
+                        <label for="FVconIdBox"><p class="word contrIdLang form-short"></p></label>
+                        <input type="number" step="1" class="form-control" id="FVconIdBox">
                     </div>
                     <div class="form-group">
-                        <label for="FVconNameBox">Nazwa kontrahenta:</label>
-                        <input type="text" class="form-control" id="FVconNameBox" placeholder="nazwa klienta">
+                        <label for="FVconNameBox"><p class="word contrNameLang"></p></label>
+                        <input type="text" class="form-control" id="FVconNameBox">
                     </div>
                 </div>
-                <input id="FVsearch" class="btn btn-default" type="button" value="Szukaj">
+                <input id="FVsearch" class="btn btn-default search" type="button" value="Szukaj">
                 <input id="FVreset" class="btn btn-default" type="button" value="Reset">
-                
+
                 <input id="newFV" class="btn btn-default" type="button" value="Nowa faktura">
-                <input id="acceptFV" class="btn btn-default" type="button" value="Potwierdź zaznaczony dokument">
-                <input id="delFV" class="btn btn-default" type="button" value="Usuń zaznaczony dokument">
-                <input id="closeFVContainer" class="btn btn-default pull-right" type="button" value="Zamknij">
+                <input id="acceptFV" class="btn btn-default acceptDoc" type="button" value="Potwierdź zaznaczony dokument">
+                <input id="delFV" class="btn btn-default delDoc" type="button" value="Usuń zaznaczony dokument">
+                <input id="closeFVContainer" class="btn btn-default pull-right closeBtt" type="button" value="Zamknij">
                 <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <td class="WZcol1">ID<div id="FVarrUpId" class="unused sortBttMain FVarr">&#9650;</div><div id="FVarrDownId" class="unused sortBttMain FVarr">&#9660;</div></td>
-                            <td class="WZcol2">Nr<div id="FVarrUpNo" class="unused sortBttMain FVarr">&#9650;</div><div id="FVarrDownNo" class="unused sortBttMain FVarr">&#9660;</div></td>
-                            <td class="WZcol3">Rok</td>
-                            <td class="WZcol4">Id Kontr.<div id="FVarrUpConId" class="unused sortBttMain FVarr">&#9650;</div><div id="FVarrDownConId" class="unused sortBttMain FVarr">&#9660;</div></td>
-                            <td class="WZcol5">Kontrahent<div id="FVarrUpConName" class="unused sortBttMain FVarr">&#9650;</div><div id="FVarrDownConName" class="unused sortBttMain FVarr">&#9660;</div></td>
-                            <td class="WZcol6">Typ</td>
-                            <td class="WZcol7">Data<div id="FVarrUpDate" class="unused sortBttMain FVarr">&#9650;</div><div id="FVarrDownDate" class="unused sortBttMain FVarr">&#9660;</div></td>
-                            <td class="WZcol8">Zatwierdzono<div id="FVarrUpAccDate" class="unused sortBttMain FVarr">&#9650;</div><div id="FVarrDownAccDate" class="unused sortBttMain FVarr">&#9660;</div></td>
-                            <td class="WZcol9">Utworzył</td>
+                            <td class="DocCol1">ID<div id="FVarrUpId" class="unused sortBttMain FVarr">&#9650;</div><div id="FVarrDownId" class="unused sortBttMain FVarr">&#9660;</div></td>
+                            <td class="DocCol2"><p class="word docNoHeaderLang"></p><div id="FVarrUpNo" class="unused sortBttMain FVarr">&#9650;</div><div id="FVarrDownNo" class="unused sortBttMain FVarr">&#9660;</div></td>
+                            <td class="DocCol3"><p class="word docYearHeaderLang"></p></td>
+                            <td class="DocCol4"><p class="word docConIdHeaderLang"></p><div id="FVarrUpConId" class="unused sortBttMain FVarr">&#9650;</div><div id="FVarrDownConId" class="unused sortBttMain FVarr">&#9660;</div></td>
+                            <td class="DocCol5"><p class="word docConNameHeaderLang"></p><div id="FVarrUpConName" class="unused sortBttMain FVarr">&#9650;</div><div id="FVarrDownConName" class="unused sortBttMain FVarr">&#9660;</div></td>
+                            <td class="DocCol6"><p class="word docTypeHeaderLang"></p></td>
+                            <td class="DocCol7"><p class="word docDateHeaderLang"></p><div id="FVarrUpDate" class="unused sortBttMain FVarr">&#9650;</div><div id="FVarrDownDate" class="unused sortBttMain FVarr">&#9660;</div></td>
+                            <td class="DocCol8"><p class="word docAcceptedHeaderLang"></p><div id="FVarrUpAccDate" class="unused sortBttMain FVarr">&#9650;</div><div id="FVarrDownAccDate" class="unused sortBttMain FVarr">&#9660;</div></td>
+                            <td class="DocCol9"><p class="word docCreatorHeaderLang"></p></td>
                         </tr>
                     </thead>
                     <tbody id="FVTabContent">
@@ -307,38 +319,38 @@ and open the template in the editor.
             <div id="newFVpopup" class="popup hidden">
                 <div class="newFVform">
                         <div class="form-group big-center">
-                            <label>Wybór kontrahenta</label>
+                            <label><p class="word contractorChoseLang"></p></label>
                         </div>
                         <hr/>
                         <div class="form-inline">
                             <div class="form-group">
-                              <label>ID: </label><input type="number" class="form-control" id="FVselectContractorId" placeholder="id">
+                              <label>ID: </label><input type="number" class="form-control" id="FVselectContractorId">
                             </div>
                             <div class="form-group">
-                              <label>Nazwa: </label><input type="text" class="form-control" id="FVselectContractorName" placeholder="nazwa">
+                              <label><p class="word contractorNameLang"></p></label><input type="text" class="form-control" id="FVselectContractorName">
                             </div>
                             <div class="form-group">
-                              <label>Miasto: </label><input type="text" class="form-control" id="FVselectContractorCity" placeholder="miasto">
+                              <label><p class="word contractorCityLang"></p></label><input type="text" class="form-control" id="FVselectContractorCity">
                             </div>
                             <div class="form-group">
-                              <label>NIP: </label><input type="text" class="form-control" id="FVselectContractorNIP" placeholder="NIP">
+                              <label><p class="word contractorTaxNoLang"></p></label><input type="text" class="form-control" id="FVselectContractorNIP">
                             </div>
                         </div>
-                        <input id="FVConSearch" class="btn btn-default" type="button" value="Szukaj">
+                        <input id="FVConSearch" class="btn btn-default search" type="button" value="Szukaj">
                         <input id="FVConReset" class="btn btn-default" type="button" value="Reset">
                         <hr/>
                         <div class="table-responsive">
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <td class="WZConCol1">ID<div id="FVConArrUpId" class="unused sortBttMain FVConArr">&#9650;</div><div id="FVConArrDownId" class="unused sortBttMain FVConArr">&#9660;</div></td>
-                                    <td class="WZConCol2">Kontrahent<div id="FVConArrUpConName" class="unused sortBttMain FVConArr">&#9650;</div><div id="FVConArrDownConName" class="unused sortBttMain FVConArr">&#9660;</div></td>
-                                    <td class="WZConCol3">NIP</td>
-                                    <td class="WZConCol4">Kod</td>
-                                    <td class="WZConCol5">Miasto<div id="FVConArrUpCity" class="unused sortBttMain FVConArr">&#9650;</div><div id="FVConArrDownCity" class="unused sortBttMain FVConArr">&#9660;</div></td>
-                                    <td class="WZConCol6">Ulica</td>
-                                    <td class="WZConCol7">Telefon</td>
-                                    <td class="WZConCol8">E-mail</td>
+                                    <td class="DocConCol1">ID<div id="FVConArrUpId" class="unused sortBttMain FVConArr">&#9650;</div><div id="FVConArrDownId" class="unused sortBttMain FVConArr">&#9660;</div></td>
+                                    <td class="DocConCol2">Kontrahent<div id="FVConArrUpConName" class="unused sortBttMain FVConArr">&#9650;</div><div id="FVConArrDownConName" class="unused sortBttMain FVConArr">&#9660;</div></td>
+                                    <td class="DocConCol3">NIP</td>
+                                    <td class="DocConCol4">Kod</td>
+                                    <td class="DocConCol5">Miasto<div id="FVConArrUpCity" class="unused sortBttMain FVConArr">&#9650;</div><div id="FVConArrDownCity" class="unused sortBttMain FVConArr">&#9660;</div></td>
+                                    <td class="DocConCol6">Ulica</td>
+                                    <td class="DocConCol7">Telefon</td>
+                                    <td class="DocConCol8">E-mail</td>
                                 </tr>
                             </thead>
                             <tbody id="FVConTabContent">
@@ -356,9 +368,9 @@ and open the template in the editor.
                         </div>
                 </div>
             </div>
-            
-            
-            
+
+
+
             <div id="WZPopup" class="popup hidden">
                 <div class="newWZform">
                         <div class="form-group big-center">
@@ -393,7 +405,7 @@ and open the template in the editor.
                                 <div class="half">
                                     <label class="WZInfo" id='WZPopupConEmail'></label>
                                 </div>
-                                
+
                             </div>
                         <hr/>
                         <div class="pull-right WZSumField">
@@ -509,7 +521,7 @@ and open the template in the editor.
                         <hr/>
                         <div class="WZProdNumberForm">
                             <div id="WZProdFloatingPoint" class="WZProdNumberBox hidden"><label>Ilość: </label><input type="text" onkeypress="return f(event)"></div>
-                            <div id="WZProdWithoutComma" class="WZProdNumberBox hidden"><label>Ilość: </label><input type="number" step="1"></div>                            
+                            <div id="WZProdWithoutComma" class="WZProdNumberBox hidden"><label>Ilość: </label><input type="number" step="1"></div>
                         </div>
                         <hr/>
                         <div class="form-inline">
@@ -554,7 +566,7 @@ and open the template in the editor.
                                 <div class="half">
                                     <label class="WZInfo" id='FVPopupConEmail'></label>
                                 </div>
-                                
+
                             </div>
                         <hr/>
                         <div class="pull-right WZSumField">

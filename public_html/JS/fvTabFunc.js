@@ -510,14 +510,15 @@ pageFunctions.wzTabFunc = (function(){
                 tmpAccDate = "nie zatwierdzony";
             }
             ans += "<tr class='FVrow' id=FVID"+value['document_id']+">\n\
-                        <td class='FVcol1b'>"+value['document_id']+"</td>\n\
-                        <td class='FVcol2b'>"+value['document_number']+"</td>\n\
-                        <td class='FVcol3b'>"+value['document_year']+"</td>\n\
-                        <td class='FVcol4b'>"+value['document_contractor_id']+"</td>\n\
-                        <td class='FVcol5b'>"+value['contractor_name']+"</td>\n\
-                        <td class='FVcol6b'>"+value['document_type_short']+"</td>\n\
-                        <td class='FVcol7b'>"+tmpDate+"</td><td class='FVcol8b'>"+tmpAccDate+"</td>\n\
-                        <td class='FVcol9b'>"+value['user_fname']+' '+value['user_lname']+"</td>\n\
+                        <td class='DocCol1b'>"+value['document_id']+"</td>\n\
+                        <td class='DocCol2b'>"+value['document_number']+"</td>\n\
+                        <td class='DocCol3b'>"+value['document_year']+"</td>\n\
+                        <td class='DocCol4b'>"+value['document_contractor_id']+"</td>\n\
+                        <td class='DocCol5b'>"+value['contractor_name']+"</td>\n\
+                        <td class='DocCol6b'>"+value['document_type_short']+"</td>\n\
+                        <td class='DocCol7b'>"+tmpDate+"</td> \n\
+                        <td class='DocCol8b'>"+tmpAccDate+"</td>\n\
+                        <td class='DocCol9b'>"+value['user_fname']+' '+value['user_lname']+"</td>\n\
                     </tr>";
         });    
         return ans;

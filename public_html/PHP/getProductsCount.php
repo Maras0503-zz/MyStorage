@@ -1,6 +1,4 @@
 <?php
-    $pageNo = $_POST['page'];
-    $ord = $_POST['ord'];
     $noMin = $_POST['noMin'];
     $noMax = $_POST['noMax'];
     $minPrice = $_POST['minPrice'];
