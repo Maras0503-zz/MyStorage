@@ -82,33 +82,33 @@ and open the template in the editor.
                     </ul>
                   </li>
                 </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"><p id="userLang" class="word"></p><span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                              <li><a href="#"><p id="changePasswordLang" class="word"></p></a></li>
+                              <li class="divider"></li>
+                              <li><a href="#" id="logout"><p id="userLogoutLang" class="word"></p></a></li>
+                          </ul>
+                      </li>
+                  </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"><p id="userLang" class="word"></p><span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#"><p id="changePasswordLang" class="word"></p></a></li>
-                      <li class="divider"></li>
-                      <li><a href="#" id="logout"><p id="userLogoutLang" class="word"></p></a></li>
-                    </ul>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"><p class="word languageTrigger"></p><span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                          <li><a class='short' id="english" href="#">UK</a></li>
+                          <li><a class='short' id="polish" href="#">PL</a></li>
+                      </ul>
                   </li>
                 </ul>
               </div>
             </div>
         </nav>
-        <div id="settings" class="settHide">
-            <div id="languages">
-                <div id="polish"><img src="IMG/pl.png"/></div>
-                <div id="english"><img src="IMG/gb.png"/></div>
-            </div>
-            <div id="settingsTrigger">
-                <img src="IMG/settbiw.png"/>
-            </div>
-        </div>
         <div class="main_div">
             <div id="productContainer" class="container-fluid hidden tab">
                 <div class="form-inline">
                     <div class="form-group">
-                        <label for="idBox"><p id="prodIdLang" class="word"></p></label>
+                        <label for="idBox"><p class="word prodIdLang"></p></label>
                         <input type="number" step="1" class="form-control form-short" id="idBox">
                     </div>
                     <div class="form-group">
@@ -158,7 +158,7 @@ and open the template in the editor.
                 <input id="PRprevious" class="btn btn-default hidden" type="button" value="Poprzednia">
                 <input id="PRnext" class="btn btn-default pull-right" type="button" value="Następna">
                 <div id="productPopup" class='popupSmall addPhoto hidden'>
-                    <label>ID Produktu:</label><label id='productPopupID'></label>
+                    <label><p class="word prodIdLang"></p></label><label id='productPopupID'></label>
                     <div id='productPhoto'></div>
                     <div class='productPhotoButtons'>
                         <input type="button" id='closeProductPopup' class='btn pull-right btn-default closeBtt' value="Zmień obraz"/>
@@ -218,7 +218,7 @@ and open the template in the editor.
             <div id="newWZpopup" class="popup hidden">
                 <div class="newWZform">
                         <div class="form-group big-center">
-                            <label><p class="word contractorChoseLang"></p></label>
+                            <label><p class="word contractorChooseLang"></p></label>
                         </div>
                         <hr/>
                         <div class="form-inline">
@@ -243,12 +243,12 @@ and open the template in the editor.
                             <thead>
                                 <tr>
                                     <td class="DocConCol1">ID<div id="WZConArrUpId" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownId" class="unused sortBttMain WZConArr">&#9660;</div></td>
-                                    <td class="DocConCol2">Kontrahent<div id="WZConArrUpConName" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownConName" class="unused sortBttMain WZConArr">&#9660;</div></td>
-                                    <td class="DocConCol3">NIP</td>
-                                    <td class="DocConCol4">Kod</td>
-                                    <td class="DocConCol5">Miasto<div id="WZConArrUpCity" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownCity" class="unused sortBttMain WZConArr">&#9660;</div></td>
-                                    <td class="DocConCol6">Ulica</td>
-                                    <td class="DocConCol7">Telefon</td>
+                                    <td class="DocConCol2"><p class="word docConConHeader"><div id="WZConArrUpConName" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownConName" class="unused sortBttMain WZConArr">&#9660;</div></td>
+                                    <td class="DocConCol3"><p class="word docConTaxNoHeader"></p></td>
+                                    <td class="DocConCol4"><p class="word docConPostCodeHeader"></p></td>
+                                    <td class="DocConCol5"><p class="word docConCityHeader"></p><div id="WZConArrUpCity" class="unused sortBttMain WZConArr">&#9650;</div><div id="WZConArrDownCity" class="unused sortBttMain WZConArr">&#9660;</div></td>
+                                    <td class="DocConCol6"><p class="word docConStreetHeader"></p></td>
+                                    <td class="DocConCol7"><p class="word docConPhoneHeader"></p></td>
                                     <td class="DocConCol8">E-mail</td>
                                 </tr>
                             </thead>
@@ -262,8 +262,8 @@ and open the template in the editor.
                         </div>
                         <hr/>
                         <div class="form-inline">
-                            <button id='cancelNewWZ' class="btn btn-default">Anuluj</button>
-                            <button id='confirmNewWZ' class="btn btn-default pull-right">Utwórz</button>
+                            <button id='cancelNewWZ' class="btn btn-default"><p class="word cancel"></p></button>
+                            <button id='confirmNewWZ' class="btn btn-default pull-right"><p class="word create"></p></button>
                         </div>
                 </div>
             </div>
@@ -319,7 +319,7 @@ and open the template in the editor.
             <div id="newFVpopup" class="popup hidden">
                 <div class="newFVform">
                         <div class="form-group big-center">
-                            <label><p class="word contractorChoseLang"></p></label>
+                            <label><p class="word contractorChooseLang"></p></label>
                         </div>
                         <hr/>
                         <div class="form-inline">
@@ -344,12 +344,12 @@ and open the template in the editor.
                             <thead>
                                 <tr>
                                     <td class="DocConCol1">ID<div id="FVConArrUpId" class="unused sortBttMain FVConArr">&#9650;</div><div id="FVConArrDownId" class="unused sortBttMain FVConArr">&#9660;</div></td>
-                                    <td class="DocConCol2">Kontrahent<div id="FVConArrUpConName" class="unused sortBttMain FVConArr">&#9650;</div><div id="FVConArrDownConName" class="unused sortBttMain FVConArr">&#9660;</div></td>
-                                    <td class="DocConCol3">NIP</td>
-                                    <td class="DocConCol4">Kod</td>
-                                    <td class="DocConCol5">Miasto<div id="FVConArrUpCity" class="unused sortBttMain FVConArr">&#9650;</div><div id="FVConArrDownCity" class="unused sortBttMain FVConArr">&#9660;</div></td>
-                                    <td class="DocConCol6">Ulica</td>
-                                    <td class="DocConCol7">Telefon</td>
+                                    <td class="DocConCol2"><p class="word docConConHeader"></p><div id="FVConArrUpConName" class="unused sortBttMain FVConArr">&#9650;</div><div id="FVConArrDownConName" class="unused sortBttMain FVConArr">&#9660;</div></td>
+                                    <td class="DocConCol3"><p class="word docConTaxNoHeader"></p></td>
+                                    <td class="DocConCol4"><p class="word docConPostCodeHeader"></p></td>
+                                    <td class="DocConCol5"><p class="word docConCityHeader"></p><div id="FVConArrUpCity" class="unused sortBttMain FVConArr">&#9650;</div><div id="FVConArrDownCity" class="unused sortBttMain FVConArr">&#9660;</div></td>
+                                    <td class="DocConCol6"><p class="word docConStreetHeader"></p></td>
+                                    <td class="DocConCol7"><p class="word docConPhoneHeader"></p></td>
                                     <td class="DocConCol8">E-mail</td>
                                 </tr>
                             </thead>
@@ -363,8 +363,8 @@ and open the template in the editor.
                         </div>
                         <hr/>
                         <div class="form-inline">
-                            <button id='cancelNewFV' class="btn btn-default">Anuluj</button>
-                            <button id='confirmNewFV' class="btn btn-default pull-right">Utwórz</button>
+                            <button id='cancelNewFV' class="btn btn-default"><p class="word cancel"></p></button>
+                            <button id='confirmNewFV' class="btn btn-default pull-right"><p class="word create"></p></button>
                         </div>
                 </div>
             </div>
@@ -374,10 +374,10 @@ and open the template in the editor.
             <div id="WZPopup" class="popup hidden">
                 <div class="newWZform">
                         <div class="form-group big-center">
-                            <label>DOKUMENT WZ</label>
+                            <label><p class="word shippingNoteLang"></p></label>
                         </div>
                         <div class='buttonsContainer'>
-                            <input id="closeWZPopup" class="btn btn-default pull-right" type="button" value="Zamknij">
+                            <input id="closeWZPopup" class="btn btn-default pull-right closeBtt" type="button" value="Zamknij">
                         </div>
                         <hr/>
                             <div class="form-group">
@@ -385,7 +385,7 @@ and open the template in the editor.
                                     <label id="dateField"></label>
                                 </div>
                                 <div class="conLab">
-                                    <label>NABYWCA:</label>
+                                    <label><p class="word contractorLang"></p> </label>
                                 </div>
                                 <div class="half">
                                     <label class="WZInfo" id='WZPopupConId'></label>
@@ -409,31 +409,31 @@ and open the template in the editor.
                             </div>
                         <hr/>
                         <div class="pull-right WZSumField">
-                            <label>NETTO: </label><label id="WZNettoField"></label>
-                            <label>BRUTTO: </label><label id="WZBruttoField"></label>
+                            <label><p class="word net"></p></label><label id="WZNettoField"></label>
+                            <label><p class="word gross"></p></label><label id="WZBruttoField"></label>
                         </div>
                         <br>
                         <div class="form-inline">
-                            <input id="productSearch" class="form-control searchBox" type="text" placeholder="KOD TOWARU/NAZWA/KOD KRESKOWY">
-                            <input id="newWZRecord" class="btn btn-default" type="button" value="Dodaj pozycję">
-                            <input id="deleteWZRecord" class="btn btn-default" type="button" value="Usuń zaznaczoną pozycję">
-                            <input id="editWZRecord" class="btn btn-default" type="button" value="Edytuj zaznaczoną pozycję">
+                            <input id="WZproductSearch" class="form-control searchBox productDetailsAddLang" type="text">
+                            <input id="newWZRecord" class="btn btn-default addPositionBttLang" type="button" value="Dodaj pozycję">
+                            <input id="deleteWZRecord" class="btn btn-default delPositionBttLang" type="button" value="Usuń zaznaczoną pozycję">
+                            <input id="editWZRecord" class="btn btn-default editPositionBttLang" type="button" value="Edytuj zaznaczoną pozycję">
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <td class="WZProdCol1">ID</td>
-                                        <td class="WZProdCol2">Nazwa</td>
-                                        <td class="WZProdCol3">Ilość</td>
-                                        <td class="WZProdCol4">Jedn.</td>
-                                        <td class="WZProdCol5">Vat[%]</td>
-                                        <td class="WZProdCol6">Rabat[%]</td>
-                                        <td class="WZProdCol7">Cena Netto</td>
-                                        <td class="WZProdCol8">Cena Brutto</td>
-                                        <td class="WZProdCol9">Wartość Netto</td>
-                                        <td class="WZProdCol10">Wartość Brutto</td>
-                                        <td class="WZProdCol11">Z rabatem</td>
+                                        <td class="WZProdCol2"><p class="word prodNameHeaderLang"></p></td>
+                                        <td class="WZProdCol3"><p class="word prodQtyHeaderLang"></p></td>
+                                        <td class="WZProdCol4"><p class="word prodUnitHeaderLang"></p></td>
+                                        <td class="WZProdCol5"><p class="word prodTaxHeaderLang"></p></td>
+                                        <td class="WZProdCol6"><p class="word prodDiscountHeaderLang"></p></td>
+                                        <td class="WZProdCol7"><p class="word prodNetHeaderLang"></p></td>
+                                        <td class="WZProdCol8"><p class="word prodGrossHeaderLang"></p></td>
+                                        <td class="WZProdCol9"><p class="word prodValNetHeaderLang"></p></td>
+                                        <td class="WZProdCol10"><p class="word prodValGrossHeaderLang"></p></td>
+                                        <td class="WZProdCol11"><p class="word prodWithDiscountHeaderLang"></p></td>
                                     </tr>
                                 </thead>
                                 <tbody id="WZProdTabContent">
@@ -461,7 +461,7 @@ and open the template in the editor.
                             </tr>
                         </table>
                 </div>
-                <div id="WZChosingProduct"  class="popup hidden">
+                <div id="WZChosingProduct"  class="popup on_top hidden">
                     <div class="newFVform">
                             <div class="form-group big-center">
                                 <label>Wybierz produkt</label>
@@ -482,8 +482,8 @@ and open the template in the editor.
                                         <td class="WZProdChoseCol1">ID<div id="WZProdChoseArrUpId" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZPWZProdChoseCol1rodChoseArrDownId" class="unused sortBttMain WZProdArr">&#9660;</div></td>
                                         <td class="WZProdChoseCol2">Nazwa<div id="WZProdChoseArrUpName" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZProdChoseArrDownName" class="unused sortBttMain WZProdArr">&#9660;</div></td>
                                         <td class="WZProdChoseCol3">Producent<div id="WZProdChoseArrUpProducer" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZProdChoseArrDownProducer" class="unused sortBttMain WZProdArr">&#9660;</div></td>
-                                        <td class="WZProdChoseCol3">Cena<div id="WZProdChoseArrUpPrice" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZProdChoseArrDownPrice" class="unused sortBttMain WZProdArr">&#9660;</div></td>
-                                        <td class="WZProdChoseCol4">Ilość<div id="WZProdChoseArrUpNumber" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZProdChoseArrDownNumber" class="unused sortBttMain WZProdArr">&#9660;</div></td>
+                                        <td class="WZProdChoseCol4">Cena<div id="WZProdChoseArrUpPrice" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZProdChoseArrDownPrice" class="unused sortBttMain WZProdArr">&#9660;</div></td>
+                                        <td class="WZProdChoseCol5">Ilość<div id="WZProdChoseArrUpNumber" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZProdChoseArrDownNumber" class="unused sortBttMain WZProdArr">&#9660;</div></td>
                                     </tr>
                                 </thead>
                                 <tbody id="WZProdChoseTabContent">
@@ -501,32 +501,60 @@ and open the template in the editor.
                             </div>
                     </div>
                 </div>
-                <div id="WZAddingProduct" > <!-- class="popup hidden"-->
+                <div id="WZAddingProduct" class="popup on_top hidden" >
                     <div class="addProd">
                         <div class="form-group big-center">
-                            <label>Dodawanie pozycji</label>
+                            <label><p class="word addingPosition"></p></label>
                         </div>
                         <hr/>
                         <div class="form-inline">
                             <div>
-                              <label class="detailLabel">ID: </label>
+                              <label class="detailLabel">ID:  </label><label id='WZProdAddId' class="detailLabelVal"></label>
                             </div>
                             <div>
-                              <label class="detailLabel">Nazwa: </label>
+                              <label class="detailLabel">Nazwa:  </label><label id='WZProdAddName' class="detailLabelVal"></label>
                             </div>
                             <div>
-                              <label class="detailLabel">Producent: </label>
+                              <label class="detailLabel">Producent:  </label><label id='WZProdAddProducer' class="detailLabelVal"></label>
+                            </div>
+                            <div>
+                                <label class="detailLabel">Cena:  </label><label id='WZProdAddPrice' class="detailLabelVal"></label>
+                            </div>
+                            <div>
+                                <label class="detailLabel">Ilość:  </label><label id='WZProdAddQty' class="detailLabelVal"></label>
                             </div>
                         </div>
                         <hr/>
                         <div class="WZProdNumberForm">
-                            <div id="WZProdFloatingPoint" class="WZProdNumberBox hidden"><label>Ilość: </label><input type="text" onkeypress="return f(event)"></div>
-                            <div id="WZProdWithoutComma" class="WZProdNumberBox hidden"><label>Ilość: </label><input type="number" step="1"></div>
+                            <div id="WZProdFloatingPoint" class="WZProdNumberBox hidden">
+                                <label class="addingPosValues">Ilość: </label>
+                                <input id="WZProdFloatingPointInput" type="number" step="0.01">
+                            </div>
+                            <div id="WZProdWithoutComma" class="WZProdNumberBox hidden">
+                                <label class="addingPosValues">Ilość: </label>
+                                <input class="addingPosValues" id="WZProdWithoutCommaInput" type="number" min="0" step="1" onkeypress="return e(event)">
+                            </div>
+                            </br>
+                            <div class="WZProdNumberBox">
+                                <label class="addingPosValues">Rabat[%]: </label>
+                                <input id="WZProdAddDiscount" type="text" min="0" step="0.01" onkeypress="return f(event)">
+                            </div>
+                        </div>
+                        <div><label class="addingPosValues" id="calculateValue">Przelicz</label></div>
+                        <div>
+                            <div>
+                                <label class="addingPosValues">Wartość netto:</label>
+                                <label class="addingPosValues" id="WZPosAddValue"></label>
+                            </div>
+                            <div>
+                                <label class="addingPosValues">Wartość brutto:</label>
+                                <label class="addingPosValues"  id="WZPosAddValueGross"></label>
+                            </div>
                         </div>
                         <hr/>
                         <div class="form-inline">
                             <button id='cancelWZAddProduct' class="btn btn-default">Anuluj</button>
-                            <button id='confirmWZAddProduct' class="btn btn-default pull-right">Utwórz</button>
+                            <button id='confirmWZAddProduct' class="btn btn-default pull-right">Dodaj</button>
                         </div>
                 </div>
             </div>
@@ -538,7 +566,7 @@ and open the template in the editor.
                             <label>FAKTURA VAT</label>
                         </div>
                         <div class='buttonsContainer'>
-                            <input id="closeFVPopup" class="btn btn-default pull-right" type="button" value="Zamknij">
+                            <input id="closeFVPopup" class="btn btn-default pull-right closeBtt" type="button" value="Zamknij">
                         </div>
                         <hr/>
                             <div class="form-group">
@@ -570,25 +598,31 @@ and open the template in the editor.
                             </div>
                         <hr/>
                         <div class="pull-right WZSumField">
-                            <label>NETTO: </label><label id="FVNettoField"></label>
-                            <label>BRUTTO: </label><label id="FVBruttoField"></label>
+                            <label><p class="word net"></p></label><label id="FVNettoField"></label>
+                            <label><p class="word gross"></p></label><label id="FVBruttoField"></label>
                         </div>
                         <br>
+                        <div class="form-inline">
+                            <input id="FVproductSearch" class="form-control searchBox productDetailsAddLang" type="text">
+                            <input id="newFVRecord" class="btn btn-default addPositionBttLang" type="button" value="Dodaj pozycję">
+                            <input id="deleteFVRecord" class="btn btn-default delPositionBttLang" type="button" value="Usuń zaznaczoną pozycję">
+                            <input id="editFVRecord" class="btn btn-default editPositionBttLang" type="button" value="Edytuj zaznaczoną pozycję">
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <td class="WZProdCol1">ID</td>
-                                        <td class="WZProdCol2">Nazwa</td>
-                                        <td class="WZProdCol3">Ilość</td>
-                                        <td class="WZProdCol4">Jedn.</td>
-                                        <td class="WZProdCol5">Vat[%]</td>
-                                        <td class="WZProdCol6">Rabat[%]</td>
-                                        <td class="WZProdCol7">Cena Netto</td>
-                                        <td class="WZProdCol8">Cena Brutto</td>
-                                        <td class="WZProdCol9">Wartość Netto</td>
-                                        <td class="WZProdCol10">Wartość Brutto</td>
-                                        <td class="WZProdCol11">Z rabatem</td>
+                                        <td class="WZProdCol2"><p class="word prodNameHeaderLang"></p></td>
+                                        <td class="WZProdCol3"><p class="word prodQtyHeaderLang"></p></td>
+                                        <td class="WZProdCol4"><p class="word prodUnitHeaderLang"></p></td>
+                                        <td class="WZProdCol5"><p class="word prodTaxHeaderLang"></p></td>
+                                        <td class="WZProdCol6"><p class="word prodDiscountHeaderLang"></p></td>
+                                        <td class="WZProdCol7"><p class="word prodNetHeaderLang"></p></td>
+                                        <td class="WZProdCol8"><p class="word prodGrossHeaderLang"></p></td>
+                                        <td class="WZProdCol9"><p class="word prodValNetHeaderLang"></p></td>
+                                        <td class="WZProdCol10"><p class="word prodValGrossHeaderLang"></p></td>
+                                        <td class="WZProdCol11"><p class="word prodWithDiscountHeaderLang"></p></td>
                                     </tr>
                                 </thead>
                                 <tbody id="FVProdTabContent">

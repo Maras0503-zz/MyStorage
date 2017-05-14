@@ -7,6 +7,7 @@ var FVConOrder = 1;
 var FVConCount = 0;
 var selectedContractorID = 0;
 var selectedFVID = 0;
+var isDocumentAccepted = 0;
 
 pageFunctions.wzTabFunc = (function(){
     var init = (function(){
@@ -83,6 +84,18 @@ pageFunctions.wzTabFunc = (function(){
                     $('#FVPopup').removeClass('hidden');
                     $('#FVContainer').addClass('blur');
                     selectedFVID = id.substring(4,id.lenght);
+                    isDocumentAccepted = checkDocumentAccept(selectedFVID);
+                    if(isDocumentAccepted == 0){
+                        $('#newFVRecord').removeClass('hidden');
+                        $('#editFVRecord').removeClass('hidden');
+                        $('#deleteFVRecord').removeClass('hidden');
+                        $('#FVproductSearch').removeClass('hidden');
+                    } else {
+                        $('#newFVRecord').addClass('hidden');
+                        $('#editFVRecord').addClass('hidden');
+                        $('#deleteFVRecord').addClass('hidden');
+                        $('#FVproductSearch').addClass('hidden');
+                    }
                     getDocumentInfo();
                     getFVRecords();
                 }

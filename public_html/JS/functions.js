@@ -2,6 +2,10 @@ function f(e){
     e=e.which||event.keyCode;
     return(e>44&&e<58||e==8);
 }
+function e(e){
+    e=e.which||event.keyCode;
+    return((((e>47&&e<58) || (e>95&&e<106)) || e==8) && e!=190 && e!=188 && e!=110);
+}
 
 var acceptDocument = (function(docId){
     param = {};
@@ -49,8 +53,44 @@ var getDocumentRecordsCount = (function(docId){
     return ans;
 });
 
-var delDocument = (function(docId){
+var getFindProductToAddCount = (function(docId){
+    var ans = 0;
     param = {};
+    param['parameter'] = docId;
+    $.ajax({
+        type: 'POST',
+        async: false,
+        data: param,
+        dataType: 'json',
+        url: 'PHP/getFindProductCount.php',
+        success: function(data){
+            ans = data[0].count;
+        }
+    });
+    return ans;
+});
+
+var getFindProductToAdd = (function(pageNo, ord, docId){
+    var ans = 0;
+    param = {};
+    param['pageNo'] = pageNo;
+    param['ord'] = ord;
+    param['parameter'] = docId;
+    $.ajax({
+        type: 'POST',
+        async: false,
+        data: param,
+        dataType: 'json',
+        url: 'PHP/getFindProduct.php',
+        success: function(data){
+            ans = data;
+        }
+    });
+    return ans;
+});
+
+var delDocument = (function(docId){
+    var param = {};
     param['docId'] = docId;
     $.ajax({
       type: 'POST',
