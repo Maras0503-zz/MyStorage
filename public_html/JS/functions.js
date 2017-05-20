@@ -19,6 +19,18 @@ var acceptDocument = (function(docId){
     });
 });
 
+var delDocumentPos = (function(posId){
+    param = {};
+    param['posId'] = posId;
+    $.ajax({
+      type: 'POST',
+      async: false,
+      data: param,
+      dataType: 'json',
+      url: 'PHP/delDocumentPos.php'
+    });
+});
+
 var checkDocumentAccept = (function(docId){
     var ans = 0;
     param = {};
@@ -35,6 +47,25 @@ var checkDocumentAccept = (function(docId){
     });
     return ans;
 });
+
+var checkQty = (function(prodId, qty){
+    var ans = 0;
+    param = {};
+    param['prodId'] = prodId;
+    param['qty'] = qty;
+    $.ajax({
+        type: 'POST',
+        async: false,
+        data: param,
+        dataType: 'json',
+        url: 'PHP/checkQty.php',
+        success: function(data){
+            ans = data[0].answer;
+        }
+    });
+    return ans;
+});
+
 
 var getDocumentRecordsCount = (function(docId){
     var ans = 0;

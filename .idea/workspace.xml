@@ -2,27 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2840bc5-aec7-46c0-91b2-ed1925197391" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/PHP/addPosToWZ.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/PHP/getFindProduct.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/PHP/getFindProductCount.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/PHP/getProductDetails.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/PHP/getProductDetailsById.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public_html/IMG/gb.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public_html/IMG/pl.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public_html/IMG/sett.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public_html/IMG/settbiw.png" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public_html/PHP/checkQty.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/CSS/SCSS/layout.scss" afterPath="$PROJECT_DIR$/public_html/CSS/SCSS/layout.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/CSS/SCSS/tableColumns.scss" afterPath="$PROJECT_DIR$/public_html/CSS/SCSS/tableColumns.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/CSS/main.css" afterPath="$PROJECT_DIR$/public_html/CSS/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/JS/functions.js" afterPath="$PROJECT_DIR$/public_html/JS/functions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/JS/fvTabFunc.js" afterPath="$PROJECT_DIR$/public_html/JS/fvTabFunc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/JS/languages.js" afterPath="$PROJECT_DIR$/public_html/JS/languages.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/JS/login.js" afterPath="$PROJECT_DIR$/public_html/JS/login.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/JS/wzTabFunc.js" afterPath="$PROJECT_DIR$/public_html/JS/wzTabFunc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/PHP/getDocumentRecords.php" afterPath="$PROJECT_DIR$/public_html/PHP/getDocumentRecords.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/index.html" afterPath="$PROJECT_DIR$/public_html/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/mainPage.html" afterPath="$PROJECT_DIR$/public_html/mainPage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/PHP/checkPass.php" afterPath="$PROJECT_DIR$/public_html/PHP/checkPass.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,21 +19,31 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.618878">
+    <splitter split-orientation="horizontal" split-proportion="0.67021275">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="wzTabFunc.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/public_html/JS/wzTabFunc.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-208">
-                  <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+                <state relative-caret-position="130">
+                  <caret line="150" column="82" lean-forward="false" selection-start-line="150" selection-start-column="82" selection-end-line="150" selection-end-column="82" />
                   <folding>
-                    <marker date="1494799930559" expanded="true" signature="29290:30090" ph="..." />
-                    <marker date="1494799930559" expanded="true" signature="30335:31069" ph="..." />
-                    <marker date="1494799930559" expanded="true" signature="31319:31815" ph="..." />
-                    <marker date="1494799930559" expanded="true" signature="40235:41370" ph="..." />
-                    <marker date="1494799930559" expanded="true" signature="41440:42575" ph="..." />
+                    <marker date="1494967252861" expanded="true" signature="31871:32671" ph="..." />
+                    <marker date="1494967252861" expanded="true" signature="32916:33650" ph="..." />
+                    <marker date="1494967252861" expanded="true" signature="33900:34396" ph="..." />
+                    <marker date="1494967252861" expanded="true" signature="42872:44007" ph="..." />
+                    <marker date="1494967252861" expanded="true" signature="44077:45212" ph="..." />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="checkPass.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/public_html/PHP/checkPass.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="255">
+                  <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -92,21 +88,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="tableColumns.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/public_html/CSS/SCSS/tableColumns.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="34">
-                  <caret line="409" column="0" lean-forward="false" selection-start-line="409" selection-start-column="0" selection-end-line="409" selection-end-column="16" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="mainPage.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="mainPage.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/public_html/mainPage.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="317">
@@ -116,11 +102,41 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="layout.scss" pinned="false" current-in-tab="false">
+          <file leaf-file-name="layout.scss" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/public_html/CSS/SCSS/layout.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="409">
-                  <caret line="288" column="20" lean-forward="false" selection-start-line="288" selection-start-column="20" selection-end-line="288" selection-end-column="20" />
+                <state relative-caret-position="399">
+                  <caret line="291" column="24" lean-forward="false" selection-start-line="291" selection-start-column="24" selection-end-line="291" selection-end-column="24" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="tableColumns.scss" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/public_html/CSS/SCSS/tableColumns.scss">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="146">
+                  <caret line="280" column="11" lean-forward="false" selection-start-line="280" selection-start-column="5" selection-end-line="280" selection-end-column="11" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="functions.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/public_html/JS/functions.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="390">
+                  <caret line="50" column="32" lean-forward="false" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="checkQty.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/public_html/PHP/checkQty.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="85">
+                  <caret line="5" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -139,11 +155,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>contractorChoseLang</find>
-      <find>login</find>
-      <find>dodaw</find>
-      <find>FVpop</find>
-      <find>fvpop</find>
       <find>WZpop</find>
       <find>prodIdLang</find>
       <find>addProduct</find>
@@ -155,12 +166,9 @@
       <find>session</find>
       <find>WZProdCol</find>
       <find>prodDi</find>
-      <find>wzprodcol</find>
       <find>wz</find>
       <find>wzprod</find>
-      <find>WZProdNumberBox</find>
       <find>productVat</find>
-      <find>closeWZ</find>
       <find>delDocument</find>
       <find>getDocumentInfo</find>
       <find>getWZRec</find>
@@ -169,6 +177,14 @@
       <find>prodtoadd</find>
       <find>fill</find>
       <find>selectedProductToAdd</find>
+      <find>wzprodcol</find>
+      <find>WZProdNumberBox</find>
+      <find>ConCol</find>
+      <find>closeWZ</find>
+      <find>.val('');</find>
+      <find>ById</find>
+      <find>== 1</find>
+      <find>fillProductAddingForm</find>
     </findStrings>
     <replaceStrings>
       <replace>Doc</replace>
@@ -217,13 +233,15 @@
         <option value="$PROJECT_DIR$/public_html/index.html" />
         <option value="$PROJECT_DIR$/public_html/JS/languages.js" />
         <option value="$PROJECT_DIR$/public_html/CSS/SCSS/tableColumns.scss" />
-        <option value="$PROJECT_DIR$/public_html/CSS/SCSS/layout.scss" />
         <option value="$PROJECT_DIR$/public_html/PHP/getDocumentRecords.php" />
         <option value="$PROJECT_DIR$/public_html/PHP/getProductDetails.php" />
-        <option value="$PROJECT_DIR$/public_html/JS/functions.js" />
         <option value="$PROJECT_DIR$/public_html/PHP/addPosToWZ.php" />
         <option value="$PROJECT_DIR$/public_html/mainPage.html" />
         <option value="$PROJECT_DIR$/public_html/PHP/getProductDetailsById.php" />
+        <option value="$PROJECT_DIR$/public_html/JS/functions.js" />
+        <option value="$PROJECT_DIR$/public_html/PHP/checkQty.php" />
+        <option value="$PROJECT_DIR$/public_html/CSS/SCSS/layout.scss" />
+        <option value="$PROJECT_DIR$/public_html/PHP/checkPass.php" />
         <option value="$PROJECT_DIR$/public_html/JS/wzTabFunc.js" />
       </list>
     </option>
@@ -528,25 +546,24 @@
       <workItem from="1493494067949" duration="331000" />
       <workItem from="1493671331123" duration="351000" />
       <workItem from="1493671695488" duration="15704000" />
-      <workItem from="1494170816674" duration="35147000" />
+      <workItem from="1494170816674" duration="46887000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99385000" />
+    <option name="totallyTimeSpent" value="111125000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16561514" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16530278" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14772727" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15384616" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12274959" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23676248" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21785174" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -594,20 +611,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public_html/CSS/SCSS/tableColumns.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6800">
-          <caret line="400" column="22" lean-forward="false" selection-start-line="400" selection-start-column="16" selection-end-line="400" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/JS/fvTabFunc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8840">
-          <caret line="520" column="41" lean-forward="false" selection-start-line="520" selection-start-column="35" selection-end-line="520" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/CSS/SCSS/layout.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1190">
@@ -648,11 +651,11 @@
         <state relative-caret-position="2907">
           <caret line="171" column="17" lean-forward="false" selection-start-line="171" selection-start-column="14" selection-end-line="171" selection-end-column="17" />
           <folding>
-            <marker date="1494799930559" expanded="true" signature="29290:30090" ph="..." />
-            <marker date="1494799930559" expanded="true" signature="30335:31069" ph="..." />
-            <marker date="1494799930559" expanded="true" signature="31319:31815" ph="..." />
-            <marker date="1494799930559" expanded="true" signature="40235:41370" ph="..." />
-            <marker date="1494799930559" expanded="true" signature="41440:42575" ph="..." />
+            <marker date="1494967252861" expanded="true" signature="31871:32671" ph="..." />
+            <marker date="1494967252861" expanded="true" signature="32916:33650" ph="..." />
+            <marker date="1494967252861" expanded="true" signature="33900:34396" ph="..." />
+            <marker date="1494967252861" expanded="true" signature="42872:44007" ph="..." />
+            <marker date="1494967252861" expanded="true" signature="44077:45212" ph="..." />
           </folding>
         </state>
       </provider>
@@ -884,26 +887,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/CSS/SCSS/tableColumns.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="409" column="0" lean-forward="false" selection-start-line="409" selection-start-column="0" selection-end-line="409" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/PHP/getFindProduct.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/CSS/SCSS/layout.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="288" column="20" lean-forward="false" selection-start-line="288" selection-start-column="20" selection-end-line="288" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -940,14 +927,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/JS/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="95" column="19" lean-forward="true" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/PHP/addPosToWZ.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -972,16 +951,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/CSS/SCSS/tableColumns.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="280" column="11" lean-forward="false" selection-start-line="280" selection-start-column="5" selection-end-line="280" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/JS/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="50" column="32" lean-forward="false" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/PHP/checkQty.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/CSS/SCSS/layout.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="291" column="24" lean-forward="false" selection-start-line="291" selection-start-column="24" selection-end-line="291" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/PHP/checkPass.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/JS/wzTabFunc.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-208">
-          <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+        <state relative-caret-position="130">
+          <caret line="150" column="82" lean-forward="false" selection-start-line="150" selection-start-column="82" selection-end-line="150" selection-end-column="82" />
           <folding>
-            <marker date="1494799930559" expanded="true" signature="29290:30090" ph="..." />
-            <marker date="1494799930559" expanded="true" signature="30335:31069" ph="..." />
-            <marker date="1494799930559" expanded="true" signature="31319:31815" ph="..." />
-            <marker date="1494799930559" expanded="true" signature="40235:41370" ph="..." />
-            <marker date="1494799930559" expanded="true" signature="41440:42575" ph="..." />
+            <marker date="1494967252861" expanded="true" signature="31871:32671" ph="..." />
+            <marker date="1494967252861" expanded="true" signature="32916:33650" ph="..." />
+            <marker date="1494967252861" expanded="true" signature="33900:34396" ph="..." />
+            <marker date="1494967252861" expanded="true" signature="42872:44007" ph="..." />
+            <marker date="1494967252861" expanded="true" signature="44077:45212" ph="..." />
           </folding>
         </state>
       </provider>

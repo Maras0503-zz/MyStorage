@@ -81,9 +81,13 @@ pageFunctions.wzTabFunc = function () {
             }
         });
         $('#newWZRecord').on('click', function () {
+            $('#WZProdWithoutCommaInput').removeClass('wrongValue');
+            $('#WZProdFloatingPointInput').removeClass('wrongValue');
+            $('#WZProdAddDiscount').removeClass('wrongValue');
             $('#WZProdWithoutCommaInput').val('');
             $('#WZProdFloatingPointInput').val('');
-            $('#WZPosAddValue').val('');
+            $('#WZPosAddValue').html('');
+            $('#WZPosAddValueGross').html('');
             $('#WZProdAddDiscount').val('');
             if (getFindProductToAddCount($('#WZproductSearch').val()) == 1) {
                 $('#WZAddingProduct').removeClass('hidden');
@@ -98,6 +102,17 @@ pageFunctions.wzTabFunc = function () {
             }
         });
 
+        $('#deleteWZRecord').on('click', function(){
+            console.log(selectedWZID);
+            console.log(selectedWZRecord);
+            if(selectedWZRecord != 0) {
+                delDocumentPos(selectedWZRecord);
+                getWZRecords(selectedWZID);
+            } else {
+                alert('Nie wybrano pozycji do usunięcia!');
+            } 
+        });
+
         $('#calculateValue').on('click', function(){
             var qty;
             var disc;
@@ -108,10 +123,6 @@ pageFunctions.wzTabFunc = function () {
                 disc = $('#WZProdAddDiscount').val();
                 sum = (productPrice*qty)-(productPrice*qty*(disc/100));
                 gross = sum+(sum*(productVat/100));
-                console.log(productPrice);
-                console.log(qty);
-                console.log(disc);
-                console.log(productVat);
                 $('#WZPosAddValue').html(Math.round(sum*100)/100);
                 $('#WZPosAddValueGross').html(Math.round(gross*100)/100);
             } else {
@@ -119,10 +130,6 @@ pageFunctions.wzTabFunc = function () {
                 disc = $('#WZProdAddDiscount').val();
                 sum = (productPrice*qty)-(productPrice*qty*(disc/100));
                 gross = sum+(sum*(productVat/100));
-                console.log(productPrice);
-                console.log(qty);
-                console.log(disc);
-                console.log(productVat);
                 $('#WZPosAddValue').html(Math.round(sum*100)/100);
                 $('#WZPosAddValueGross').html(Math.round(gross*100)/100);
             }
@@ -133,23 +140,65 @@ pageFunctions.wzTabFunc = function () {
             fillProductAddingFormById(selectedFindProduct);
             $('#WZChosingProduct').addClass('hidden');
         });
-
+        $('#WZProdFloatingPointInput').on('focus', function () {
+            $('#WZProdFloatingPointInput').removeClass('wrongValue');
+        });
+        $('#WZProdWithoutCommaInput').on('focus', function () {
+            $('#WZProdWithoutCommaInput').removeClass('wrongValue');
+        });
+        $('#WZProdAddDiscount').on('focus', function () {
+            $('#WZProdAddDiscount').removeClass('wrongValue');
+        });
         $('#confirmWZAddProduct').on('click', function(){
-            if(divider == 1){
-                if(1==1){
-                    addPosToWZ(selectedWZID,selectedProductToAdd, Math.round($('#WZProdWithoutCommaInput').val()*100), Math.round($('#WZProdAddDiscount').val()*100));
-                    getWZRecords();
-                    $('#WZAddingProduct').addClass('hidden');
+            if(divider == 0){
+                if(!isNaN($('#WZProdFloatingPointInput').val()) && !isNaN($('#WZProdAddDiscount').val())){
+                    if($('#WZProdFloatingPointInput').val() != 0){
+                        if(checkQty(selectedProductToAdd, Math.round($('#WZProdWithoutCommaInput').val() * 100)) == 1){
+                            addPosToWZ(selectedWZID, selectedProductToAdd, Math.round($('#WZProdFloatingPointInput').val() * 100), Math.round($('#WZProdAddDiscount').val() * 100));
+                            getWZRecords();
+                            $('#WZAddingProduct').addClass('hidden');
+                        } else {
+                            fillProductAddingFormById(selectedFindProduct);
+                            $('#WZProdFloatingPointInput').addClass('wrongValue');
+                            alert('Zbyt towaru mało na magazynie');
+                        }
+                    } else {
+                        $('#WZProdFloatingPointInput').addClass('wrongValue');
+                        alert('Ilość musi być większa od 0');
+                    }
                 } else {
-                    alert('Niepoprawne wartości!');
+                    if(isNaN($('#WZProdAddDiscount').val())) {
+                        $('#WZProdAddDiscount').addClass('wrongValue');
+                    }
+                    if(isNaN($('#WZProdFloatingPointInput').val())){
+                        $('#WZProdFloatingPointInput').addClass('wrongValue');
+                    }
+                    alert('Niepoprawne wartości');
                 }
-            } else {
-                if(1==1){
-                    addPosToWZ(selectedWZID,selectedProductToAdd, Math.round($('#WZProdFloatingPointInput').val()*100), Math.round($('#WZProdAddDiscount').val()*100));
-                    getWZRecords();
-                    $('#WZAddingProduct').addClass('hidden');
+            } else if (divider == 1){
+                if(!isNaN($('#WZProdWithoutCommaInput').val()) && !isNaN($('#WZProdAddDiscount').val())){
+                    if($('#WZProdWithoutCommaInput').val() != 0){
+                        if(checkQty(selectedProductToAdd, Math.round($('#WZProdWithoutCommaInput').val() * 100)) == 1){
+                            addPosToWZ(selectedWZID, selectedProductToAdd, Math.round($('#WZProdWithoutCommaInput').val() * 100), Math.round($('#WZProdAddDiscount').val() * 100));
+                            getWZRecords();
+                            $('#WZAddingProduct').addClass('hidden');
+                        } else {
+                            fillProductAddingFormById(selectedFindProduct);
+                            $('#WZProdWithoutCommaInput').addClass('wrongValue');
+                            alert('Zbyt mało towaru na magazynie');
+                        }
+                    } else {
+                        $('#WZProdWithoutCommaInput').addClass('wrongValue');
+                        alert('Ilość musi być większa od 0');
+                    }
                 } else {
-                    alert('Niepoprawne wartości!');
+                    if(isNaN($('#WZProdAddDiscount').val())) {
+                        $('#WZProdAddDiscount').addClass('wrongValue');
+                    }
+                    if(isNaN($('#WZProdWithoutCommaInput').val())){
+                        $('#WZProdWithoutCommaInput').addClass('wrongValue');
+                    }
+                    alert('Niepoprawne wartości');
                 }
             }
         });
@@ -832,6 +881,7 @@ pageFunctions.wzTabFunc = function () {
         productPrice = (details[0]['product_price']/100);
         productVat = (details[0]['vat_value']);
         selectedProductToAdd = details[0]['product_id'];
+        selectedFindProduct = details[0]['product_id'];
         if(details[0]['product_divider'] == 0) {
             $('#WZProdFloatingPoint').removeClass('hidden');
             $('#WZProdWithoutComma').addClass('hidden');
@@ -929,6 +979,7 @@ pageFunctions.wzTabFunc = function () {
 
     var createWZProductTableContent = (function (data) {
         var ans = '';
+        selectedWZRecord = 0;
         $('#WZBruttoV0').html(0);
         $('#WZV0').html(0);
         $('#WZBruttoV5').html(0);
