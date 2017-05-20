@@ -420,7 +420,7 @@ pageFunctions.wzTabFunc = (function(){
         param['conName'] = $("#FVconNameBox").val();
         $.ajax({
           type: 'POST',
-          async: false,
+          async: true,
           data: param,
           dataType: 'json',
           url: 'PHP/getDocumentsCount.php',            
