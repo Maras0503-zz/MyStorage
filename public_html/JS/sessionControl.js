@@ -8,7 +8,13 @@ pageFunctions.sessionControl = (function(){
     
     var validateSession = (function(){
         if(checkSession() != true){
-            alert("Sesia wygasła, zaloguj się ponownie.");
+            if(window.sessionStorage.getItem('lang')=='pl') {
+                alert("Sesia wygasła, zaloguj się ponownie.");
+            } else if(window.sessionStorage.getItem('lang')=='en'){
+                alert("Session expired, please log in again.");
+            } else {
+                alert("Sesia wygasła, zaloguj się ponownie.");
+            }
             window.location.replace('index.html');
             window.sessionStorage.setItem('id', null);
             window.sessionStorage.setItem('token', null);
@@ -16,7 +22,13 @@ pageFunctions.sessionControl = (function(){
     });
     
     var logout = (function(){
-        alert("Wylogowano!");
+        if(window.sessionStorage.getItem('lang')=='pl') {
+            alert("Wylogowano.");
+        } else if(window.sessionStorage.getItem('lang')=='en'){
+            alert("Log off.");
+        } else {
+            alert("Wylogowano.");
+        }
         window.location.replace('index.html');
         window.sessionStorage.setItem('id', null);
         window.sessionStorage.setItem('token', null);

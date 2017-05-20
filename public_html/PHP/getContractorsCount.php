@@ -1,13 +1,10 @@
 <?php
-    $noMin = $_POST['noMin'];
-    $noMax = $_POST['noMax'];
-    $minPrice = $_POST['minPrice'];
-    $maxPrice = $_POST['maxPrice'];
     $id = $_POST['id'];
-    $prodName = $_POST['name'];
+    $conName = $_POST['conName'];
+    $conCity = $_POST['conCity'];
+    $conNIP = $_POST['conNIP'];
 
-    //CHECK IS USER EXIST AND RETURN TOKEN
-    $query = "select getProductCount('".$noMin."','".$noMax."','".$minPrice."','".$maxPrice."','".$id."','".$prodName."') as count";
+    $query = "select getContractorsCount('".$id."','".$conName."','".$conCity."','".$conNIP."') as count";
     function select($query){
         include('connect.php');
         $returnArray = array();

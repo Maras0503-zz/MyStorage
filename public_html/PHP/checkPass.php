@@ -16,8 +16,8 @@ if(isset($_POST['login']) && isset($_POST['pass'])){
             array_push($returnArray,$rowArray);
         }
         
-        if($returnArray[0].userId != null){
-            $query1 = "select saveNewToken('".$returnArray[0][userId]."','".$_POST['token']."','".$_POST['valid']."')";
+        if($returnArray[0]['userId'] != null){
+            $query1 = "select saveNewToken('".$returnArray[0]['userId']."','".$_POST['token']."','".$_POST['valid']."')";
             $mysqli->query($query1);
         }
         $mysqli->close();

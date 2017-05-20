@@ -1,208 +1,645 @@
-//Product table header
+//Product table=================================================================
+$prodTabCol1: 5%;
+$prodTabCol2: 30%;
+$prodTabCol3: 15%;
+$prodTabCol4: 6%;
+$prodTabCol5: 6%;
+$prodTabCol6: 3%;
+$prodTabCol7: 20%;
+$prodTabCol8: 10%;
+$prodTabCol9: 5%;
+
+
 .col1{
-     text-align: center;
-     width: 5%;
-     max-width: 5%;
-     min-width: 5%;
+    cursor: pointer;
+    text-align: center;
+    width: $prodTabCol1;
+    max-width: $prodTabCol1;
+    min-width: $prodTabCol1;
+}
+.col2{
+    cursor: pointer;
+    text-align: center;
+    width: $prodTabCol2;
+    max-width: $prodTabCol2;
+    min-width: $prodTabCol2;
+}
+.col3{
+    cursor: pointer;
+    text-align: center;
+    width: $prodTabCol3;
+    max-width: $prodTabCol3;
+    min-width: $prodTabCol3;
+}
+.col4{
+    cursor: pointer;
+    text-align: center;
+    width: $prodTabCol4;
+    max-width: $prodTabCol4;
+    min-width: $prodTabCol4;
+}
+ .col5{
+    cursor: pointer;
+    text-align: center;
+    width: $prodTabCol5;
+    max-width: $prodTabCol5;
+    min-width: $prodTabCol5;
+}
+.col6{
+    cursor: pointer;
+    text-align: center;
+    width: $prodTabCol6;
+    max-width: $prodTabCol6;
+    min-width: $prodTabCol6;
+}
+.col7{
+    cursor: pointer;
+    text-align: center;
+    width: $prodTabCol7;
+    max-width: $prodTabCol7;
+    min-width: $prodTabCol7;
+}
+.col8{
+    cursor: pointer;
+    text-align: center;
+    width: $prodTabCol8;
+    max-width: $prodTabCol8;
+    min-width: $prodTabCol8;
+}
+.col9{
+    cursor: pointer;
+    text-align: center;
+    width: $prodTabCol9;
+    max-width: $prodTabCol9;
+    min-width: $prodTabCol9;
+}
+//Product table body
+.col1b{
+    cursor: pointer;
+    text-align: center;
+    width: $prodTabCol1;
+    max-width: $prodTabCol1;
+    min-width: $prodTabCol1;
+}
+.col2b{
+    cursor: pointer;
+    text-align: left;
+    width: $prodTabCol2;
+    max-width: $prodTabCol2;
+    min-width: $prodTabCol2;
+}
+.col3b{
+    cursor: pointer;
+    text-align: left;
+    width: $prodTabCol3;
+    max-width: $prodTabCol3;
+    min-width: $prodTabCol3;
+}
+.col4b{
+    cursor: pointer;
+    text-align: right;
+    width: $prodTabCol4;
+    max-width: $prodTabCol4;
+    min-width: $prodTabCol4;
+}
+ .col5b{
+    cursor: pointer;
+    text-align: right;
+    width: $prodTabCol5;
+    max-width: $prodTabCol5;
+    min-width: $prodTabCol5;
+}
+.col6b{
+    cursor: pointer;
+    text-align: center;
+    width: $prodTabCol6;
+    max-width: $prodTabCol6;
+    min-width: $prodTabCol6;
+}
+.col7b{
+    cursor: pointer;
+    text-align: center;
+    width: $prodTabCol7;
+    max-width: $prodTabCol7;
+    min-width: $prodTabCol7;
+}
+.col8b{
+    cursor: pointer;
+    text-align: center;
+    width: $prodTabCol8;
+    max-width: $prodTabCol8;
+    min-width: $prodTabCol8;
+}
+.col9b{
+    cursor: pointer;
+    text-align: center;
+    width: $prodTabCol9;
+    max-width: $prodTabCol9;
+    min-width: $prodTabCol9;
+}
+//Product table end=============================================================
+//Doc table======================================================================
+$DocCol1: 5%;
+$DocCol2: 5%;
+$DocCol3: 3%;
+$DocCol4: 8%;
+$DocCol5: 30%;
+$DocCol6: 5%;
+$DocCol7: 15%;
+$DocCol8: 15%;
+$DocCol9: 14%;
+
+.DocCol1{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol1;
+    max-width: $DocCol1;
+    min-width: $DocCol1;
+}
+.DocCol2{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol2;
+    max-width: $DocCol2;
+    min-width: $DocCol2;
+}
+.DocCol3{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol3;
+    max-width: $DocCol3;
+    min-width: $DocCol3;
+}
+.DocCol4{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol4;
+    max-width: $DocCol4;
+    min-width: $DocCol4;
+}
+ .DocCol5{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol5;
+    max-width: $DocCol5;
+    min-width: $DocCol5;
+}
+.DocCol6{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol6;
+    max-width: $DocCol6;
+    min-width: $DocCol6;
+}
+.DocCol7{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol7;
+    max-width: $DocCol7;
+    min-width: $DocCol7;
+}
+.DocCol8{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol8;
+    max-width: $DocCol8;
+    min-width: $DocCol8;
+}
+.DocCol9{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol9;
+    max-width: $DocCol9;
+    min-width: $DocCol9;
+}
+//Doc table body
+.DocCol1b{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol1;
+    max-width: $DocCol1;
+    min-width: $DocCol1;
+}
+.DocCol2b{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol2;
+    max-width: $DocCol2;
+    min-width: $DocCol2;
+}
+.DocCol3b{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol3;
+    max-width: $DocCol3;
+    min-width: $DocCol3;
+}
+.DocCol4b{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol4;
+    max-width: $DocCol4;
+    min-width: $DocCol4;
+}
+ .DocCol5b{
+    cursor: pointer;
+    text-align: left;
+    width: $DocCol5;
+    max-width: $DocCol5;
+    min-width: $DocCol5;
+}
+.DocCol6b{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol6;
+    max-width: $DocCol6;
+    min-width: $DocCol6;
+}
+.DocCol7b{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol7;
+    max-width: $DocCol7;
+    min-width: $DocCol7;
+}
+.DocCol8b{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol8;
+    max-width: $DocCol8;
+    min-width: $DocCol8;
+}
+.DocCol9b{
+    cursor: pointer;
+    text-align: center;
+    width: $DocCol9;
+    max-width: $DocCol9;
+    min-width: $DocCol9;
+}
+//WZ table end==================================================================
+//WZ Contractors Table==========================================================
+ $DocConCol1: 8%;
+ $DocConCol2: 20%;
+ $DocConCol3: 10%;
+ $DocConCol4: 7%;
+ $DocConCol5: 10%;
+ $DocConCol6: 15%;
+ $DocConCol7: 10%;
+ $DocConCol8: 15%;
+ 
+ .DocConCol1{
+    cursor: pointer;
+    text-align: center;
+    width: $DocConCol1;
+    max-width: $DocConCol1;
+    min-width: $DocConCol1;
  }
- .col2{
-     text-align: center;
-     width: 30%;
-     max-width: 30%;
-     min-width: 30%;
+ .DocConCol2{
+    cursor: pointer;
+    text-align: center;
+    width: $DocConCol2;
+    max-width: $DocConCol2;
+    min-width: $DocConCol2;
  }
- .col3{
-     text-align: center;
-     width: 15%;
-     max-width: 15%;
-     min-width: 15%;
+ .DocConCol3{
+    cursor: pointer;
+    text-align: center;
+    width: $DocConCol3;
+    max-width: $DocConCol3;
+    min-width: $DocConCol3;
  }
- .col4{
-     text-align: center;
-     width: 6%;
-     max-width: 6%;
-     min-width: 6%;
+ .DocConCol4{
+    cursor: pointer;
+    text-align: center;
+    width: $DocConCol4;
+    max-width: $DocConCol4;
+    min-width: $DocConCol4;
  }
-  .col5{
-     text-align: center;
-     width: 6%;
-     max-width: 6%;
-     min-width: 6%;
+ .DocConCol5{
+    cursor: pointer;
+    text-align: center;
+    width: $DocConCol5;
+    max-width: $DocConCol5;
+    min-width: $DocConCol5;
  }
- .col6{
-     text-align: center;
-     width: 3%;
-     max-width: 3%;
-     min-width: 3%;
+ .DocConCol6{
+    cursor: pointer;
+    text-align: center;
+    width: $DocConCol6;
+    max-width: $DocConCol6;
+    min-width: $DocConCol6;
  }
- .col7{
-     text-align: center;
-     width: 20%;
-     max-width: 20%;
-     min-width: 20%;
+ .DocConCol7{
+    cursor: pointer;
+    text-align: center;
+    width: $DocConCol7;
+    max-width: $DocConCol7;
+    min-width: $DocConCol7;
  }
- .col8{
-     text-align: center;
-     width: 10%;
-     max-width: 10%;
-     min-width: 10%;
+ .DocConCol8{
+    cursor: pointer;
+    text-align: center;
+    width: $DocConCol8;
+    max-width: $DocConCol8;
+    min-width: $DocConCol8;
  }
- .col9{
-     text-align: center;
-     width: 5%;
-     max-width: 5%;
-     min-width: 5%;
+ //Content
+ .DocConCol1c{
+    cursor: pointer;
+    text-align: center;
+    width: $DocConCol1;
+    max-width: $DocConCol1;
+    min-width: $DocConCol1;
  }
- //Product table body
- .col1b{
-     text-align: center;
-     width: 5%;
-     max-width: 5%;
-     min-width: 5%;
+ .DocConCol2c{
+    cursor: pointer;
+    text-align: left;
+    width: $DocConCol2;
+    max-width: $DocConCol2;
+    min-width: $DocConCol2;
  }
- .col2b{
-     text-align: left;
-     width: 30%;
-     max-width: 30%;
-     min-width: 30%;
+ .DocConCol3c{
+    cursor: pointer;
+    text-align: center;
+    width: $DocConCol3;
+    max-width: $DocConCol3;
+    min-width: $DocConCol3;
  }
- .col3b{
-     text-align: left;
-     width: 15%;
-     max-width: 15%;
-     min-width: 15%;
+ .DocConCol4c{
+    cursor: pointer;
+    text-align: center;
+    width: $DocConCol4;
+    max-width: $DocConCol4;
+    min-width: $DocConCol4;
  }
- .col4b{
-     text-align: right;
-     width: 6%;
-     max-width: 6%;
-     min-width: 6%;
+ .DocConCol5c{
+    cursor: pointer;
+    text-align: left;
+    width: $DocConCol5;
+    max-width: $DocConCol5;
+    min-width: $DocConCol5;
  }
-  .col5b{
-     text-align: right;
-     width: 6%;
-     max-width: 6%;
-     min-width: 6%;
+ .DocConCol6c{
+    cursor: pointer;
+    text-align: left;
+    width: $DocConCol6;
+    max-width: $DocConCol6;
+    min-width: $DocConCol6;
  }
- .col6b{
-     text-align: right;
-     width: 3%;
-     max-width: 3%;
-     min-width: 3%;
+ .DocConCol7c{
+    cursor: pointer;
+    text-align: center;
+    width: $DocConCol7;
+    max-width: $DocConCol7;
+    min-width: $DocConCol7;
  }
- .col7b{
-     text-align: center;
-     width: 20%;
-     max-width: 20%;
-     min-width: 20%;
+ .DocConCol8c{
+    cursor: pointer;
+    text-align: center;
+    width: $DocConCol8;
+    max-width: $DocConCol8;
+    min-width: $DocConCol8;
  }
- .col8b{
-     text-align: center;
-     width: 10%;
-     max-width: 10%;
-     min-width: 10%;
- }
- .col9b{
-     text-align: center;
-     width: 5%;
-     max-width: 5%;
-     min-width: 5%;
- }
- //WZ table header
- .WZcol1{
-     text-align: center;
-     width: 5%;
-     max-width: 5%;
-     min-width: 5%;
- }
- .WZcol2{
-     text-align: center;
-     width: 5%;
-     max-width: 5%;
-     min-width: 5%;
- }
- .WZcol3{
-     text-align: center;
-     width: 10%;
-     max-width: 10%;
-     min-width: 10%;
- }
- .WZcol4{
-     text-align: center;
-     width: 10%;
-     max-width: 10%;
-     min-width: 10%;
- }
-  .WZcol5{
-     text-align: center;
-     width: 35%;
-     max-width: 35%;
-     min-width: 35%;
- }
- .WZcol6{
-     text-align: center;
-     width: 5%;
-     max-width: 5%;
-     min-width: 5%;
- }
- .WZcol7{
-     text-align: center;
-     width: 15%;
-     max-width: 15%;
-     min-width: 15%;
- }
- .WZcol8{
-     text-align: center;
-     width: 15%;
-     max-width: 15%;
-     min-width: 15%;
- }
- //WZ table body
- .WZcol1b{
-     text-align: center;
-     width: 5%;
-     max-width: 5%;
-     min-width: 5%;
- }
- .WZcol2b{
-     text-align: center;
-     width: 5%;
-     max-width: 5%;
-     min-width: 5%;
- }
- .WZcol3b{
-     text-align: center;
-     width: 10%;
-     max-width: 10%;
-     min-width: 10%;
- }
- .WZcol4b{
-     text-align: center;
-     width: 10%;
-     max-width: 10%;
-     min-width: 10%;
- }
-  .WZcol5b{
-     text-align: left;
-     width: 35%;
-     max-width: 35%;
-     min-width: 35%;
- }
- .WZcol6b{
-     text-align: center;
-     width: 5%;
-     max-width: 5%;
-     min-width: 5%;
- }
- .WZcol7b{
-     text-align: center;
-     width: 15%;
-     max-width: 15%;
-     min-width: 15%;
- }
- .WZcol8b{
-     text-align: center;
-     width: 15%;
-     max-width: 15%;
-     min-width: 15%;
- }
+//WZ Contractors Table end======================================================
+//WZ Products Table=============================================================
+$WZProdCol1: 5%;
+$WZProdCol2: 20%;
+$WZProdCol3: 5%;
+$WZProdCol4: 5%;
+$WZProdCol5: 5%;
+$WZProdCol6: 7%;
+$WZProdCol7: 8%;
+$WZProdCol8: 10%;
+$WZProdCol9: 10%;
+$WZProdCol10: 10%;
+$WZProdCol11: 10%;
+
+.WZProdCol1{
+    
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdCol1;
+    max-width: $WZProdCol1;
+    min-width: $WZProdCol1;
+}
+.WZProdCol2{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdCol2;
+    max-width: $WZProdCol2;
+    min-width: $WZProdCol2;
+}
+.WZProdCol3{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdCol3;
+    max-width: $WZProdCol3;
+    min-width: $WZProdCol3;
+}
+.WZProdCol4{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdCol4;
+    max-width: $WZProdCol4;
+    min-width: $WZProdCol4;
+}
+.WZProdCol5{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdCol5;
+    max-width: $WZProdCol5;
+    min-width: $WZProdCol5;
+}
+.WZProdCol6{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdCol6;
+    max-width: $WZProdCol6;
+    min-width: $WZProdCol6;
+}.WZProdCol7{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdCol7;
+    max-width: $WZProdCol7;
+    min-width: $WZProdCol7;
+}.WZProdCol8{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdCol8;
+    max-width: $WZProdCol8;
+    min-width: $WZProdCol8;
+}
+.WZProdCol9{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdCol9;
+    max-width: $WZProdCol9;
+    min-width: $WZProdCol9;
+}
+.WZProdCol10{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdCol10;
+    max-width: $WZProdCol10;
+    min-width: $WZProdCol10;
+}
+.WZProdCol11{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdCol11;
+    max-width: $WZProdCol11;
+    min-width: $WZProdCol11;
+}
+.WZProdCol1c{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdCol1;
+    max-width: $WZProdCol1;
+    min-width: $WZProdCol1;
+}
+.WZProdCol2c{
+    cursor: pointer;
+    text-align: left;
+    width: $WZProdCol2;
+    max-width: $WZProdCol2;
+    min-width: $WZProdCol2;
+}
+.WZProdCol3c{
+    cursor: pointer;
+    text-align: right;
+    width: $WZProdCol3;
+    max-width: $WZProdCol3;
+    min-width: $WZProdCol3;
+}
+.WZProdCol4c{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdCol4;
+    max-width: $WZProdCol4;
+    min-width: $WZProdCol4;
+}
+.WZProdCol5c{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdCol5;
+    max-width: $WZProdCol5;
+    min-width: $WZProdCol5;
+}
+.WZProdCol6c{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdCol6;
+    max-width: $WZProdCol6;
+    min-width: $WZProdCol6;
+}.WZProdCol7c{
+    cursor: pointer;
+    text-align: right;
+    width: $WZProdCol7;
+    max-width: $WZProdCol7;
+    min-width: $WZProdCol7;
+}.WZProdCol8c{
+    cursor: pointer;
+    text-align: right;
+    width: $WZProdCol8;
+    max-width: $WZProdCol8;
+    min-width: $WZProdCol8;
+}
+.WZProdCol9c{
+    cursor: pointer;
+    text-align: right;
+    width: $WZProdCol9;
+    max-width: $WZProdCol9;
+    min-width: $WZProdCol9;
+}
+.WZProdCol10c{
+    cursor: pointer;
+    text-align: right;
+    width: $WZProdCol10;
+    max-width: $WZProdCol10;
+    min-width: $WZProdCol10;
+}
+.WZProdCol11c{
+    cursor: pointer;
+    text-align: right;
+    width: $WZProdCol11;
+    max-width: $WZProdCol11;
+    min-width: $WZProdCol11;
+}
+//WZ Products Table end=========================================================
+//WZ Products Chose Table=======================================================
+$WZProdChoseCol1: 10%;
+$WZProdChoseCol2: 30%;
+$WZProdChoseCol3: 30%;
+$WZProdChoseCol4: 15%;
+$WZProdChoseCol5: 15%;
+.WZProdChoseCol1{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdChoseCol1;
+    max-width: $WZProdChoseCol1;
+    min-width: $WZProdChoseCol1;
+}
+.WZProdChoseCol2{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdChoseCol2;
+    max-width: $WZProdChoseCol2;
+    min-width: $WZProdChoseCol2;
+}
+.WZProdChoseCol3{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdChoseCol3;
+    max-width: $WZProdChoseCol3;
+    min-width: $WZProdChoseCol3;
+}
+.WZProdChoseCol4{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdChoseCol4;
+    max-width: $WZProdChoseCol4;
+    min-width: $WZProdChoseCol4;
+}
+.WZProdChoseCol5{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdChoseCol5;
+    max-width: $WZProdChoseCol5;
+    min-width: $WZProdChoseCol5;
+}
+
+.WZProdChoseCol1c{
+    cursor: pointer;
+    text-align: center;
+    width: $WZProdChoseCol1;
+    max-width: $WZProdChoseCol1;
+    min-width: $WZProdChoseCol1;
+}
+.WZProdChoseCol2c{
+    cursor: pointer;
+    text-align: left;
+    width: $WZProdChoseCol2;
+    max-width: $WZProdChoseCol2;
+    min-width: $WZProdChoseCol2;
+}
+.WZProdChoseCol3c{
+    cursor: pointer;
+    text-align: left;
+    width: $WZProdChoseCol3;
+    max-width: $WZProdChoseCol3;
+    min-width: $WZProdChoseCol3;
+}
+.WZProdChoseCol4c{
+    cursor: pointer;
+    text-align: right;
+    width: $WZProdChoseCol4;
+    max-width: $WZProdChoseCol4;
+    min-width: $WZProdChoseCol4;
+}
+.WZProdChoseCol5c{
+    cursor: pointer;
+    text-align: right;
+    width: $WZProdChoseCol5;
+    max-width: $WZProdChoseCol5;
+    min-width: $WZProdChoseCol5;
+}

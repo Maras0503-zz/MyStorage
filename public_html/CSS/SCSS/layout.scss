@@ -1,3 +1,14 @@
+#back{
+    z-index: -1;
+    opacity: 0.1;
+}
+.backDiv{
+    padding-top: 80px;
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
 .login_mini{
     width: 30%;
     @media screen and (max-width: 480px) and (orientation: portrait) {
@@ -46,9 +57,18 @@
  .WZarr{
      font-size: small;
  }
+ .FVarr{
+     font-size: small;
+ }
+ .WZConArr{
+     font-size: small;
+ }
+ .WZProdArr{
+     font-size: small;
+ }
  .tab{
-     background-color: #f9f9f9;
-     margin-top: 0px;
+      background-color: #f9f9f9;
+      margin-top: 0px;
  }
  .main_div{
      position: relative;
@@ -58,6 +78,11 @@
      position: absolute;
      width: 100%;
      height: 100%;
+     top: 0px;
+ }
+ .popupSmall{
+     z-index: 3;
+     position: absolute;
      top: 0px;
  }
  .blur{
@@ -72,11 +97,63 @@
      box-shadow: 10px 10px 15px #666666;
      border-radius: 5px;
      background-color: white;
-     margin-top: 7%;
-     width: 40%;
-     left: 30%;
+     margin-top: 4%;
+     width: 90%;
+     left: 5%;
      @media (max-width: 768px){
          left: 5%;
+         width: 90%;
+     }
+ }
+ .newFVform{
+     z-index: 5;
+     position: absolute;
+     border: solid 1px gray;
+     padding: 10px;
+     box-shadow: 10px 10px 15px #666666;
+     border-radius: 5px;
+     background-color: white;
+     margin-top: 4%;
+     width: 90%;
+     left: 5%;
+     @media (max-width: 768px){
+         left: 5%;
+         width: 90%;
+     }
+ }
+.addProd{
+     z-index: 5;
+     position: absolute;
+     border: solid 1px gray;
+     padding: 10px;
+     box-shadow: 10px 10px 15px #666666;
+     border-radius: 5px;
+     background-color: white;
+     margin-top: 10%;
+     width: 50%;
+     left: 25%;
+     max-height: 70%;
+     @media (max-width: 768px){
+         left: 5%;
+         max-height: 70%;
+         margin-top: 20%;
+         width: 90%;
+     }
+ }
+ .addPhoto{
+     z-index: 5;
+     position: fixed;
+     border: solid 1px gray;
+     padding: 10px;
+     box-shadow: 10px 10px 15px #666666;
+     border-radius: 5px;
+     background-color: white;
+     margin-top: 10%;
+     width: 50%;
+     left: 25%;
+     @media (max-width: 768px){
+         left: 5%;
+         margin-top: 20%;
          width: 90%;
      }
  }
@@ -84,3 +161,133 @@
     color: cornflowerblue;
     font-weight: bold;
  }
+ .form-inline{
+     margin-top: 5px;
+     margin-bottom: 5px;
+ }
+ .table-responsive{
+     margin-top: 5px;
+ }
+ .conPageControls{
+    position: relative;
+    height: 30px;
+    width: 100%; 
+ }
+ .big-center{
+    text-align: center;
+    font-size: x-large; 
+ }
+ .buttonsContainer{
+    position: relative;
+    height: 30px;
+    width: 100%; 
+ }
+ .half{
+    position: relative;
+    width: 50%;
+    @media screen and (max-width: 790px) and (orientation: portrait){
+        width: 100%;
+    }
+}
+ .WZInfoLab{
+    position: relative;
+    padding-left: 10px;
+    width: 20%;
+    font-weight: bold;
+    text-align: left;    
+ }
+ .WZInfo{
+    position: relative;
+    width: 100%;
+    font-weight: normal;
+    text-align: left;
+ }
+ .VATTab{
+    position: relative;
+    width: 30%;
+ }
+ .VATTabCol{
+    position: relative;
+    border: solid 1px black;
+    text-align: right;
+    padding-right: 5px;
+    border-collapse: collapse;
+    width: 33%;
+ }
+ .dateField{
+    position: relative;
+    right: 0px;
+ }
+ .WZSumField{
+     position: relative;
+     right: 0px;
+     height: 20px;
+ }
+ .conLab{
+    position: relative;
+}
+.searchBox{
+    min-width: 300px;
+}
+.detailLabel{
+    min-width: 20%;
+    text-align: right;
+    @media (max-width: 768px){
+        min-width: 30%;
+    }
+}
+.detailLabelVal{
+  text-align: left;
+  margin-left: 5px;
+}
+#productPhoto{
+  //position: initial;
+  width: 100%;
+  text-align: center;
+}
+
+.photo {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-width: 95%;
+}
+
+.productPhotoButtons{
+    position: fixed;
+    margin-top: 10px;
+    right: 26%;
+    margin-top: 10%;
+    top: 5px;
+    width: 50%;
+    @media (max-width: 768px){
+        margin-top: 20%;
+        right: 6%;
+    }
+}
+.word{
+  display: inline;
+}
+.short{
+  width:100%;
+  text-align: center;
+}
+.on_top{
+  z-index: 10;
+}
+.loginInputs{
+  margin-bottom: 15px;
+}
+.WZProdNumberBox{
+  display: inline;
+}
+#calculateValue{
+  cursor: pointer;
+  color: blue;
+}
+.addingPosValues{
+  margin-left: 20px;
+}
+.wrongValue{
+  border: solid 1px red;
+}

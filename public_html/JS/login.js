@@ -13,7 +13,7 @@ pageFunctions.login = (function(){
             if(sucess == true){
                 window.location.replace('mainPage.html');  
             } else {
-                alert("Błędny login lub hasło!");
+                alert("Błędny login lub hasło! / Wrong login or password!");
             }
         });
     });

@@ -22,6 +22,8 @@ $conName = $_POST['conName'];
                 $rowArray['document_accept_date'] = $row['document_accept_date'];
                 $rowArray['document_contractor_id'] = $row['document_contractor_id'];
                 $rowArray['contractor_name'] = $row['contractor_name'];
+                $rowArray['user_lname'] = $row['user_lname'];
+                $rowArray['user_fname'] = $row['user_fname'];
                 array_push($returnArray,$rowArray);
             }
             $mysqli->close();

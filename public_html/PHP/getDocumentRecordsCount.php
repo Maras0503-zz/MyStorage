@@ -1,13 +1,7 @@
 <?php
-    $noMin = $_POST['noMin'];
-    $noMax = $_POST['noMax'];
-    $minPrice = $_POST['minPrice'];
-    $maxPrice = $_POST['maxPrice'];
-    $id = $_POST['id'];
-    $prodName = $_POST['name'];
+    $docId = $_POST['docId'];
 
-    //CHECK IS USER EXIST AND RETURN TOKEN
-    $query = "select getProductCount('".$noMin."','".$noMax."','".$minPrice."','".$maxPrice."','".$id."','".$prodName."') as count";
+    $query = "select getDocumentRecordsCount('".$docId."') as count";
     function select($query){
         include('connect.php');
         $returnArray = array();
