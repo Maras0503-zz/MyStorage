@@ -98,6 +98,7 @@ pageFunctions.languages = (function(){
         $('.cancel').html('Cancel');
         $('.create').html('Create');
         $('.addingPosition').html('Adding position');
+        $('.editPosition').html('Editing position');
         $('.shippingNoteLang').html('Shipping note');
         $('.contractorLang').html('Contractor:');
         $('.gross').html('GROSS: ');
@@ -189,6 +190,7 @@ pageFunctions.languages = (function(){
         $('.cancel').html('Anuluj');
         $('.create').html('Utwórz');
         $('.addingPosition').html('Dodawanie pozycji');
+        $('.editPosition').html('Edytowanie pozycji');
         $('.shippingNoteLang').html('Dokument WZ');
         $('.contractorLang').html('Nabywca:');
         $('.gross').html('BRUTTO: ');

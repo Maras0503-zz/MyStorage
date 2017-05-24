@@ -16,6 +16,7 @@ function select($query){
         $rowArray['product_price'] = $row['product_price'];
         $rowArray['product_divider'] = $row['product_divider'];
         $rowArray['vat_value'] = $row['vat_value'];
+        $rowArray['product_unit'] = $row['product_unit_short'];
         array_push($returnArray,$rowArray);
     }
     $mysqli->close();

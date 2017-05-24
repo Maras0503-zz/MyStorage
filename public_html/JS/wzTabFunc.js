@@ -6,17 +6,18 @@ var WZProdToAddOrder = 1;
 var WZFindProdCount = 0;
 var WZCount = 0;
 var WZConPage = 0;
-var selectedFindProduct = 0;
+var WZselectedFindProduct = 0;
 var WZConOrder = 1;
 var WZConCount = 0;
-var selectedContractorID = 0;
+var WZselectedContractorID = 0;
 var selectedWZID = 0;
+var isDocumentAccepted = 0;
 var productPrice = 0;
 var productVat = 0;
 var selectedProductToAdd = 0;
 var selectedWZRecord = 0;
-var isDocumentAccepted = 0;
 var divider = 0;
+
 pageFunctions.wzTabFunc = function () {
     var init = (function () {
         listeners();
@@ -27,6 +28,7 @@ pageFunctions.wzTabFunc = function () {
         $('#confirmNewWZ').on('click', function () {
             addDocument();
         });
+
         $("#delWZ").on('click', function () {
             var docAccept = checkDocumentAccept(selectedWZID);
             if (selectedWZID != 0 && docAccept != 1) {
@@ -112,6 +114,22 @@ pageFunctions.wzTabFunc = function () {
                 alert('Nie wybrano pozycji do usunięcia!');
             } 
         });
+        $('#editWZRecord').on('click', function(){
+            console.log(selectedWZRecord);
+            $('#WZProdWithoutCommaEditInput').removeClass('wrongValue');
+            $('#WZProdFloatingPointEditInput').removeClass('wrongValue');
+            $('#WZProdEditDiscount').removeClass('wrongValue');
+            $('#WZProdWithoutCommaEditInput').val('');
+            $('#WZProdFloatingPointEditInput').val('');
+            $('#WZPosEditValue').html('');
+            $('#WZPosEditValueGross').html('');
+            $('#WZProdEditDiscount').val('');
+            $('#WZEditProduct').removeClass('hidden');
+            fillRecordEditForm(selectedWZRecord);
+        });
+        $('#cancelWZEditProduct').on('click', function(){
+            $('#WZEditProduct').addClass('hidden');
+        });
 
         $('#calculateValue').on('click', function(){
             var qty;
@@ -134,10 +152,31 @@ pageFunctions.wzTabFunc = function () {
                 $('#WZPosAddValueGross').html(Math.round(gross*100)/100);
             }
         });
+        $('#calculateValueEdit').on('click', function(){
+            var qty;
+            var disc;
+            var sum;
+            var gross;
+            if(divider == 1){
+                qty = parseFloat($('#WZProdWithoutCommaEditInput').val());
+                disc = $('#WZProdEditDiscount').val();
+                sum = (productPrice*qty)-(productPrice*qty*(disc/100));
+                gross = sum+(sum*(productVat/100));
+                $('#WZPosEditValue').html(Math.round(sum*100)/100);
+                $('#WZPosEditValueGross').html(Math.round(gross*100)/100);
+            } else {
+                qty = parseFloat($('#WZProdFloatingPointEditInput').val());
+                disc = $('#WZProdEditDiscount').val();
+                sum = (productPrice*qty)-(productPrice*qty*(disc/100));
+                gross = sum+(sum*(productVat/100));
+                $('#WZPosEditValue').html(Math.round(sum*100)/100);
+                $('#WZPosEditValueGross').html(Math.round(gross*100)/100);
+            }
+        });
 
         $('#confirmWZProdChose').on('click', function (){
             $('#WZAddingProduct').removeClass('hidden');
-            fillProductAddingFormById(selectedFindProduct);
+            fillProductAddingFormById(WZselectedFindProduct);
             $('#WZChosingProduct').addClass('hidden');
         });
         $('#WZProdFloatingPointInput').on('focus', function () {
@@ -149,6 +188,15 @@ pageFunctions.wzTabFunc = function () {
         $('#WZProdAddDiscount').on('focus', function () {
             $('#WZProdAddDiscount').removeClass('wrongValue');
         });
+        $('#WZProdFloatingPointEditInput').on('focus', function () {
+            $('#WZProdFloatingPointEditInput').removeClass('wrongValue');
+        });
+        $('#WZProdWithoutCommaEditInput').on('focus', function () {
+            $('#WZProdWithoutCommaEditInput').removeClass('wrongValue');
+        });
+        $('#WZProdEditDiscount').on('focus', function () {
+            $('#WZProdEditDiscount').removeClass('wrongValue');
+        });
         $('#confirmWZAddProduct').on('click', function(){
             if(divider == 0){
                 if(!isNaN($('#WZProdFloatingPointInput').val()) && !isNaN($('#WZProdAddDiscount').val())){
@@ -158,9 +206,9 @@ pageFunctions.wzTabFunc = function () {
                             getWZRecords();
                             $('#WZAddingProduct').addClass('hidden');
                         } else {
-                            fillProductAddingFormById(selectedFindProduct);
+                            fillProductAddingFormById(WZselectedFindProduct);
                             $('#WZProdFloatingPointInput').addClass('wrongValue');
-                            alert('Zbyt towaru mało na magazynie');
+                            alert('Zbyt mało towaru na magazynie');
                         }
                     } else {
                         $('#WZProdFloatingPointInput').addClass('wrongValue');
@@ -183,7 +231,7 @@ pageFunctions.wzTabFunc = function () {
                             getWZRecords();
                             $('#WZAddingProduct').addClass('hidden');
                         } else {
-                            fillProductAddingFormById(selectedFindProduct);
+                            fillProductAddingFormById(WZselectedFindProduct);
                             $('#WZProdWithoutCommaInput').addClass('wrongValue');
                             alert('Zbyt mało towaru na magazynie');
                         }
@@ -202,11 +250,64 @@ pageFunctions.wzTabFunc = function () {
                 }
             }
         });
+        $('#confirmWZEditProduct').on('click', function(){
+            if(divider == 0){
+                if(!isNaN($('#WZProdFloatingPointEditInput').val()) && !isNaN($('#WZProdEditDiscount').val())){
+                    if($('#WZProdFloatingPointEditInput').val() != 0){
+                        if(checkQtyToEdit(selectedWZRecord, $('#WZProdFloatingPointEditInput').val() * 100) == 1){
+                            editWZPos(selectedWZRecord, $('#WZProdFloatingPointEditInput').val() * 100, $('#WZProdEditDiscount').val() * 100);
+                            getWZRecords();
+                            $('#WZEditProduct').addClass('hidden');
+                        } else {
+                            fillRecordEditForm(selectedWZRecord);
+                            $('#WZProdFloatingPointEditInput').addClass('wrongValue');
+                            alert('Zbyt mało towaru na magazynie');
+                        }
+                    } else {
+                        $('#WZProdFloatingPointEditInput').addClass('wrongValue');
+                        alert('Ilość musi być większa od 0');
+                    }
+                } else {
+                    if(isNaN($('#WZProdEditDiscount').val())) {
+                        $('#WZProdEditDiscount').addClass('wrongValue');
+                    }
+                    if(isNaN($('#WZProdFloatingPointEditInput').val())){
+                        $('#WZProdFloatingPointEditInput').addClass('wrongValue');
+                    }
+                    alert('Niepoprawne wartości');
+                }
+            } else if (divider == 1){
+                if(!isNaN($('#WZProdWithoutCommaEditInput').val()) && !isNaN($('#WZProdEditDiscount').val())){
+                    if($('#WZProdWithoutCommaEditInput').val() != 0){
+                        if(checkQtyToEdit(selectedWZRecord, $('#WZProdWithoutCommaEditInput').val() * 100) == 1){
+                            editWZPos(selectedWZRecord, $('#WZProdWithoutCommaEditInput').val() * 100, $('#WZProdEditDiscount').val() * 100);
+                            getWZRecords();
+                            $('#WZEditProduct').addClass('hidden');
+                        } else {
+                            fillRecordEditForm(selectedWZRecord);
+                            $('#WZProdWithoutCommaEditInput').addClass('wrongValue');
+                            alert('Zbyt mało towaru na magazynie');
+                        }
+                    } else {
+                        $('#WZProdWithoutCommaEditInput').addClass('wrongValue');
+                        alert('Ilość musi być większa od 0');
+                    }
+                } else {
+                    if(isNaN($('#WZProdEditDiscount').val())) {
+                        $('#WZProdEditDiscount').addClass('wrongValue');
+                    }
+                    if(isNaN($('#WZProdWithoutCommaEditInput').val())){
+                        $('#WZProdWithoutCommaEditInput').addClass('wrongValue');
+                    }
+                    alert('Niepoprawne wartości');
+                }
+            }
+        });
 
         $('#WZProdSearch').on('click', function () {
             WZProdToAddPage = 0;
             WZProdToAddOrder = 1;
-            selectedFindProduct = 0;
+            WZselectedFindProduct = 0;
             $('.WZProdToAdd').removeClass('rowSelected');
             WZFindProdCount = getFindProductToAddCount($('#WZProdSearchDetails').val());
             if (WZFindProdCount <= 5) {
@@ -226,7 +327,7 @@ pageFunctions.wzTabFunc = function () {
         $('#WZProdReset').on('click', function () {
             WZProdToAddPage = 0;
             WZProdToAddOrder = 1;
-            selectedFindProduct = 0;
+            WZselectedFindProduct = 0;
             $('.WZProdToAdd').removeClass('rowSelected');
             WZFindProdCount = getFindProductToAddCount($('#WZProdSearchDetails').val());
             if (WZFindProdCount <= 5) {
@@ -322,7 +423,7 @@ pageFunctions.wzTabFunc = function () {
                 if (id.substring(0, 5) == 'ConID') {
                     $('.WZConRow').removeClass('rowSelected');
                     $('#ConID' + id.substring(5, id.lenght)).addClass('rowSelected');
-                    selectedContractorID = id.substring(5, id.lenght);
+                    WZselectedContractorID = id.substring(5, id.lenght);
                 }
             }
         });
@@ -333,7 +434,7 @@ pageFunctions.wzTabFunc = function () {
                 if (id.substring(0, 9) == 'ProdToAdd') {
                     $('.WZProdToAdd').removeClass('rowSelected');
                     $('#ProdToAdd' + id.substring(9, id.lenght)).addClass('rowSelected');
-                    selectedFindProduct = id.substring(9, id.lenght);
+                    WZselectedFindProduct = id.substring(9, id.lenght);
                 }
             }
         });
@@ -409,7 +510,7 @@ pageFunctions.wzTabFunc = function () {
             if (WZConPage > 0) {
                 $('#WZConPrevious').removeClass('hidden');
             }
-            selectedContractorID = 0;
+            WZselectedContractorID = 0;
         });
         $('#WZConPrevious').on('click', function () {
             $('.WZConRow').removeClass('rowSelected');
@@ -418,7 +519,7 @@ pageFunctions.wzTabFunc = function () {
             if (WZConPage == 0) {
                 $('#WZConPrevious').addClass('hidden');
             }
-            selectedContractorID = 0;
+            WZselectedContractorID = 0;
         });
 
         $(document).on('click', function (e) {
@@ -750,14 +851,14 @@ pageFunctions.wzTabFunc = function () {
     var addDocument = (function () {
         var param = {};
         //DOCUMENT ID
-        if (selectedContractorID == 0) {
+        if (WZselectedContractorID == 0) {
             alert('Nie wybrano kontrahenta');
         } else {
             param['docType'] = 1;
             var dateNow = new Date();
             var stamp = dateNow.getTime();
             param['docDate'] = stamp;
-            param['docCon'] = selectedContractorID;
+            param['docCon'] = WZselectedContractorID;
             param['docYear'] = dateNow.getYear() + 1900;
             param['docCreator'] = window.sessionStorage.getItem('id');
             $.ajax({
@@ -871,17 +972,34 @@ pageFunctions.wzTabFunc = function () {
         return ans;
     };
 
+    var getRecordDetailsByRecordId = function (parameter) {
+        var ans = {};
+        var param = {};
+        param['parameter'] = parameter;
+        $.ajax({
+            type: 'POST',
+            async: false,
+            data: param,
+            dataType: 'json',
+            url: 'PHP/getRecordDetailsByRecordId.php',
+            success: function (data) {
+                ans = data;
+            }
+        });
+        return ans;
+    };
+
     var fillProductAddingForm = function (searchDetails) {
         var details = getProductToAddDetails(searchDetails);
         $('#WZProdAddId').html(details[0]['product_id']);
         $('#WZProdAddName').html(details[0]['product_name']);
         $('#WZProdAddProducer').html(details[0]['contractor_name']);
         $('#WZProdAddPrice').html((details[0]['product_price'])/100);
-        $('#WZProdAddQty').html(details[0]['product_number']/100);
+        $('#WZProdAddQty').html(details[0]['product_number']/100 +' '+ details[0]['product_unit']);
         productPrice = (details[0]['product_price']/100);
         productVat = (details[0]['vat_value']);
         selectedProductToAdd = details[0]['product_id'];
-        selectedFindProduct = details[0]['product_id'];
+        WZselectedFindProduct = details[0]['product_id'];
         if(details[0]['product_divider'] == 0) {
             $('#WZProdFloatingPoint').removeClass('hidden');
             $('#WZProdWithoutComma').addClass('hidden');
@@ -898,7 +1016,7 @@ pageFunctions.wzTabFunc = function () {
         $('#WZProdAddName').html(details[0]['product_name']);
         $('#WZProdAddProducer').html(details[0]['contractor_name']);
         $('#WZProdAddPrice').html((details[0]['product_price'])/100);
-        $('#WZProdAddQty').html(details[0]['product_number']/100);
+        $('#WZProdAddQty').html(details[0]['product_number']/100 +' '+ details[0]['product_unit']);
         productPrice = (details[0]['product_price']/100);
         productVat = (details[0]['vat_value']);
         selectedProductToAdd = details[0]['product_id'];
@@ -908,6 +1026,30 @@ pageFunctions.wzTabFunc = function () {
         } else {
             $('#WZProdFloatingPoint').addClass('hidden');
             $('#WZProdWithoutComma').removeClass('hidden');
+        }
+        divider = details[0]['product_divider'];
+    };
+
+    var fillRecordEditForm = function (searchDetails) {
+        var details = getRecordDetailsByRecordId(searchDetails);
+        $('#WZProdEditId').html(details[0]['product_id']);
+        $('#WZProdEditName').html(details[0]['product_name']);
+        $('#WZProdEditProducer').html(details[0]['contractor_name']);
+        $('#WZProdEditPrice').html((details[0]['product_price'])/100);
+        $('#WZProdEditQty').html(details[0]['product_number']/100 +' '+ details[0]['product_unit']);
+        productPrice = (details[0]['product_price']/100);
+        productVat = (details[0]['vat_value']);
+        selectedProductToAdd = details[0]['product_id'];
+        WZselectedFindProduct = details[0]['product_id'];
+        $('#WZProdEditDiscount').val(details[0]['discount']);
+        if(details[0]['product_divider'] == 0) {
+            $('#WZProdFloatingPointEdit').removeClass('hidden');
+            $('#WZProdWithoutCommaEdit').addClass('hidden');
+            $('#WZProdFloatingPointEditInput').val(details[0]['document_records_product_number']/100);
+        } else {
+            $('#WZProdFloatingPointEdit').addClass('hidden');
+            $('#WZProdWithoutCommaEdit').removeClass('hidden');
+            $('#WZProdWithoutCommaEditInput').val(details[0]['document_records_product_number']/100);
         }
         divider = details[0]['product_divider'];
     };
@@ -1112,7 +1254,7 @@ pageFunctions.wzTabFunc = function () {
 
     var getContractors = (function () {
         param = {};
-        selectedContractorID = 0;
+        WZselectedContractorID = 0;
         //Contractor ID
         if ($('#selectContractorId').val() == '') {
             param['id'] = 0;

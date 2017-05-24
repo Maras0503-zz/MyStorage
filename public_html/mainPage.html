@@ -479,7 +479,7 @@ and open the template in the editor.
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <td class="WZProdChoseCol1">ID<div id="WZProdChoseArrUpId" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZPWZProdChoseCol1rodChoseArrDownId" class="unused sortBttMain WZProdArr">&#9660;</div></td>
+                                        <td class="WZProdChoseCol1">ID<div id="WZProdChoseArrUpId" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZProdChoseArrDownId" class="unused sortBttMain WZProdArr">&#9660;</div></td>
                                         <td class="WZProdChoseCol2">Nazwa<div id="WZProdChoseArrUpName" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZProdChoseArrDownName" class="unused sortBttMain WZProdArr">&#9660;</div></td>
                                         <td class="WZProdChoseCol3">Producent<div id="WZProdChoseArrUpProducer" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZProdChoseArrDownProducer" class="unused sortBttMain WZProdArr">&#9660;</div></td>
                                         <td class="WZProdChoseCol4">Cena<div id="WZProdChoseArrUpPrice" class="unused sortBttMain WZProdArr">&#9650;</div><div id="WZProdChoseArrDownPrice" class="unused sortBttMain WZProdArr">&#9660;</div></td>
@@ -501,7 +501,7 @@ and open the template in the editor.
                             </div>
                     </div>
                 </div>
-                <div id="WZAddingProduct" class="popup on_top hidden" >
+                <div id="WZAddingProduct" class="popup on_top hidden">
                     <div class="addProd">
                         <div class="form-group big-center">
                             <label><p class="word addingPosition"></p></label>
@@ -509,13 +509,13 @@ and open the template in the editor.
                         <hr/>
                         <div class="form-inline">
                             <div>
-                              <label class="detailLabel">ID:  </label><label id='WZProdAddId' class="detailLabelVal"></label>
+                                <label class="detailLabel">ID:  </label><label id='WZProdAddId' class="detailLabelVal"></label>
                             </div>
                             <div>
-                              <label class="detailLabel">Nazwa:  </label><label id='WZProdAddName' class="detailLabelVal"></label>
+                                <label class="detailLabel">Nazwa:  </label><label id='WZProdAddName' class="detailLabelVal"></label>
                             </div>
                             <div>
-                              <label class="detailLabel">Producent:  </label><label id='WZProdAddProducer' class="detailLabelVal"></label>
+                                <label class="detailLabel">Producent:  </label><label id='WZProdAddProducer' class="detailLabelVal"></label>
                             </div>
                             <div>
                                 <label class="detailLabel">Cena:  </label><label id='WZProdAddPrice' class="detailLabelVal"></label>
@@ -540,7 +540,9 @@ and open the template in the editor.
                                 <input id="WZProdAddDiscount" type="text" min="0" step="0.01" onkeypress="return f(event)">
                             </div>
                         </div>
-                        <div><label class="addingPosValues" id="calculateValue">Przelicz</label></div>
+                        <div>
+                            <label class="addingPosValues" id="calculateValue">Przelicz</label>
+                        </div>
                         <div>
                             <div>
                                 <label class="addingPosValues">Wartość netto:</label>
@@ -556,8 +558,68 @@ and open the template in the editor.
                             <button id='cancelWZAddProduct' class="btn btn-default">Anuluj</button>
                             <button id='confirmWZAddProduct' class="btn btn-default pull-right">Dodaj</button>
                         </div>
+                    </div>
                 </div>
-            </div>
+    
+                <div id="WZEditProduct" class="popup on_top hidden">
+                    <div class="addProd">
+                        <div class="form-group big-center">
+                            <label><p class="word editPosition"></p></label>
+                        </div>
+                        <hr/>
+                        <div class="form-inline">
+                            <div>
+                                <label class="detailLabel">ID:  </label><label id='WZProdEditId' class="detailLabelVal"></label>
+                            </div>
+                            <div>
+                                <label class="detailLabel">Nazwa:  </label><label id='WZProdEditName' class="detailLabelVal"></label>
+                            </div>
+                            <div>
+                                <label class="detailLabel">Producent:  </label><label id='WZProdEditProducer' class="detailLabelVal"></label>
+                            </div>
+                            <div>
+                                <label class="detailLabel">Cena:  </label><label id='WZProdEditPrice' class="detailLabelVal"></label>
+                            </div>
+                            <div>
+                                <label class="detailLabel">Ilość:  </label><label id='WZProdEditQty' class="detailLabelVal"></label>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="WZProdNumberForm">
+                            <div id="WZProdFloatingPointEdit" class="WZProdNumberBox hidden">
+                                <label class="addingPosValues">Ilość: </label>
+                                <input id="WZProdFloatingPointEditInput" type="number" step="0.01">
+                            </div>
+                            <div id="WZProdWithoutCommaEdit" class="WZProdNumberBox hidden">
+                                <label class="addingPosValues">Ilość: </label>
+                                <input class="addingPosValues" id="WZProdWithoutCommaEditInput" type="number" min="0" step="1" onkeypress="return e(event)">
+                            </div>
+                            </br>
+                            <div class="WZProdNumberBox">
+                                <label class="addingPosValues">Rabat[%]: </label>
+                                <input id="WZProdEditDiscount" type="text" min="0" step="0.01" onkeypress="return f(event)">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="addingPosValues" id="calculateValueEdit">Przelicz</label>
+                        </div>
+                        <div>
+                            <div>
+                                <label class="addingPosValues">Wartość netto:</label>
+                                <label class="addingPosValues" id="WZPosEditValue"></label>
+                            </div>
+                            <div>
+                                <label class="addingPosValues">Wartość brutto:</label>
+                                <label class="addingPosValues"  id="WZPosEditValueGross"></label>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-inline">
+                            <button id='cancelWZEditProduct' class="btn btn-default">Anuluj</button>
+                            <button id='confirmWZEditProduct' class="btn btn-default pull-right">Edytuj</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div id="FVPopup" class="popup hidden">
@@ -651,6 +713,168 @@ and open the template in the editor.
                         </table>
                 </div>
             </div>
+
+            <div id="FVChosingProduct"  class="popup on_top hidden">
+                    <div class="newFVform">
+                            <div class="form-group big-center">
+                                <label>Wybierz produkt</label>
+                            </div>
+                            <hr/>
+                            <div class="form-inline">
+                                <div class="form-group">
+                                  <label>TOW KOD/NAZWA/KOD KRESKOWY: </label><input type="text" class="form-control" id="FVProdSearchDetails">
+                                </div>
+                            </div>
+                            <input id="FVProdSearch" class="btn btn-default" type="button" value="Szukaj">
+                            <input id="FVProdReset" class="btn btn-default" type="button" value="Reset">
+                            <hr/>
+                            <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <td class="WZProdChoseCol1">ID<div id="FVProdChoseArrUpId" class="unused sortBttMain WZProdArr">&#9650;</div><div id="FVProdChoseArrDownId" class="unused sortBttMain WZProdArr">&#9660;</div></td>
+                                        <td class="WZProdChoseCol2">Nazwa<div id="FVProdChoseArrUpName" class="unused sortBttMain WZProdArr">&#9650;</div><div id="FVProdChoseArrDownName" class="unused sortBttMain WZProdArr">&#9660;</div></td>
+                                        <td class="WZProdChoseCol3">Producent<div id="FVProdChoseArrUpProducer" class="unused sortBttMain WZProdArr">&#9650;</div><div id="FVProdChoseArrDownProducer" class="unused sortBttMain WZProdArr">&#9660;</div></td>
+                                        <td class="WZProdChoseCol4">Cena<div id="FVProdChoseArrUpPrice" class="unused sortBttMain WZProdArr">&#9650;</div><div id="FVProdChoseArrDownPrice" class="unused sortBttMain WZProdArr">&#9660;</div></td>
+                                        <td class="WZProdChoseCol5">Ilość<div id="FVProdChoseArrUpNumber" class="unused sortBttMain WZProdArr">&#9650;</div><div id="FVProdChoseArrDownNumber" class="unused sortBttMain WZProdArr">&#9660;</div></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="FVProdChoseTabContent">
+                                </tbody>
+                            </table>
+                            </div>
+                            <div class="conPageControls">
+                                <input id="FVProdChosePrevious" class="btn btn-default hidden" type="button" value="Poprzednia">
+                                <input id="FVProdChoseNext" class="btn btn-default pull-right" type="button" value="Następna">
+                            </div>
+                            <hr/>
+                            <div class="form-inline">
+                                <button id='cancelFVProdChose' class="btn btn-default">Anuluj</button>
+                                <button id='confirmFVProdChose' class="btn btn-default pull-right">Utwórz</button>
+                            </div>
+                    </div>
+                </div>
+                <div id="FVAddingProduct" class="popup on_top hidden">
+                    <div class="addProd">
+                        <div class="form-group big-center">
+                            <label><p class="word addingPosition"></p></label>
+                        </div>
+                        <hr/>
+                        <div class="form-inline">
+                            <div>
+                                <label class="detailLabel">ID:  </label><label id='FVProdAddId' class="detailLabelVal"></label>
+                            </div>
+                            <div>
+                                <label class="detailLabel">Nazwa:  </label><label id='FVProdAddName' class="detailLabelVal"></label>
+                            </div>
+                            <div>
+                                <label class="detailLabel">Producent:  </label><label id='FVProdAddProducer' class="detailLabelVal"></label>
+                            </div>
+                            <div>
+                                <label class="detailLabel">Cena:  </label><label id='FVProdAddPrice' class="detailLabelVal"></label>
+                            </div>
+                            <div>
+                                <label class="detailLabel">Ilość:  </label><label id='FVProdAddQty' class="detailLabelVal"></label>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="WZProdNumberForm">
+                            <div id="FVProdFloatingPoint" class="WZProdNumberBox hidden">
+                                <label class="addingPosValues">Ilość: </label>
+                                <input id="FVProdFloatingPointInput" type="number" step="0.01">
+                            </div>
+                            <div id="FVProdWithoutComma" class="WZProdNumberBox hidden">
+                                <label class="addingPosValues">Ilość: </label>
+                                <input class="addingPosValues" id="FVProdWithoutCommaInput" type="number" min="0" step="1" onkeypress="return e(event)">
+                            </div>
+                            </br>
+                            <div class="WZProdNumberBox">
+                                <label class="addingPosValues">Rabat[%]: </label>
+                                <input id="FVProdAddDiscount" type="text" min="0" step="0.01" onkeypress="return f(event)">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="addingPosValues" id="calculateValueFV">Przelicz</label>
+                        </div>
+                        <div>
+                            <div>
+                                <label class="addingPosValues">Wartość netto:</label>
+                                <label class="addingPosValues" id="FVPosAddValue"></label>
+                            </div>
+                            <div>
+                                <label class="addingPosValues">Wartość brutto:</label>
+                                <label class="addingPosValues"  id="FVPosAddValueGross"></label>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-inline">
+                            <button id='cancelFVAddProduct' class="btn btn-default">Anuluj</button>
+                            <button id='confirmFVAddProduct' class="btn btn-default pull-right">Dodaj</button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div id="FVEditProduct" class="popup on_top hidden">
+                    <div class="addProd">
+                        <div class="form-group big-center">
+                            <label><p class="word editPosition"></p></label>
+                        </div>
+                        <hr/>
+                        <div class="form-inline">
+                            <div>
+                                <label class="detailLabel">ID:  </label><label id='FVProdEditId' class="detailLabelVal"></label>
+                            </div>
+                            <div>
+                                <label class="detailLabel">Nazwa:  </label><label id='FVProdEditName' class="detailLabelVal"></label>
+                            </div>
+                            <div>
+                                <label class="detailLabel">Producent:  </label><label id='FVProdEditProducer' class="detailLabelVal"></label>
+                            </div>
+                            <div>
+                                <label class="detailLabel">Cena:  </label><label id='FVProdEditPrice' class="detailLabelVal"></label>
+                            </div>
+                            <div>
+                                <label class="detailLabel">Ilość:  </label><label id='FVProdEditQty' class="detailLabelVal"></label>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="WZProdNumberForm">
+                            <div id="FVProdFloatingPointEdit" class="WZProdNumberBox hidden">
+                                <label class="addingPosValues">Ilość: </label>
+                                <input id="FVProdFloatingPointEditInput" type="number" step="0.01">
+                            </div>
+                            <div id="FVProdWithoutCommaEdit" class="WZProdNumberBox hidden">
+                                <label class="addingPosValues">Ilość: </label>
+                                <input class="addingPosValues" id="FVProdWithoutCommaEditInput" type="number" min="0" step="1" onkeypress="return e(event)">
+                            </div>
+                            </br>
+                            <div class="WZProdNumberBox">
+                                <label class="addingPosValues">Rabat[%]: </label>
+                                <input id="FVProdEditDiscount" type="text" min="0" step="0.01" onkeypress="return f(event)">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="addingPosValues" id="calculateValueFVEdit">Przelicz</label>
+                        </div>
+                        <div>
+                            <div>
+                                <label class="addingPosValues">Wartość netto:</label>
+                                <label class="addingPosValues" id="FVPosEditValue"></label>
+                            </div>
+                            <div>
+                                <label class="addingPosValues">Wartość brutto:</label>
+                                <label class="addingPosValues"  id="FVPosEditValueGross"></label>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-inline">
+                            <button id='cancelFVEditProduct' class="btn btn-default">Anuluj</button>
+                            <button id='confirmFVEditProduct' class="btn btn-default pull-right">Edytuj</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
 
         </div>

@@ -1,13 +1,22 @@
 /* global pageFunctions */
 var FVTablePage = 0;
 var FVTableOrder = 1;
+var FVProdToAddPage = 0;
+var FVProdToAddOrder = 1;
+var FVFindProdCount = 0;
 var FVCount = 0;
 var FVConPage = 0;
+var FVselectedFindProduct = 0;
 var FVConOrder = 1;
 var FVConCount = 0;
-var selectedContractorID = 0;
+var FVselectedContractorID = 0;
 var selectedFVID = 0;
 var isDocumentAccepted = 0;
+var productPrice = 0;
+var productVat = 0;
+var selectedProductToAdd = 0;
+var selectedWZRecord = 0;
+var divider = 0;
 
 pageFunctions.wzTabFunc = (function(){
     var init = (function(){
@@ -19,7 +28,6 @@ pageFunctions.wzTabFunc = (function(){
         $('#confirmNewFV').on('click', function(){
             addDocument();
         });
-        
         
         $("#delFV").on('click', function(){
             var docAccept = checkDocumentAccept(selectedFVID);

@@ -66,6 +66,43 @@ var checkQty = (function(prodId, qty){
     return ans;
 });
 
+var checkQtyToEdit = (function(posId, qty){
+    var ans = 0;
+    param = {};
+    param['posId'] = posId;
+    param['qty'] = qty;
+    $.ajax({
+        type: 'POST',
+        async: false,
+        data: param,
+        dataType: 'json',
+        url: 'PHP/checkQtyToEdit.php',
+        success: function(data){
+            ans = data[0].answer;
+        }
+    });
+    return ans;
+});
+
+var editWZPos = (function(posId, qty, disc){
+    var ans = 0;
+    param = {};
+    param['posId'] = posId;
+    param['qty'] = qty;
+    param['disc'] = disc;
+    $.ajax({
+        type: 'POST',
+        async: false,
+        data: param,
+        dataType: 'json',
+        url: 'PHP/editWZPos.php',
+        success: function(data){
+            ans = data[0].answer;
+        }
+    });
+    return ans;
+});
+
 
 var getDocumentRecordsCount = (function(docId){
     var ans = 0;

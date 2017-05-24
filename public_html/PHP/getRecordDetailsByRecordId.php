@@ -2,7 +2,7 @@
 $parameter = $_POST['parameter'];
 
 //SELECT INFORMATION ABOUT PRODUCTS TO ADD
-$query = "call getProductDetails('".$parameter."')";
+$query = "call getRecordDetailByRecordId('".$parameter."')";
 
 function select($query){
     include('connect.php');
@@ -17,6 +17,8 @@ function select($query){
         $rowArray['product_divider'] = $row['product_divider'];
         $rowArray['vat_value'] = $row['vat_value'];
         $rowArray['product_unit'] = $row['product_unit_short'];
+        $rowArray['document_records_product_number'] = $row['document_records_product_number'];
+        $rowArray['discount'] = $row['document_records_discount'];
         array_push($returnArray,$rowArray);
     }
     $mysqli->close();
