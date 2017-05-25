@@ -132,12 +132,10 @@
   background-color: white;
   margin-top: 10%;
   width: 50%;
-  left: 25%;
-  max-height: 70%; }
+  left: 25%; }
   @media (max-width: 768px) {
     .addProd {
       left: 5%;
-      max-height: 70%;
       margin-top: 20%;
       width: 90%; } }
 
@@ -279,7 +277,7 @@
 .WZProdNumberBox {
   display: inline; }
 
-#calculateValue {
+.calculate {
   cursor: pointer;
   color: blue; }
 

@@ -96,11 +96,21 @@ var editWZPos = (function(posId, qty, disc){
         data: param,
         dataType: 'json',
         url: 'PHP/editWZPos.php',
-        success: function(data){
-            ans = data[0].answer;
-        }
     });
-    return ans;
+});
+var editFVPos = (function(posId, qty, disc){
+    var ans = 0;
+    param = {};
+    param['posId'] = posId;
+    param['qty'] = qty;
+    param['disc'] = disc;
+    $.ajax({
+        type: 'POST',
+        async: false,
+        data: param,
+        dataType: 'json',
+        url: 'PHP/editWZPos.php',
+    });
 });
 
 
@@ -121,10 +131,10 @@ var getDocumentRecordsCount = (function(docId){
     return ans;
 });
 
-var getFindProductToAddCount = (function(docId){
+var getFindProductToAddCount = (function(parameter){
     var ans = 0;
     param = {};
-    param['parameter'] = docId;
+    param['parameter'] = parameter;
     $.ajax({
         type: 'POST',
         async: false,
@@ -156,7 +166,54 @@ var getFindProductToAdd = (function(pageNo, ord, docId){
     });
     return ans;
 });
-
+var getProductToAddDetails = function (parameter) {
+        var ans = {};
+        var param = {};
+        param['parameter'] = parameter;
+        $.ajax({
+            type: 'POST',
+            async: false,
+            data: param,
+            dataType: 'json',
+            url: 'PHP/getProductDetails.php',
+            success: function (data) {
+                ans = data;
+            }
+        });
+        return ans;
+};
+var getProductToAddDetailsById = function (parameter) {
+        var ans = {};
+        var param = {};
+        param['parameter'] = parameter;
+        $.ajax({
+            type: 'POST',
+            async: false,
+            data: param,
+            dataType: 'json',
+            url: 'PHP/getProductDetailsById.php',
+            success: function (data) {
+                ans = data;
+            }
+        });
+        return ans;
+};
+var getRecordDetailsByRecordId = function (parameter) {
+        var ans = {};
+        var param = {};
+        param['parameter'] = parameter;
+        $.ajax({
+            type: 'POST',
+            async: false,
+            data: param,
+            dataType: 'json',
+            url: 'PHP/getRecordDetailsByRecordId.php',
+            success: function (data) {
+                ans = data;
+            }
+        });
+        return ans;
+};
 var delDocument = (function(docId){
     var param = {};
     param['docId'] = docId;

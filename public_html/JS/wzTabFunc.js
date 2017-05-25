@@ -45,8 +45,6 @@ pageFunctions.wzTabFunc = function () {
                     delDocument(selectedWZID);
                     selectedWZID = 0;
                     reset();
-                } else {
-
                 }
             } else {
                 if (docAccept == 1) {
@@ -97,16 +95,16 @@ pageFunctions.wzTabFunc = function () {
                 $('#WZproductSearch').val('');
 
             } else {
+                WZProdToAddPage = 0;
+                WZProdToAddOrder = 1;
                 $('#WZChosingProduct').removeClass('hidden');
+                WZFindProdCount = getFindProductToAddCount($('#WZproductSearch').val());
                 $('#WZProdChoseTabContent').html(createWZProductToAddContent(getFindProductToAdd(WZProdToAddPage, WZProdToAddOrder, $('#WZproductSearch').val())));
                 $('#WZProdSearchDetails').val($('#WZproductSearch').val());
                 $('#WZproductSearch').val('');
             }
         });
-
         $('#deleteWZRecord').on('click', function(){
-            console.log(selectedWZID);
-            console.log(selectedWZRecord);
             if(selectedWZRecord != 0) {
                 delDocumentPos(selectedWZRecord);
                 getWZRecords(selectedWZID);
@@ -115,22 +113,24 @@ pageFunctions.wzTabFunc = function () {
             } 
         });
         $('#editWZRecord').on('click', function(){
-            console.log(selectedWZRecord);
-            $('#WZProdWithoutCommaEditInput').removeClass('wrongValue');
-            $('#WZProdFloatingPointEditInput').removeClass('wrongValue');
-            $('#WZProdEditDiscount').removeClass('wrongValue');
-            $('#WZProdWithoutCommaEditInput').val('');
-            $('#WZProdFloatingPointEditInput').val('');
-            $('#WZPosEditValue').html('');
-            $('#WZPosEditValueGross').html('');
-            $('#WZProdEditDiscount').val('');
-            $('#WZEditProduct').removeClass('hidden');
-            fillRecordEditForm(selectedWZRecord);
+            if(selectedWZRecord != 0){
+                $('#WZProdWithoutCommaEditInput').removeClass('wrongValue');
+                $('#WZProdFloatingPointEditInput').removeClass('wrongValue');
+                $('#WZProdEditDiscount').removeClass('wrongValue');
+                $('#WZProdWithoutCommaEditInput').val('');
+                $('#WZProdFloatingPointEditInput').val('');
+                $('#WZPosEditValue').html('');
+                $('#WZPosEditValueGross').html('');
+                $('#WZProdEditDiscount').val('');
+                $('#WZEditProduct').removeClass('hidden');
+                fillRecordEditForm(selectedWZRecord);
+            } else {
+                alert('Nie wybrano pozycji!');
+            }
         });
         $('#cancelWZEditProduct').on('click', function(){
             $('#WZEditProduct').addClass('hidden');
         });
-
         $('#calculateValue').on('click', function(){
             var qty;
             var disc;
@@ -173,7 +173,6 @@ pageFunctions.wzTabFunc = function () {
                 $('#WZPosEditValueGross').html(Math.round(gross*100)/100);
             }
         });
-
         $('#confirmWZProdChose').on('click', function (){
             $('#WZAddingProduct').removeClass('hidden');
             fillProductAddingFormById(WZselectedFindProduct);
@@ -251,6 +250,7 @@ pageFunctions.wzTabFunc = function () {
             }
         });
         $('#confirmWZEditProduct').on('click', function(){
+            console.log(selectedWZRecord);
             if(divider == 0){
                 if(!isNaN($('#WZProdFloatingPointEditInput').val()) && !isNaN($('#WZProdEditDiscount').val())){
                     if($('#WZProdFloatingPointEditInput').val() != 0){
@@ -303,48 +303,25 @@ pageFunctions.wzTabFunc = function () {
                 }
             }
         });
-
         $('#WZProdSearch').on('click', function () {
             WZProdToAddPage = 0;
             WZProdToAddOrder = 1;
             WZselectedFindProduct = 0;
             $('.WZProdToAdd').removeClass('rowSelected');
             WZFindProdCount = getFindProductToAddCount($('#WZProdSearchDetails').val());
-            if (WZFindProdCount <= 5) {
-                $('#WZProdChoseNext').addClass('hidden');
-            } else {
-                $('#WZProdChoseNext').removeClass('hidden');
-            }
-            if (WZFindProdCount < (WZProdToAddPage * 5 + 5)) {
-                $('#WZProdChoseNext').addClass('hidden');
-            } else {
-                $('#WZProdChoseNext').removeClass('hidden');
-            }
             $('#WZProdChosePrevious').addClass('hidden');
             $('#WZProdChoseTabContent').html(createWZProductToAddContent(getFindProductToAdd(WZProdToAddPage, WZProdToAddOrder, $('#WZProdSearchDetails').val())));
         });
-
         $('#WZProdReset').on('click', function () {
             WZProdToAddPage = 0;
             WZProdToAddOrder = 1;
             WZselectedFindProduct = 0;
             $('.WZProdToAdd').removeClass('rowSelected');
-            WZFindProdCount = getFindProductToAddCount($('#WZProdSearchDetails').val());
-            if (WZFindProdCount <= 5) {
-                $('#WZProdChoseNext').addClass('hidden');
-            } else {
-                $('#WZProdChoseNext').removeClass('hidden');
-            }
-            if (WZFindProdCount < (WZProdToAddPage * 5 + 5)) {
-                $('#WZProdChoseNext').addClass('hidden');
-            } else {
-                $('#WZProdChoseNext').removeClass('hidden');
-            }
             $('#WZProdChosePrevious').addClass('hidden');
             $('#WZProdSearchDetails').val('');
+            WZFindProdCount = getFindProductToAddCount($('#WZProdSearchDetails').val());
             $('#WZProdChoseTabContent').html(createWZProductToAddContent(getFindProductToAdd(WZProdToAddPage, WZProdToAddOrder, $('#WZProdSearchDetails').val())));
         });
-
         $('#WZProdChoseNext').on('click', function () {
             $('.WZProdToAdd').removeClass('rowSelected');
             WZProdToAddPage++;
@@ -363,9 +340,7 @@ pageFunctions.wzTabFunc = function () {
             } else {
                 $('#WZProdChoseNext').removeClass('hidden');
             }
-
         });
-
         $('#WZProdChosePrevious').on('click', function () {
             $('.WZProdToAdd').removeClass('rowSelected');
             WZProdToAddPage--;
@@ -375,14 +350,12 @@ pageFunctions.wzTabFunc = function () {
                 $('#WZProdChosePrevious').addClass('hidden');
             }
         });
-
         $('#cancelWZAddProduct').on('click', function () {
             $('#WZAddingProduct').addClass('hidden');
         });
         $('#cancelWZProdChose').on('click', function () {
             $('#WZChosingProduct').addClass('hidden');
         });
-
         $('#acceptWZ').on('click', function () {
             var accept = 0;
             var count = 0;
@@ -416,7 +389,6 @@ pageFunctions.wzTabFunc = function () {
                 }
             }
         });
-
         $(document).on('click', function (e) {
             var id = $(e.target).parent().attr('id');
             if (id != undefined) {
@@ -427,7 +399,6 @@ pageFunctions.wzTabFunc = function () {
                 }
             }
         });
-
         $(document).on('click', function (e) {
             var id = $(e.target).parent().attr('id');
             if (id != undefined) {
@@ -438,7 +409,6 @@ pageFunctions.wzTabFunc = function () {
                 }
             }
         });
-
         $(document).on('click', function (e) {
             var id = $(e.target).parent().attr('id');
             if (id != undefined) {
@@ -456,6 +426,7 @@ pageFunctions.wzTabFunc = function () {
                     $('#WZPopup').removeClass('hidden');
                     $('#WZContainer').addClass('blur');
                     selectedWZID = id.substring(4, id.lenght);
+                    selectedWZRecord = 0;
                     isDocumentAccepted = checkDocumentAccept(selectedWZID);
                     if (isDocumentAccepted == 0) {
                         $('#newWZRecord').removeClass('hidden');
@@ -502,7 +473,6 @@ pageFunctions.wzTabFunc = function () {
                 $('#WZprevious').addClass('hidden');
             }
         });
-
         $('#WZConNext').on('click', function () {
             $('.WZConRow').removeClass('rowSelected');
             WZConPage++;
@@ -558,7 +528,6 @@ pageFunctions.wzTabFunc = function () {
         $('#WZreset').on('click', function () {
             reset();
         });
-        //ORDER ARROWS CONTROL WZ TAB
         $('#WZarrUpId').on('click', function () {
             WZTablePage = 0;
             $('.WZarr').addClass('unused');
@@ -839,7 +808,7 @@ pageFunctions.wzTabFunc = function () {
                 } else {
                     $('#WZnext').removeClass('hidden');
                 }
-                if (WZCount < (WZTablePage * 15 + 15)) {
+                if (WZCount <= (WZTablePage * 15 + 15)) {
                     $('#WZnext').addClass('hidden');
                 } else {
                     $('#WZnext').removeClass('hidden');
@@ -847,7 +816,6 @@ pageFunctions.wzTabFunc = function () {
             }
         });
     });
-
     var addDocument = (function () {
         var param = {};
         //DOCUMENT ID
@@ -879,7 +847,6 @@ pageFunctions.wzTabFunc = function () {
             $('#selectContractorNIP').val('');
         }
     });
-
     var createWZTableContent = (function (data) {
         var ans = '';
         var tmpDate;
@@ -924,9 +891,18 @@ pageFunctions.wzTabFunc = function () {
         });
         return ans;
     });
-
     var createWZProductToAddContent = (function (data) {
         ans = '';
+        if (WZFindProdCount <= 5) {
+                $('#WZProdChoseNext').addClass('hidden');
+            } else {
+                $('#WZProdChoseNext').removeClass('hidden');
+        }
+        if (WZFindProdCount <= (WZProdToAddPage * 5) + 5) {
+                $('#WZProdChoseNext').addClass('hidden');
+            } else {
+                $('#WZProdChoseNext').removeClass('hidden');
+        }
         $.each(data, function (index, value) {
             ans += "<tr class='WZProdToAdd' id=ProdToAdd" + value['product_id'] + ">\n\
                         <td class='WZProdChoseCol1c'>" + value['product_id'] + "</td>\n\
@@ -938,57 +914,6 @@ pageFunctions.wzTabFunc = function () {
         });
         return ans;
     });
-
-    var getProductToAddDetails = function (parameter) {
-        var ans = {};
-        var param = {};
-        param['parameter'] = parameter;
-        $.ajax({
-            type: 'POST',
-            async: false,
-            data: param,
-            dataType: 'json',
-            url: 'PHP/getProductDetails.php',
-            success: function (data) {
-                ans = data;
-            }
-        });
-        return ans;
-    };
-    var getProductToAddDetailsById = function (parameter) {
-        var ans = {};
-        var param = {};
-        param['parameter'] = parameter;
-        $.ajax({
-            type: 'POST',
-            async: false,
-            data: param,
-            dataType: 'json',
-            url: 'PHP/getProductDetailsById.php',
-            success: function (data) {
-                ans = data;
-            }
-        });
-        return ans;
-    };
-
-    var getRecordDetailsByRecordId = function (parameter) {
-        var ans = {};
-        var param = {};
-        param['parameter'] = parameter;
-        $.ajax({
-            type: 'POST',
-            async: false,
-            data: param,
-            dataType: 'json',
-            url: 'PHP/getRecordDetailsByRecordId.php',
-            success: function (data) {
-                ans = data;
-            }
-        });
-        return ans;
-    };
-
     var fillProductAddingForm = function (searchDetails) {
         var details = getProductToAddDetails(searchDetails);
         $('#WZProdAddId').html(details[0]['product_id']);
@@ -1009,7 +934,6 @@ pageFunctions.wzTabFunc = function () {
         }
         divider = details[0]['product_divider'];
     };
-
     var fillProductAddingFormById = function (searchDetails) {
         var details = getProductToAddDetailsById(searchDetails);
         $('#WZProdAddId').html(details[0]['product_id']);
@@ -1029,7 +953,6 @@ pageFunctions.wzTabFunc = function () {
         }
         divider = details[0]['product_divider'];
     };
-
     var fillRecordEditForm = function (searchDetails) {
         var details = getRecordDetailsByRecordId(searchDetails);
         $('#WZProdEditId').html(details[0]['product_id']);
@@ -1053,7 +976,6 @@ pageFunctions.wzTabFunc = function () {
         }
         divider = details[0]['product_divider'];
     };
-
     var getWZRecords = (function () {
         param = {};
         param['docId'] = selectedWZID;
@@ -1068,7 +990,6 @@ pageFunctions.wzTabFunc = function () {
             }
         });
     });
-
     var getDocumentInfo = (function () {
         param = {};
         param['docId'] = selectedWZID;
@@ -1083,7 +1004,6 @@ pageFunctions.wzTabFunc = function () {
             }
         });
     });
-
     var addPosToWZ = (function (docId, prodId, qty, discount) {
         var param = {};
         param['docId'] = docId;
@@ -1098,7 +1018,6 @@ pageFunctions.wzTabFunc = function () {
             url: 'PHP/addPosToWZ.php'
         });
     });
-
     var setValuesWZInfo = (function (data) {
         var tempDate;
         $.each(data, function (index, value) {
@@ -1118,7 +1037,6 @@ pageFunctions.wzTabFunc = function () {
             $('#dateField').html(tempDate);
         });
     });
-
     var createWZProductTableContent = (function (data) {
         var ans = '';
         selectedWZRecord = 0;
@@ -1281,7 +1199,7 @@ pageFunctions.wzTabFunc = function () {
                 } else {
                     $('#WZConNext').removeClass('hidden');
                 }
-                if (WZConCount < (WZConPage * 5 + 5)) {
+                if (WZConCount <= (WZConPage * 5 + 5)) {
                     $('#WZConNext').addClass('hidden');
                 } else {
                     $('#WZConNext').removeClass('hidden');

@@ -15,7 +15,7 @@ var isDocumentAccepted = 0;
 var productPrice = 0;
 var productVat = 0;
 var selectedProductToAdd = 0;
-var selectedWZRecord = 0;
+var selectedFVRecord = 0;
 var divider = 0;
 
 pageFunctions.wzTabFunc = (function(){
@@ -32,36 +32,41 @@ pageFunctions.wzTabFunc = (function(){
         $("#delFV").on('click', function(){
             var docAccept = checkDocumentAccept(selectedFVID);
             if(selectedFVID != 0 && docAccept != 1){
-                var r = confirm("Czy napewno chcesz usunąć dokument?");
+                var txt = '';
+                if (window.localStorage.getItem('lang') == 'pl') {
+                    txt = 'Czy napewno chcesz usunąć dokument?';
+                } else if (window.localStorage.getItem('lang') == 'en') {
+                    txt = 'Are you sure you want to delete the document?';
+                } else {
+                    txt = 'Czy napewno chcesz usunąć dokument?';
+                }
+                var r = confirm(txt);
                 if (r == true) {
                     delDocument(selectedFVID);
                     selectedFVID = 0;
                     reset();
-                } else {
-                    
-                }
+                } 
             } else {
                 if(docAccept == 1){
-                    alert('Dokument zatwierdzony, nie można usunąć!');
+                    var txt = '';
+                    if (window.localStorage.getItem('lang') == 'pl') {
+                        txt = 'Dokument zatwierdzony, nie można usunąć!';
+                    } else if (window.localStorage.getItem('lang') == 'en') {
+                        txt = 'Document is accepted, you can not delete it!';
+                    } else {
+                        txt = 'Dokument zatwierdzony, nie można usunąć!';
+                    }
+                    alert(txt);
                 } else {
-                    alert('Nie wybrano dokumentu!');
-                }
-            }
-        });
-        $('#acceptFV').on('click', function(){
-            var accept = 0;
-            var count = 0;
-            if(selectedFVID!=0){
-                accept = checkDocumentAccept(selectedFVID);
-                count = getDocumentRecordsCount(selectedFVID);
-                if(accept == 1){
-                    alert("Dokument już zatwierdzony!");
-                } else if (count == 0){
-                    alert("Dokument jest pusty!");
-                } else {
-                    acceptDocument(selectedFVID);
-                    reset();
-                    selectedFVID = 0;
+                    var txt = '';
+                    if (window.localStorage.getItem('lang') == 'pl') {
+                        txt = 'Nie wybrano dokumentu!';
+                    } else if (window.localStorage.getItem('lang') == 'en') {
+                        txt = 'Document is not selected!';
+                    } else {
+                        txt = 'Nie wybrano dokumentu!';
+                    }
+                    alert(txt);
                 }
             }
         });
@@ -75,13 +80,342 @@ pageFunctions.wzTabFunc = (function(){
                 }
             }
         });
+        $('#newFVRecord').on('click', function () {
+            $('#FVProdWithoutCommaInput').removeClass('wrongValue');
+            $('#FVProdFloatingPointInput').removeClass('wrongValue');
+            $('#FVProdAddDiscount').removeClass('wrongValue');
+            $('#FVProdWithoutCommaInput').val('');
+            $('#FVProdFloatingPointInput').val('');
+            $('#FVPosAddValue').html('');
+            $('#FVPosAddValueGross').html('');
+            $('#FVProdAddDiscount').val('');
+            if (getFindProductToAddCount($('#FVproductSearch').val()) == 1) {
+                $('#FVAddingProduct').removeClass('hidden');
+                fillProductAddingForm($('#FVproductSearch').val());
+                $('#FVproductSearch').val('');
+
+            } else {
+                FVProdToAddPage = 0;
+                FVProdToAddOrder = 1;
+                $('#FVChosingProduct').removeClass('hidden');
+                FVFindProdCount = getFindProductToAddCount($('#FVproductSearch').val());
+                $('#FVProdChoseTabContent').html(createFVProductToAddContent(getFindProductToAdd(FVProdToAddPage, FVProdToAddOrder, $('#FVproductSearch').val())));
+                $('#FVProdSearchDetails').val($('#FVproductSearch').val());
+                $('#FVproductSearch').val('');
+            }
+        });
+        $('#deleteFVRecord').on('click', function(){
+            if(selectedFVRecord != 0) {
+                delDocumentPos(selectedFVRecord);
+                getFVRecords(selectedFVID);
+            } else {
+                alert('Nie wybrano pozycji do usunięcia!');
+            } 
+        });
+        $('#editFVRecord').on('click', function(){
+            if(selectedFVRecord != 0){
+                $('#FVProdWithoutCommaEditInput').removeClass('wrongValue');
+                $('#FVProdFloatingPointEditInput').removeClass('wrongValue');
+                $('#FVProdEditDiscount').removeClass('wrongValue');
+                $('#FVProdWithoutCommaEditInput').val('');
+                $('#FVProdFloatingPointEditInput').val('');
+                $('#FVPosEditValue').html('');
+                $('#FVPosEditValueGross').html('');
+                $('#FVProdEditDiscount').val('');
+                $('#FVEditProduct').removeClass('hidden');
+                fillRecordEditForm(selectedFVRecord);
+            } else {
+                alert('Nie wybrano pozycji!');
+            }
+        });
+        $('#cancelFVEditProduct').on('click', function(){
+            $('#FVEditProduct').addClass('hidden');
+        });
+        $('#calculateValueFV').on('click', function(){
+            var qty;
+            var disc;
+            var sum;
+            var gross;
+            if(divider == 1){
+                qty = parseFloat($('#FVProdWithoutCommaInput').val());
+                disc = $('#FVProdAddDiscount').val();
+                sum = (productPrice*qty)-(productPrice*qty*(disc/100));
+                gross = sum+(sum*(productVat/100));
+                $('#FVPosAddValue').html(Math.round(sum*100)/100);
+                $('#FVPosAddValueGross').html(Math.round(gross*100)/100);
+            } else {
+                qty = parseFloat($('#FVProdFloatingPointInput').val());
+                disc = $('#FVProdAddDiscount').val();
+                sum = (productPrice*qty)-(productPrice*qty*(disc/100));
+                gross = sum+(sum*(productVat/100));
+                $('#FVPosAddValue').html(Math.round(sum*100)/100);
+                $('#FVPosAddValueGross').html(Math.round(gross*100)/100);
+            }
+        });
+        $('#calculateValueFVEdit').on('click', function(){
+            var qty;
+            var disc;
+            var sum;
+            var gross;
+            if(divider == 1){
+                qty = parseFloat($('#FVProdWithoutCommaEditInput').val());
+                disc = $('#FVProdEditDiscount').val();
+                sum = (productPrice*qty)-(productPrice*qty*(disc/100));
+                gross = sum+(sum*(productVat/100));
+                $('#FVPosEditValue').html(Math.round(sum*100)/100);
+                $('#FVPosEditValueGross').html(Math.round(gross*100)/100);
+            } else {
+                qty = parseFloat($('#FVProdFloatingPointEditInput').val());
+                disc = $('#FVProdEditDiscount').val();
+                sum = (productPrice*qty)-(productPrice*qty*(disc/100));
+                gross = sum+(sum*(productVat/100));
+                $('#FVPosEditValue').html(Math.round(sum*100)/100);
+                $('#FVPosEditValueGross').html(Math.round(gross*100)/100);
+            }
+        });
+        $('#confirmFVProdChose').on('click', function (){
+            $('#FVAddingProduct').removeClass('hidden');
+            fillProductAddingFormById(FVselectedFindProduct);
+            $('#FVChosingProduct').addClass('hidden');
+        });
+        $('#FVProdFloatingPointInput').on('focus', function () {
+            $('#FVProdFloatingPointInput').removeClass('wrongValue');
+        });
+        $('#FVProdWithoutCommaInput').on('focus', function () {
+            $('#FVProdWithoutCommaInput').removeClass('wrongValue');
+        });
+        $('#FVProdAddDiscount').on('focus', function () {
+            $('#FVProdAddDiscount').removeClass('wrongValue');
+        });
+        $('#FVProdFloatingPointEditInput').on('focus', function () {
+            $('#FVProdFloatingPointEditInput').removeClass('wrongValue');
+        });
+        $('#FVProdWithoutCommaEditInput').on('focus', function () {
+            $('#FVProdWithoutCommaEditInput').removeClass('wrongValue');
+        });
+        $('#FVProdEditDiscount').on('focus', function () {
+            $('#FVProdEditDiscount').removeClass('wrongValue');
+        });
+        $('#confirmFVAddProduct').on('click', function(){
+            if(divider == 0){
+                if(!isNaN($('#FVProdFloatingPointInput').val()) && !isNaN($('#FVProdAddDiscount').val())){
+                    if($('#FVProdFloatingPointInput').val() != 0){
+                        if(checkQty(selectedProductToAdd, Math.round($('#FVProdWithoutCommaInput').val() * 100)) == 1){
+                            addPosToFV(selectedFVID, selectedProductToAdd, Math.round($('#FVProdFloatingPointInput').val() * 100), Math.round($('#FVProdAddDiscount').val() * 100));
+                            getFVRecords();
+                            $('#FVAddingProduct').addClass('hidden');
+                        } else {
+                            fillProductAddingFormById(FVselectedFindProduct);
+                            $('#FVProdFloatingPointInput').addClass('wrongValue');
+                            alert('Zbyt mało towaru na magazynie');
+                        }
+                    } else {
+                        $('#FVProdFloatingPointInput').addClass('wrongValue');
+                        alert('Ilość musi być większa od 0');
+                    }
+                } else {
+                    if(isNaN($('#FVProdAddDiscount').val())) {
+                        $('#FVProdAddDiscount').addClass('wrongValue');
+                    }
+                    if(isNaN($('#FVProdFloatingPointInput').val())){
+                        $('#FVProdFloatingPointInput').addClass('wrongValue');
+                    }
+                    alert('Niepoprawne wartości');
+                }
+            } else if (divider == 1){
+                if(!isNaN($('#FVProdWithoutCommaInput').val()) && !isNaN($('#FVProdAddDiscount').val())){
+                    if($('#FVProdWithoutCommaInput').val() != 0){
+                        if(checkQty(selectedProductToAdd, Math.round($('#FVProdWithoutCommaInput').val() * 100)) == 1){
+                            addPosToFV(selectedFVID, selectedProductToAdd, Math.round($('#FVProdWithoutCommaInput').val() * 100), Math.round($('#FVProdAddDiscount').val() * 100));
+                            getFVRecords();
+                            $('#FVAddingProduct').addClass('hidden');
+                        } else {
+                            fillProductAddingFormById(FVselectedFindProduct);
+                            $('#FVProdWithoutCommaInput').addClass('wrongValue');
+                            alert('Zbyt mało towaru na magazynie');
+                        }
+                    } else {
+                        $('#FVProdWithoutCommaInput').addClass('wrongValue');
+                        alert('Ilość musi być większa od 0');
+                    }
+                } else {
+                    if(isNaN($('#FVProdAddDiscount').val())) {
+                        $('#FVProdAddDiscount').addClass('wrongValue');
+                    }
+                    if(isNaN($('#FVProdWithoutCommaInput').val())){
+                        $('#FVProdWithoutCommaInput').addClass('wrongValue');
+                    }
+                    alert('Niepoprawne wartości');
+                }
+            }
+        });
+        $('#confirmFVEditProduct').on('click', function(){
+            console.log(selectedFVRecord);
+            if(divider == 0){
+                if(!isNaN($('#FVProdFloatingPointEditInput').val()) && !isNaN($('#FVProdEditDiscount').val())){
+                    if($('#FVProdFloatingPointEditInput').val() != 0){
+                        if(checkQtyToEdit(selectedFVRecord, $('#FVProdFloatingPointEditInput').val() * 100) == 1){
+                            editFVPos(selectedFVRecord, $('#FVProdFloatingPointEditInput').val() * 100, $('#FVProdEditDiscount').val() * 100);
+                            getFVRecords();
+                            $('#FVEditProduct').addClass('hidden');
+                        } else {
+                            fillRecordEditForm(selectedFVRecord);
+                            $('#FVProdFloatingPointEditInput').addClass('wrongValue');
+                            alert('Zbyt mało towaru na magazynie');
+                        }
+                    } else {
+                        $('#FVProdFloatingPointEditInput').addClass('wrongValue');
+                        alert('Ilość musi być większa od 0');
+                    }
+                } else {
+                    if(isNaN($('#FVProdEditDiscount').val())) {
+                        $('#FVProdEditDiscount').addClass('wrongValue');
+                    }
+                    if(isNaN($('#FVProdFloatingPointEditInput').val())){
+                        $('#FVProdFloatingPointEditInput').addClass('wrongValue');
+                    }
+                    alert('Niepoprawne wartości');
+                }
+            } else if (divider == 1){
+                if(!isNaN($('#FVProdWithoutCommaEditInput').val()) && !isNaN($('#FVProdEditDiscount').val())){
+                    if($('#FVProdWithoutCommaEditInput').val() != 0){
+                        if(checkQtyToEdit(selectedFVRecord, $('#FVProdWithoutCommaEditInput').val() * 100) == 1){
+                            editFVPos(selectedFVRecord, $('#FVProdWithoutCommaEditInput').val() * 100, $('#FVProdEditDiscount').val() * 100);
+                            getFVRecords();
+                            $('#FVEditProduct').addClass('hidden');
+                        } else {
+                            fillRecordEditForm(selectedFVRecord);
+                            $('#FVProdWithoutCommaEditInput').addClass('wrongValue');
+                            alert('Zbyt mało towaru na magazynie');
+                        }
+                    } else {
+                        $('#FVProdWithoutCommaEditInput').addClass('wrongValue');
+                        alert('Ilość musi być większa od 0');
+                    }
+                } else {
+                    if(isNaN($('#FVProdEditDiscount').val())) {
+                        $('#FVProdEditDiscount').addClass('wrongValue');
+                    }
+                    if(isNaN($('#FVProdWithoutCommaEditInput').val())){
+                        $('#FVProdWithoutCommaEditInput').addClass('wrongValue');
+                    }
+                    alert('Niepoprawne wartości');
+                }
+            }
+        });
+        $('#FVProdSearch').on('click', function () {
+            FVProdToAddPage = 0;
+            FVProdToAddOrder = 1;
+            FVselectedFindProduct = 0;
+            $('.WZProdToAdd').removeClass('rowSelected');
+            FVFindProdCount = getFindProductToAddCount($('#FVProdSearchDetails').val());
+            $('#FVProdChosePrevious').addClass('hidden');
+            $('#FVProdChoseTabContent').html(createFVProductToAddContent(getFindProductToAdd(FVProdToAddPage, FVProdToAddOrder, $('#FVProdSearchDetails').val())));
+        });
+        $('#FVProdReset').on('click', function () {
+            FVProdToAddPage = 0;
+            FVProdToAddOrder = 1;
+            FVselectedFindProduct = 0;
+            $('.WZProdToAdd').removeClass('rowSelected');
+            $('#FVProdChosePrevious').addClass('hidden');
+            $('#FVProdSearchDetails').val('');
+            FVFindProdCount = getFindProductToAddCount($('#FVProdSearchDetails').val());
+            $('#FVProdChoseTabContent').html(createFVProductToAddContent(getFindProductToAdd(FVProdToAddPage, FVProdToAddOrder, $('#FVProdSearchDetails').val())));
+        });
+        $('#FVProdChoseNext').on('click', function () {
+            $('.WZProdToAdd').removeClass('rowSelected');
+            FVProdToAddPage++;
+            $('#FVProdChoseTabContent').html(createFVProductToAddContent(getFindProductToAdd(FVProdToAddPage, FVProdToAddOrder, $('#FVProdSearchDetails').val())));
+            if (FVProdToAddPage > 0) {
+                $('#FVProdChosePrevious').removeClass('hidden');
+            }
+            FVFindProdCount = getFindProductToAddCount($('#FVProdSearchDetails').val());
+            if (FVFindProdCount <= 5) {
+                $('#FVProdChoseNext').addClass('hidden');
+            } else {
+                $('#FVProdChoseNext').removeClass('hidden');
+            }
+            if (FVFindProdCount < (FVProdToAddPage * 5 + 5)) {
+                $('#FVProdChoseNext').addClass('hidden');
+            } else {
+                $('#FVProdChoseNext').removeClass('hidden');
+            }
+        });
+        $('#FVProdChosePrevious').on('click', function () {
+            $('.WZProdToAdd').removeClass('rowSelected');
+            FVProdToAddPage--;
+            $('#FVProdChoseNext').removeClass('hidden');
+            $('#FVProdChoseTabContent').html(createFVProductToAddContent(getFindProductToAdd(FVProdToAddPage, FVProdToAddOrder, $('#FVProdSearchDetails').val())));
+            if (FVProdToAddPage == 0) {
+                $('#FVProdChosePrevious').addClass('hidden');
+            }
+        });
+        $('#cancelFVAddProduct').on('click', function () {
+            $('#FVAddingProduct').addClass('hidden');
+        });
+        $('#cancelFVProdChose').on('click', function () {
+            $('#FVChosingProduct').addClass('hidden');
+        });
+        $('#acceptFV').on('click', function(){
+            var accept = 0;
+            var count = 0;
+            if(selectedFVID!=0){
+                accept = checkDocumentAccept(selectedFVID);
+                count = getDocumentRecordsCount(selectedFVID);
+                if(accept == 1){
+                    var txt = '';
+                    if (window.localStorage.getItem('lang') == 'pl') {
+                        txt = 'Dokument już zatwierdzony!';
+                    } else if (window.localStorage.getItem('lang') == 'en') {
+                        txt = 'Document is alredy accepted!';
+                    } else {
+                        txt = 'Dokument już zatwierdzony!';
+                    }
+                    alert(txt);
+                } else if (count == 0){
+                    var txt = '';
+                    if (window.localStorage.getItem('lang') == 'pl') {
+                        txt = 'Dokument jest pusty!';
+                    } else if (window.localStorage.getItem('lang') == 'en') {
+                        txt = 'Document is empty!';
+                    } else {
+                        txt = 'Dokument jest pusty!';
+                    }
+                    alert(txt);
+                } else {
+                    acceptDocument(selectedFVID);
+                    reset();
+                    selectedFVID = 0;
+                }
+            }
+        });
         $(document).on('click', function(e){
         var id = $(e.target).parent().attr('id');
             if(id!=undefined){
                 if(id.substring(0,5) == 'ConID'){
                     $('.FVConRow').removeClass('rowSelected');
                     $('#ConID'+id.substring(5,id.lenght)).addClass('rowSelected');
-                    selectedContractorID = id.substring(5,id.lenght);
+                    FVselectedContractorID = id.substring(5,id.lenght);
+                }
+            }
+        });
+        $(document).on('click', function (e) {
+            var id = $(e.target).parent().attr('id');
+            if (id != undefined) {
+                if (id.substring(0, 11) == 'FVProdToAdd') {
+                    $('.WZProdToAdd').removeClass('rowSelected');
+                    $('#FVProdToAdd' + id.substring(11, id.lenght)).addClass('rowSelected');
+                    FVselectedFindProduct = id.substring(11, id.lenght);
+                }
+            }
+        });
+        $(document).on('click', function (e) {
+            var id = $(e.target).parent().attr('id');
+            if (id != undefined) {
+                if (id.substring(0, 7) == 'FVRecID') {
+                    $('.WZProdRow').removeClass('rowSelected');
+                    $('#FVRecID' + id.substring(7, id.lenght)).addClass('rowSelected');
+                    selectedFVRecord = id.substring(7, id.lenght);
                 }
             }
         });
@@ -92,6 +426,7 @@ pageFunctions.wzTabFunc = (function(){
                     $('#FVPopup').removeClass('hidden');
                     $('#FVContainer').addClass('blur');
                     selectedFVID = id.substring(4,id.lenght);
+                    selectedFVRecord = 0;
                     isDocumentAccepted = checkDocumentAccept(selectedFVID);
                     if(isDocumentAccepted == 0){
                         $('#newFVRecord').removeClass('hidden');
@@ -138,7 +473,6 @@ pageFunctions.wzTabFunc = (function(){
                 $('#FVprevious').addClass('hidden');
             }
         });
-        
         $('#FVConNext').on('click', function(){
             $('.FVConRow').removeClass('rowSelected');
             FVConPage++;
@@ -194,7 +528,6 @@ pageFunctions.wzTabFunc = (function(){
         $('#FVreset').on('click', function(){
             reset();
         });
-        //ORDER ARROWS CONTROL FV TAB
         $('#FVarrUpId').on('click', function(){
             FVTablePage = 0;
             $('.FVarr').addClass('unused');
@@ -475,7 +808,7 @@ pageFunctions.wzTabFunc = (function(){
               } else {
                   $('#FVnext').removeClass('hidden');
               }
-              if(FVCount<(FVTablePage*15+15)){
+              if(FVCount <= (FVTablePage*15+15)){
                   $('#FVnext').addClass('hidden');
               } else {
                   $('#FVnext').removeClass('hidden');
@@ -483,7 +816,6 @@ pageFunctions.wzTabFunc = (function(){
           }
         });
     });
-    
     var addDocument = (function(){
         param = {};       
         //DOCUMENT ID
@@ -515,7 +847,6 @@ pageFunctions.wzTabFunc = (function(){
             $('#selectContractorNIP').val('');
         }
     });
-    
     var createFVTableContent = (function(data){
         ans = '';
         var tmpDate;
@@ -560,7 +891,91 @@ pageFunctions.wzTabFunc = (function(){
         });    
         return ans;
     });
-    
+    var createFVProductToAddContent = (function (data) {
+        ans = '';
+        if (FVFindProdCount <= 5) {
+                $('#FVProdChoseNext').addClass('hidden');
+            } else {
+                $('#FVProdChoseNext').removeClass('hidden');
+        }
+        if (FVFindProdCount <= (FVProdToAddPage * 5) + 5) {
+                $('#FVProdChoseNext').addClass('hidden');
+            } else {
+                $('#FVProdChoseNext').removeClass('hidden');
+        }
+        $.each(data, function (index, value) {
+            ans += "<tr class='WZProdToAdd' id=FVProdToAdd" + value['product_id'] + ">\n\
+                        <td class='WZProdChoseCol1c'>" + value['product_id'] + "</td>\n\
+                        <td class='WZProdChoseCol2c'>" + value['product_name'] + "</td>\n\
+                        <td class='WZProdChoseCol3c'>" + value['contractor_name'] + "</td>\n\
+                        <td class='WZProdChoseCol4c'>" + value['product_price']/100 + "</td>\n\
+                        <td class='WZProdChoseCol5c'>" + value['product_number']/100 + "</td>\n\
+                    </tr>";
+        });
+        return ans;
+    });
+    var fillProductAddingForm = function (searchDetails) {
+        var details = getProductToAddDetails(searchDetails);
+        $('#FVProdAddId').html(details[0]['product_id']);
+        $('#FVProdAddName').html(details[0]['product_name']);
+        $('#FVProdAddProducer').html(details[0]['contractor_name']);
+        $('#FVProdAddPrice').html((details[0]['product_price'])/100);
+        $('#FVProdAddQty').html(details[0]['product_number']/100 +' '+ details[0]['product_unit']);
+        productPrice = (details[0]['product_price']/100);
+        productVat = (details[0]['vat_value']);
+        selectedProductToAdd = details[0]['product_id'];
+        FVselectedFindProduct = details[0]['product_id'];
+        if(details[0]['product_divider'] == 0) {
+            $('#FVProdFloatingPoint').removeClass('hidden');
+            $('#FVProdWithoutComma').addClass('hidden');
+        } else {
+            $('#FVProdFloatingPoint').addClass('hidden');
+            $('#FVProdWithoutComma').removeClass('hidden');
+        }
+        divider = details[0]['product_divider'];
+    };
+    var fillProductAddingFormById = function (searchDetails) {
+        var details = getProductToAddDetailsById(searchDetails);
+        $('#FVProdAddId').html(details[0]['product_id']);
+        $('#FVProdAddName').html(details[0]['product_name']);
+        $('#FVProdAddProducer').html(details[0]['contractor_name']);
+        $('#FVProdAddPrice').html((details[0]['product_price'])/100);
+        $('#FVProdAddQty').html(details[0]['product_number']/100 +' '+ details[0]['product_unit']);
+        productPrice = (details[0]['product_price']/100);
+        productVat = (details[0]['vat_value']);
+        selectedProductToAdd = details[0]['product_id'];
+        if(details[0]['product_divider'] == 0) {
+            $('#FVProdFloatingPoint').removeClass('hidden');
+            $('#FVProdWithoutComma').addClass('hidden');
+        } else {
+            $('#FVProdFloatingPoint').addClass('hidden');
+            $('#FVProdWithoutComma').removeClass('hidden');
+        }
+        divider = details[0]['product_divider'];
+    };
+    var fillRecordEditForm = function (searchDetails) {
+        var details = getRecordDetailsByRecordId(searchDetails);
+        $('#FVProdEditId').html(details[0]['product_id']);
+        $('#FVProdEditName').html(details[0]['product_name']);
+        $('#FVProdEditProducer').html(details[0]['contractor_name']);
+        $('#FVProdEditPrice').html((details[0]['product_price'])/100);
+        $('#FVProdEditQty').html(details[0]['product_number']/100 +' '+ details[0]['product_unit']);
+        productPrice = (details[0]['product_price']/100);
+        productVat = (details[0]['vat_value']);
+        selectedProductToAdd = details[0]['product_id'];
+        FVselectedFindProduct = details[0]['product_id'];
+        $('#FVProdEditDiscount').val(details[0]['discount']);
+        if(details[0]['product_divider'] == 0) {
+            $('#FVProdFloatingPointEdit').removeClass('hidden');
+            $('#FVProdWithoutCommaEdit').addClass('hidden');
+            $('#FVProdFloatingPointEditInput').val(details[0]['document_records_product_number']/100);
+        } else {
+            $('#FVProdFloatingPointEdit').addClass('hidden');
+            $('#FVProdWithoutCommaEdit').removeClass('hidden');
+            $('#FVProdWithoutCommaEditInput').val(details[0]['document_records_product_number']/100);
+        }
+        divider = details[0]['product_divider'];
+    };
     var getFVRecords = (function(){
         param = {};       
         param['docId'] = selectedFVID;
@@ -575,7 +990,6 @@ pageFunctions.wzTabFunc = (function(){
           }
         });
     });
-    
     var getDocumentInfo = (function(){
         param = {};       
         param['docId'] = selectedFVID;
@@ -588,6 +1002,20 @@ pageFunctions.wzTabFunc = (function(){
           success: function(data){
                 setValuesFVInfo(data);
           }
+        });
+    });
+    var addPosToFV = (function (docId, prodId, qty, discount) {
+        var param = {};
+        param['docId'] = docId;
+        param['prodId'] = prodId;
+        param['qty'] = qty;
+        param['discount'] = discount;
+        $.ajax({
+            type: 'POST',
+            async: false,
+            data: param,
+            dataType: 'json',
+            url: 'PHP/addPosToWZ.php'
         });
     });
     var setValuesFVInfo = (function(data){
@@ -609,9 +1037,9 @@ pageFunctions.wzTabFunc = (function(){
             $('#dateField').html(tempDate);
         });
     });
-    
     var createFVProductTableContent = (function(data){
         ans = '';
+        selectedFVRecord = 0;
         $('#FVBruttoV0').html(0);
         $('#FVV0').html(0);
         $('#FVBruttoV5').html(0);
@@ -653,8 +1081,8 @@ pageFunctions.wzTabFunc = (function(){
             priceBrutto = price+(price*vat);
             valueNetto = price*number;
             valueBrutto = priceBrutto * number;
-            valueBruttoWithDiscount = valueBrutto-(valueBrutto*discount);
-            valueNettoWithDiscount = valueNetto-(valueNetto*discount);
+            valueBruttoWithDiscount = valueBrutto-(valueBrutto*discount/100);
+            valueNettoWithDiscount = valueNetto-(valueNetto*discount/100);
             vatValue = valueBruttoWithDiscount - valueNettoWithDiscount;
             totalNetto += valueNettoWithDiscount;
             totalBrutto += valueBruttoWithDiscount;
@@ -686,20 +1114,35 @@ pageFunctions.wzTabFunc = (function(){
             $('#FVNettoField').html(Math.round((totalNetto/100)*100)/100);
             $('#FVBruttoField').html(Math.round((totalBrutto/100)*100)/100);
             
-            
-            ans += "<tr class='FVProdRow' id=RecID"+value['document_records_id']+">\n\
-                    <td class='FVProdCol1c'>"+value['document_records_product_id']+"</td>\n\
-                    <td class='FVProdCol2c'>"+value['product_name']+"</td>\n\
-                    <td class='FVProdCol3c'>"+number+"</td>\n\
-                    <td class='FVProdCol4c'>"+value['product_unit_short']+"</td>\n\
-                    <td class='FVProdCol5c'>"+(vat*100)+"</td>\n\
-                    <td class='FVProdCol6c'>"+(discount*100)+"</td>\n\
-                    <td class='FVProdCol7c'>"+(Math.round((price/100)*100)/100)+"</td>\n\
-                    <td class='FVProdCol8c'>"+(Math.round((priceBrutto/100)*100)/100)+"</td>\n\
-                    <td class='FVProdCol9c'>"+(Math.round((valueNetto/100)*100)/100)+"</td>\n\
-                    <td class='FVProdCol10c'>"+(Math.round((valueBrutto/100)*100)/100)+"</td>\n\
-                    <td class='FVProdCol11c'>"+(Math.round((valueBruttoWithDiscount/100)*100)/100)+"</td>\n\
-            </tr>";
+            if (isDocumentAccepted == 0) {
+                ans += "<tr class='WZProdRow' id=FVRecID" + value['document_records_id'] + ">\n\
+                            <td class='FVProdCol1c'>" + value['document_records_product_id'] + "</td>\n\
+                            <td class='FVProdCol2c'>" + value['product_name'] + "</td>\n\
+                            <td class='FVProdCol3c'>" + number + "</td>\n\
+                            <td class='FVProdCol4c'>" + value['product_unit_short'] + "</td>\n\
+                            <td class='FVProdCol5c'>" + (vat * 100) + "</td>\n\
+                            <td class='FVProdCol6c'>" + (discount) + "</td>\n\
+                            <td class='FVProdCol7c'>" + (Math.round((price / 100) * 100) / 100) + "</td>\n\
+                            <td class='FVProdCol8c'>" + (Math.round((priceBrutto / 100) * 100) / 100) + "</td>\n\
+                            <td class='FVProdCol9c'>" + (Math.round((valueNetto / 100) * 100) / 100) + "</td>\n\
+                            <td class='FVProdCol10c'>" + (Math.round((valueBrutto / 100) * 100) / 100) + "</td>\n\
+                            <td class='FVProdCol11c'>" + (Math.round((valueBruttoWithDiscount / 100) * 100) / 100) + "</td>\n\
+                        </tr>";
+            } else {
+                ans += "<tr class='WZProdRow'>\n\
+                            <td class='FVProdCol1c'>" + value['document_records_product_id'] + "</td>\n\
+                            <td class='FVProdCol2c'>" + value['product_name'] + "</td>\n\
+                            <td class='FVProdCol3c'>" + number + "</td>\n\
+                            <td class='FVProdCol4c'>" + value['product_unit_short'] + "</td>\n\
+                            <td class='FVProdCol5c'>" + (vat * 100) + "</td>\n\
+                            <td class='FVProdCol6c'>" + (discount) + "</td>\n\
+                            <td class='FVProdCol7c'>" + (Math.round((price / 100) * 100) / 100) + "</td>\n\
+                            <td class='FVProdCol8c'>" + (Math.round((priceBrutto / 100) * 100) / 100) + "</td>\n\
+                            <td class='FVProdCol9c'>" + (Math.round((valueNetto / 100) * 100) / 100) + "</td>\n\
+                            <td class='FVProdCol10c'>" + (Math.round((valueBrutto / 100) * 100) / 100) + "</td>\n\
+                            <td class='FVProdCol11c'>" + (Math.round((valueBruttoWithDiscount / 100) * 100) / 100) + "</td>\n\
+                        </tr>";
+            }
         });    
         return ans;
     });
