@@ -282,7 +282,7 @@ pageFunctions.productsTabFunc = (function(){
               } else {
                   $('#PRnext').removeClass('hidden');
               }
-              if(productCount<(productTablePage*15+15)){
+              if(productCount <= (productTablePage*15+15)){
                   $('#PRnext').addClass('hidden');
               } else {
                   $('#PRnext').removeClass('hidden');

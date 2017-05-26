@@ -56,7 +56,7 @@ pageFunctions.wzTabFunc = (function(){
                     } else {
                         txt = 'Dokument zatwierdzony, nie można usunąć!';
                     }
-                    alert(txt);
+                    myAlert(txt);
                 } else {
                     var txt = '';
                     if (window.localStorage.getItem('lang') == 'pl') {
@@ -66,7 +66,7 @@ pageFunctions.wzTabFunc = (function(){
                     } else {
                         txt = 'Nie wybrano dokumentu!';
                     }
-                    alert(txt);
+                    myAlert(txt);
                 }
             }
         });
@@ -109,7 +109,7 @@ pageFunctions.wzTabFunc = (function(){
                 delDocumentPos(selectedFVRecord);
                 getFVRecords(selectedFVID);
             } else {
-                alert('Nie wybrano pozycji do usunięcia!');
+                myAlert('Nie wybrano pozycji do usunięcia!');
             } 
         });
         $('#editFVRecord').on('click', function(){
@@ -125,7 +125,7 @@ pageFunctions.wzTabFunc = (function(){
                 $('#FVEditProduct').removeClass('hidden');
                 fillRecordEditForm(selectedFVRecord);
             } else {
-                alert('Nie wybrano pozycji!');
+                myAlert('Nie wybrano pozycji!');
             }
         });
         $('#cancelFVEditProduct').on('click', function(){
@@ -199,19 +199,23 @@ pageFunctions.wzTabFunc = (function(){
         $('#confirmFVAddProduct').on('click', function(){
             if(divider == 0){
                 if(!isNaN($('#FVProdFloatingPointInput').val()) && !isNaN($('#FVProdAddDiscount').val())){
-                    if($('#FVProdFloatingPointInput').val() != 0){
-                        if(checkQty(selectedProductToAdd, Math.round($('#FVProdWithoutCommaInput').val() * 100)) == 1){
-                            addPosToFV(selectedFVID, selectedProductToAdd, Math.round($('#FVProdFloatingPointInput').val() * 100), Math.round($('#FVProdAddDiscount').val() * 100));
-                            getFVRecords();
-                            $('#FVAddingProduct').addClass('hidden');
+                    if($('#FVProdAddDiscount').val() <= 90 && $('#FVProdAddDiscount').val() >= 0){
+                        if($('#FVProdFloatingPointInput').val() != 0){
+                            if(checkQty(selectedProductToAdd, Math.round($('#FVProdFloatingPointInput').val() * 100)) == 1){
+                                addPosToFV(selectedFVID, selectedProductToAdd, Math.round($('#FVProdFloatingPointInput').val() * 100), Math.round($('#FVProdAddDiscount').val() * 100));
+                                getFVRecords();
+                                $('#FVAddingProduct').addClass('hidden');
+                            } else {
+                                fillProductAddingFormById(FVselectedFindProduct);
+                                $('#FVProdFloatingPointInput').addClass('wrongValue');
+                                myAlert('Zbyt mało towaru na magazynie');
+                            }
                         } else {
-                            fillProductAddingFormById(FVselectedFindProduct);
                             $('#FVProdFloatingPointInput').addClass('wrongValue');
-                            alert('Zbyt mało towaru na magazynie');
+                            myAlert('Ilość musi być większa od 0');
                         }
                     } else {
-                        $('#FVProdFloatingPointInput').addClass('wrongValue');
-                        alert('Ilość musi być większa od 0');
+                        myAlert('Nieprawidłowa wartość rabatu!');
                     }
                 } else {
                     if(isNaN($('#FVProdAddDiscount').val())) {
@@ -220,23 +224,27 @@ pageFunctions.wzTabFunc = (function(){
                     if(isNaN($('#FVProdFloatingPointInput').val())){
                         $('#FVProdFloatingPointInput').addClass('wrongValue');
                     }
-                    alert('Niepoprawne wartości');
+                    myAlert('Niepoprawne wartości');
                 }
             } else if (divider == 1){
                 if(!isNaN($('#FVProdWithoutCommaInput').val()) && !isNaN($('#FVProdAddDiscount').val())){
-                    if($('#FVProdWithoutCommaInput').val() != 0){
-                        if(checkQty(selectedProductToAdd, Math.round($('#FVProdWithoutCommaInput').val() * 100)) == 1){
-                            addPosToFV(selectedFVID, selectedProductToAdd, Math.round($('#FVProdWithoutCommaInput').val() * 100), Math.round($('#FVProdAddDiscount').val() * 100));
-                            getFVRecords();
-                            $('#FVAddingProduct').addClass('hidden');
+                    if($('#FVProdAddDiscount').val() <= 90 && $('#FVProdAddDiscount').val() >= 0){
+                        if($('#FVProdWithoutCommaInput').val() != 0){
+                            if(checkQty(selectedProductToAdd, Math.round($('#FVProdWithoutCommaInput').val() * 100)) == 1){
+                                addPosToFV(selectedFVID, selectedProductToAdd, Math.round($('#FVProdWithoutCommaInput').val() * 100), Math.round($('#FVProdAddDiscount').val() * 100));
+                                getFVRecords();
+                                $('#FVAddingProduct').addClass('hidden');
+                            } else {
+                                fillProductAddingFormById(FVselectedFindProduct);
+                                $('#FVProdWithoutCommaInput').addClass('wrongValue');
+                                myAlert('Zbyt mało towaru na magazynie');
+                            }
                         } else {
-                            fillProductAddingFormById(FVselectedFindProduct);
                             $('#FVProdWithoutCommaInput').addClass('wrongValue');
-                            alert('Zbyt mało towaru na magazynie');
+                            myAlert('Ilość musi być większa od 0');
                         }
                     } else {
-                        $('#FVProdWithoutCommaInput').addClass('wrongValue');
-                        alert('Ilość musi być większa od 0');
+                        myAlert('Nieprawidłowa wartość rabatu!');
                     }
                 } else {
                     if(isNaN($('#FVProdAddDiscount').val())) {
@@ -245,7 +253,7 @@ pageFunctions.wzTabFunc = (function(){
                     if(isNaN($('#FVProdWithoutCommaInput').val())){
                         $('#FVProdWithoutCommaInput').addClass('wrongValue');
                     }
-                    alert('Niepoprawne wartości');
+                    myAlert('Niepoprawne wartości');
                 }
             }
         });
@@ -253,19 +261,23 @@ pageFunctions.wzTabFunc = (function(){
             console.log(selectedFVRecord);
             if(divider == 0){
                 if(!isNaN($('#FVProdFloatingPointEditInput').val()) && !isNaN($('#FVProdEditDiscount').val())){
-                    if($('#FVProdFloatingPointEditInput').val() != 0){
-                        if(checkQtyToEdit(selectedFVRecord, $('#FVProdFloatingPointEditInput').val() * 100) == 1){
-                            editFVPos(selectedFVRecord, $('#FVProdFloatingPointEditInput').val() * 100, $('#FVProdEditDiscount').val() * 100);
-                            getFVRecords();
-                            $('#FVEditProduct').addClass('hidden');
+                    if($('#FVProdEditDiscount').val() <= 90 && $('#FVProdEditDiscount').val() >= 0){
+                        if($('#FVProdFloatingPointEditInput').val() != 0){
+                            if(checkQtyToEdit(selectedFVRecord, $('#FVProdFloatingPointEditInput').val() * 100) == 1){
+                                editFVPos(selectedFVRecord, $('#FVProdFloatingPointEditInput').val() * 100, $('#FVProdEditDiscount').val() * 100);
+                                getFVRecords();
+                                $('#FVEditProduct').addClass('hidden');
+                            } else {
+                                fillRecordEditForm(selectedFVRecord);
+                                $('#FVProdFloatingPointEditInput').addClass('wrongValue');
+                                myAlert('Zbyt mało towaru na magazynie');
+                            }
                         } else {
-                            fillRecordEditForm(selectedFVRecord);
                             $('#FVProdFloatingPointEditInput').addClass('wrongValue');
-                            alert('Zbyt mało towaru na magazynie');
+                            myAlert('Ilość musi być większa od 0');
                         }
                     } else {
-                        $('#FVProdFloatingPointEditInput').addClass('wrongValue');
-                        alert('Ilość musi być większa od 0');
+                        myAlert('Nieprawidłowa wartość rabatu!');
                     }
                 } else {
                     if(isNaN($('#FVProdEditDiscount').val())) {
@@ -274,23 +286,27 @@ pageFunctions.wzTabFunc = (function(){
                     if(isNaN($('#FVProdFloatingPointEditInput').val())){
                         $('#FVProdFloatingPointEditInput').addClass('wrongValue');
                     }
-                    alert('Niepoprawne wartości');
+                    myAlert('Niepoprawne wartości');
                 }
             } else if (divider == 1){
                 if(!isNaN($('#FVProdWithoutCommaEditInput').val()) && !isNaN($('#FVProdEditDiscount').val())){
-                    if($('#FVProdWithoutCommaEditInput').val() != 0){
-                        if(checkQtyToEdit(selectedFVRecord, $('#FVProdWithoutCommaEditInput').val() * 100) == 1){
-                            editFVPos(selectedFVRecord, $('#FVProdWithoutCommaEditInput').val() * 100, $('#FVProdEditDiscount').val() * 100);
-                            getFVRecords();
-                            $('#FVEditProduct').addClass('hidden');
+                    if($('#FVProdEditDiscount').val() <= 90 && $('#FVProdEditDiscount').val() >= 0){
+                        if($('#FVProdWithoutCommaEditInput').val() != 0){
+                            if(checkQtyToEdit(selectedFVRecord, $('#FVProdWithoutCommaEditInput').val() * 100) == 1){
+                                editFVPos(selectedFVRecord, $('#FVProdWithoutCommaEditInput').val() * 100, $('#FVProdEditDiscount').val() * 100);
+                                getFVRecords();
+                                $('#FVEditProduct').addClass('hidden');
+                            } else {
+                                fillRecordEditForm(selectedFVRecord);
+                                $('#FVProdWithoutCommaEditInput').addClass('wrongValue');
+                                myAlert('Zbyt mało towaru na magazynie');
+                            }
                         } else {
-                            fillRecordEditForm(selectedFVRecord);
                             $('#FVProdWithoutCommaEditInput').addClass('wrongValue');
-                            alert('Zbyt mało towaru na magazynie');
+                            myAlert('Ilość musi być większa od 0');
                         }
                     } else {
-                        $('#FVProdWithoutCommaEditInput').addClass('wrongValue');
-                        alert('Ilość musi być większa od 0');
+                        myAlert('Nieprawidłowa wartość rabatu!');
                     }
                 } else {
                     if(isNaN($('#FVProdEditDiscount').val())) {
@@ -299,7 +315,7 @@ pageFunctions.wzTabFunc = (function(){
                     if(isNaN($('#FVProdWithoutCommaEditInput').val())){
                         $('#FVProdWithoutCommaEditInput').addClass('wrongValue');
                     }
-                    alert('Niepoprawne wartości');
+                    myAlert('Niepoprawne wartości');
                 }
             }
         });
@@ -371,7 +387,7 @@ pageFunctions.wzTabFunc = (function(){
                     } else {
                         txt = 'Dokument już zatwierdzony!';
                     }
-                    alert(txt);
+                    myAlert(txt);
                 } else if (count == 0){
                     var txt = '';
                     if (window.localStorage.getItem('lang') == 'pl') {
@@ -381,7 +397,7 @@ pageFunctions.wzTabFunc = (function(){
                     } else {
                         txt = 'Dokument jest pusty!';
                     }
-                    alert(txt);
+                    myAlert(txt);
                 } else {
                     acceptDocument(selectedFVID);
                     reset();
@@ -480,7 +496,7 @@ pageFunctions.wzTabFunc = (function(){
             if(FVConPage>0){
                 $('#FVConPrevious').removeClass('hidden');
             }
-            selectedContractorID = 0;
+            FVselectedContractorID = 0;
         });
         $('#FVConPrevious').on('click', function(){
             $('.FVConRow').removeClass('rowSelected');
@@ -489,7 +505,7 @@ pageFunctions.wzTabFunc = (function(){
             if(FVConPage==0){
                 $('#FVConPrevious').addClass('hidden');
             }
-            selectedContractorID = 0;
+            FVselectedContractorID = 0;
         });
         
         $(document).on('click', function(e){
@@ -709,9 +725,6 @@ pageFunctions.wzTabFunc = (function(){
             FVConOrder = 5;
             getContractors();
         });
-        $('confirmNewFV').on('click', function(){
-            
-        });
     });
     var reset = (function(){
             FVTableOrder=1;
@@ -819,14 +832,14 @@ pageFunctions.wzTabFunc = (function(){
     var addDocument = (function(){
         param = {};       
         //DOCUMENT ID
-        if(selectedContractorID == 0){
-            alert('Nie wybrano kontrahenta');
+        if(FVselectedContractorID == 0){
+            myAlert('Nie wybrano kontrahenta');
         }else{
             param['docType'] = 5;
             var dateNow = new Date();
             var stamp = dateNow.getTime();
             param['docDate'] = stamp;
-            param['docCon'] = selectedContractorID;
+            param['docCon'] = FVselectedContractorID;
             param['docYear'] = dateNow.getYear()+1900;
             param['docCreator'] = window.sessionStorage.getItem('id');
             $.ajax({
@@ -964,7 +977,7 @@ pageFunctions.wzTabFunc = (function(){
         productVat = (details[0]['vat_value']);
         selectedProductToAdd = details[0]['product_id'];
         FVselectedFindProduct = details[0]['product_id'];
-        $('#FVProdEditDiscount').val(details[0]['discount']);
+        $('#FVProdEditDiscount').val(details[0]['discount']/100);
         if(details[0]['product_divider'] == 0) {
             $('#FVProdFloatingPointEdit').removeClass('hidden');
             $('#FVProdWithoutCommaEdit').addClass('hidden');
@@ -1172,7 +1185,7 @@ pageFunctions.wzTabFunc = (function(){
 
     var getContractors = (function(){
         param = {};       
-        selectedContractorID = 0;
+        FVselectedContractorID = 0;
         //Contractor ID
         if($('#selectContractorId').val() == ''){
             param['id'] = 0;

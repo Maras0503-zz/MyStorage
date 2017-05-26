@@ -1,3 +1,14 @@
+
+var init = (function(){
+    listeners();
+});
+var listeners = (function(){
+    $('#myAlertConfirm').on('click', function(){
+        $('#myAlertContainer').addClass('hidden');
+    });
+
+});
+
 function f(e){
     e=e.which||event.keyCode;
     return(e>44&&e<58||e==8);
@@ -250,4 +261,14 @@ var dateToFormat = (function(date){
         
         formDate = year+'.'+month+'.'+day+' '+hours+':'+minutes+':'+seconds;
         return formDate;
+});
+
+var myAlert = (function(message){
+    console.log('myAlertOpen');
+    $('#myAlertMessage').html(message);
+    $('#myAlertContainer').removeClass('hidden');
+});
+
+$(document).ready(function () {
+    init();
 });
