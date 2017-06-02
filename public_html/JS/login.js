@@ -13,7 +13,7 @@ pageFunctions.login = (function(){
             if(sucess == true){
                 window.location.replace('mainPage.html');  
             } else {
-                alert("Błędny login lub hasło! / Wrong login or password!");
+                myAlert("Błędny login lub hasło! / Wrong login or password!",'doNothing');
             }
         });
     });
@@ -48,7 +48,7 @@ pageFunctions.login = (function(){
         param['pass'] = md5(pass);
         var time = new Date().getTime();
         param['token'] = md5(""+time);
-        param['valid'] = time+1200000;
+        param['valid'] = time+28800000;
         $.ajax({       
             type: 'post',
             async: false,
@@ -65,6 +65,18 @@ pageFunctions.login = (function(){
         });
         return ans;
     });
+    var myAlert = (function(message,action){
+        if(action == 'doNothing'){
+            $('#myAlertMessage').html(message);
+            $('#myAlertContainer').removeClass('hidden');
+            addFunctionDoNothing();
+        }
+    });
+    var addFunctionDoNothing = function(){
+        $('#myAlertConfirm').on('click', function(){
+            $('#myAlertContainer').addClass('hidden');
+        });
+    };
     
     
     $(document).ready(function(){

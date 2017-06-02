@@ -1,14 +1,3 @@
-
-var init = (function(){
-    listeners();
-});
-var listeners = (function(){
-    $('#myAlertConfirm').on('click', function(){
-        $('#myAlertContainer').addClass('hidden');
-    });
-
-});
-
 function f(e){
     e=e.which||event.keyCode;
     return(e>44&&e<58||e==8);
@@ -30,6 +19,17 @@ var acceptDocument = (function(docId){
     });
 });
 
+var acceptDocumentPZ = (function(docId){
+    param = {};
+    param['docId'] = docId;
+    $.ajax({
+      type: 'POST',
+      async: false,
+      data: param,
+      dataType: 'json',
+      url: 'PHP/acceptDocumentPZ.php'
+    });
+});
 var delDocumentPos = (function(posId){
     param = {};
     param['posId'] = posId;
@@ -263,12 +263,21 @@ var dateToFormat = (function(date){
         return formDate;
 });
 
-var myAlert = (function(message){
-    console.log('myAlertOpen');
-    $('#myAlertMessage').html(message);
-    $('#myAlertContainer').removeClass('hidden');
-});
-
-$(document).ready(function () {
-    init();
+var myAlert = (function(message,action){
+    if(action == 'doNothing'){
+        $('#myAlertMessage').html(message);
+        $('#myAlertContainer').removeClass('hidden');
+        $('#myAlertConfirm').on('click', function(){
+            $('#myAlertContainer').addClass('hidden');
+        });
+    }
+    if(action == 'logout'){
+        $('#myAlertMessage').html(message);
+        $('#myAlertContainer').removeClass('hidden');
+        $('#myAlertConfirm').on('click', function(){        
+            window.location.replace('index.html');
+            window.sessionStorage.setItem('id', null);
+            window.sessionStorage.setItem('token', null);
+        });
+    }
 });

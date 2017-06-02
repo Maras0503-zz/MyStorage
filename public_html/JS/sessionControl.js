@@ -9,15 +9,12 @@ pageFunctions.sessionControl = (function(){
     var validateSession = (function(){
         if(checkSession() != true){
             if(window.sessionStorage.getItem('lang')=='pl') {
-                alert("Sesia wygasła, zaloguj się ponownie.");
+                myAlert('Sesia wygasła, zaloguj się ponownie.','logout');
             } else if(window.sessionStorage.getItem('lang')=='en'){
-                alert("Session expired, please log in again.");
+                myAlert('Session expired, please log in again.','logout');
             } else {
-                alert("Sesia wygasła, zaloguj się ponownie.");
+                myAlert('Sesia wygasła, zaloguj się ponownie.','logout');
             }
-            window.location.replace('index.html');
-            window.sessionStorage.setItem('id', null);
-            window.sessionStorage.setItem('token', null);
         } 
     });
     

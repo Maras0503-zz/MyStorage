@@ -25,6 +25,9 @@ pageFunctions.wzTabFunc = function () {
     });
 
     var listeners = (function () {
+        $('#generateWZPDF').on('click', function(){
+            createPDF();
+        });
         $('#confirmNewWZ').on('click', function () {
             addDocument();
         });
@@ -40,12 +43,7 @@ pageFunctions.wzTabFunc = function () {
                 } else {
                     txt = 'Czy napewno chcesz usunąć dokument?';
                 }
-                var r = confirm(txt);
-                if (r == true) {
-                    delDocument(selectedWZID);
-                    selectedWZID = 0;
-                    reset();
-                }
+                myConfirm(txt, 'deleteDocument', selectedWZID);
             } else {
                 if (docAccept == 1) {
                     var txt = '';
@@ -56,7 +54,7 @@ pageFunctions.wzTabFunc = function () {
                     } else {
                         txt = 'Dokument zatwierdzony, nie można usunąć!';
                     }
-                    myAlert(txt);
+                    myAlert(txt,'doNothing');
                 } else {
                     var txt = '';
                     if (window.localStorage.getItem('lang') == 'pl') {
@@ -66,7 +64,7 @@ pageFunctions.wzTabFunc = function () {
                     } else {
                         txt = 'Nie wybrano dokumentu!';
                     }
-                    myAlert(txt);
+                    myAlert(txt,'doNothing');
                 }
             }
         });
@@ -109,7 +107,7 @@ pageFunctions.wzTabFunc = function () {
                 delDocumentPos(selectedWZRecord);
                 getWZRecords(selectedWZID);
             } else {
-                myAlert('Nie wybrano pozycji do usunięcia!');
+                myAlert('Nie wybrano pozycji do usunięcia!','doNothing');
             } 
         });
         $('#editWZRecord').on('click', function(){
@@ -125,7 +123,7 @@ pageFunctions.wzTabFunc = function () {
                 $('#WZEditProduct').removeClass('hidden');
                 fillRecordEditForm(selectedWZRecord);
             } else {
-                myAlert('Nie wybrano pozycji!');
+                myAlert('Nie wybrano pozycji!','doNothing');
             }
         });
         $('#cancelWZEditProduct').on('click', function(){
@@ -208,14 +206,14 @@ pageFunctions.wzTabFunc = function () {
                             } else {
                                 fillProductAddingFormById(WZselectedFindProduct);
                                 $('#WZProdFloatingPointInput').addClass('wrongValue');
-                                myAlert('Zbyt mało towaru na magazynie');
+                                myAlert('Zbyt mało towaru na magazynie','doNothing');
                             }
                         } else {
                             $('#WZProdFloatingPointInput').addClass('wrongValue');
-                            myAlert('Ilość musi być większa od 0');
+                            myAlert('Ilość musi być większa od 0','doNothing');
                         }
                     } else {
-                        myAlert('Nieprawidłowa wartość rabatu!');
+                        myAlert('Nieprawidłowa wartość rabatu!','doNothing');
                     }
                 } else {
                     if(isNaN($('#WZProdAddDiscount').val())) {
@@ -224,7 +222,7 @@ pageFunctions.wzTabFunc = function () {
                     if(isNaN($('#WZProdFloatingPointInput').val())){
                         $('#WZProdFloatingPointInput').addClass('wrongValue');
                     }
-                    myAlert('Niepoprawne wartości');
+                    myAlert('Niepoprawne wartości','doNothing');
                 }
             } else if (divider == 1){
                 if(!isNaN($('#WZProdWithoutCommaInput').val()) && !isNaN($('#WZProdAddDiscount').val())){
@@ -237,14 +235,14 @@ pageFunctions.wzTabFunc = function () {
                             } else {
                                 fillProductAddingFormById(WZselectedFindProduct);
                                 $('#WZProdWithoutCommaInput').addClass('wrongValue');
-                                myAlert('Zbyt mało towaru na magazynie');
+                                myAlert('Zbyt mało towaru na magazynie','doNothing');
                             }
                         } else {
                             $('#WZProdWithoutCommaInput').addClass('wrongValue');
-                            myAlert('Ilość musi być większa od 0');
+                            myAlert('Ilość musi być większa od 0','doNothing');
                         }
                     } else {
-                        myAlert('Nieprawidłowa wartość rabatu!');
+                        myAlert('Nieprawidłowa wartość rabatu!','doNothing');
                     }
                 } else {
                     if(isNaN($('#WZProdAddDiscount').val())) {
@@ -253,7 +251,7 @@ pageFunctions.wzTabFunc = function () {
                     if(isNaN($('#WZProdWithoutCommaInput').val())){
                         $('#WZProdWithoutCommaInput').addClass('wrongValue');
                     }
-                    myAlert('Niepoprawne wartości');
+                    myAlert('Niepoprawne wartości','doNothing');
                 }
             }
         });
@@ -269,14 +267,14 @@ pageFunctions.wzTabFunc = function () {
                             } else {
                                 fillRecordEditForm(selectedWZRecord);
                                 $('#WZProdFloatingPointEditInput').addClass('wrongValue');
-                                myAlert('Zbyt mało towaru na magazynie');
+                                myAlert('Zbyt mało towaru na magazynie','doNothing');
                             }
                         } else {
                             $('#WZProdFloatingPointEditInput').addClass('wrongValue');
-                            myAlert('Ilość musi być większa od 0');
+                            myAlert('Ilość musi być większa od 0','doNothing');
                         }
                     } else {
-                        myAlert('Nieprawidłowa wartość rabatu!');
+                        myAlert('Nieprawidłowa wartość rabatu!','doNothing');
                     }
                 } else {
                     if(isNaN($('#WZProdEditDiscount').val())) {
@@ -285,7 +283,7 @@ pageFunctions.wzTabFunc = function () {
                     if(isNaN($('#WZProdFloatingPointEditInput').val())){
                         $('#WZProdFloatingPointEditInput').addClass('wrongValue');
                     }
-                    myAlert('Niepoprawne wartości');
+                    myAlert('Niepoprawne wartości','doNothing');
                 }
             } else if (divider == 1){
                 if(!isNaN($('#WZProdWithoutCommaEditInput').val()) && !isNaN($('#WZProdEditDiscount').val())){
@@ -298,14 +296,14 @@ pageFunctions.wzTabFunc = function () {
                             } else {
                                 fillRecordEditForm(selectedWZRecord);
                                 $('#WZProdWithoutCommaEditInput').addClass('wrongValue');
-                                myAlert('Zbyt mało towaru na magazynie');
+                                myAlert('Zbyt mało towaru na magazynie','doNothing');
                             }
                         } else {
                             $('#WZProdWithoutCommaEditInput').addClass('wrongValue');
-                            myAlert('Ilość musi być większa od 0');
+                            myAlert('Ilość musi być większa od 0','doNothing');
                         }
                     } else {
-                        myAlert('Nieprawidłowa wartość rabatu!');
+                        myAlert('Nieprawidłowa wartość rabatu!','doNothing');
                     }
                 } else {
                     if(isNaN($('#WZProdEditDiscount').val())) {
@@ -314,7 +312,7 @@ pageFunctions.wzTabFunc = function () {
                     if(isNaN($('#WZProdWithoutCommaEditInput').val())){
                         $('#WZProdWithoutCommaEditInput').addClass('wrongValue');
                     }
-                    myAlert('Niepoprawne wartości');
+                    myAlert('Niepoprawne wartości','doNothing');
                 }
             }
         });
@@ -386,7 +384,7 @@ pageFunctions.wzTabFunc = function () {
                     } else {
                         txt = 'Dokument już zatwierdzony!';
                     }
-                    myAlert(txt);
+                    myAlert(txt,'doNothing');
                 } else if (count == 0) {
                     var txt = '';
                     if (window.localStorage.getItem('lang') == 'pl') {
@@ -396,7 +394,7 @@ pageFunctions.wzTabFunc = function () {
                     } else {
                         txt = 'Dokument jest pusty!';
                     }
-                    myAlert(txt);
+                    myAlert(txt,'doNothing');
                 } else {
                     acceptDocument(selectedWZID);
                     reset();
@@ -832,7 +830,7 @@ pageFunctions.wzTabFunc = function () {
         var param = {};
         //DOCUMENT ID
         if (WZselectedContractorID == 0) {
-            myAlert('Nie wybrano kontrahenta');
+            myAlert('Nie wybrano kontrahenta','doNothing');
         } else {
             param['docType'] = 1;
             var dateNow = new Date();
@@ -988,6 +986,21 @@ pageFunctions.wzTabFunc = function () {
         }
         divider = details[0]['product_divider'];
     };
+    var myConfirm = (function(message,action,parameter1){
+        if(action == 'deleteDocument'){
+            $('#myConfirmMessage').html(message);
+            $('#myConfirmContainer').removeClass('hidden');
+            $('#myConfirmConfirm').on('click', function(){
+                delDocument(parameter1);
+                selectedWZID = 0;
+                reset();
+                $('#myConfirmContainer').addClass('hidden');
+            });
+            $('#myConfirmAbort').on('click', function(){
+                $('#myConfirmContainer').addClass('hidden');
+            });
+        }
+    });
     var getWZRecords = (function () {
         param = {};
         param['docId'] = selectedWZID;
@@ -1218,6 +1231,13 @@ pageFunctions.wzTabFunc = function () {
                 }
             }
         });
+    });
+    var createPDF = (function(){
+        document.myForm.myVar1.value = selectedWZID;
+        document.myForm.myVar2.value = window.sessionStorage.getItem('id');
+        document.myForm.myVar3.value = window.sessionStorage.getItem('token');
+        document.myForm.myVar4.value = window.localStorage.getItem('lang');
+        document.myForm.submit();
     });
     $(document).ready(function () {
         init();

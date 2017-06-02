@@ -8,7 +8,7 @@ pageFunctions.languages = (function(){
     var listeners = (function(){
         $('#english').on('click', function () {
             english();
-            $('.languageTrigger').html('UK');
+            $('.languageTrigger').html('EN');
         });
 
         $('#polish').on('click', function () {
@@ -71,10 +71,12 @@ pageFunctions.languages = (function(){
         $('#changeImageProductPopup').attr('value','Change image');
         $('.documentIdLang').html('Document ID:');
         $('.documentNoLang').html('Document Number:');
+        $('.printDocumentBttLang').attr('value', 'Print');
         $('.contrIdLang').html('Contractor ID:');
         $('.contrNameLang').html('Contractor name:');
         $('#newWZ').attr('value','New shipping note');
         $('#newFV').attr('value','New invoice');
+        $('#newPZ').attr('value','New delivery note');
         $('.acceptDoc').attr('value','Accept selected document');
         $('.delDoc').attr('value','Delete selected document');
         $('.docNoHeaderLang').html('No');
@@ -100,6 +102,8 @@ pageFunctions.languages = (function(){
         $('.addingPosition').html('Adding position');
         $('.editPosition').html('Editing position');
         $('.shippingNoteLang').html('Shipping note');
+        $('.deliveryNoteLang').html('Delivery note');
+        $('.invoiceLang').html('Invoice');
         $('.contractorLang').html('Contractor:');
         $('.gross').html('GROSS: ');
         $('.net').html('NET: ');
@@ -163,10 +167,12 @@ pageFunctions.languages = (function(){
         $('#changeImageProductPopup').attr('value','Zmień obraz');
         $('.documentIdLang').html('ID dokumentu:');
         $('.documentNoLang').html('Numer dokumentu:');
+        $('.printDocumentBttLang').attr('value', 'Drukuj');
         $('.contrIdLang').html('ID kontrahenta:');
         $('.contrNameLang').html('Nazwa kontrahenta:');
         $('#newWZ').attr('value','Nowy dokument WZ');
         $('#newFV').attr('value','Nowa faktura');
+        $('#newPZ').attr('value','Nowy dokument PZ');
         $('.acceptDoc').attr('value','Potwierdź zaznaczony dokument');
         $('.delDoc').attr('value','Usuń zaznaczony dokument');
         $('.docNoHeaderLang').html('Nr');
@@ -192,6 +198,8 @@ pageFunctions.languages = (function(){
         $('.addingPosition').html('Dodawanie pozycji');
         $('.editPosition').html('Edytowanie pozycji');
         $('.shippingNoteLang').html('Dokument WZ');
+        $('.deliveryNoteLang').html('Dokument PZ');
+        $('.invoiceLang').html('Faktura VAT');
         $('.contractorLang').html('Nabywca:');
         $('.gross').html('BRUTTO: ');
         $('.net').html('NETTO: ');
@@ -205,7 +213,7 @@ pageFunctions.languages = (function(){
 
     $(document).ready(function(){
         if(window.localStorage.getItem('lang')=='en'){
-            $('.languageTrigger').html('UK');
+            $('.languageTrigger').html('EN');
             english();
         } else if(window.localStorage.getItem('lang')=='pl') {
             $('.languageTrigger').html('PL');
