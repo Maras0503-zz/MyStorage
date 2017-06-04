@@ -20,6 +20,7 @@
     border: solid 1px black;
     top: 150px;
     right: 5%;
+    padding: 10px;
     width: 300px;
 }
 .companyDetails{
@@ -27,6 +28,7 @@
     border: solid 1px black;
     top: 150px;
     left: 5%;
+    padding: 10px;
     width: 300px;
 }
 .docDate{
@@ -62,6 +64,66 @@
     border: solid 1px black;
     font-size: xx-small;
 }
+.valueSum{
+    width: 100%;
+    text-align: right;
+    font-weight: bold;
+    font-size: small;
+}
+.vatTableDiv{
+    margin-top: 30px;
+    margin-left: 50%;
+    width: 50%;
+    right: 0%;
+}
+.vatTable{
+    border-collapse: collapse;
+    width: 100%;
+    right: 0%;
+}
+.recipientSignature{
+    left: 0%;
+    width: 30%;
+    margin-top: -40px;
+    text-align: center;
+
+}
+.authorizedSignature{
+    margin-top: 50px;
+    margin-left: 70%;
+    width: 30%;
+    text-align: center;
+}
+
+/*TABLE COLUMNS*/
+.col1of3{
+    width: 30%;
+    background-color: lightgray;
+    text-align: center;
+}
+.col2of3{
+    width: 35%;
+    background-color: lightgray;
+    text-align: center;
+}
+.col3of3{
+    width: 35%;
+    background-color: lightgray;
+    text-align: center;
+}
+.col1of3content{
+    width: 30%;
+    text-align: center;
+}
+.col2of3content{
+    width: 35%;
+    text-align: right;
+}
+.col3of3content{
+    width: 35%;
+    text-align: right;
+}
+
 .col1of11{
     width: 5%;
     text-align: center;
