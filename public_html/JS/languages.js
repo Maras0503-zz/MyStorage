@@ -111,6 +111,15 @@ pageFunctions.languages = (function(){
         $('.addPositionBttLang').attr('value','Add position');
         $('.delPositionBttLang').attr('value','Delete selected position');
         $('.editPositionBttLang').attr('value','Edit selected position');
+        $('.addProductLang').html('Add product');
+        $('.addNewProductLang').attr('value','Add product');
+        $('.newProdNameLang').html('Name: ');
+        $('.newProdPriceLang').html('Price net: ');
+        $('.newProdGroupLang').html('Group: ');
+        $('.newProdVatLang').html('Tax: ');
+        $('.newProdUnitLang').html('Unit: ');
+        $('.newProdProducerLang').html('Producer: ');
+        $('.newProdCodeLang').html('Bar code: ');
         window.localStorage.setItem('lang','en');
     }
     var polish = function(){
@@ -207,6 +216,15 @@ pageFunctions.languages = (function(){
         $('.addPositionBttLang').attr('value','Dodaj pozycje');
         $('.delPositionBttLang').attr('value','Usuń zaznaczoną pozycję');
         $('.editPositionBttLang').attr('value','Edytuj zaznaczoną pozycję');
+        $('.addProductLang').html('Dodaj produkt');
+        $('.addNewProductLang').attr('value','Dodaj produkt');
+        $('.newProdNameLang').html('Nazwa: ');
+        $('.newProdPriceLang').html('Cena netto: ');
+        $('.newProdGroupLang').html('Grupa: ');
+        $('.newProdVatLang').html('Vat: ');
+        $('.newProdUnitLang').html('Jednostka: ');
+        $('.newProdProducerLang').html('Producent: ');
+        $('.newProdCodeLang').html('Kod kreskowy: ');
         window.localStorage.setItem('lang','pl');
     }
 

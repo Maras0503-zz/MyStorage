@@ -26,6 +26,7 @@ and open the template in the editor.
     <script src="JS/wzTabFunc.js" type="text/javascript"></script>
     <script src="JS/fvTabFunc.js" type="text/javascript"></script>
     <script src="JS/pzTabFunc.js" type="text/javascript"></script>
+    <script src="JS/additionalWindowsFunc.js" type="text/javascript"></script>
     <script src="JS/mainPageUtil.js" type="text/javascript"></script>
     <script src="JS/languages.js"></script>
 </head>
@@ -99,7 +100,7 @@ and open the template in the editor.
                             <p id="productsLang" class="word"></p><span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">
+                                <a id="addProductOpen" href="#">
                                     <p id="addProductLang" class="word"></p>
                                 </a>
                             </li>
@@ -1511,12 +1512,44 @@ and open the template in the editor.
                             <label class="addingPosValues">Ilość: </label>
                             <input class="addingPosValues" id="PZProdWithoutCommaEditInput" type="number" min="0" step="1" onkeypress="return e(event)">
                         </div>
+                    </div>
                     <hr/>
                     <div class="form-inline">
                         <button id='cancelPZEditProduct' class="btn btn-default">Anuluj</button>
                         <button id='confirmPZEditProduct' class="btn btn-default pull-right">Edytuj</button>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div id='AdditionalWindows'>
+            <div id='addProduct' class='popup additionalWindows hidden'>
+                <div class="form-group big-center">
+                    <label><p class="word addProductLang"></p></label>
+                </div>
+                <input id="closeAddProductWindow" class="btn btn-default pull-right closeBtt" type="button" value="Zamknij">
+                <div class="addingForm">
+                    <div class="form-group">
+                        <label for="newProductNameBox"><p class="word newProdNameLang"></p></label>
+                        <input type="text" class="form-control" id="newProductNameBox">
+                        <label><p class="word newProdProducerLang"></p></label>
+                        <select id='newProductProducersSelect' class="form-control">
+                        </select>
+                        <label><p class="word newProdGroupLang"></p></label>
+                        <select id='newProductGroupSelect' class="form-control">
+                        </select>
+                        <label><p class="word newProdVatLang"></p></label>
+                        <select id='newProductVatSelect' class="form-control">
+                        </select>
+                        <label><p class="word newProdUnitLang"></p></label>
+                        <select id='newProductUnitSelect' class="form-control">
+                        </select>
+                        <label for="newProductPriceBox"><p class="word newProdPriceLang"></p></label>
+                        <input type="number" class="form-control" id="newProductPriceBox">
+                        <label for="newProductCodeBox"><p class="word newProdCodeLang"></p></label>
+                        <input type="text" class="form-control" id="newProductCodeBox">
+                    </div>
+                </div>
+                <input id="acceptAddProduct" class="btn btn-default pull-right addNewProductLang" type="button">
             </div>
         </div>
 </body>

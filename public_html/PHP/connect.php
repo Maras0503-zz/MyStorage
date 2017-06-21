@@ -1,7 +1,7 @@
 <?php
-  $serwer = "dev-live.co.uk";
-  $user = "devlivec_marek";
-  $password = "marek123";
-  $db = "devlivec_storage";
+  $serwer = "localhost:3306";
+  $user = "marek";
+  $password = "marek";
+  $db = "storage";
   // Create connection
   $mysqli = new mysqli($serwer, $user, $password, $db);

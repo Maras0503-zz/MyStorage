@@ -270,14 +270,13 @@ var myAlert = (function(message,action){
         $('#myAlertConfirm').on('click', function(){
             $('#myAlertContainer').addClass('hidden');
         });
-    }
-    if(action == 'logout'){
+    } else if(action == 'logout'){
         $('#myAlertMessage').html(message);
         $('#myAlertContainer').removeClass('hidden');
         $('#myAlertConfirm').on('click', function(){        
             window.location.replace('index.html');
-            window.sessionStorage.setItem('id', null);
-            window.sessionStorage.setItem('token', null);
+            window.localStorage.setItem('id', null);
+            window.localStorage.setItem('token', null);
         });
     }
 });

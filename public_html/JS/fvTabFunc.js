@@ -517,6 +517,13 @@ pageFunctions.wzTabFunc = (function(){
         });
        
         $('#FVTabOpen').on('click', function(){
+            $('#WZPopup').addClass('hidden');
+            $('#WZContainer').removeClass('blur');
+            $('#PZPopup').addClass('hidden');
+            $('#PZContainer').removeClass('blur');
+            $('#FVPopup').addClass('hidden');
+            $('#FVContainer').removeClass('blur');
+            $('.popup').addClass('hidden');
             $('.tab').addClass('hidden');
             $('#FVContainer').removeClass('hidden');
         });
@@ -1147,11 +1154,11 @@ pageFunctions.wzTabFunc = (function(){
                             <td class='FVProdCol4c'>" + value['product_unit_short'] + "</td>\n\
                             <td class='FVProdCol5c'>" + (vat * 100) + "</td>\n\
                             <td class='FVProdCol6c'>" + (discount) + "</td>\n\
-                            <td class='FVProdCol7c'>" + (Math.round((price / 100) * 100) / 100) + "</td>\n\
-                            <td class='FVProdCol8c'>" + (Math.round((priceBrutto / 100) * 100) / 100) + "</td>\n\
-                            <td class='FVProdCol9c'>" + (Math.round((valueNetto / 100) * 100) / 100) + "</td>\n\
-                            <td class='FVProdCol10c'>" + (Math.round((valueBrutto / 100) * 100) / 100) + "</td>\n\
-                            <td class='FVProdCol11c'>" + (Math.round((valueBruttoWithDiscount / 100) * 100) / 100) + "</td>\n\
+                            <td class='FVProdCol7c'>" + (Math.round((price / 100) * 100) / 100).toFixed(2) + "</td>\n\
+                            <td class='FVProdCol8c'>" + (Math.round((priceBrutto / 100) * 100) / 100).toFixed(2) + "</td>\n\
+                            <td class='FVProdCol9c'>" + (Math.round((valueNetto / 100) * 100) / 100).toFixed(2) + "</td>\n\
+                            <td class='FVProdCol10c'>" + (Math.round((valueBrutto / 100) * 100) / 100).toFixed(2) + "</td>\n\
+                            <td class='FVProdCol11c'>" + (Math.round((valueBruttoWithDiscount / 100) * 100) / 100).toFixed(2) + "</td>\n\
                         </tr>";
             } else {
                 ans += "<tr class='WZProdRow'>\n\

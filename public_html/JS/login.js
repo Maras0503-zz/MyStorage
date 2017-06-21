@@ -22,8 +22,8 @@ pageFunctions.login = (function(){
         var ans = false;
         var param = {};
         var time = new Date().getTime();
-        param['id'] = sessionStorage.getItem('id');
-        param['token'] = sessionStorage.getItem('token');
+        param['id'] = localStorage.getItem('id');
+        param['token'] = localStorage.getItem('token');
         param['valid'] = time;
         $.ajax({       
             type: 'post',
@@ -56,8 +56,8 @@ pageFunctions.login = (function(){
             dataType: 'json',
             url: 'PHP/checkPass.php',      
             success: function(data){
-                    window.sessionStorage.setItem('id', data[0].userId);
-                    window.sessionStorage.setItem('token', param['token']);
+                    window.localStorage.setItem('id', data[0].userId);
+                    window.localStorage.setItem('token', param['token']);
                     if(data[0].userId != null){
                         ans = true;
                     }
