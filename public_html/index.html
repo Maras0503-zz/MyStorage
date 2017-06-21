@@ -22,12 +22,20 @@ and open the template in the editor.
         
     </head>
     <body>
+        <div id='myAlertContainer' class='hidden'>
+            <div id='myAlertBackground'>
+            </div>
+            <div id='myAlert'>
+                <label id='myAlertMessage'>ExampleMesssage</label>
+                <button id='myAlertConfirm' class='btn btn-default center-block'>OK</button>                
+            </div>
+        </div>
         <img src="IMG/logo.png" class="img-responsive center-block logo" alt="Logo">
         <div class="container login_mini">
 
             <div>
-              <input type="text" id="loginBox" class="form-control loginInputs" placeholder="Login" required autofocus>
-              <input type="password" id="passBox" class="form-control loginInputs" placeholder="Password" required>
+              <input type="text" id="loginBox" class="form-control loginInputs" placeholder="Login" autofocus value='marekpiesik1@gmail.com'>
+              <input type="password" id="passBox" class="form-control loginInputs" placeholder="Password" value='Maras0503'>
               <button class="btn btn-lg btn-primary btn-block loginInputs" id="loginConf">Login</button>
             </div>
         </div> <!-- /container -->

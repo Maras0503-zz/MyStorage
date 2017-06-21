@@ -19,6 +19,17 @@ var acceptDocument = (function(docId){
     });
 });
 
+var acceptDocumentPZ = (function(docId){
+    param = {};
+    param['docId'] = docId;
+    $.ajax({
+      type: 'POST',
+      async: false,
+      data: param,
+      dataType: 'json',
+      url: 'PHP/acceptDocumentPZ.php'
+    });
+});
 var delDocumentPos = (function(posId){
     param = {};
     param['posId'] = posId;
@@ -66,6 +77,53 @@ var checkQty = (function(prodId, qty){
     return ans;
 });
 
+var checkQtyToEdit = (function(posId, qty){
+    var ans = 0;
+    param = {};
+    param['posId'] = posId;
+    param['qty'] = qty;
+    $.ajax({
+        type: 'POST',
+        async: false,
+        data: param,
+        dataType: 'json',
+        url: 'PHP/checkQtyToEdit.php',
+        success: function(data){
+            ans = data[0].answer;
+        }
+    });
+    return ans;
+});
+
+var editWZPos = (function(posId, qty, disc){
+    var ans = 0;
+    param = {};
+    param['posId'] = posId;
+    param['qty'] = qty;
+    param['disc'] = disc;
+    $.ajax({
+        type: 'POST',
+        async: false,
+        data: param,
+        dataType: 'json',
+        url: 'PHP/editWZPos.php',
+    });
+});
+var editFVPos = (function(posId, qty, disc){
+    var ans = 0;
+    param = {};
+    param['posId'] = posId;
+    param['qty'] = qty;
+    param['disc'] = disc;
+    $.ajax({
+        type: 'POST',
+        async: false,
+        data: param,
+        dataType: 'json',
+        url: 'PHP/editWZPos.php',
+    });
+});
+
 
 var getDocumentRecordsCount = (function(docId){
     var ans = 0;
@@ -84,10 +142,10 @@ var getDocumentRecordsCount = (function(docId){
     return ans;
 });
 
-var getFindProductToAddCount = (function(docId){
+var getFindProductToAddCount = (function(parameter){
     var ans = 0;
     param = {};
-    param['parameter'] = docId;
+    param['parameter'] = parameter;
     $.ajax({
         type: 'POST',
         async: false,
@@ -119,7 +177,54 @@ var getFindProductToAdd = (function(pageNo, ord, docId){
     });
     return ans;
 });
-
+var getProductToAddDetails = function (parameter) {
+        var ans = {};
+        var param = {};
+        param['parameter'] = parameter;
+        $.ajax({
+            type: 'POST',
+            async: false,
+            data: param,
+            dataType: 'json',
+            url: 'PHP/getProductDetails.php',
+            success: function (data) {
+                ans = data;
+            }
+        });
+        return ans;
+};
+var getProductToAddDetailsById = function (parameter) {
+        var ans = {};
+        var param = {};
+        param['parameter'] = parameter;
+        $.ajax({
+            type: 'POST',
+            async: false,
+            data: param,
+            dataType: 'json',
+            url: 'PHP/getProductDetailsById.php',
+            success: function (data) {
+                ans = data;
+            }
+        });
+        return ans;
+};
+var getRecordDetailsByRecordId = function (parameter) {
+        var ans = {};
+        var param = {};
+        param['parameter'] = parameter;
+        $.ajax({
+            type: 'POST',
+            async: false,
+            data: param,
+            dataType: 'json',
+            url: 'PHP/getRecordDetailsByRecordId.php',
+            success: function (data) {
+                ans = data;
+            }
+        });
+        return ans;
+};
 var delDocument = (function(docId){
     var param = {};
     param['docId'] = docId;
@@ -156,4 +261,22 @@ var dateToFormat = (function(date){
         
         formDate = year+'.'+month+'.'+day+' '+hours+':'+minutes+':'+seconds;
         return formDate;
+});
+
+var myAlert = (function(message,action){
+    if(action == 'doNothing'){
+        $('#myAlertMessage').html(message);
+        $('#myAlertContainer').removeClass('hidden');
+        $('#myAlertConfirm').on('click', function(){
+            $('#myAlertContainer').addClass('hidden');
+        });
+    } else if(action == 'logout'){
+        $('#myAlertMessage').html(message);
+        $('#myAlertContainer').removeClass('hidden');
+        $('#myAlertConfirm').on('click', function(){        
+            window.location.replace('index.html');
+            window.localStorage.setItem('id', null);
+            window.localStorage.setItem('token', null);
+        });
+    }
 });

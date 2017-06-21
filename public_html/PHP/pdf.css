@@ -1,0 +1,215 @@
+.conDetailLab{
+    font-style: italic;
+}
+.conDetailName{
+    font-weight: bold;
+}
+.mainLabel{
+    color: red;
+}
+.docName{
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: 70px;
+    font-size: xx-large;
+    text-align: center;
+}
+.contractorDetails{
+    position: absolute;
+    border: solid 1px black;
+    top: 150px;
+    right: 5%;
+    padding: 10px;
+    width: 300px;
+}
+.companyDetails{
+    position: absolute;
+    border: solid 1px black;
+    top: 150px;
+    left: 5%;
+    padding: 10px;
+    width: 300px;
+}
+.docDate{
+    position: absolute;
+    text-align: right;
+    right: 5%;
+    top: 25px;
+    font-size: small;
+}
+.docSaleDate{
+    position: absolute;
+    text-align: right;
+    right: 5%;
+    top: 40px;
+    font-size: small;
+}
+.posTab{
+    border-collapse: collapse;
+    width: 100%;
+}
+.productTableDiv{
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    top: 350px;
+}
+.tableHeadCell{
+    border: solid 1px black;
+    background-color: lightgrey;
+    font-size: xx-small;
+}
+.tableBodyCell{
+    border: solid 1px black;
+    font-size: xx-small;
+}
+.valueSum{
+    width: 100%;
+    text-align: right;
+    font-weight: bold;
+    font-size: small;
+}
+.vatTableDiv{
+    margin-top: 30px;
+    margin-left: 50%;
+    width: 50%;
+    right: 0%;
+}
+.vatTable{
+    border-collapse: collapse;
+    width: 100%;
+    right: 0%;
+}
+.recipientSignature{
+    left: 0%;
+    width: 30%;
+    margin-top: -40px;
+    text-align: center;
+
+}
+.authorizedSignature{
+    margin-top: 50px;
+    margin-left: 70%;
+    width: 30%;
+    text-align: center;
+}
+
+/*TABLE COLUMNS*/
+.col1of3{
+    width: 30%;
+    background-color: lightgray;
+    text-align: center;
+}
+.col2of3{
+    width: 35%;
+    background-color: lightgray;
+    text-align: center;
+}
+.col3of3{
+    width: 35%;
+    background-color: lightgray;
+    text-align: center;
+}
+.col1of3content{
+    width: 30%;
+    text-align: center;
+}
+.col2of3content{
+    width: 35%;
+    text-align: right;
+}
+.col3of3content{
+    width: 35%;
+    text-align: right;
+}
+
+.col1of11{
+    width: 5%;
+    text-align: center;
+}
+.col2of11{
+    width: 10%;
+    text-align: center;
+}
+.col3of11{
+    width: 25%;
+    text-align: center;
+}
+.col4of11{
+    width: 5%;
+    text-align: center;
+}
+.col5of11{
+    width: 5%;
+    text-align: center;
+}
+.col6of11{
+    width: 5%;
+    text-align: center;
+}
+.col7of11{
+    width: 5%;
+    text-align: center;
+}
+.col8of11{
+    width: 10%;
+    text-align: center;
+}
+.col9of11{
+    width: 10%;
+    text-align: center;
+}
+.col10of11{
+    width: 10%;
+    text-align: center;
+}
+.col11of11{
+    width: 10%;
+    text-align: center;
+}
+
+.col1of11content{
+    width: 5%;
+    text-align: center;
+}
+.col2of11content{
+    width: 10%;
+    text-align: center;
+}
+.col3of11content{
+    width: 25%;
+    text-align: left;
+}
+.col4of11content{
+    width: 5%;
+    text-align: right;
+}
+.col5of11content{
+    width: 5%;
+    text-align: center;
+}
+.col6of11content{
+    width: 5%;
+    text-align: center;
+}
+.col7of11content{
+    width: 5%;
+    text-align: center;
+}
+.col8of11content{
+    width: 10%;
+    text-align: right;
+}
+.col9of11content{
+    width: 10%;
+    text-align: right;
+}
+.col10of11content{
+    width: 10%;
+    text-align: right;
+}
+.col11of11content{
+    width: 10%;
+    text-align: right;
+}

@@ -8,30 +8,24 @@ pageFunctions.sessionControl = (function(){
     
     var validateSession = (function(){
         if(checkSession() != true){
-            if(window.sessionStorage.getItem('lang')=='pl') {
-                alert("Sesia wygasła, zaloguj się ponownie.");
-            } else if(window.sessionStorage.getItem('lang')=='en'){
-                alert("Session expired, please log in again.");
+            if(window.localStorage.getItem('lang')=='pl') {
+                myAlert('Sesia wygasła, zaloguj się ponownie.','logout');
+            } else if(window.localStorage.getItem('lang')=='en'){
+                myAlert('Session expired, please log in again.','logout');
             } else {
-                alert("Sesia wygasła, zaloguj się ponownie.");
+                myAlert('Sesia wygasła, zaloguj się ponownie.','logout');
             }
-            window.location.replace('index.html');
-            window.sessionStorage.setItem('id', null);
-            window.sessionStorage.setItem('token', null);
         } 
     });
     
     var logout = (function(){
-        if(window.sessionStorage.getItem('lang')=='pl') {
-            alert("Wylogowano.");
-        } else if(window.sessionStorage.getItem('lang')=='en'){
-            alert("Log off.");
+        if(window.localStorage.getItem('lang')=='pl') {
+            myAlert("Wylogowano.", 'logout');
+        } else if(window.localStorage.getItem('lang')=='en'){
+            myAlert("Log off.", 'logout');
         } else {
-            alert("Wylogowano.");
+            myAlert("Wylogowano.", 'logout');
         }
-        window.location.replace('index.html');
-        window.sessionStorage.setItem('id', null);
-        window.sessionStorage.setItem('token', null);
     });
     
     var listeners = (function(){
@@ -44,8 +38,8 @@ pageFunctions.sessionControl = (function(){
         var ans = false;
         var param = {};
         var time = new Date().getTime();
-        param['id'] = sessionStorage.getItem('id');
-        param['token'] = sessionStorage.getItem('token');
+        param['id'] = localStorage.getItem('id');
+        param['token'] = localStorage.getItem('token');
         param['valid'] = time;
         $.ajax({       
             type: 'post',

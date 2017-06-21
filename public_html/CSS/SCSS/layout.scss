@@ -132,10 +132,27 @@
      margin-top: 10%;
      width: 50%;
      left: 25%;
-     max-height: 70%;
      @media (max-width: 768px){
          left: 5%;
-         max-height: 70%;
+         margin-top: 20%;
+         width: 90%;
+     }
+ }
+ .additionalWindows{
+     z-index: 5;
+     position: absolute;
+     border: solid 1px gray;
+     padding: 10px;
+     box-shadow: 10px 10px 15px #666666;
+     border-radius: 5px;
+     background-color: white;
+     margin-top: 5%;
+     margin-bottom: 5%;
+     min-height: 570px;
+     width: 50%;
+     left: 25%;
+     @media (max-width: 768px){
+         left: 5%;
          margin-top: 20%;
          width: 90%;
      }
@@ -156,6 +173,9 @@
          margin-top: 20%;
          width: 90%;
      }
+ }
+ .addingForm{
+     margin-top: 50px;
  }
  .rowSelected{
     color: cornflowerblue;
@@ -281,7 +301,7 @@
 .WZProdNumberBox{
   display: inline;
 }
-#calculateValue{
+.calculate{
   cursor: pointer;
   color: blue;
 }
@@ -290,4 +310,88 @@
 }
 .wrongValue{
   border: solid 1px red;
+}
+#myAlertContainer{
+    position: fixed;
+    z-index: 15;
+    width: 100%;
+    height: 100%;
+}
+#myAlertMessage{
+    margin-top: 40px;
+    opacity: 1;
+    width: 100%;
+    font-size: x-large;
+    text-align: center;
+}
+#myAlertConfirm{
+    width: 100px;
+    text-align: center;
+    margin-top: 15px;
+}
+#myAlertBackground{
+    position: absolute;
+    width: 100%;
+    background-color: gray;
+    opacity: 0.7;
+    top: 50%;
+    height: 200px;
+    margin-top: -100px;
+}
+#myAlert{
+    position: absolute;
+    z-index: 15;
+    width: 100%;
+    color: red;
+    top: 50%;
+    height: 200px;
+    margin-top: -100px;
+}
+
+#myConfirmContainer{
+    position: fixed;
+    z-index: 15;
+    width: 100%;
+    height: 100%;
+}
+#myConfirmMessage{
+    margin-top: 40px;
+    opacity: 1;
+    width: 100%;
+    font-size: x-large;
+    text-align: center;
+}
+#myConfirmConfirm{
+    width: 100px;
+    position: fixed;
+    left: 50%;
+    margin-left: -130px;
+    text-align: center;
+    margin-top: 15px;
+}
+#myConfirmAbort{
+    width: 100px;
+    position: fixed;
+    left: 50%;
+    margin-left: 30px;
+    text-align: center;
+    margin-top: 15px;
+}
+#myConfirmBackground{
+    position: absolute;
+    width: 100%;
+    background-color: gray;
+    opacity: 0.7;
+    top: 50%;
+    height: 200px;
+    margin-top: -100px;
+}
+#myConfirm{
+    position: absolute;
+    z-index: 15;
+    width: 100%;
+    color: red;
+    top: 50%;
+    height: 200px;
+    margin-top: -100px;
 }
