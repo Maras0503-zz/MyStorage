@@ -59,6 +59,24 @@ var checkDocumentAccept = (function(docId){
     return ans;
 });
 
+var nameExists = (function(name){
+    var ans = 0;
+    param = {};
+    param['name'] = name;
+    $.ajax({
+      type: 'POST',
+      async: false,
+      data: param,
+      dataType: 'json',
+      url: 'PHP/nameExists.php',            
+      success: function(data){
+        console.log(data);
+        ans = data[0].nameExists;
+      }
+    });
+    return ans;
+});
+
 var checkQty = (function(prodId, qty){
     var ans = 0;
     param = {};
@@ -120,10 +138,29 @@ var editFVPos = (function(posId, qty, disc){
         async: false,
         data: param,
         dataType: 'json',
-        url: 'PHP/editWZPos.php',
+        url: 'PHP/editWZPos.php'
     });
 });
 
+var editProduct = (function(prodId, prodName, prodProducer, prodGroup, prodVat, prodUnit, prodPrice, prodEan){
+    var ans = 0;
+    param = {};
+    param['prodId'] = prodId;
+    param['prodName'] = prodName;
+    param['prodProducer'] = prodProducer;
+    param['prodGroup'] = prodGroup;
+    param['prodVat'] = prodVat;
+    param['prodUnit'] = prodUnit;
+    param['prodPrice'] = prodPrice;
+    param['prodEan'] = prodEan;
+    $.ajax({
+        type: 'POST',
+        async: false,
+        data: param,
+        dataType: 'json',
+        url: 'PHP/editProduct.php'
+    });
+});
 
 var getDocumentRecordsCount = (function(docId){
     var ans = 0;
@@ -193,6 +230,24 @@ var getProductToAddDetails = function (parameter) {
         });
         return ans;
 };
+
+var getProductDetailsToEdit = function (parameter) {
+        var ans = {};
+        var param = {};
+        param['parameter'] = parameter;
+        $.ajax({
+            type: 'POST',
+            async: false,
+            data: param,
+            dataType: 'json',
+            url: 'PHP/getProductDetailsToEdit.php',
+            success: function (data) {
+                ans = data;
+            }
+        });
+        return ans;
+};
+
 var getProductToAddDetailsById = function (parameter) {
         var ans = {};
         var param = {};
@@ -279,4 +334,23 @@ var myAlert = (function(message,action){
             window.localStorage.setItem('token', null);
         });
     }
+});
+
+var createNewProduct = (function (prodName, prodProducer, prodGroup, prodVAT, prodUnit, prodPrice, prodBar) {
+    var param = {};
+    param['prodName'] = prodName;
+    param['prodProducer'] = prodProducer;
+    param['prodGroup'] = prodGroup;
+    param['prodVAT'] = prodVAT;
+    param['prodUnit'] = prodUnit;
+    param['prodPrice'] = prodPrice;
+    param['prodBar'] = prodBar;
+    param['prodUnit'] = prodUnit;
+    $.ajax({
+        type: 'POST',
+        async: false,
+        data: param,
+        dataType: 'json',
+        url: 'PHP/createNewProduct.php'
+    });
 });

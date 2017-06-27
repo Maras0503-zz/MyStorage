@@ -21,7 +21,6 @@ var divider = 0;
 pageFunctions.FVTabFunc = (function(){
     var init = (function(){
         listeners();
-        getPZDocuments();
     });
     
     var listeners = (function(){
@@ -420,6 +419,7 @@ pageFunctions.FVTabFunc = (function(){
             $('.popup').addClass('hidden');
             $('.tab').addClass('hidden');
             $('#PZContainer').removeClass('hidden');
+            getPZDocuments();
         });
         $('#closePZContainer').on('click', function(){
             $('#PZContainer').addClass('hidden');
@@ -739,7 +739,7 @@ pageFunctions.FVTabFunc = (function(){
             param['docDate'] = stamp;
             param['docCon'] = PZselectedContractorID;
             param['docYear'] = dateNow.getYear()+1900;
-            param['docCreator'] = window.sessionStorage.getItem('id');
+            param['docCreator'] = window.localStorage.getItem('id');
             $.ajax({
               type: 'POST',
               async: false,
@@ -1053,8 +1053,8 @@ pageFunctions.FVTabFunc = (function(){
     });
     var createPDF = (function(){
         document.myForm.myVar1.value = selectedPZID;
-        document.myForm.myVar2.value = window.sessionStorage.getItem('id');
-        document.myForm.myVar3.value = window.sessionStorage.getItem('token');
+        document.myForm.myVar2.value = window.localStorage.getItem('id');
+        document.myForm.myVar3.value = window.localStorage.getItem('token');
         document.myForm.myVar4.value = window.localStorage.getItem('lang');
         document.myForm.submit();
     });

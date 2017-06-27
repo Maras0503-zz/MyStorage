@@ -58,7 +58,7 @@ and open the template in the editor.
     <div class='backDiv'>
         <img id="back" class="img-responsive center-block" alt="" src='IMG/logo.png'>
     </div>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default menu-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -105,7 +105,7 @@ and open the template in the editor.
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a id="editProductOpen" href="#">
                                     <p id="editProductLang" class="word"></p>
                                 </a>
                             </li>
@@ -936,7 +936,7 @@ and open the template in the editor.
                         </br>
                         <div class="WZProdNumberBox">
                             <label class="addingPosValues">Rabat[%]: </label>
-                            <input id="WZProdAddDiscount" type="text" min="0" step="0.01" onkeypress="return f(event)">
+                            <input id="WZProdAddDiscount" type="number" min="0" step="0.01" onkeypress="return f(event)">
                         </div>
                     </div>
                     <div>
@@ -1550,6 +1550,41 @@ and open the template in the editor.
                     </div>
                 </div>
                 <input id="acceptAddProduct" class="btn btn-default pull-right addNewProductLang" type="button">
+            </div>
+            <div id='editProduct' class='popup additionalWindowsEdit hidden'>
+                <div class="form-group big-center">
+                    <label><p class="word editProductLang"></p></label>
+                </div>
+                <input id="closeEditProductWindow" class="btn btn-default pull-right closeBtt" type="button" value="Zamknij">
+                <div class="addingForm">
+                    <div class="form-group">
+                        <div class='searchByIdToEdit'>
+                            <label class='smallInput'><p class="word prodIdLang"></p></label>
+                            <input type="text" class="form-control smallInput" id="searchProductId">
+                            <input id="searchProductToEditById" class="btn btn-default smallInput findLang" type="button">
+                            <input id="searchProductToEditReset" class="btn btn-default smallInput" type="button" value="Reset">
+                        </div>
+                        <label><p class="word newProdNameLang"></p></label>
+                        <input type="text" class="form-control" id="editProductNameBox">
+                        <label><p class="word newProdProducerLang"></p></label>
+                        <select id='editProductProducersSelect' class="form-control">
+                        </select>
+                        <label><p class="word newProdGroupLang"></p></label>
+                        <select id='editProductGroupSelect' class="form-control">
+                        </select>
+                        <label><p class="word newProdVatLang"></p></label>
+                        <select id='editProductVatSelect' class="form-control">
+                        </select>
+                        <label><p class="word newProdUnitLang"></p></label>
+                        <select id='editProductUnitSelect' class="form-control">
+                        </select>
+                        <label><p class="word newProdPriceLang"></p></label>
+                        <input type="number" class="form-control" id="editProductPriceBox">
+                        <label><p class="word newProdCodeLang"></p></label>
+                        <input type="text" class="form-control" id="editProductCodeBox">
+                    </div>
+                </div>
+                <input id="acceptEditProduct" class="btn btn-default pull-right editProductLang" type="button">
             </div>
         </div>
 </body>

@@ -21,7 +21,6 @@ var divider = 0;
 pageFunctions.wzTabFunc = (function(){
     var init = (function(){
         listeners();
-        getFVDocuments();
     });
     
     var listeners = (function(){
@@ -446,11 +445,13 @@ pageFunctions.wzTabFunc = (function(){
                         $('#editFVRecord').removeClass('hidden');
                         $('#deleteFVRecord').removeClass('hidden');
                         $('#FVproductSearch').removeClass('hidden');
+                        $('#generateFVPDF').addClass('hidden');
                     } else {
                         $('#newFVRecord').addClass('hidden');
                         $('#editFVRecord').addClass('hidden');
                         $('#deleteFVRecord').addClass('hidden');
                         $('#FVproductSearch').addClass('hidden');
+                        $('#generateFVPDF').removeClass('hidden');
                     }
                     getDocumentInfo();
                     getFVRecords();
@@ -526,6 +527,7 @@ pageFunctions.wzTabFunc = (function(){
             $('.popup').addClass('hidden');
             $('.tab').addClass('hidden');
             $('#FVContainer').removeClass('hidden');
+            getFVDocuments();
         });
         $('#closeFVContainer').on('click', function(){
             $('#FVContainer').addClass('hidden');
@@ -845,7 +847,7 @@ pageFunctions.wzTabFunc = (function(){
             param['docDate'] = stamp;
             param['docCon'] = FVselectedContractorID;
             param['docYear'] = dateNow.getYear()+1900;
-            param['docCreator'] = window.sessionStorage.getItem('id');
+            param['docCreator'] = window.localStorage.getItem('id');
             $.ajax({
               type: 'POST',
               async: false,
@@ -1241,8 +1243,8 @@ pageFunctions.wzTabFunc = (function(){
     });
     var createPDF = (function(){
         document.myForm.myVar1.value = selectedFVID;
-        document.myForm.myVar2.value = window.sessionStorage.getItem('id');
-        document.myForm.myVar3.value = window.sessionStorage.getItem('token');
+        document.myForm.myVar2.value = window.localStorage.getItem('id');
+        document.myForm.myVar3.value = window.localStorage.getItem('token');
         document.myForm.myVar4.value = window.localStorage.getItem('lang');
         document.myForm.submit();
     });

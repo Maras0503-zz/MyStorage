@@ -83,6 +83,7 @@ pageFunctions.productsTabFunc = (function(){
             $('#productContainer').removeClass('hidden');
             $('#productContainer').addClass('show');
             $('.tab').removeClass('blur');
+            getProducts();
         });
         $('#closeCatalog').on('click',function(){
             $('#productContainer').removeClass('show');
@@ -291,14 +292,17 @@ pageFunctions.productsTabFunc = (function(){
         });
     });
     var createProductTableContent = (function(data){
-        ans = '';
+        var ans = '';
+        var price = 0;
+        
         $.each(data,function(index, value){
-            ans += "<tr class='PRrow' id=ProdID"+value['product_id']+"><td class='col1b'>"+value['product_id']+"</td><td class='col2b'>"+value['product_name']+"</td><td class='col3b'>"+value['contractor_name']+"</td><td class='col4b'>"+value['product_number']+"</td><td class='col5b'>"+(Math.round((value['product_price']/100)*100)/100)+"</td><td class='col6b'>"+value['vat_value']+"</td><td class='col7b'>"+value['product_group_name']+"</td><td class='col8b'>"+value['product_status_name']+"</td><td class='col9b'>"+value['product_unit_short']+"</td></tr>";
+            price = value['product_price']/100+((value['product_price']/100)*(value['vat_value']/100));
+            price = Math.round(price*100)/100;
+            ans += "<tr class='PRrow' id=ProdID"+value['product_id']+"><td class='col1b'>"+value['product_id']+"</td><td class='col2b'>"+value['product_name']+"</td><td class='col3b'>"+value['contractor_name']+"</td><td class='col4b'>"+value['product_number']/100+"</td><td class='col5b'>"+price.toFixed(2)+"</td><td class='col6b'>"+value['vat_value']+"</td><td class='col7b'>"+value['product_group_name']+"</td><td class='col8b'>"+value['product_status_name']+"</td><td class='col9b'>"+value['product_unit_short']+"</td></tr>";
         });    
         return ans;
     });
     var init = (function(){
-        getProducts();
         listeners();
     });
     
