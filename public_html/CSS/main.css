@@ -179,6 +179,25 @@
       margin-top: 20%;
       width: 90%; } }
 
+.additionalWindowsChangePass {
+  z-index: 5;
+  position: absolute;
+  border: solid 1px gray;
+  padding: 10px;
+  box-shadow: 10px 10px 15px #666666;
+  border-radius: 5px;
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-height: 330px;
+  width: 50%;
+  left: 25%; }
+  @media (max-width: 768px) {
+    .additionalWindowsChangePass {
+      left: 5%;
+      margin-top: 20%;
+      width: 90%; } }
+
 .addPhoto {
   z-index: 5;
   position: fixed;

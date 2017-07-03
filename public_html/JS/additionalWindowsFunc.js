@@ -149,6 +149,16 @@ pageFunctions.additionalWindowsFunc = function () {
             $('#newProductUnitSelect').removeClass('wrongValue');
         });
 
+        $('#oldPassBox').on('click', function(){
+            $('#oldPassBox').removeClass('wrongValue');
+        });
+        $('#newPassBox').on('click', function(){
+            $('#newPassBox').removeClass('wrongValue');
+        });
+        $('#repPassBox').on('click', function(){
+            $('#repPassBox').removeClass('wrongValue');
+        });
+
         $('#acceptAddProduct').on('click', function(){
             var vat = 0;
             var price = 0;
@@ -230,6 +240,81 @@ pageFunctions.additionalWindowsFunc = function () {
                 if($('#newProductUnitSelect').val() == 0){
                     $('#newProductUnitSelect').addClass('wrongValue');
                 }
+            }
+        });
+        $('#changePasswordOpen').on('click', function(){
+            $('#WZPopup').addClass('hidden');
+            $('#WZContainer').removeClass('blur');
+            $('#PZPopup').addClass('hidden');
+            $('#PZContainer').removeClass('blur');
+            $('#FVPopup').addClass('hidden');
+            $('#FVContainer').removeClass('blur');
+            $('.popup').addClass('hidden');
+            $('.tab').addClass('hidden');
+            $('#oldPassBox').val('');
+            $('#newPassBox').val('');
+            $('#repPassBox').val('');
+            $('#changePasswordPopup').removeClass('hidden');
+        });
+        $('#closeChangePasswordPopup').on('click', function(){
+            $('#changePasswordPopup').addClass('hidden');
+        });
+        $('#acceptChangePassword').on('click', function(){
+            if($('#oldPassBox').val() != $('#newPassBox').val()){
+                if (checkOldPass(window.localStorage.getItem('id'),$('#oldPassBox').val()) == 1){
+                    console.log($('#newPassBox').val().length);
+                    if ($('#newPassBox').val().length >= 8){
+                        if ($('#newPassBox').val() == $('#repPassBox').val()) {
+                            changePassword(window.localStorage.getItem('id'),$('#newPassBox').val());
+                            $('#changePasswordPopup').addClass('hidden');
+                        } else {
+                            var txt = '';
+                            if (window.localStorage.getItem('lang') == 'pl') {
+                                txt = 'Wpisane hasła różnią się!';
+                            } else if (window.localStorage.getItem('lang') == 'en') {
+                                txt = 'Inserted passwords are different!';
+                            } else {
+                                txt = 'Wpisane hasła różnią się!';
+                            }
+                            $('#newPassBox').addClass('wrongValue');
+                            $('#repPassBox').addClass('wrongValue');
+                            myAlert(txt,'doNothing');
+                        }
+                    } else {
+                        var txt = '';
+                        if (window.localStorage.getItem('lang') == 'pl') {
+                            txt = 'Nowe hasło jest zbyt krótkie! (min 8 znaków)';
+                        } else if (window.localStorage.getItem('lang') == 'en') {
+                            txt = 'New password is too short! (min 8 characters)';
+                        } else {
+                            txt = 'Nowe hasło jest zbyt krótkie! (min 8 znaków)';
+                        }
+                        $('#newPassBox').addClass('wrongValue');
+                        myAlert(txt,'doNothing');
+                    }
+                } else {
+                    var txt = '';
+                    if (window.localStorage.getItem('lang') == 'pl') {
+                        txt = 'Stare hasło jest niepoprawne!';
+                    } else if (window.localStorage.getItem('lang') == 'en') {
+                        txt = 'Old password is incorrect!';
+                    } else {
+                        txt = 'Stare hasło jest niepoprawne!';
+                    }
+                    $('#oldPassBox').addClass('wrongValue');
+                    myAlert(txt,'doNothing');
+                }
+            } else {
+                var txt = '';
+                if (window.localStorage.getItem('lang') == 'pl') {
+                    txt = 'Nowe hasło musi różnić się od starego!';
+                } else if (window.localStorage.getItem('lang') == 'en') {
+                    txt = 'New password must be different than old one!';
+                } else {
+                    txt = 'Nowe hasło musi różnić się od starego!';
+                }
+                $('#newPassBox').addClass('wrongValue');
+                myAlert(txt,'doNothing');
             }
         });
     });

@@ -114,18 +114,6 @@ and open the template in the editor.
                                     <p id="productCatalogLang" class="word"></p>
                                 </a>
                             </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <p id="withdrawLang" class="word"></p>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <p id="changePriceLang" class="word"></p>
-                                </a>
-                            </li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -167,7 +155,7 @@ and open the template in the editor.
                             <p id="userLang" class="word"></p><span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">
+                                <a href="#" id="changePasswordOpen">
                                     <p id="changePasswordLang" class="word"></p>
                                 </a>
                             </li>
@@ -1585,6 +1573,23 @@ and open the template in the editor.
                     </div>
                 </div>
                 <input id="acceptEditProduct" class="btn btn-default pull-right editProductLang" type="button">
+            </div>
+            <div id='changePasswordPopup' class='popup additionalWindowsChangePass hidden'>
+                <div class="form-group big-center">
+                    <label><p class="word changePasswordLang"></p></label>
+                </div>
+                <input id="closeChangePasswordPopup" class="btn btn-default pull-right closeBtt" type="button" value="Zamknij">
+                <div class="addingForm">
+                    <div class="form-group">
+                        <label><p class="word oldPasswordLang"></p></label>
+                        <input type="password" class="form-control" id="oldPassBox">
+                        <label><p class="word newPasswordLang"></p></label>
+                        <input type="password" class="form-control" id="newPassBox">
+                        <label><p class="word repPasswordLang"></p></label>
+                        <input type="password" class="form-control" id="repPassBox">
+                    </div>
+                </div>
+                <input id="acceptChangePassword" class="btn btn-default pull-right" type="button">
             </div>
         </div>
 </body>

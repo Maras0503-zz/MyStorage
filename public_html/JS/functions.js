@@ -59,6 +59,24 @@ var checkDocumentAccept = (function(docId){
     return ans;
 });
 
+var checkOldPass = (function(userId, pass){
+    var ans = 0;
+    param = {};
+    param['userId'] = userId;
+    param['pass'] = md5(pass);
+    $.ajax({
+      type: 'POST',
+      async: false,
+      data: param,
+      dataType: 'json',
+      url: 'PHP/checkOldPass.php',            
+      success: function(data){
+        ans = data[0].correct;
+      }
+    });
+    return ans;
+});
+
 var nameExists = (function(name){
     var ans = 0;
     param = {};
@@ -114,7 +132,6 @@ var checkQtyToEdit = (function(posId, qty){
 });
 
 var editWZPos = (function(posId, qty, disc){
-    var ans = 0;
     param = {};
     param['posId'] = posId;
     param['qty'] = qty;
@@ -127,6 +144,20 @@ var editWZPos = (function(posId, qty, disc){
         url: 'PHP/editWZPos.php',
     });
 });
+
+var changePassword = (function(userId, newPass){
+    param = {};
+    param['userId'] = userId;
+    param['newPass'] = md5(newPass);
+    $.ajax({
+        type: 'POST',
+        async: false,
+        data: param,
+        dataType: 'json',
+        url: 'PHP/changePassword.php',
+    });
+});
+
 var editFVPos = (function(posId, qty, disc){
     var ans = 0;
     param = {};

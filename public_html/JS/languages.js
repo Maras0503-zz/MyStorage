@@ -123,6 +123,12 @@ pageFunctions.languages = (function(){
         $('.editProductLang').html('Edit product');
         $('.editProductLang').attr('value','Edit product');
         $('.findLang').attr('value','Find');
+        $('.changePassword').html('Change password');
+        $('.oldPasswordLang').html('Old password:');
+        $('.newPasswordLang').html('New password');
+        $('.repPasswordLang').html('Repeat password');
+        $('#acceptChangePassword').attr('value','Change password');
+        $('.changePasswordLang').html('Change password');
         window.localStorage.setItem('lang','en');
     }
     var polish = function(){
@@ -231,6 +237,12 @@ pageFunctions.languages = (function(){
         $('.editProductLang').html('Edytuj produkt');
         $('.editProductLang').attr('value','Edytuj produkt');
         $('.findLang').attr('value','Szukaj');
+        $('.changePassword').html('Zmiana hasła');
+        $('.oldPasswordLang').html('Stare hasło:');
+        $('.newPasswordLang').html('Nowe hasło');
+        $('.repPasswordLang').html('Powtórz hasło');
+        $('#acceptChangePassword').attr('value','Zmień hasło');
+        $('.changePasswordLang').html('Zmień hasło');
         window.localStorage.setItem('lang','pl');
     }
 
