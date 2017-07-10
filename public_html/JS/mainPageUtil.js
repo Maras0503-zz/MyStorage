@@ -9,6 +9,7 @@ pageFunctions.mainPageUtil = (function(){
             window.location.replace('mainPage.html');
         });
     });
+
     
     $(document).ready(function(){
         init(); 

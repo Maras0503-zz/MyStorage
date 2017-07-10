@@ -385,3 +385,27 @@ var createNewProduct = (function (prodName, prodProducer, prodGroup, prodVAT, pr
         url: 'PHP/createNewProduct.php'
     });
 });
+var buildSellByMonthData = (function(data){
+    var ans = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    $.each(data, function (index, value) {
+            ans[value['month']-1] = value['sold'];
+    });
+    return ans;
+});
+var getSellByMonth = (function(prodId, year){
+    var ans;
+    var param = {};
+    param['prodId'] = prodId;
+    param['year'] = year;
+    $.ajax({
+        type: 'POST',
+        async: false,
+        dataType: 'json',
+        data: param,
+        url: 'PHP/getSellByMonth.php',
+        success: function(data){
+            ans = buildSellByMonthData(data);
+        }
+    });
+    return ans;
+});

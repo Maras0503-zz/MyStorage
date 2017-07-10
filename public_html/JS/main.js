@@ -9,3 +9,4 @@ pageFunctions.mainPageUtil = {};
 pageFunctions.functions = {};
 pageFunctions.languages = {};
 pageFunctions.additionalWindowsFunc = {};
+pageFunctions.creatingCharts = {};

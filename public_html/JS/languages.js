@@ -18,6 +18,7 @@ pageFunctions.languages = (function(){
     });
 
     var english = function () {
+        $('#bs-example-navbar-collapse-1').removeClass('in');
         $('#documentsLang').html('Documents');
         $('#productsLang').html('Products');
         $('#contractorsLang').html('Contractors');
@@ -112,7 +113,7 @@ pageFunctions.languages = (function(){
         $('.delPositionBttLang').attr('value','Delete selected position');
         $('.editPositionBttLang').attr('value','Edit selected position');
         $('.addProductLang').html('Add product');
-        $('.addNewProductLang').attr('value','Add product');
+        $('.addNewProductLang').attr('value','Save product');
         $('.newProdNameLang').html('Name: ');
         $('.newProdPriceLang').html('Price gross: ');
         $('.newProdGroupLang').html('Group: ');
@@ -121,7 +122,7 @@ pageFunctions.languages = (function(){
         $('.newProdProducerLang').html('Producer: ');
         $('.newProdCodeLang').html('Bar code: ');
         $('.editProductLang').html('Edit product');
-        $('.editProductLang').attr('value','Edit product');
+        $('.editProductLang').attr('value','Save product');
         $('.findLang').attr('value','Find');
         $('.changePassword').html('Change password');
         $('.oldPasswordLang').html('Old password:');
@@ -129,9 +130,17 @@ pageFunctions.languages = (function(){
         $('.repPasswordLang').html('Repeat password');
         $('#acceptChangePassword').attr('value','Change password');
         $('.changePasswordLang').html('Change password');
+        $('.priceHistLang').attr('value', 'Price history');
+        $('.priceHistLangNavbar').html('Price history');
+        $('.priceHistoryPriceLang').html('New price net');
+        $('.priceHistoryDateLang').html('Change date');
+        $('.sellChartLang').attr('value', 'Sales graph');
+        $('#redrawChart').attr('value', 'Redraw graph');
+        $('.dataFromYearLang').html('Data from year:');
         window.localStorage.setItem('lang','en');
     }
     var polish = function(){
+        $('#bs-example-navbar-collapse-1').removeClass('in');
         $('#documentsLang').html('Dokumenty');
         $('#productsLang').html('Produkty');
         $('#contractorsLang').html('Kontrahenci');
@@ -226,7 +235,7 @@ pageFunctions.languages = (function(){
         $('.delPositionBttLang').attr('value','Usuń zaznaczoną pozycję');
         $('.editPositionBttLang').attr('value','Edytuj zaznaczoną pozycję');
         $('.addProductLang').html('Dodaj produkt');
-        $('.addNewProductLang').attr('value','Dodaj produkt');
+        $('.addNewProductLang').attr('value','Zapisz produkt');
         $('.newProdNameLang').html('Nazwa: ');
         $('.newProdPriceLang').html('Cena brutto: ');
         $('.newProdGroupLang').html('Grupa: ');
@@ -235,7 +244,7 @@ pageFunctions.languages = (function(){
         $('.newProdProducerLang').html('Producent: ');
         $('.newProdCodeLang').html('Kod kreskowy: ');
         $('.editProductLang').html('Edytuj produkt');
-        $('.editProductLang').attr('value','Edytuj produkt');
+        $('.editProductLang').attr('value','Zapisz produkt');
         $('.findLang').attr('value','Szukaj');
         $('.changePassword').html('Zmiana hasła');
         $('.oldPasswordLang').html('Stare hasło:');
@@ -243,6 +252,13 @@ pageFunctions.languages = (function(){
         $('.repPasswordLang').html('Powtórz hasło');
         $('#acceptChangePassword').attr('value','Zmień hasło');
         $('.changePasswordLang').html('Zmień hasło');
+        $('.priceHistLang').attr('value', 'Historia ceny');
+        $('.priceHistLangNavbar').html('Historia ceny');
+        $('.priceHistoryPriceLang').html('Nowa cena netto');
+        $('.priceHistoryDateLang').html('Data zmiany');
+        $('.sellChartLang').attr('value', 'Wykres sprzedaży');
+        $('#redrawChart').attr('value', 'Odśwież wykres');
+        $('.dataFromYearLang').html('Dane z roku:');
         window.localStorage.setItem('lang','pl');
     }
 

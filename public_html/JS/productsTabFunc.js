@@ -22,6 +22,7 @@ pageFunctions.productsTabFunc = (function(){
                 if(id.substring(0,6) == 'ProdID'){
                     selectedProduct = id.substring(6,id.lenght);
                     $('#productPopupID').html(selectedProduct);
+                    $('#priceHistoryWindow').addClass('hidden'); 
                     $('#productPopup').removeClass('hidden');
                         $.get("productPhotos/"+selectedProduct+".jpg")
                             .done(function() { 
@@ -81,7 +82,7 @@ pageFunctions.productsTabFunc = (function(){
             $('.popup').addClass('hidden');
             $('.tab').removeClass('show');
             $('#productContainer').removeClass('hidden');
-            $('#productContainer').addClass('show');
+            $('#bs-example-navbar-collapse-1').removeClass('in');
             $('.tab').removeClass('blur');
             getProducts();
         });

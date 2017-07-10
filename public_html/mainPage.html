@@ -17,7 +17,7 @@ and open the template in the editor.
     <link href="CSS/main.css" rel="stylesheet" type="text/css" />
     <script src="JS/jquery-3.1.1.js" type="text/javascript"></script>
     <script src="JS/bootstrap.min.js" type="text/javascript"></script>
-
+    <script src="JS/Chart.js" type="text/javascript"></script>
     <script src="JS/md5.js" type="text/javascript"></script>
     <script src="JS/main.js" type="text/javascript"></script>
     <script src="JS/functions.js" type="text/javascript"></script>
@@ -28,6 +28,8 @@ and open the template in the editor.
     <script src="JS/pzTabFunc.js" type="text/javascript"></script>
     <script src="JS/additionalWindowsFunc.js" type="text/javascript"></script>
     <script src="JS/mainPageUtil.js" type="text/javascript"></script>
+    <script src="JS/creatingCharts.js" type="text/javascript"></script>
+
     <script src="JS/languages.js"></script>
 </head>
 
@@ -257,12 +259,36 @@ and open the template in the editor.
             </div>
             <input id="PRprevious" class="btn btn-default hidden" type="button" value="Poprzednia">
             <input id="PRnext" class="btn btn-default pull-right" type="button" value="Następna">
-            <div id="productPopup" class='popupSmall addPhoto hidden'>
+            <div id="productPopup" class='popupSmall popup addPhoto hidden'>
                 <label><p class="word prodIdLang"></p></label><label id='productPopupID'></label>
                 <div id='productPhoto'></div>
                 <div class='productPhotoButtons'>
-                    <input type="button" id='closeProductPopup' class='btn pull-right btn-default closeBtt' value="Zmień obraz" />
+                    <input type="button" id='closeProductPopup' class='btn pull-right btn-default closeBtt'/>
+                    <input type="button" id='priceHistory' class='btn pull-right btn-default priceHistLang'/>
+                    <input type="button" id='sellByMonthChart' class='btn pull-right btn-default sellChartLang'/>
                     <input type="button" id='changeImageProductPopup' class='pull-right btn btn-default' value="Zamknij" />
+                </div>
+                <div id='priceHistoryWindow' class='hidden'>
+                    <div id='priceHistoryPopupNavbar'>
+                        <label class='priceHistLangNavbar'></label>
+                        <button id='priceHistoryClose' class='pull-right'>X</button>
+                    </div>
+                    <div id='priceHistoryPopup'>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <td class='PriceHistCol1'>
+                                        <label class='word priceHistoryPriceLang'></label>
+                                    </td>
+                                    <td class='PriceHistCol2'>
+                                        <label class='word priceHistoryDateLang'></label>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody id='priceHistoryTableContent'>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1591,6 +1617,14 @@ and open the template in the editor.
                 </div>
                 <input id="acceptChangePassword" class="btn btn-default pull-right" type="button">
             </div>
+            <div id='charts' class="popup hidden">
+                <input type="button" id='closeSellChart' class='btn pull-right btn-default closeBtt'/>
+                <input type="button" id='redrawChart' class='btn pull-right btn-default'/>
+                <label class='dataFromYearLang'></label>
+                <select id='chartYear'>
+                </select>
+                <canvas id="myChart"></canvas>
+            <div>
         </div>
 </body>
 

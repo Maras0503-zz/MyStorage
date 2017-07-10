@@ -19,6 +19,7 @@ pageFunctions.additionalWindowsFunc = function () {
             $('#newProductNameBox').val('');
             $('#newProductPriceBox').val('');
             $('#newProductCodeBox').val('');
+            $('#bs-example-navbar-collapse-1').removeClass('in');
             $('#addProduct').removeClass('hidden');
             $('#newProductGroupSelect').html(createProductToAddGroupSelect(getGroups()));
             $('#newProductVatSelect').html(createProductToAddVatSelect(getVats()));
@@ -38,6 +39,7 @@ pageFunctions.additionalWindowsFunc = function () {
             $('#FVContainer').removeClass('blur');
             $('.popup').addClass('hidden');
             $('.tab').addClass('hidden');
+            $('#bs-example-navbar-collapse-1').removeClass('in');
             //disable all inputs until product found by id
             $("#searchProductToEditById").prop('disabled', false);
             $("#searchProductId").prop('disabled', false);
@@ -113,6 +115,7 @@ pageFunctions.additionalWindowsFunc = function () {
                 }
                 myAlert(txt,'doNothing');
             }
+            $('#editProduct').addClass('hidden');
         });
 
         $('#searchProductToEditReset').on('click', function(){
@@ -159,6 +162,13 @@ pageFunctions.additionalWindowsFunc = function () {
             $('#repPassBox').removeClass('wrongValue');
         });
 
+        $('#priceHistory').on('click',function(){
+            $('#priceHistoryWindow').removeClass('hidden');
+            $('#priceHistoryTableContent').html(createPriceHistoryTableContent(getPriceHistory()));
+        });
+        $('#priceHistoryClose').on('click',function(){ 
+            $('#priceHistoryWindow').addClass('hidden');            
+        });
         $('#acceptAddProduct').on('click', function(){
             var vat = 0;
             var price = 0;
@@ -254,6 +264,7 @@ pageFunctions.additionalWindowsFunc = function () {
             $('#oldPassBox').val('');
             $('#newPassBox').val('');
             $('#repPassBox').val('');
+            $('#bs-example-navbar-collapse-1').removeClass('in');
             $('#changePasswordPopup').removeClass('hidden');
         });
         $('#closeChangePasswordPopup').on('click', function(){
@@ -373,6 +384,35 @@ pageFunctions.additionalWindowsFunc = function () {
         });
         return ans;
     });
+    
+    var createPriceHistoryTableContent = (function (data) {
+        var ans = '';
+        var date;
+        $.each(data, function (index, value) {
+            date = new Date(parseInt(value['price_history_change_date']));
+            ans += "<tr> <td class='PriceHistCol1c'>"+ value['price_history_price']/100 +"</td><td class='PriceHistCol1c'>"+ dateToFormat(date) + "</td></tr>";
+        });
+        return ans;
+    });
+    
+    var getPriceHistory = (function(){
+        var ans = 0;
+        var param = {};
+        param['prodId'] = $('#productPopupID').html();
+        $.ajax({
+            type: 'POST',
+            async: false,
+            data: param,
+            dataType: 'json',
+            url: 'PHP/getPriceHistory.php',
+            success: function(data){
+                console.log(data);
+                ans = data;
+            }
+        });
+        return ans;
+    });
+
 
     var getUnits = (function(){
         var ans = 0;

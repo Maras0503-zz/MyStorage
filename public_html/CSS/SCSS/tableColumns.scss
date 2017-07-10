@@ -643,3 +643,33 @@ $WZProdChoseCol5: 15%;
     max-width: $WZProdChoseCol5;
     min-width: $WZProdChoseCol5;
 }
+
+//PRICE HISTORY
+$PriceHistCol1: 50%;
+$PriceHistCol2: 50%;
+
+.PriceHistCol1{
+    text-align: center;
+    width: $PriceHistCol1;
+    max-width: $PriceHistCol1;
+    min-width: $PriceHistCol1;
+}
+.PriceHistCol2{
+    text-align: center;
+    width: $PriceHistCol2;
+    max-width: $PriceHistCol2;
+    min-width: $PriceHistCol2;
+}
+
+.PriceHistCol1c{
+    text-align: center;
+    width: $PriceHistCol1;
+    max-width: $PriceHistCol1;
+    min-width: $PriceHistCol1;
+}
+.PriceHistCol2c{
+    text-align: center;
+    width: $PriceHistCol2;
+    max-width: $PriceHistCol2;
+    min-width: $PriceHistCol2;
+}

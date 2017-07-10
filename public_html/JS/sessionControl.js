@@ -7,7 +7,7 @@ pageFunctions.sessionControl = (function(){
     });
     
     var validateSession = (function(){
-        if(checkSession() != true){
+        if(checkSession(false) != true){
             if(window.localStorage.getItem('lang')=='pl') {
                 myAlert('Sesia wygasła, zaloguj się ponownie.','logout');
             } else if(window.localStorage.getItem('lang')=='en'){
@@ -29,18 +29,29 @@ pageFunctions.sessionControl = (function(){
     });
     
     var listeners = (function(){
+        $(document).on('click' ,function(event){
+            if(event.target){
+                window.localStorage.setItem('check', 1);
+            }
+        });
         $('#logout').on('click', function(){
             logout();
         });
     });
     
-    var checkSession = (function(){
+    var checkSession = (function(isReloading){
         var ans = false;
         var param = {};
         var time = new Date().getTime();
-        param['id'] = localStorage.getItem('id');
-        param['token'] = localStorage.getItem('token');
+        param['id'] = window.localStorage.getItem('id');
+        param['token'] = window.localStorage.getItem('token');
         param['valid'] = time;
+        if(isReloading == false){
+            param['check'] = window.localStorage.getItem('check');
+            window.localStorage.setItem('check', 0);
+        } else {
+            param['check'] = 1;
+        }
         $.ajax({       
             type: 'post',
             async: false,
@@ -57,6 +68,8 @@ pageFunctions.sessionControl = (function(){
     });
     
     $(document).ready(function(){
-        init(); 
+        init();
+        checkSession(true);
+        setInterval(validateSession, 60000); 
     });
 }());

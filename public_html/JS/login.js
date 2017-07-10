@@ -48,7 +48,7 @@ pageFunctions.login = (function(){
         param['pass'] = md5(pass);
         var time = new Date().getTime();
         param['token'] = md5(""+time);
-        param['valid'] = time+28800000;
+        param['valid'] = time+3600000;
         $.ajax({       
             type: 'post',
             async: false,

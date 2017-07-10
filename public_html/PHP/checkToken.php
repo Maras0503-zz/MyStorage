@@ -2,9 +2,10 @@
     $id = $_POST['id'];
     $token = $_POST['token'];
     $valid = $_POST['valid'];
+    $check = $_POST['check'];
 
     //CHECK IS SESSION IS ACTIVE
-    $query = "select isTokenValid('".$id."','".$token."','".$valid."') as isValid";
+    $query = "select isTokenValid('".$id."','".$token."','".$valid."','".$check."') as isValid";
     function select($query){
         include('connect.php');
         $returnArray = array();

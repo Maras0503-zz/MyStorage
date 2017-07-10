@@ -418,6 +418,7 @@ pageFunctions.FVTabFunc = (function(){
             $('#FVContainer').removeClass('blur');
             $('.popup').addClass('hidden');
             $('.tab').addClass('hidden');
+            $('#bs-example-navbar-collapse-1').removeClass('in');
             $('#PZContainer').removeClass('hidden');
             getPZDocuments();
         });
