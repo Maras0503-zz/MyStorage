@@ -88,8 +88,25 @@ var nameExists = (function(name){
       dataType: 'json',
       url: 'PHP/nameExists.php',            
       success: function(data){
-        console.log(data);
         ans = data[0].nameExists;
+      }
+    });
+    return ans;
+});
+
+var checkContractorNameAndNip = (function(name, nip){
+    var ans = 0;
+    param = {};
+    param['name'] = name;
+    param['nip'] = nip;
+    $.ajax({
+      type: 'POST',
+      async: false,
+      data: param,
+      dataType: 'json',
+      url: 'PHP/checkContractorNameAndNip.php',            
+      success: function(data){
+        ans = data[0].isExists;
       }
     });
     return ans;
@@ -245,7 +262,7 @@ var getFindProductToAdd = (function(pageNo, ord, docId){
     });
     return ans;
 });
-var getProductToAddDetails = function (parameter) {
+var getProductToAddDetails = (function (parameter) {
         var ans = {};
         var param = {};
         param['parameter'] = parameter;
@@ -260,9 +277,9 @@ var getProductToAddDetails = function (parameter) {
             }
         });
         return ans;
-};
+});
 
-var getProductDetailsToEdit = function (parameter) {
+var getProductDetailsToEdit = (function (parameter) {
         var ans = {};
         var param = {};
         param['parameter'] = parameter;
@@ -277,9 +294,9 @@ var getProductDetailsToEdit = function (parameter) {
             }
         });
         return ans;
-};
+});
 
-var getProductToAddDetailsById = function (parameter) {
+var getProductToAddDetailsById = (function (parameter) {
         var ans = {};
         var param = {};
         param['parameter'] = parameter;
@@ -294,8 +311,8 @@ var getProductToAddDetailsById = function (parameter) {
             }
         });
         return ans;
-};
-var getRecordDetailsByRecordId = function (parameter) {
+});
+var getRecordDetailsByRecordId = (function (parameter) {
         var ans = {};
         var param = {};
         param['parameter'] = parameter;
@@ -310,7 +327,7 @@ var getRecordDetailsByRecordId = function (parameter) {
             }
         });
         return ans;
-};
+});
 var delDocument = (function(docId){
     var param = {};
     param['docId'] = docId;
@@ -385,6 +402,63 @@ var createNewProduct = (function (prodName, prodProducer, prodGroup, prodVAT, pr
         url: 'PHP/createNewProduct.php'
     });
 });
+
+var getContractorDetails = (function (parameter) {
+        var ans = {};
+        var param = {};
+        param['parameter'] = parameter;
+        $.ajax({
+            type: 'POST',
+            async: false,
+            data: param,
+            dataType: 'json',
+            url: 'PHP/getContractorDetails.php',
+            success: function (data) {
+                ans = data;
+            }
+        });
+        return ans;
+});
+
+var addContractor = (function (conName, conStreet, conPostal, conCity, conNip, conPhone, conEmail, conIsProvider) {
+    var param = {};
+    param['conName'] = conName.toUpperCase();
+    param['conStreet'] = conStreet.toUpperCase();
+    param['conPostalCode'] = conPostal;
+    param['conCity'] = conCity.toUpperCase();
+    param['conNip'] = conNip;
+    param['conPhone'] = conPhone;
+    param['conEmail'] = conEmail;
+    param['conIsProvider'] = conIsProvider;
+    $.ajax({
+        type: 'POST',
+        async: false,
+        data: param,
+        dataType: 'json',
+        url: 'PHP/addContractor.php'
+    });
+});
+
+var editContractor = (function (conId, conName, conStreet, conPostal, conCity, conNip, conPhone, conEmail, conIsProvider) {
+    var param = {};
+    param['conId'] = conId;
+    param['conName'] = conName.toUpperCase();
+    param['conStreet'] = conStreet.toUpperCase();
+    param['conPostalCode'] = conPostal;
+    param['conCity'] = conCity.toUpperCase();
+    param['conNip'] = conNip;
+    param['conPhone'] = conPhone;
+    param['conEmail'] = conEmail;
+    param['conIsProvider'] = conIsProvider;
+    $.ajax({
+        type: 'POST',
+        async: false,
+        data: param,
+        dataType: 'json',
+        url: 'PHP/editContractor.php'
+    });
+});
+
 var buildSellByMonthData = (function(data){
     var ans = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     $.each(data, function (index, value) {

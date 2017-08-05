@@ -8,7 +8,7 @@ and open the template in the editor.
 
 <head>
     <title>MyStorage - Main</title>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="IMG/favicon.ico">
 
@@ -123,13 +123,18 @@ and open the template in the editor.
                             <p id="contractorsLang" class="word"></p><span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">
+                                <a id="contractorsList" href="#">
                                     <p id="contractorListLang" class="word"></p>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a id="contractorAdd" href="#">
                                     <p id="contractorAddLang" class="word"></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a id="contractorEdit" href="#">
+                                    <p id="contractorEditLang" class="word"></p>
                                 </a>
                             </li>
                         </ul>
@@ -140,7 +145,7 @@ and open the template in the editor.
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="#">
-                                    <p id="productSalesLang" class="word"></p>
+                                    <p id="allSalesLang" class="word"></p>
                                 </a>
                             </li>
                             <li>
@@ -1565,7 +1570,7 @@ and open the template in the editor.
                 </div>
                 <input id="acceptAddProduct" class="btn btn-default pull-right addNewProductLang" type="button">
             </div>
-            <div id='editProduct' class='popup additionalWindowsEdit hidden'>
+            <div id='editProduct' class='popup additionalWindows hidden'>
                 <div class="form-group big-center">
                     <label><p class="word editProductLang"></p></label>
                 </div>
@@ -1600,7 +1605,7 @@ and open the template in the editor.
                 </div>
                 <input id="acceptEditProduct" class="btn btn-default pull-right editProductLang" type="button">
             </div>
-            <div id='changePasswordPopup' class='popup additionalWindowsChangePass hidden'>
+            <div id='changePasswordPopup' class='popup additionalWindows hidden'>
                 <div class="form-group big-center">
                     <label><p class="word changePasswordLang"></p></label>
                 </div>
@@ -1624,7 +1629,142 @@ and open the template in the editor.
                 <select id='chartYear'>
                 </select>
                 <canvas id="myChart"></canvas>
-            <div>
+            </div>
+            <div id='editContractor' class='popup onTop additionalWindows hidden'>
+                <div class="form-group big-center">
+                    <label><p class="word editContractorLang"></p></label>
+                </div>
+                <input id="closeEditContractorWindow" class="btn btn-default pull-right closeBtt" type="button">
+                <div class="addingForm">
+                    <div class="form-group">
+                        <div class='searchByIdToEdit'>
+                            <label class='smallInput'><p class="word contractorIdLang"></p></label>
+                            <input type="text" class="form-control smallInput" id="searchContractor">
+                            <input id="searchContractorToEdit" class="btn btn-default smallInput findLang" type="button">
+                            <input id="searchContractorToEditReset" class="btn btn-default smallInput" type="button" value="Reset">
+                        </div>
+                        <label><p class="word contractorNameLang"></p></label>
+                        <input type="text" class="form-control" id="editContractorNameBox">
+                        <label><p class="word contractorStreetLang"></p></label>
+                        <input type="text" class="form-control" id="editContractorStreetBox">   
+                        <label><p class="word contractorPostalCodeLang"></p></label>
+                        <input type="text" class="form-control" id="editContractorPostalCodeBox">  
+                        <label><p class="word contractorCityLang"></p></label>
+                        <input type="text" class="form-control" id="editContractorCityBox">
+                        <label><p class="word contractorNipLang"></p></label>
+                        <input type="text" class="form-control" id="editContractorNipBox"> 
+                        <label><p class="word contractorPhoneLang"></p></label>
+                        <input type="text" class="form-control" id="editContractorPhoneBox">
+                        <label><p class="word contractorEmailLang"></p></label>
+                        <input type="text" class="form-control" id="editContractorEmailBox"> 
+                        <label><p class="word contractorIsProviderLang"></p></label>
+                        <select id='editContractorIsProviderSelect' class="form-control">
+                            <option class="isProviderNoLang" value="0"></option>
+                            <option class="isProviderYesLang" value="1"></option>
+                        </select>                        
+                    </div>
+                </div>
+                <input id="acceptEditContractor" class="btn btn-default pull-right editContractorLang" type="button">
+            </div>
+            <div id='addContractor' class='popup onTop additionalWindows hidden'>
+                <div class="form-group big-center">
+                    <label><p class="word addContractorLang"></p></label>
+                </div>
+                <input id="closeAddContractorWindow" class="btn btn-default pull-right closeBtt" type="button">
+                <div class="addingForm">
+                    <div class="form-group">
+                        <label><p class="word contractorNameLang"></p></label>
+                        <input type="text" class="form-control" id="newContractorNameBox">
+                        <label><p class="word contractorStreetLang"></p></label>
+                        <input type="text" class="form-control" id="newContractorStreetBox">  
+                        <label><p class="word contractorPostalCodeLang"></p></label>
+                        <input type="text" class="form-control" id="newContractorPostalCodeBox">  
+                        <label><p class="word contractorCityLang"></p></label>
+                        <input type="text" class="form-control" id="newContractorCityBox">
+                        <label><p class="word contractorNipLang"></p></label>
+                        <input type="text" class="form-control" id="newContractorNipBox">
+                        <label><p class="word contractorPhoneLang"></p></label>
+                        <input type="text" class="form-control" id="newContractorPhoneBox">
+                        <label><p class="word contractorEmailLang"></p></label>
+                        <input type="text" class="form-control" id="newContractorEmailBox">
+                        <label><p class="word contractorIsProviderLang"></p></label>
+                        <select id='newContractorIsProviderSelect' class="form-control">
+                            <option class="isProviderNoLang" value="0"></option>
+                            <option class="isProviderYesLang" value="1"></option>
+                        </select>
+                    </div>
+                </div>
+                <input id="acceptAddContractor" class="btn btn-default pull-right addContractorLang" type="button">
+            </div>
+            <div id="contractorsListWindow" class="container-fluid hidden tab">
+                <div class="newWZform">
+                    <div class="form-group big-center">
+                        <label><p class="word contractorsListLang"></p></label>
+                    </div>
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label>ID: </label><input type="number" class="form-control" id="contractorsListId">
+                        </div>
+                        <div class="form-group">
+                            <label><p class="word contractorNameLang"></p></label><input type="text" class="form-control" id="contractorsListName">
+                        </div>
+                        <div class="form-group">
+                            <label><p class="word contractorCityLang"></p></label><input type="text" class="form-control" id="contractorsListCity">
+                        </div>
+                        <div class="form-group">
+                            <label><p class="word contractorTaxNoLang"></p></label><input type="text" class="form-control" id="contractorsListNIP">
+                        </div>
+                    </div>
+                    <input id="closeContractorsListWindow" class="btn btn-default pull-right closeBtt" type="button">
+                    <input id="contractorsListSearch" class="btn btn-default search" type="button" value="Szukaj">
+                    <input id="contractorsListReset" class="btn btn-default" type="button" value="Reset">
+                    <input id="contractorsListNewCon" class="btn btn-default addContractorLang" type="button" value="Szukaj">
+                    <input id="contractorsListEditCon" class="btn btn-default editContractorLang" type="button" value="Szukaj">
+                    <hr/>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <td class="DocConCol1">ID
+                                        <div id="ConListArrUpId" class="unused sortBttMain ConListArr">&#9650;</div>
+                                        <div id="ConListArrDownId" class="unused sortBttMain ConListArr">&#9660;</div>
+                                    </td>
+                                    <td class="ConListConCol2">
+                                        <p class="word docConConHeader"></p>
+                                        <div id="ConListArrUpConName" class="unused sortBttMain ConListArr">&#9650;</div>
+                                        <div id="ConListArrDownConName" class="unused sortBttMain ConListArr">&#9660;</div>
+                                    </td>
+                                    <td class="DocConCol3">
+                                        <p class="word docConTaxNoHeader"></p>
+                                    </td>
+                                    <td class="DocConCol4">
+                                        <p class="word docConPostCodeHeader"></p>
+                                    </td>
+                                    <td class="DocConCol5">
+                                        <p class="word docConCityHeader"></p>
+                                        <div id="ConListArrUpCity" class="unused sortBttMain ConListArr">&#9650;</div>
+                                        <div id="ConListArrDownCity" class="unused sortBttMain ConListArr">&#9660;</div>
+                                    </td>
+                                    <td class="DocConCol6">
+                                        <p class="word docConStreetHeader"></p>
+                                    </td>
+                                    <td class="DocConCol7">
+                                        <p class="word docConPhoneHeader"></p>
+                                    </td>
+                                    <td class="DocConCol8">E-mail</td>
+                                </tr>
+                            </thead>
+                            <tbody id="contractorsListTabContent">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="conPageControls">
+                        <input id="contractorsListPrevious" class="btn btn-default hidden" type="button" value="Poprzednia">
+                        <input id="contractorsListNext" class="btn btn-default pull-right" type="button" value="Następna">
+                    </div>
+                </div>
+            </div>   
+
         </div>
 </body>
 

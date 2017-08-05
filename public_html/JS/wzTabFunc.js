@@ -899,14 +899,14 @@ pageFunctions.wzTabFunc = function () {
         var ans = '';
         $.each(data, function (index, value) {
             ans += "<tr class='WZConRow' id=ConID" + value['contractor_id'] + ">\n\
-                        <td class='WZConCol1c'>" + value['contractor_id'] + "</td>\n\
-                        <td class='WZConCol2c'>" + value['contractor_name'] + "</td>\n\
-                        <td class='WZConCol3c'>" + value['contractor_nip'] + "</td>\n\
-                        <td class='WZConCol4c'>" + value['contractor_postal'] + "</td>\n\
-                        <td class='WZConCol5c'>" + value['contractor_city'] + "</td>\n\
-                        <td class='WZConCol6c'>" + value['contractor_street'] + "</td>\n\
-                        <td class='WZConCol7c'>" + value['contractor_tel'] + "</td>\n\
-                        <td class='WZConCol8c'>" + value['contractor_email'] + "</td>\n\
+                        <td class='DocConCol1c'>" + value['contractor_id'] + "</td>\n\
+                        <td class='DocConCol2c'>" + value['contractor_name'] + "</td>\n\
+                        <td class='DocConCol3c'>" + value['contractor_nip'] + "</td>\n\
+                        <td class='DocConCol4c'>" + value['contractor_postal'] + "</td>\n\
+                        <td class='DocConCol5c'>" + value['contractor_city'] + "</td>\n\
+                        <td class='DocConCol6c'>" + value['contractor_street'] + "</td>\n\
+                        <td class='DocConCol7c'>" + value['contractor_tel'] + "</td>\n\
+                        <td class='DocConCol8c'>" + value['contractor_email'] + "</td>\n\
                     </tr>";
         });
         return ans;

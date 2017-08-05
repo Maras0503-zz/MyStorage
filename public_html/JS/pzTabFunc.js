@@ -791,14 +791,14 @@ pageFunctions.FVTabFunc = (function(){
         ans = '';
         $.each(data,function(index, value){
             ans += "<tr class='PZConRow' id=ConID"+value['contractor_id']+">\n\
-                        <td class='PZConCol1c'>"+value['contractor_id']+"</td>\n\
-                        <td class='PZConCol2c'>"+value['contractor_name']+"</td>\n\
-                        <td class='PZConCol3c'>"+value['contractor_nip']+"</td>\n\
-                        <td class='PZConCol4c'>"+value['contractor_postal']+"</td>\n\
-                        <td class='PZConCol5c'>"+value['contractor_city']+"</td>\n\
-                        <td class='PZConCol6c'>"+value['contractor_street']+"</td>\n\
-                        <td class='PZConCol7c'>"+value['contractor_tel']+"</td>\n\
-                        <td class='PZConCol8c'>"+value['contractor_email']+"</td>\n\
+                        <td class='DocConCol1c'>"+value['contractor_id']+"</td>\n\
+                        <td class='DocConCol2c'>"+value['contractor_name']+"</td>\n\
+                        <td class='DocConCol3c'>"+value['contractor_nip']+"</td>\n\
+                        <td class='DocConCol4c'>"+value['contractor_postal']+"</td>\n\
+                        <td class='DocConCol5c'>"+value['contractor_city']+"</td>\n\
+                        <td class='DocConCol6c'>"+value['contractor_street']+"</td>\n\
+                        <td class='DocConCol7c'>"+value['contractor_tel']+"</td>\n\
+                        <td class='DocConCol8c'>"+value['contractor_email']+"</td>\n\
                     </tr>";
         });    
         return ans;

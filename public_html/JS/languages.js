@@ -34,11 +34,13 @@ pageFunctions.languages = (function(){
         $('#changePriceLang').html('Change price');
         $('#contractorListLang').html('Contractors list');
         $('#contractorAddLang').html('Add contractor');
+        $('#contractorEditLang').html('Edit contractor');
         $('#productSalesLang').html('Product sales');
         $('#groupSalesLang').html('Group sales');
         $('#changePasswordLang').html('Change password');
         $('#userLogoutLang').html('Logout');
         $('.prodIdLang').html('Product ID:');
+        $('.contractorIdLang').html('Contractor ID:');
         $('#prodNameLang').html('Name:');
         $('#priceMinLang').html('Price Min:');
         $('#priceMaxLang').html('Price Max:');
@@ -137,6 +139,24 @@ pageFunctions.languages = (function(){
         $('.sellChartLang').attr('value', 'Sales graph');
         $('#redrawChart').attr('value', 'Redraw graph');
         $('.dataFromYearLang').html('Data from year:');
+        $('#allSalesLang').html('Sales grahp');
+        $('.addContractor').html('Add contractor');
+        $('.contractorNameLang').html('Name:');
+        $('.contractorStreetLang').html('Street:');
+        $('.contractorPostalCodeLang').html('Postal code:');
+        $('.contractorCityLang').html('City:');
+        $('.contractorNipLang').html('UTR:');
+        $('.addContractorLang').html('Add contractor');
+        $('.editContractorLang').html('Edit contractor');
+        $('.addContractorLang').attr('value','Add contractor');
+        $('.editContractorLang').attr('value','Edit contractor');
+        $('.contractorPhoneLang').html('Phone No:');
+        $('.contractorEmailLang').html('E-mail:');
+        $('.contractorIsProviderLang').html('Is provider?:');
+        $('.isProviderNoLang').html('Is not provider');
+        $('.isProviderYesLang').html('Is provider');
+        $('.contractorsListLang').html('Contractors list');
+
         window.localStorage.setItem('lang','en');
     }
     var polish = function(){
@@ -156,11 +176,13 @@ pageFunctions.languages = (function(){
         $('#changePriceLang').html('Zmień cenę');
         $('#contractorListLang').html('Lista kontrahentów');
         $('#contractorAddLang').html('Dodaj kontrahenta');
+        $('#contractorEditLang').html('Edytuj kontrahenta');
         $('#productSalesLang').html('Sprzedaż produktu');
         $('#groupSalesLang').html('Sprzedaż w grupie');
         $('#changePasswordLang').html('Zmień hasło');
         $('#userLogoutLang').html('Wyloguj');
         $('.prodIdLang').html('ID produktu:');
+        $('.contractorIdLang').html('ID kontrahenta:');
         $('#prodNameLang').html('Nazwa:');
         $('#priceMinLang').html('Cena Min:');
         $('#priceMaxLang').html('Cena Max:');
@@ -259,9 +281,25 @@ pageFunctions.languages = (function(){
         $('.sellChartLang').attr('value', 'Wykres sprzedaży');
         $('#redrawChart').attr('value', 'Odśwież wykres');
         $('.dataFromYearLang').html('Dane z roku:');
+        $('#allSalesLang').html('Wykres sprzedaży');
+        $('.addContractor').html('Dodaj kontrahenta');
+        $('.contractorNameLang').html('Nazwa:');
+        $('.contractorStreetLang').html('Ulica:');
+        $('.contractorPostalCodeLang').html('Kod pocztowy:');
+        $('.contractorCityLang').html('Miasto:');
+        $('.contractorNipLang').html('NIP:');
+        $('.addContractorLang').html('Dodaj kontrahenta');
+        $('.editContractorLang').html('Edytuj kontrahenta');
+        $('.addContractorLang').attr('value','Dodaj kontrahenta');
+        $('.editContractorLang').attr('value','Edytuj kontrahenta');
+        $('.contractorPhoneLang').html('Telefon:');
+        $('.contractorEmailLang').html('E-mail:');
+        $('.contractorIsProviderLang').html('Jest dostawcą?:');
+        $('.isProviderNoLang').html('Nie jest dostawcą');
+        $('.isProviderYesLang').html('Jest dostawcą');
+        $('.contractorsListLang').html('Lista kontrahentów');
         window.localStorage.setItem('lang','pl');
     }
-
 
     $(document).ready(function(){
         if(window.localStorage.getItem('lang')=='en'){

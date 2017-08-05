@@ -20,6 +20,8 @@ pageFunctions.creatingCharts = (function(){
             $('#charts').removeClass('hidden');
         });
         $('#redrawChart').on('click', function(){
+            $('#myChart').remove();
+            $('#charts').append('<canvas id="myChart"><canvas>');
             createSellByMonthChart($('#productPopupID').html(), $('#chartYear').val());
         });
     });
