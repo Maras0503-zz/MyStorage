@@ -270,8 +270,7 @@ var myAlert = (function(message,action){
         $('#myAlertConfirm').on('click', function(){
             $('#myAlertContainer').addClass('hidden');
         });
-    }
-    if(action == 'logout'){
+    } else if(action == 'logout'){
         $('#myAlertMessage').html(message);
         $('#myAlertContainer').removeClass('hidden');
         $('#myAlertConfirm').on('click', function(){        

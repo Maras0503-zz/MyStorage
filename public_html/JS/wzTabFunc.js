@@ -517,6 +517,13 @@ pageFunctions.wzTabFunc = function () {
         });
 
         $('#WZTabOpen').on('click', function () {
+            $('#WZPopup').addClass('hidden');
+            $('#WZContainer').removeClass('blur');
+            $('#PZPopup').addClass('hidden');
+            $('#PZContainer').removeClass('blur');
+            $('#FVPopup').addClass('hidden');
+            $('#FVContainer').removeClass('blur');
+            $('.popup').addClass('hidden');
             $('.tab').addClass('hidden');
             $('#WZContainer').removeClass('hidden');
         });
@@ -1161,11 +1168,11 @@ pageFunctions.wzTabFunc = function () {
                             <td class='WZProdCol4c'>" + value['product_unit_short'] + "</td>\n\
                             <td class='WZProdCol5c'>" + (vat * 100) + "</td>\n\
                             <td class='WZProdCol6c'>" + (discount) + "</td>\n\
-                            <td class='WZProdCol7c'>" + (Math.round((price / 100) * 100) / 100) + "</td>\n\
-                            <td class='WZProdCol8c'>" + (Math.round((priceBrutto / 100) * 100) / 100) + "</td>\n\
-                            <td class='WZProdCol9c'>" + (Math.round((valueNetto / 100) * 100) / 100) + "</td>\n\
-                            <td class='WZProdCol10c'>" + (Math.round((valueBrutto / 100) * 100) / 100) + "</td>\n\
-                            <td class='WZProdCol11c'>" + (Math.round((valueBruttoWithDiscount / 100) * 100) / 100) + "</td>\n\
+                            <td class='WZProdCol7c'>" + (Math.round((price / 100) * 100) / 100).toFixed(2) + "</td>\n\
+                            <td class='WZProdCol8c'>" + (Math.round((priceBrutto / 100) * 100) / 100).toFixed(2) + "</td>\n\
+                            <td class='WZProdCol9c'>" + (Math.round((valueNetto / 100) * 100) / 100).toFixed(2) + "</td>\n\
+                            <td class='WZProdCol10c'>" + (Math.round((valueBrutto / 100) * 100) / 100).toFixed(2) + "</td>\n\
+                            <td class='WZProdCol11c'>" + (Math.round((valueBruttoWithDiscount / 100) * 100) / 100).toFixed(2) + "</td>\n\
                         </tr>";
             }
         });

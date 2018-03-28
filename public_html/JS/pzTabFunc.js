@@ -411,6 +411,13 @@ pageFunctions.FVTabFunc = (function(){
         });
        
         $('#PZTabOpen').on('click', function(){
+            $('#WZPopup').addClass('hidden');
+            $('#WZContainer').removeClass('blur');
+            $('#PZPopup').addClass('hidden');
+            $('#PZContainer').removeClass('blur');
+            $('#FVPopup').addClass('hidden');
+            $('#FVContainer').removeClass('blur');
+            $('.popup').addClass('hidden');
             $('.tab').addClass('hidden');
             $('#PZContainer').removeClass('hidden');
         });
