@@ -8,5 +8,9 @@ pageFunctions.pzTabFunc = {};
 pageFunctions.mainPageUtil = {};
 pageFunctions.functions = {};
 pageFunctions.languages = {};
+<<<<<<< HEAD
 pageFunctions.additionalWindowsFunc = {};
 pageFunctions.creatingCharts = {};
+=======
+pageFunctions.additionalWindowsFunc = {};
+>>>>>>> editPosition

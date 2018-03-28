@@ -1,14 +1,18 @@
 pageFunctions.additionalWindowsFunc = function () {
+<<<<<<< HEAD
     var data;
     var contractorData = {};
     var contractorsListOrder = 1;
     var contractorsListCount = 0;
     var contractorsListPage = 0;
     var contractorsListSelectedID = 0;
+=======
+>>>>>>> editPosition
     var init = (function () {
         listeners();
     });
     var listeners = (function(){
+<<<<<<< HEAD
         $('#contractorsList').on('click', function(){
             $('#contractorsListWindow').removeClass('hidden');
             getContractors();
@@ -171,10 +175,13 @@ pageFunctions.additionalWindowsFunc = function () {
         });
         
 
+=======
+>>>>>>> editPosition
         $('#closeAddProductWindow').on('click', function(){
             $('#addProduct').addClass('hidden');
         });
         $('#addProductOpen').on('click', function(){
+<<<<<<< HEAD
             $('#WZPopup').addClass('hidden');
             $('#WZContainer').removeClass('blur');
             $('#PZPopup').addClass('hidden');
@@ -187,6 +194,8 @@ pageFunctions.additionalWindowsFunc = function () {
             $('#newProductPriceBox').val('');
             $('#newProductCodeBox').val('');
             $('#bs-example-navbar-collapse-1').removeClass('in');
+=======
+>>>>>>> editPosition
             $('#addProduct').removeClass('hidden');
             $('#newProductGroupSelect').html(createProductToAddGroupSelect(getGroups()));
             $('#newProductVatSelect').html(createProductToAddVatSelect(getVats()));
@@ -194,6 +203,7 @@ pageFunctions.additionalWindowsFunc = function () {
             $('#newProductProducersSelect').html(createProductToAddProducersSelect(getProducers()));
         });
 
+<<<<<<< HEAD
         $('#contractorsListNewCon').on('click', function(){
             $('#WZPopup').addClass('hidden');
             $('#WZContainer').removeClass('blur');
@@ -496,6 +506,8 @@ pageFunctions.additionalWindowsFunc = function () {
             $('#editProductProducersSelect').html(createProductToAddProducersSelect(getProducers()));
         });
 
+=======
+>>>>>>> editPosition
         $('#newProductProducersSelect').on('click', function(){
             $('#newProductProducersSelect').removeClass('wrongValue');
         });
@@ -509,6 +521,7 @@ pageFunctions.additionalWindowsFunc = function () {
             $('#newProductUnitSelect').removeClass('wrongValue');
         });
 
+<<<<<<< HEAD
         $('#oldPassBox').on('click', function(){
             $('#oldPassBox').removeClass('wrongValue');
         });
@@ -563,6 +576,14 @@ pageFunctions.additionalWindowsFunc = function () {
                             }
                             myAlert(txt,'doNothing');
                         }
+=======
+        $('#acceptAddProduct').on('click', function(){
+            if($('#newProductProducersSelect').val() != 0 && $('#newProductGroupSelect').val() != 0 && $('#newProductVatSelect').val() != 0 && $('#newProductUnitSelect').val() != 0){
+                if(!isNaN($('#newProductPriceBox').val()) && $('#newProductPriceBox').val() != ''){
+                    console.log($('#newProductPriceBox').val());
+                    if($('#newProductPriceBox').val() != 0){
+
+>>>>>>> editPosition
                     } else {
                         var txt = '';
                         if (window.localStorage.getItem('lang') == 'pl') {
@@ -609,6 +630,7 @@ pageFunctions.additionalWindowsFunc = function () {
                 }
             }
         });
+<<<<<<< HEAD
         $('#changePasswordOpen').on('click', function(){
             $('#WZPopup').addClass('hidden');
             $('#WZContainer').removeClass('blur');
@@ -686,6 +708,9 @@ pageFunctions.additionalWindowsFunc = function () {
         });
     });
     
+=======
+    });
+>>>>>>> editPosition
 
     var createProductToAddGroupSelect = (function (data) {
         ans = '';
@@ -741,6 +766,7 @@ pageFunctions.additionalWindowsFunc = function () {
         });
         return ans;
     });
+<<<<<<< HEAD
     
     var createPriceHistoryTableContent = (function (data) {
         var ans = '';
@@ -769,6 +795,8 @@ pageFunctions.additionalWindowsFunc = function () {
         return ans;
     });
 
+=======
+>>>>>>> editPosition
 
     var getUnits = (function(){
         var ans = 0;
@@ -784,6 +812,7 @@ pageFunctions.additionalWindowsFunc = function () {
         return ans;
     });
 
+<<<<<<< HEAD
     var getContractorsCount = (function(){
         param = {};
         //Contractor ID
@@ -845,6 +874,8 @@ pageFunctions.additionalWindowsFunc = function () {
         });
     });
 
+=======
+>>>>>>> editPosition
     var createProductToAddProducersSelect = (function (data) {
         ans = '';
         ans += '<option value=0></option>';
@@ -854,6 +885,7 @@ pageFunctions.additionalWindowsFunc = function () {
         return ans;
     });
 
+<<<<<<< HEAD
     var myConfirm = (function(message,action){
         $('#myConfirmAbort').on('click', function(){
             $('#myConfirmContainer').addClass('hidden');
@@ -895,6 +927,8 @@ pageFunctions.additionalWindowsFunc = function () {
         return ans;
     });
 
+=======
+>>>>>>> editPosition
     var getProducers = (function(){
         var ans = 0;
         $.ajax({

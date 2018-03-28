@@ -115,14 +115,21 @@ pageFunctions.languages = (function(){
         $('.delPositionBttLang').attr('value','Delete selected position');
         $('.editPositionBttLang').attr('value','Edit selected position');
         $('.addProductLang').html('Add product');
+<<<<<<< HEAD
         $('.addNewProductLang').attr('value','Save product');
         $('.newProdNameLang').html('Name: ');
         $('.newProdPriceLang').html('Price gross: ');
+=======
+        $('.addNewProductLang').attr('value','Add product');
+        $('.newProdNameLang').html('Name: ');
+        $('.newProdPriceLang').html('Price net: ');
+>>>>>>> editPosition
         $('.newProdGroupLang').html('Group: ');
         $('.newProdVatLang').html('Tax: ');
         $('.newProdUnitLang').html('Unit: ');
         $('.newProdProducerLang').html('Producer: ');
         $('.newProdCodeLang').html('Bar code: ');
+<<<<<<< HEAD
         $('.editProductLang').html('Edit product');
         $('.editProductLang').attr('value','Save product');
         $('.findLang').attr('value','Find');
@@ -157,6 +164,8 @@ pageFunctions.languages = (function(){
         $('.isProviderYesLang').html('Is provider');
         $('.contractorsListLang').html('Contractors list');
 
+=======
+>>>>>>> editPosition
         window.localStorage.setItem('lang','en');
     }
     var polish = function(){
@@ -257,14 +266,21 @@ pageFunctions.languages = (function(){
         $('.delPositionBttLang').attr('value','Usuń zaznaczoną pozycję');
         $('.editPositionBttLang').attr('value','Edytuj zaznaczoną pozycję');
         $('.addProductLang').html('Dodaj produkt');
+<<<<<<< HEAD
         $('.addNewProductLang').attr('value','Zapisz produkt');
         $('.newProdNameLang').html('Nazwa: ');
         $('.newProdPriceLang').html('Cena brutto: ');
+=======
+        $('.addNewProductLang').attr('value','Dodaj produkt');
+        $('.newProdNameLang').html('Nazwa: ');
+        $('.newProdPriceLang').html('Cena netto: ');
+>>>>>>> editPosition
         $('.newProdGroupLang').html('Grupa: ');
         $('.newProdVatLang').html('Vat: ');
         $('.newProdUnitLang').html('Jednostka: ');
         $('.newProdProducerLang').html('Producent: ');
         $('.newProdCodeLang').html('Kod kreskowy: ');
+<<<<<<< HEAD
         $('.editProductLang').html('Edytuj produkt');
         $('.editProductLang').attr('value','Zapisz produkt');
         $('.findLang').attr('value','Szukaj');
@@ -298,6 +314,8 @@ pageFunctions.languages = (function(){
         $('.isProviderNoLang').html('Nie jest dostawcą');
         $('.isProviderYesLang').html('Jest dostawcą');
         $('.contractorsListLang').html('Lista kontrahentów');
+=======
+>>>>>>> editPosition
         window.localStorage.setItem('lang','pl');
     }
 
